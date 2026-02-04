@@ -1,76 +1,90 @@
-# [Nombre de la Aplicación]
+# ByeBye
 
 ## 👥 Miembros del Equipo
-| Nombre y Apellidos | Correo URJC | Usuario GitHub |
-|:--- |:--- |:--- |
-| [Nombre 1] | [email1]@alumnos.urjc.es | [User1] |
-| [Nombre 2] | [email2]@alumnos.urjc.es | [User2] |
-| [Nombre 3] | [email3]@alumnos.urjc.es | [User3] |
-| [Nombre 4] | [email4]@alumnos.urjc.es | [User4] |
+| Nombre y Apellidos           | Correo URJC                      | Usuario GitHub     |
+|:-----------------------------|:---------------------------------|:-------------------|
+| María Abdallah El Lakkis     | m.abdallah.2023@alumnos.urjc.es  | maria-242          |
+| Yadira Reimundez Queimadelos | y.reimundez.2023@alumnos.urjc.es | yadirareimundez    |
+| Vanessa Fernandes Franco     | v.fernandes.2023@alumnos.urjc.es | VanessaFernandes19 |
 
 ---
 
 ## 🎭 **Preparación: Definición del Proyecto**
 
 ### **Descripción del Tema**
-[Escribe aquí una descripción breve y concisa de qué trata tu aplicación, el sector al que pertenece y qué valor aporta al usuario].
 
+Una aplicacion web interactiva del sector del turismo diseñada para que los viajeros descubran destinos y planifiquen sus viajes 
 ### **Entidades**
 Indicar las entidades principales que gestionará la aplicación y las relaciones entre ellas:
 
-1. **[Entidad 1]**: [Ej: Usuario]
-2. **[Entidad 2]**: [Ej: Producto]
-3. **[Entidad 3]**: [Ej: Pedido]
-4. **[Entidad 4]**: [Ej: Categoría]
+1.  Usuario
+2. Compañía
+3. Transporte
+4. Alojamiento
+5. Reserva
+6. Perfil de usuario
+7. Viajes recomendados
+
 
 **Relaciones entre entidades:**
-- [Ej: Usuario - Pedido: Un usuario puede tener múltiples pedidos (1:N)]
-- [Ej: Pedido - Producto: Un pedido puede contener múltiples productos y un producto puede estar en múltiples pedidos (N:M)]
-- [Ej: Producto - Categoría: Un producto pertenece a una categoría (N:1)]
-- [Descripción de otras relaciones relevantes]
+- Compañía - Transporte: Una  compañía  puede tener múltiples transportes (1:N)
+- Transporte - Compañía: Un transporte pertenece a una compañía (1:1)
+- Usuario - Transporte: Un usuario puede viajar en múltiples transportes (0:N)
+- Transporte - Usuario: Un Transporte puede tener multiples usuarios (0:N)
+- Usuario - Alojamiento: Un usuario se aloja en múltiples alojamientos (0:N)
+- Alojamiento - Usuario: Un alojamiento puede tener un usuario (0:1)
+- Usuario - Perfil de usuario: Un usuario tiene un perfil de usuario (0:1)
+- Perfil de usuario - Usuario: Un perfil de usuario pertenece a un usuario (1:1)
+- Usuario - Reserva: Un usuario puede hacer múltiples reservas (0:N)
+- Reserva - Usuario: Una reserva pertenece a un usuario (1:1)
+- Usuario - Viajes recomendados: Un usuario puede visualizar varios viajes recomendados (0:N)
+- Viajes recomendados - Usuario: Un viajes recomendado puede ser visualizado por múltiples usuarios (0:N)
+
 
 ### **Permisos de los Usuarios**
-Describir los permisos de cada tipo de usuario e indicar de qué entidades es dueño:
+Descripción de los permisos de cada tipo de usuario indicando de qué entidades es dueño:
 
 * **Usuario Anónimo**: 
-  - Permisos: [Ej: Visualización de catálogo, búsqueda de productos, registro]
+  - Permisos: Búsqueda de vuelos, trenes y alojamientos por fecha y destino, darse de alta como
+    usuario registrado y visualización de viajes recomendados.
   - No es dueño de ninguna entidad
 
 * **Usuario Registrado**: 
-  - Permisos: [Ej: Gestión de perfil, realizar pedidos, crear valoraciones]
-  - Es dueño de: [Ej: Sus propios Pedidos, su Perfil de Usuario, sus Valoraciones]
+  - Permisos: Búsqueda de vuelos, trenes y alojamientos por fecha y destino, darse de baja, gestionar perfil,
+  gestionar reservas y visualización de viajes recomendados.
+  - Es dueño de su perfil de usuario y de sus reservas.
 
 * **Administrador**: 
-  - Permisos: [Ej: Gestión completa de productos (CRUD), visualización de estadísticas, moderación de contenido]
-  - Es dueño de: [Ej: Productos, Categorías, puede gestionar todos los Pedidos y Usuarios]
+  - Permisos: gestión de usuarios, de transportes, de compañías, de alojamientos, de viajes recomendados, moderación de contenido
+   y visualizar estadísticas.
+  - Es dueño de: transportes, compañías, usuarios, alojamientos, reservas y perfiles de usuarios.
 
 ### **Imágenes**
-Indicar qué entidades tendrán asociadas una o varias imágenes:
 
-- **[Entidad con imágenes 1]**: [Ej: Usuario - Una imagen de avatar por usuario]
-- **[Entidad con imágenes 2]**: [Ej: Producto - Múltiples imágenes por producto (galería)]
-- **[Entidad con imágenes 3]**: [Ej: Categoría - Una imagen representativa por categoría]
+- **Usuario**: Una imagen de avatar 
+- **Compañía**: Una imagen del logo de la compañía
+- **Alojamiento**: Múltiples imágenes de cada alojamiento
+- **Reserva**: Múltiples imágenes asociadas a cada reserva 
+- **Viajes recomendados**: Múltiples imágenes asociadas a cada viaje
 
 ### **Gráficos**
-Indicar qué información se mostrará usando gráficos y de qué tipo serán:
 
-- **Gráfico 1**: [Ej: Ventas mensuales - Gráfico de barras]
-- **Gráfico 2**: [Ej: Productos más vendidos - Gráfico de tarta/circular]
-- **Gráfico 3**: [Ej: Evolución de usuarios registrados - Gráfico de líneas]
-- **Gráfico 4**: [Ej: Distribución de pedidos por categoría - Gráfico de barras horizontales]
+- **Reservas mensuales - Gráfico de barras**
+- **Viajes más vendidos - Gráfico de tarta/circular**
+- **Evolución de usuarios registrados - Gráfico de líneas**
 
 ### **Tecnología Complementaria**
-Indicar qué tecnología complementaria se empleará:
 
-- [Ej: Envío de correos electrónicos automáticos mediante JavaMailSender]
-- [Ej: Generación de PDFs de facturas usando iText o similar]
+- Envío de correos electrónicos automáticos mediante JavaMailSender
+- Generación de PDFs de facturas usando iText o similar
+- Pasarela de pago
 
 ### **Algoritmo o Consulta Avanzada**
-Indicar cuál será el algoritmo o consulta avanzada que se implementará:
 
-- **Algoritmo/Consulta**: [Ej: Sistema de recomendaciones basado en el historial de compras del usuario]
-- **Descripción**: [Ej: Analiza los productos comprados previamente y sugiere productos similares o complementarios utilizando filtrado colaborativo]
-- **Alternativa**: [Ej: Consulta compleja que agrupe ventas por categoría, mes y región, con cálculo de tendencias]
+- **Algoritmo/Consulta**: Sistema de recomendaciones basado en el historial de búsquedas del usuario y 
+    con el recorrido más corto.
+- **Descripción**: Analiza los viajes reservados previamente y sugiere viajes similares o complementarios utilizando filtrado colaborativo.
+- **Alternativa**: Consulta compleja que agrupe reservas por categoría, precio, fecha y destino, con cálculo de tendencias.
 
 ---
 
