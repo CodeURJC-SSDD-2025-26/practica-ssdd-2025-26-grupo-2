@@ -15,57 +15,42 @@
 
 Una aplicacion web interactiva del sector del turismo diseñada para que los viajeros descubran destinos y planifiquen sus viajes 
 ### **Entidades**
-Indicar las entidades principales que gestionará la aplicación y las relaciones entre ellas:
-
-1.  Usuario
-2. Compañía
-3. Transporte
-4. Alojamiento
-5. Reserva
-6. Perfil de usuario
-7. Viajes recomendados
+1. Usuario
+2. Viaje
+3. Reseña
+4. Reserva
 
 
 **Relaciones entre entidades:**
-- Compañía - Transporte: Una  compañía  puede tener múltiples transportes (1:N)
-- Transporte - Compañía: Un transporte pertenece a una compañía (1:1)
-- Usuario - Transporte: Un usuario puede viajar en múltiples transportes (0:N)
-- Transporte - Usuario: Un Transporte puede tener multiples usuarios (0:N)
-- Usuario - Alojamiento: Un usuario se aloja en múltiples alojamientos (0:N)
-- Alojamiento - Usuario: Un alojamiento puede tener un usuario (0:1)
-- Usuario - Perfil de usuario: Un usuario tiene un perfil de usuario (0:1)
-- Perfil de usuario - Usuario: Un perfil de usuario pertenece a un usuario (1:1)
+- Usuario - Viaje: Un usuario puede realizar en múltiples viajes (0:N)
+- Viaje - Usuario: Un viaje puede ser realizado multiples usuarios (0:N)
 - Usuario - Reserva: Un usuario puede hacer múltiples reservas (0:N)
 - Reserva - Usuario: Una reserva pertenece a un usuario (1:1)
-- Usuario - Viajes recomendados: Un usuario puede visualizar varios viajes recomendados (0:N)
-- Viajes recomendados - Usuario: Un viajes recomendado puede ser visualizado por múltiples usuarios (0:N)
+- Usuario - Reseña: Un usuario puede realizar múltiples reseñas (0:N)
+- Reseña - Usuario: Una reseña pertenece a un usuario (1:1)
 
 
 ### **Permisos de los Usuarios**
-Descripción de los permisos de cada tipo de usuario indicando de qué entidades es dueño:
 
 * **Usuario Anónimo**: 
-  - Permisos: Búsqueda de vuelos, trenes y alojamientos por fecha y destino, darse de alta como
-    usuario registrado y visualización de viajes recomendados.
+  - Permisos: Búsqueda de viajes por fecha y destino, darse de alta como
+    usuario registrado y visualización de viajes recomendados y reseñas.
   - No es dueño de ninguna entidad
 
 * **Usuario Registrado**: 
-  - Permisos: Búsqueda de vuelos, trenes y alojamientos por fecha y destino, darse de baja, gestionar perfil,
-  gestionar reservas y visualización de viajes recomendados.
-  - Es dueño de su perfil de usuario y de sus reservas.
+  - Permisos: Permisos: Búsqueda de viajes por fecha y destino, visualización de viajes recomendados y reseñas, darse de baja, gestionar perfil,
+  gestionar reservas, gestionar reseñas y visualización de historial de viajes.
+  - Es dueño de su perfil de usuario, de sus reseñas y de sus reservas.
 
 * **Administrador**: 
-  - Permisos: gestión de usuarios, de transportes, de compañías, de alojamientos, de viajes recomendados, moderación de contenido
+  - Permisos: gestión de vaijes, de reservas, de viajes recomendados, moderación de contenido
    y visualizar estadísticas.
-  - Es dueño de: transportes, compañías, usuarios, alojamientos, reservas y perfiles de usuarios.
+  - Es dueño de: usuarios, viajes, reseñas, y reservas.
 
 ### **Imágenes**
 
 - **Usuario**: Una imagen de avatar 
-- **Compañía**: Una imagen del logo de la compañía
-- **Alojamiento**: Múltiples imágenes de cada alojamiento
-- **Reserva**: Múltiples imágenes asociadas a cada reserva 
-- **Viajes recomendados**: Múltiples imágenes asociadas a cada viaje
+- **Viaje**: Múltiples imágenes de cada viaje
 
 ### **Gráficos**
 
@@ -77,12 +62,10 @@ Descripción de los permisos de cada tipo de usuario indicando de qué entidades
 
 - Envío de correos electrónicos automáticos mediante JavaMailSender
 - Generación de PDFs de facturas usando iText o similar
-- Pasarela de pago
 
 ### **Algoritmo o Consulta Avanzada**
 
-- **Algoritmo/Consulta**: Sistema de recomendaciones basado en el historial de búsquedas del usuario y 
-    con el recorrido más corto.
+- **Algoritmo/Consulta**: Sistema de recomendaciones basado en el historial de búsquedas del usuario y en las reseñas de cada viaje
 - **Descripción**: Analiza los viajes reservados previamente y sugiere viajes similares o complementarios utilizando filtrado colaborativo.
 - **Alternativa**: Consulta compleja que agrupe reservas por categoría, precio, fecha y destino, con cálculo de tendencias.
 
