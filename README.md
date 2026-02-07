@@ -6,7 +6,7 @@
 | María Abdallah El Lakkis     | m.abdallah.2023@alumnos.urjc.es  | maria-242          |
 | Yadira Reimundez Queimadelos | y.reimundez.2023@alumnos.urjc.es | yadirareimundez    |
 | Vanessa Fernandes Franco     | v.fernandes.2023@alumnos.urjc.es | VanessaFernandes19 |
-
+| Alejandro Hernández de Dios  | a.hernandezd.2023@alumnos.urjc.es|AlejandroHernández2805|
 ---
 
 ## 🎭 **Preparación: Definición del Proyecto**
