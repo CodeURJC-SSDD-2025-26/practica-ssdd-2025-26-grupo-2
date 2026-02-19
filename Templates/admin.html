@@ -1,0 +1,234 @@
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>ByeBye.com</title>
+</head>
+
+<body>
+
+    <!-- header -->
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <div class="site-navigation">
+                <a href="index.html" class="logo m-0">ByeBye</a>
+
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li><a href="admin.html">Panel administración</a></li>
+                    <li><a href="signin.html">Identifícate</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="about.html">Información</a></li>
+                    <li><a href="contact.html">Contactanos</a></li>
+                    <li><a href="travel_page.html">Nuestros viajes</a></li>
+                </ul>
+
+                <a href="#"
+                    class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
+                    data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- end of header -->
+
+
+    <div class="hero hero-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mx-auto text-center">
+                    <div class="intro-wrap">
+                        <h1 class="mb-0">Panel de administración</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-10 mx-auto mb-4">
+        <h2 class="section-title text-center"><b>Añadir viaje</b></h2> <!-- title doesn't depend of form -->
+        <form class="contact-form bg-white p-4 shadow-sm border rounded">
+            <div class="row justify-content-center align-items-stretch">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="text-black" for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="text-black" for="country">Pais</label>
+                        <input type="text" class="form-control" id="country">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-black" for="prize">Precio</label>
+                        <input type="number" class="form-control" id="prize">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="text-black" for="transport">Transporte</label>
+                        <input type="text" class="form-control" id="transport">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="text-black" for="alojamiento">Alojamiento</label>
+                        <input type="text" class="form-control" id="alojamiento">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="text-black" for="availableSpots">Plazas disponibles</label>
+                        <input type="number" class="form-control" id="availableSpots">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="text-black" for="startDate">Fecha inico</label>
+                        <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="text-black" for="endDate">Fecha fin</label>
+                        <input type="date" class="form-control" id="endDate">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Adjunte las imágenes que desee
+                        mostrar</label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                </div>
+                <div class="col-12 text-center mt-3">
+                    <button type="reset" class="btn btn-primary">Reiniciar</button>
+                    <button type="submit" class="btn btn-primary">Añadir viaje</button>
+                </div>
+            </div>
+        </form>
+        <h2 class="section-title text-center"><b>Gestionar usuarios</b></h2> <!-- title doesn't depend of form -->
+        <form class="contact-form bg-white p-4 shadow-sm border rounded">
+            <div>
+                <p> Usuario ejemplo 1
+                    <button class="btn btn-primary">Eliminar</button>
+                    <button class="btn btn-primary">Enviar aviso</button>
+                    <button class="btn btn-primary">Visualizar reservas</button>
+                </p>
+            </div>
+        </form>
+
+
+
+        <div class="site-footer">
+            <div class="inner first">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="widget">
+                                <ul class="list-unstyled social">
+                                    <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                    <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                    <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                    <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                    <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                    <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                    <li><a href="#"><span class="icon-apple"></span></a></li>
+                                    <li><a href="#"><span class="icon-google"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-2 pl-lg-5">
+                            <div class="widget">
+                                <h3 class="heading">
+                                    <a href="index.html">Inicio</a>
+                                </h3>
+                                <ul class="links list-unstyled">
+                                    <li><a href="signin.html">Registrarse</a></li>
+                                    <li><a href="about.html">Sobre Nosotros</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="widget">
+                                <ul class="list-unstyled quick-info links">
+                                    <li class="email"><a href="#">@info@byebye.com</a></li>
+                                    <li class="phone"><a href="#">+34 123 456 789</a></li>
+                                    <li class="address"><a href="#">Calle Tulipán, s/n, 28933 Móstoles, Madrid</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="inner dark">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="overlayer"></div>
+            <div class="loader">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+            <script src="js/jquery-3.4.1.min.js"></script>
+            <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/owl.carousel.min.js"></script>
+            <script src="js/jquery.animateNumber.min.js"></script>
+            <script src="js/jquery.waypoints.min.js"></script>
+            <script src="js/jquery.fancybox.min.js"></script>
+            <script src="js/aos.js"></script>
+            <script src="js/moment.min.js"></script>
+            <script src="js/daterangepicker.js"></script>
+
+            <script src="js/typed.js"></script>
+
+            <script src="js/custom.js"></script>
+
+</body>
+
+</html>
