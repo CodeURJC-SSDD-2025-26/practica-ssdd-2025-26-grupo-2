@@ -22,7 +22,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/jquery.fancybox.min.css">
@@ -37,40 +37,40 @@
 
 <body>
 
- <!-- header -->
+ 
+  <!-- header -->
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
 
-  <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close">
-        <span class="icofont-close js-menu-toggle"></span>
-      </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-  </div>
+	<nav class="site-nav">
+        <div class="container">
+            <div class="site-navigation">
+                <a href="index.html" class="logo m-0">ByeBye</a>
 
-  <nav class="site-nav">
-    <div class="container">
-      <div class="site-navigation">
-        <a href="index.html" class="logo m-0">ByeBye</a>
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li><a href="admin.html">Panel administración</a></li>                    
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="active"><a href="signin.html">Identifícate</a></li>
+                    <li><a href="travel_page.html">Nuestros viajes</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contactanos</a></li>
+                </ul>
 
-        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-          <li class="active"><a href="index.html">Inicio</a></li>
-          <li><a href="admin.html">Panel administración</a></li>
-          <li><a href="signin.html">Identifícate</a></li>
-          <li><a href="services.html">Servicios</a></li>
-          <li><a href="about.html">Información</a></li>
-          <li><a href="contact.html">Contactanos</a></li>
-          <li><a href="travel_page.html">Nuestros viajes</a></li>
-        </ul>
+                <a href="#"
+                    class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
+                    data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
 
-        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
-          data-toggle="collapse" data-target="#main-navbar">
-          <span></span>
-        </a>
-
-      </div>
-    </div>
-  </nav>
+            </div>
+        </div>
+    </nav>
  <!-- end of header -->
 
 
