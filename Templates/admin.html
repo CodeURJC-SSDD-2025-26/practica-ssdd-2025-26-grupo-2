@@ -22,7 +22,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">  <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
@@ -54,7 +56,7 @@
                 <a href="index.html" class="logo m-0">ByeBye</a>
 
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="admin.html">Panel administración</a></li>
+                    <li class="active"><a href="admin.html">Panel Administración</a></li>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="signin.html">Identifícate</a></li>
                     <li><a href="travel_page.html">Nuestros viajes</a></li>
@@ -79,15 +81,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mx-auto text-center">
                     <div class="intro-wrap">
-                        <h1 class="mb-0">Panel de administración</h1>
+                        <h1 class="mb-0">Panel de Administración</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     </div>
-
-    <div class="col-10 mx-auto mb-4">
+    <br>
+    <div class="col-11 mx-auto mb-4">
         <h2 class="section-title text-center"><b>Añadir viaje</b></h2> <!-- title doesn't depend of form -->
         <form class="contact-form bg-white p-4 shadow-sm border rounded">
             <div class="row justify-content-center align-items-stretch">
@@ -135,98 +137,232 @@
                     <input class="form-control" type="file" id="formFileMultiple" multiple>
                 </div>
                 <div class="col-12 text-center mt-3">
-                    <button type="reset" class="btn btn-primary">Reiniciar</button>
+                    <button type="reset" class="btn btn-adv">Reiniciar</button>
                     <button type="submit" class="btn btn-primary">Añadir viaje</button>
                 </div>
             </div>
         </form>
-        <h2 class="section-title text-center"><b>Gestionar usuarios</b></h2> <!-- title doesn't depend of form -->
+
+        <br>
+        <h2 class="section-title text-center"><b>Gestionar viajes</b></h2> <!-- title doesn't depend of form -->
         <form class="contact-form bg-white p-4 shadow-sm border rounded">
             <div>
-                <p> Usuario ejemplo 1
-                    <button class="btn btn-primary">Eliminar</button>
-                    <button class="btn btn-primary">Enviar aviso</button>
-                    <button class="btn btn-primary">Visualizar reservas</button>
+                <p> Viaje ejemplo 1
+                    <button class="btn btn-rm">Eliminar</button>
+                    <button class="btn btn-adv">Visualizar reservas</button>
+                    <button class="btn btn-primary">Visualizar estadísticas</button>
                 </p>
             </div>
         </form>
 
 
+        <table class="tabla-admin">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>País</th>
+                    <th class="col-prize">Precio</th>
+                    <th>Transporte</th>
+                    <th>Alojamiento</th>
+                    <th class="col-prize">Plazas</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th class="col-file">Imágenes</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="input-container">
+                            <input type="text" class="form-control" id="alojamiento_1">
+                        </div>
+                    </td>
 
-        <div class="site-footer">
-            <div class="inner first">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="widget">
-                                <ul class="list-unstyled social">
-                                    <li><a href="#"><span class="icon-twitter"></span></a></li>
-                                    <li><a href="#"><span class="icon-instagram"></span></a></li>
-                                    <li><a href="#"><span class="icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                                    <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                                    <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                                    <li><a href="#"><span class="icon-apple"></span></a></li>
-                                    <li><a href="#"><span class="icon-google"></span></a></li>
-                                </ul>
-                            </div>
+                    <td>
+                        <div class="input-container">
+                            <input type="text" class="form-control" id="alojamiento_2">
                         </div>
-                        <div class="col-md-8 col-lg-2 pl-lg-5">
-                            <div class="widget">
-                                <h3 class="heading">
-                                    <a href="index.html">Inicio</a>
-                                </h3>
-                                <ul class="links list-unstyled">
-                                    <li><a href="signin.html">Registrarse</a></li>
-                                    <li><a href="about.html">Sobre Nosotros</a></li>
-                                </ul>
-                            </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input type="number" class="form-control" id="availableSpots_1">
+
                         </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="widget">
-                                <ul class="list-unstyled quick-info links">
-                                    <li class="email"><a href="#">@info@byebye.com</a></li>
-                                    <li class="phone"><a href="#">+34 123 456 789</a></li>
-                                    <li class="address"><a href="#">Calle Tulipán, s/n, 28933 Móstoles, Madrid</a></li>
-                                </ul>
-                            </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input type="text" class="form-control" id="alojamiento_3">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input type="text" class="form-control" id="alojamiento_4">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input type="number" class="form-control" id="availableSpots_2">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input type="date" class="form-control" id="startDate_1">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input type="date" class="form-control" id="startDate_2">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="input-container">
+                            <input class="form-control py-2 px-1" type="file" id="formFileMultiple" multiple>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary">Actualizar</button>
+                            <button class="btn btn-adv">Gráficos</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <br>
+        <h2 class="section-title text-center"><b>Gestionar usuarios</b></h2> <!-- title doesn't depend of form -->
+        <form class="contact-form bg-white p-4 shadow-sm border rounded">
+            <div>
+                <p> Usuario ejemplo 1
+                    <button class="btn btn-rm">Eliminar</button>
+                    <button class="btn btn-primary">Enviar aviso</button>
+                    <button class="btn btn-primary">Visualizar reseñas</button>
+
+                </p>
+            </div>
+        </form>
+
+    </div>
+    <div class="py-5 cta-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p class="mb-1"><a href="contact.html"
+                            class="btn btn-outline-white text-white btn-grande font-weight-bold">Contactanos</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-footer">
+        <div class="inner first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <ul class="list-unstyled social">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-apple"></span></a></li>
+                                <li><a href="#"><span class="icon-google"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-2 pl-lg-5">
+                        <div class="widget">
+                            <h3 class="heading">
+                                <a href="index.html">Inicio</a>
+                            </h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="signin.html">Registrarse</a></li>
+                                <li><a href="about.html">Sobre Nosotros</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <ul class="list-unstyled quick-info links">
+                                <li class="email"><a href="#">@info@byebye.com</a></li>
+                                <li class="phone"><a href="#">+34 123 456 789</a></li>
+                                <li class="address"><a href="#">Calle Tulipán, s/n, 28933 Móstoles, Madrid</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
-            <div class="inner dark">
-                <div class="container">
-                    <div class="row text-center">
-                        <div class="col-md-8 mb-3 mb-md-0 mx-auto">
-                        </div>
+        <div class="inner dark">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 mb-3 mb-md-0 mx-auto">
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id="overlayer"></div>
-            <div class="loader">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
+        <div id="overlayer"></div>
+        <div class="loader">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
+        </div>
 
-            <script src="js/jquery-3.4.1.min.js"></script>
-            <script src="js/popper.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>
-            <script src="js/jquery.animateNumber.min.js"></script>
-            <script src="js/jquery.waypoints.min.js"></script>
-            <script src="js/jquery.fancybox.min.js"></script>
-            <script src="js/aos.js"></script>
-            <script src="js/moment.min.js"></script>
-            <script src="js/daterangepicker.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
 
-            <script src="js/typed.js"></script>
+        <script src="js/typed.js"></script>
 
-            <script src="js/custom.js"></script>
+        <script src="js/custom.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Seleccionamos inputs de texto y números
+                const inputs = document.querySelectorAll('.tabla-admin input[type="text"], .tabla-admin input[type="number"]');
+
+                function ajustarAncho(input) {
+                    // El atributo 'size' define el ancho visual en caracteres
+                    // Usamos el largo del texto + un pequeño margen (2)
+                    const valor = input.value.length;
+                    input.size = valor > 0 ? valor + 10 : 4;
+                }
+
+                inputs.forEach(input => {
+                    // Ajustar al cargar por si ya tienen datos
+                    ajustarAncho(input);
+
+                    // Ajustar cada vez que el usuario teclea
+                    input.addEventListener('input', function () {
+                        ajustarAncho(this);
+                    });
+                });
+            });
+        </script>
+
 
 </body>
 
