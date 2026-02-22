@@ -1,0 +1,254 @@
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>ByeBye.com</title>
+</head>
+
+<body>
+
+    <!-- header -->
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <div class="site-navigation">
+                <a href="index.html" class="logo m-0">ByeBye</a>
+
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li><a href="admin.html">Panel administración</a></li>
+                    <li><a href="signin.html">Identifícate</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="about.html">Información</a></li>
+                    <li><a href="contact.html">Contactanos</a></li>
+                    <li><a href="travel_page.html">Nuestros viajes</a></li>
+                </ul>
+
+                <a href="#"
+                    class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
+                    data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- end of header -->
+
+
+    <div class="hero hero-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mx-auto text-center">
+                    <div class="intro-wrap">
+                        <h1 class="mb-0">Perfil</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container py-5">
+        <h2 class="section-title text-center mb-4"><b>Modifica tus datos</b></h2>
+
+            <div class="col-lg-5 mb-4">
+
+                    <form class="contact-form bg-white p-4 shadow-sm border rounded">
+
+                    <div class="d-flex flex-column align-items-center mb-4">
+                        <img src="images/profile_image.png" alt="Image" class="rounded-circle img-thumbnail mb-3"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <input type="file" id="inputFotoPerfil" accept="image/*" class="d-none">
+
+                        <label for="inputFotoPerfil" class="btn btn-primary">
+                            Cambiar foto de perfil
+                        </label>
+
+                    </div>
+                    <form class="contact-form bg-white p-4 shadow-sm border rounded">
+                        <div class="form-group mb-3">
+                            <label class="text-black" for="login-email">Dirección de correo</label>
+                            <input type="email" class="form-control" id="login-email">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-black" for="login-password">Contraseña actual</label>
+                            <input type="password" class="form-control" id="login-password">
+
+                            <div class="text-end mt-2">
+                                <a href="#" onclick="toggleMensaje(event)"
+                                    class="small text-decoration-none text-primary">
+                                    He olvidado mi contraseña
+                                </a>
+                            </div>
+                            <div id="mensajeRecuperacion" class="alert alert-success mt-3 d-none" role="alert">
+                                Te hemos enviado un correo de recuperación.
+                            </div><br>
+                            <div class="form-group mb-4">
+                                <label class="text-black" for="login-password">Contraseña nueva</label>
+                                <input type="password" class="form-control" id="login-password">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Confirmar</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
+    <div class="container py-5">
+        <h2 class="section-title text-center mb-4"><b>Tus reservas</b></h2>
+
+        <div class="bg-white p-4 shadow-sm border rounded">
+            <ul class="list-group list-group-flush" id="lista-reservas">
+
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    <p class="mb-0 fw-bold">Reserva ejemplo 1</p>
+                    <div>
+                        <a href="travel_page_ext.html" class="btn btn-primary btn-sm me-2">Visualizar detalles</a>
+                        <button type="button" class="btn btn-primary btn-sm me-2">Imprimir recibo</button>
+                    </div>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    <p class="mb-0 fw-bold">Reserva ejemplo 2</p>
+                    <div>
+                        <a href="travel_page_ext.html" class="btn btn-primary btn-sm me-2">Visualizar detalles</a>
+                        <button type="button" class="btn btn-primary btn-sm me-2">Imprimir recibo</button>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="site-footer">
+        <div class="inner first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <ul class="list-unstyled social">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-apple"></span></a></li>
+                                <li><a href="#"><span class="icon-google"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-2 pl-lg-5">
+                        <div class="widget">
+                            <h3 class="heading">
+                                <a href="index.html">Inicio</a>
+                            </h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="signin.html">Registrarse</a></li>
+                                <li><a href="about.html">Sobre Nosotros</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <ul class="list-unstyled quick-info links">
+                                <li class="email"><a href="#">@info@byebye.com</a></li>
+                                <li class="phone"><a href="#">+34 123 456 789</a></li>
+                                <li class="address"><a href="#">Calle Tulipán, s/n, 28933 Móstoles, Madrid</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="inner dark">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlayer"></div>
+        <div class="loader">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
+
+        <script src="js/typed.js"></script>
+
+        <script src="js/custom.js"></script>
+        <script>
+            function toggleMensaje(evento) {
+                // Evitamos que la página salte hacia arriba al pulsar el enlace
+                evento.preventDefault();
+
+                // Buscamos el mensaje por su ID
+                const mensaje = document.getElementById('mensajeRecuperacion');
+
+                // La magia de 'toggle': si tiene 'd-none' se lo quita, si no lo tiene se lo pone
+                mensaje.classList.toggle('d-none');
+            }
+        </script>
+</body>
+
+</html>
