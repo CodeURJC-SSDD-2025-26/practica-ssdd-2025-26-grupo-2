@@ -1955,14 +1955,16 @@ h4,
   min-width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
-  color: #1A374D; 
+  color: #1A374D;
   margin-top: 20px;
 }
 
-.tabla-admin th, .tabla-admin td {
+.tabla-admin th,
+.tabla-admin td {
   border: 2px solid #1A374D;
-  padding: 2px 6px;
+  padding: 10px 6px;
   text-align: center;
+  vertical-align: middle
 }
 
 .tabla-admin th {
@@ -1970,27 +1972,56 @@ h4,
   font-size: 0.9rem;
 }
 
-.tabla-admin td{
+.tabla-admin td {
   background-color: #ffffff;
   cursor: text;
   outline: none;
 }
 
-.tabla-admin td:focus { 
-  background-color: #fff9c4; 
+.tabla-admin td:focus {
+  background-color: #fff9c4;
   border: 2px dashed #1A374D;
 }
+
 .botones-admin .btn {
-    padding:  6px;
-    font-size: 0.85rem;
-    border-radius: 4px;
-    width: 70px;
+  padding: 6px;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  width: 70px;
 
 }
-.small-input {
-    font-size: 12px;
-    padding:  6px;
-    height: 28px;
+.botones-admin-user .btn {
+  border-radius: 4px;
 }
-.col-file { width: 300px; }
-.col-prize { width: 70px; }
+
+
+.small-input {
+  font-size: 12px;
+  padding: 6px;
+  height: 28px;
+}
+
+.col-file {
+  width: 180px;
+}
+
+.col-prize {
+  width: 100px;
+}
+
+.col-date {
+  width: 200px;
+}
+
+.col-actions {
+  width: 100px;
+}
+
+.col-11-5 {
+  width: 93%;
+}
+
+.userImage {
+  width: 60%;
+  margin: 0 auto;
+}
