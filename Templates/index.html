@@ -11,7 +11,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Untree.co">
-	<link href="Logo sin fondo.png">
+	<link rel="shortcut icon" href="Logo sin fondo.png">
 
 	<meta name="description" content="" />
 	<meta name="keywords" content="bootstrap, bootstrap4" />
@@ -106,7 +106,7 @@
 							<div class="col-10">
 								<form class="form">
 									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+										<div class="col-lg-4 mb-2">
 											<select name="" id="" class="form-control custom-select">
 												<option value="">Destino</option>
 												<option value="">Peru</option>
@@ -119,9 +119,10 @@
 												<option value="">Kenia</option>
 											</select>
 										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-											<input type="text" class="form-control" name="daterange">
+										<div class="col-lg-6 mb-2">
+											<input type="text" class="form-control custom-select" name="daterange">
 										</div>
+
 										<div class="col-lg-2">
 											<select name="viajeros" class="form-control custom-select">
 												<option value=""></option>
@@ -505,24 +506,28 @@
 				<span class="sr-only">Loading...</span>
 			</div>
 		</div>
+	</div>
 
+		
+			
 		<script src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/jquery.animateNumber.min.js"></script>
-		<script src="js/jquery.waypoints.min.js"></script>
-		<script src="js/jquery.fancybox.min.js"></script>
-		<script src="js/aos.js"></script>
-		<script src="js/moment.min.js"></script>
-		<script src="js/daterangepicker.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
 
-		<script src="js/typed.js">
-		</script>
+        <script src="js/typed.js"></script>
+
+        <script src="js/custom.js"></script>
 		<script>
-			$(function () {
-				var slides = $('.slides'),
-					images = slides.find('img');
+				$(function () {
+					var slides = $('.slides'),
+						images = slides.find('img');
 
 				images.each(function (i) {
 					$(this).attr('data-id', i + 1);
