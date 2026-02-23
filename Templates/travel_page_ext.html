@@ -171,16 +171,55 @@
       </select>
       </div>
      <div class="ml-auto text-right">
-        <button id="btnReservar" class="btn btn-primary">
-          Reservar
-        </button>
+  <div class="ml-auto text-right">
+      <button id="btnReservar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
+        Reservar
+      </button>
+    </div>
 
-        <!-- Alerta -->
-        <div id="alertaReserva" class="alert alert-success mt-3 d-none" role="alert">
-          Viaje realizado con éxito.
-          <button type="button" class="close ml-2" onclick="cerrarAlerta()">
-            &times;
-          </button>
+      <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Pago con tarjeta</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label>Número de tarjeta</label>
+                  <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Fecha de caducidad</label>
+                    <input type="text" class="form-control" placeholder="MM/AA">
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label>CVV</label>
+                    <input type="text" class="form-control" placeholder="123">
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer d-flex">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Cancelar
+              </button>
+
+              <button type="button" class="btn btn-primary ml-auto" data-dismiss="modal">
+                Confirmar
+              </button>
+            </div>
+
+          </div>
         </div>
       </div>
       </div>
@@ -189,10 +228,10 @@
     </div>
   </div>
   
-    <!-- RESEÑAS (debajo del detalle del viaje) -->
+    <!-- RESEÑAS -->
 <div class="row mt-5 px-4 px-lg-5">
 
-  <!-- IZQUIERDA: listado con scroll -->
+  <!-- listado con scroll -->
   <div class="col-lg-7 pr-lg-5">
     <h3 class="section-title mb-3">Reseñas</h3>
 
@@ -229,7 +268,7 @@
     </div>
   </div>
 
-  <!-- DERECHA: formulario para añadir reseña -->
+  <!-- formulario para añadir reseña -->
   <div class="col-lg-5 mt-4 mt-lg-0 pl-lg-5">
     <h3 class="section-title mb-3">Escribe tu reseña</h3>
 
@@ -338,13 +377,9 @@
   
   <script src="js/custom.js"></script>
   <script>
-  document.getElementById("btnReservar").addEventListener("click", function() {
-    document.getElementById("alertaReserva").classList.remove("d-none");
+  document.getElementById("btnConfirmar").addEventListener("click", function () {
+    $('#modalPago').modal('hide');
   });
-
-  function cerrarAlerta() {
-    document.getElementById("alertaReserva").classList.add("d-none");
-  }
 </script>
 </body>
 
