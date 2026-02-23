@@ -662,6 +662,20 @@ h4,
   font-size: 14px;
   padding-left: 60px;
 }
+/* --- Ajustes específicos para "Perfil usuario" en el móvil --- */
+.site-mobile-menu .site-nav-wrap li .mobile-profile-text {
+    margin-left: -10px;   
+    padding-top: 5px;    
+    padding-bottom: 5px; 
+    font-size: 14px;      
+    color: #000000;       
+    cursor: pointer;     
+}
+
+/* Efecto hover cambia de color al tocarlo, igual que los enlaces) */
+.site-mobile-menu .site-nav-wrap li .mobile-profile-text:hover {
+    color: #1A374D;
+}
 
 .sticky-wrapper {
   position: absolute;
@@ -1994,3 +2008,70 @@ h4,
 }
 .col-file { width: 300px; }
 .col-prize { width: 70px; }
+
+/* --- Ajustes generales de la navegación--- */
+.nav-flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu-flex {
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+/* --- Menú Desplegable de Perfil --- */
+.profile-dropdown {
+    position: relative;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* Ocultar la flecha por defecto que traen los <details> */
+.profile-summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.profile-img1 {
+    width: 40px;
+    height: 40px;
+    object-fit: cover; /* Evita que la foto se deforme si no es cuadrada */
+}
+
+
+.profile-img2 {
+    width: 140px;
+    height: 140px;
+    object-fit: cover; /* Evita que la foto se deforme si no es cuadrada */
+}
+
+.profile-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 12px 0;
+    margin: 0;
+    min-width: 160px;
+    z-index: 9999;
+}
+.profile-link {
+    display: block;
+    padding: 12px 24px; 
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease; 
+}
+ 
+
+/* Línea separadora entre "Mi perfil" y "Cerrar sesión" */
+.profile-divider {
+    height: 1px;
+    background: #eee;
+    margin: 4px 0;
+}
