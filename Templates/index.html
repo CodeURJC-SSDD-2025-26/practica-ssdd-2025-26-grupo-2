@@ -492,33 +492,7 @@
 	</div>
 
 		
-		<script>
-			$(function () {
-				var slides = $('.slides'),
-					images = slides.find('img');
-
-				images.each(function (i) {
-					$(this).attr('data-id', i + 1);
-				})
-
-				var typed = new Typed('.typed-words', {
-					strings: ["San Francisco.", " París.", " Nairobi. ", " Sidney. ", " Bora Bora. ", " Bergen. ", " Lima. ", " Putrajaya. "],
-					typeSpeed: 90,
-					backSpeed: 100,
-					backDelay: 2000,
-					startDelay: 1000,
-					loop: true,
-					showCursor: true,
-					preStringTyped: (arrayPos, self) => {
-						arrayPos++;
-						console.log(arrayPos);
-						$('.slides img').removeClass('active');
-						$('.slides img[data-id="' + arrayPos + '"]').addClass('active');
-					}
-
-				});
-			})
-		</script>
+			
 		<script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -533,7 +507,33 @@
         <script src="js/typed.js"></script>
 
         <script src="js/custom.js"></script>
-	
+		<script>
+				$(function () {
+					var slides = $('.slides'),
+						images = slides.find('img');
+
+					images.each(function (i) {
+						$(this).attr('data-id', i + 1);
+					})
+
+					var typed = new Typed('.typed-words', {
+						strings: ["San Francisco.", " París.", " Nairobi. ", " Sidney. ", " Bora Bora. ", " Bergen. ", " Lima. ", " Putrajaya. "],
+						typeSpeed: 90,
+						backSpeed: 100,
+						backDelay: 2000,
+						startDelay: 1000,
+						loop: true,
+						showCursor: true,
+						preStringTyped: (arrayPos, self) => {
+							arrayPos++;
+							console.log(arrayPos);
+							$('.slides img').removeClass('active');
+							$('.slides img[data-id="' + arrayPos + '"]').addClass('active');
+						}
+
+					});
+				})
+			</script>	
 
 	</body>
 
