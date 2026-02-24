@@ -55,7 +55,7 @@
                 <a href="index.html" class="logo m-0">ByeBye</a>
 
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="admin.html">Panel Administración</a></li>
+                    <li><a href="admin.html">Panel Administración</a></li>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="signin.html">Identifícate</a></li>
                     <li><a href="travel_page.html">Nuestros viajes</a></li>
@@ -80,156 +80,21 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mx-auto text-center">
                     <div class="intro-wrap">
-                        <h1 class="mb-0">Panel de Administración</h1>
+                        <h1 class="mb-0">Gráficos del viaje</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <br>
-    <div class="col-11-5 mx-auto mb-5">
-        <br>
-        <h2 class="section-title text-center"><b>Gestionar viajes</b></h2>        
-        <table class="tabla-admin">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>País</th>
-                    <th class="col-prize">Precio</th>
-                    <th>Transporte</th>
-                    <th>Alojamiento</th>
-                    <th class="col-prize">Plazas</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th class="col-file">Imágenes</th>
-                    <th class ="col-actions">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="input-container">
-                            <input type="text" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="text" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="number" class="form-control">
-
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="text" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="text" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="number" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="date" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input type="date" class="form-control">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-container">
-                            <input class="form-control py-2 px-1" type="file" id="formFileMultiple" multiple>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <button class="btn btn-primary">Actualizar</button>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-
-                        </div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-
-        <br>
-        <h2 class="section-title text-center"><b>Gestionar usuarios</b></h2>
-        <table class="tabla-admin">
-            <thead>
-                <tr>
-                    <th>Correo electrónico</th>
-                    <th>Importe gastado</th>
-                    <th>Fecha último acceso</th>
-                    <th class = "col-1">Imagen</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div>
-                            <p>usuarioEjemplo@gmail.com</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>10000€</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>10/02/2026</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="userImage">
-                            <img src="images/profile_image.png" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="botones-admin-user text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <button class="btn btn-primary">Reestablecer imagen</button>
-                            <button class="btn btn-primary">Aviso</button>
-                            <button class="btn btn-primary">Reseñas</button>
-                            <button class="btn btn-primary">Viajes</button>
-                            <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
+    <div class="container py-1">
+        <div class="row justify-content-center">
+            <img src="images/graphReviewJourney.png">
+            <img src="images/graphBookingJourney.png">
+            <img src="images/graphSpotsJourney.png">
+        </div>
 
     </div>
+
 
     <div class="site-footer">
         <div class="inner first">
@@ -305,26 +170,8 @@
         <script src="js/typed.js"></script>
 
         <script src="js/custom.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const inputs = document.querySelectorAll('.tabla-admin input[type="text"], .tabla-admin input[type="number"]');
 
-                function ajustarAncho(input) {
-                    const valor = input.value.length;
-                    input.size = valor > 0 ? valor + 2 : 4;
-                }
-
-                inputs.forEach(input => {
-                    ajustarAncho(input);
-
-                    input.addEventListener('input', function () {
-                        ajustarAncho(this);
-                    });
-                });
-            });
-        </script>
-
-
+    </div>
 </body>
 
 </html>
