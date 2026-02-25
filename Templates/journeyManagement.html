@@ -1,0 +1,418 @@
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="Logo sin fondo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>ByeBye.com</title>
+</head>
+
+<body>
+
+    <!-- header -->
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <div class="site-navigation">
+                <a href="index.html" class="logo m-0">ByeBye</a>
+
+                <ul class="js-clone-nav d-none d-xl-inline-block text-left site-menu float-right">
+                    <li class="active"><a href="admin.html">Panel Administración</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Información</a></li>
+                    <li><a href="contact.html">Contáctanos</a></li>
+                    <li><a href="travel_page.html">Nuestros Viajes</a></li>
+                    <li style="list-style: none;">
+                        <details class="profile-dropdown">
+                            <summary class="profile-summary" style="cursor: pointer;">
+
+                                <img src="images/profile_image.png" alt="Perfil"
+                                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+
+                                <span class="d-block d-xl-none mobile-profile-text">Perfil usuario</span>
+
+                            </summary>
+
+                            <ul class="profile-menu">
+                                <li><a href="signin.html" class="profile-link">Identifícate</a></li>
+                                <li class="profile-divider"></li>
+                                <li><a href="userProfile.html" class="profile-link">Mi perfil</a></li>
+                                <li class="profile-divider"></li>
+                                <li><a href="index.html" class="profile-link">Cerrar sesión</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+
+                <a href="#"
+                    class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-xl-none light"
+                    data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- end of header -->
+
+
+    <div class="hero hero-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mx-auto text-center">
+                    <div class="intro-wrap">
+                        <h1 class="mb-0">Gestionar Viajes</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div class="col-11-5 mx-auto mb-5">
+        <br>
+        <div class="row align-items-center gap-3 ">
+            <div class="search-box">
+                <i class="bi bi-search"></i>
+                <input type="text" id="buscadorUsuario" placeholder="Buscar viaje por nombre...">
+            </div>
+            <button id="addRowBtn2" class="btn btn-primary mx-3">Añadir fila</button>
+        </div>
+
+        <table class="tabla-admin">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>País</th>
+                    <th class="col-prize">Precio</th>
+                    <th>Transporte</th>
+                    <th>Alojamiento</th>
+                    <th class="col-prize">Personas</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th class="col-file">Imágenes</th>
+                    <th class="col-actions">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>San Francisco</td>
+                    <td>Estados Unidos</td>
+                    <td class="col-prize">1250.00€</td>
+                    <td>Avión</td>
+                    <td>Hotel</td>
+                    <td class="col-prize">2</td>
+                    <td>01/09/2026</td>
+                    <td>15/09/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/hero-slider-1.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Paris</td>
+                    <td>Francia</td>
+                    <td class="col-prize">300.00€</td>
+                    <td>Tren</td>
+                    <td>Hotel</td>
+                    <td class="col-prize">3</td>
+                    <td>05/11/2026</td>
+                    <td>10/11/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/hero-slider-2.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Putrajaya</td>
+                    <td>Malasia</td>
+                    <td class="col-prize">750.00€</td>
+                    <td>Avión</td>
+                    <td>Resort</td>
+                    <td class="col-prize">2</td>
+                    <td>02/04/2026</td>
+                    <td>12/04/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/Putrajaya, Malaysia.jpg" alt="Image"
+                                class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bora Bora</td>
+                    <td>Polinesia Francesa</td>
+                    <td class="col-prize">520.00€</td>
+                    <td>Avión</td>
+                    <td>Bungalow</td>
+                    <td class="col-prize">2</td>
+                    <td>17/05/2026</td>
+                    <td>29/05/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/Hotel in Bora Bora.jpg" alt="Image"
+                                class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nairobi</td>
+                    <td>Kenia</td>
+                    <td class="col-prize">760.00€</td>
+                    <td>Avión</td>
+                    <td>Hotel</td>
+                    <td class="col-prize">2</td>
+                    <td>10/07/2026</td>
+                    <td>30/07/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/Viaje_kenia.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sidney</td>
+                    <td>Australia</td>
+                    <td class="col-prize">820.00€</td>
+                    <td>Avión</td>
+                    <td>Hotel</td>
+                    <td class="col-prize">1</td>
+                    <td>11/11/2026</td>
+                    <td>02/12/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/Sidney_viaje.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Machu Picchu</td>
+                    <td>Perú</td>
+                    <td class="col-prize">955.00€</td>
+                    <td>Avión</td>
+                    <td>Apartamento</td>
+                    <td class="col-prize">2</td>
+                    <td>01/12/2026</td>
+                    <td>26/12/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/Machu Picchu, Peru.jpg" alt="Image"
+                                class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bergen</td>
+                    <td>Noruega</td>
+                    <td class="col-prize">568.00€</td>
+                    <td>Crucero</td>
+                    <td>Apartamento</td>
+                    <td class="col-prize">3</td>
+                    <td>12/09/2026</td>
+                    <td>25/09/2026</td>
+                    <td class="col-file">
+                        <div class="userImage">
+                            <img src="images/bergen.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="botones-admin text-center">
+                            <button class="btn btn-rm">Eliminar</button>
+                            <button class="btn btn-primary btn-update">Actualizar</button>
+                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="site-footer">
+        <div class="inner first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <ul class="list-unstyled social">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-apple"></span></a></li>
+                                <li><a href="#"><span class="icon-google"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-2 pl-lg-5">
+                        <div class="widget">
+                            <h3 class="heading">
+                                <a href="index.html">Inicio</a>
+                            </h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="signin.html">Registrarse</a></li>
+                                <li><a href="about.html">Sobre Nosotros</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <ul class="list-unstyled quick-info links">
+                                <li class="email"><a href="#">@info@byebye.com</a></li>
+                                <li class="phone"><a href="#">+34 123 456 789</a></li>
+                                <li class="address"><a href="#">Calle Tulipán, s/n, 28933 Móstoles, Madrid</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="inner dark">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlayer"></div>
+        <div class="loader">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/daterangepicker.js"></script>
+
+    <script src="js/typed.js"></script>
+
+    <script src="js/custom.js"></script>
+
+
+    <script>
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("btn-rm")) {
+
+                const confirmDelete = confirm("¿Estás seguro de que quieres eliminar esta fila?");
+                if (!confirmDelete) return;
+                const motivo = prompt("Indique el motivo de la eliminación:");
+                if (motivo === null || motivo.trim() === "") {
+                    alert("Debe indicar un motivo para eliminar.");
+                    return;
+                }
+                e.target.closest("tr").remove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
