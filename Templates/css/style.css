@@ -118,6 +118,36 @@ h4,
   color: #ffffff;
 }
 
+.btn-admin-custom {
+  background-color: #1A374D;
+  color: white;
+  border: none;
+  padding: 18px 30px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+  margin: 10px;
+  min-width: 250px;
+  justify-content: center;
+}
+
+.btn-admin-custom:hover {
+  background-color: #264e6d;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(254, 252, 252, 0.2);
+  color: white;
+}
+
+.material-symbols-outlined {
+  font-size: 24px;
+  color: white;
+}
+
 
 .search-box {
   display: flex;

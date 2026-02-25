@@ -113,30 +113,30 @@
                 <div class="col-md-6">
                     <div class="form-group mb-3">
                         <label class="text-black" for="name">Nombre</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" id="name" required>
                     </div>
                     <div class="form-group mb-4">
                         <label class="text-black" for="country">País</label>
-                        <input type="text" class="form-control" id="country">
+                        <input type="text" class="form-control" id="country" required>
                     </div>
                     <div class="form-group mb-3">
                         <label class="text-black" for="price">Precio</label>
-                        <input type="number" class="form-control" id="price">
+                        <input type="number" class="form-control" id="price" required>
                     </div>
                     <div class="form-group mb-4">
                         <label class="text-black" for="transport">Transporte</label>
-                        <input type="text" class="form-control" id="transport">
+                        <input type="text" class="form-control" id="transport" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group mb-3">
                         <label class="text-black" for="accommodation">Alojamiento</label>
-                        <input type="text" class="form-control" id="accommodation">
+                        <input type="text" class="form-control" id="accommodation" required>
                     </div>
 
                     <div class="form-group mb-4">
                         <label class="text-black" for="travelers">Personas por reserva</label>
-                        <select name="travelers" id="travelers" class="form-control custom-select">
+                        <select name="travelers" id="travelers" class="form-control custom-select" required>
                             <option value="">Seleccione una opción</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -147,20 +147,19 @@
 
                     <div class="form-group mb-4">
                         <label class="text-black" for="startDate">Fecha inicio</label>
-                        <input type="date" class="form-control" id="startDate">
+                        <input type="date" class="form-control" id="startDate" required>
                     </div>
                     <div class="form-group mb-4">
                         <label class="text-black" for="endDate">Fecha fin</label>
-                        <input type="date" class="form-control" id="endDate">
+                        <input type="date" class="form-control" id="endDate" required>
                     </div>
                 </div>
                 <div class="mb-3 col-12 text-center">
                     <div class="form-group mb-4">
-                        <label for="formFileMultiple" class="form-label text-black">Adjunte las imágenes que desee
-                            mostrar</label>
-                        <div class="custom-file mb-3">
-                            <input type="file" class="custom-file-input" id="inputFoto" accept="image/*">
-                            <label class="custom-file-label" for="inputFoto">Elegir archivo</label>
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Adjunte las imágenes que desee
+                                mostrar</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
                         </div>
                     </div>
 
@@ -172,6 +171,7 @@
                 </div>
         </form>
     </div>
+</div>
 
     <div class="site-footer">
         <div class="inner first">
@@ -234,24 +234,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalContrasena" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Recuperar contraseña</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <p>Introduce tu correo electrónico y te enviaremos un enlace para recuperar tu contraseña.</p>
-                    <input type="email" class="form-control" placeholder="Tu correo electrónico">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-rm" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -267,6 +250,7 @@
     <script src="js/typed.js"></script>
 
     <script src="js/custom.js"></script>
+    
 
 </body>
 
