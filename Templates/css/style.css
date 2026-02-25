@@ -941,8 +941,8 @@ h4,
 }
 
 .media-thumb img {
-  height: 300px;        /* ← AÑADIR */
-  object-fit: cover;    /* ← AÑADIR */
+  aspect-ratio: 3/4;    
+  object-fit: cover;   
   width: 100%;
   -webkit-transform: scale(1.03);
   -ms-transform: scale(1.03);
