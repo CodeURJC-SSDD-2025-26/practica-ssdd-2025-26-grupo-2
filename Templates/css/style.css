@@ -2209,3 +2209,17 @@ h4,
   width: 60%;
   margin: 0 auto;
 }
+.destinos{
+  margin-top: 150px !important;
+}
+.reseñas{
+  max-height: 260px; overflow-y: auto;
+}
+
+.aboutNuestrosViajes{
+  display: block;
+}
+
+.aboutEquipo{
+  display: block;
+}
