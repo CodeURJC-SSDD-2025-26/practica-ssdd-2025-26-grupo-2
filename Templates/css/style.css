@@ -2213,6 +2213,7 @@ h4,
 }
 .reseñas{
   max-height: 260px; overflow-y: auto;
+}
 
 .aboutNuestrosViajes{
   display: block;
