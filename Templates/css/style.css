@@ -2125,6 +2125,7 @@ h4,
   position: relative;
   margin-left: 30px;
   margin-right: 30px;
+  list-style: none;  
 }
 
 /* Ocultar la flecha por defecto que traen los <details> */
