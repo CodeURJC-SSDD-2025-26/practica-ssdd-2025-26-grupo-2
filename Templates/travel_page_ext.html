@@ -41,11 +41,13 @@
 
   <!-- header -->
 
-  <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close">
-        <span class="icofont-close js-menu-toggle"></span>
-      </div>
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
     </div>
     <div class="site-mobile-menu-body"></div>
   </div>
@@ -55,15 +57,20 @@
       <div class="site-navigation">
         <a href="index.html" class="logo m-0">ByeBye</a>
 
-        <ul class="js-clone-nav d-none d-xl-inline-block text-left site-menu float-right">
-          <li><a href="admin.html">Panel Administración</a></li>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="about.html">Información</a></li>
-          <li><a href="contact.html">Contáctanos</a></li>
-          <li><a href="travel_page.html">Nuestros Viajes</a></li>
-          <li style="list-style: none;">
-            <details class="profile-dropdown">
-              <summary class="profile-summary" style="cursor: pointer;">
+                <ul class="js-clone-nav d-none d-xl-inline-block text-left site-menu float-right">
+                    <li><a href="admin.html">Panel Administración</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Información</a></li>
+                    <li><a href="contact.html">Contáctanos</a></li>
+                    <li><a href="travel_page.html">Nuestros Viajes</a></li>
+                    <li class="profile-dropdown">
+                        <details>
+                            <summary class="profile-summary">
+
+                                <img src="images/profile_image.png" alt="Perfil"
+                                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+
+                                <span class="d-block d-xl-none mobile-profile-text">Perfil usuario</span>
 
                 <img src="images/profile_image.png" alt="Perfil"
                   class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
@@ -274,6 +281,13 @@
             <p class="mb-0">Repetiría sin duda. Cero complicaciones.</p>
           </div>
 
+    <div id="reviewsBox" class="border rounded p-4 reseñas">
+      
+      <!-- Reseñas de ejemplo -->
+      <div class="mb-3 pb-3 border-bottom">
+        <div class="d-flex justify-content-between">
+          <strong>Carla Llorente</strong>
+          <span class="text-primary">★★★★★</span>
         </div>
       </div>
 
@@ -329,6 +343,56 @@
                   <li><a href="#"><span class="icon-google"></span></a></li>
                 </ul>
               </div>
+  <!-- formulario para añadir reseña -->
+  <div class="col-lg-5 mt-4 mt-lg-0 pl-lg-5">
+    <h3 class="section-title mb-3">Escribe tu reseña</h3>
+
+    <form id="reviewForm" class = "mb-5">
+      <div class="form-group">
+        <label class="text-primary font-weight-bold" for="reviewName">Nombre</label>
+        <input type="text" class="form-control" id="reviewName" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+" title="Solo se permiten letras" placeholder="Tu nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label class="text-primary font-weight-bold" for="reviewRating">Puntuación</label>
+        <select class="form-control" id="reviewRating" required>
+          <option value="5">5 - Excelente</option>
+          <option value="4">4 - Muy bueno</option>
+          <option value="3">3 - Bueno</option>
+          <option value="2">2 - Regular</option>
+          <option value="1">1 - Malo</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="text-primary font-weight-bold" for="reviewText">Reseña</label>
+        <textarea class="form-control" id="reviewText" rows="4" placeholder="Escribe tu experiencia..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Publicar reseña
+      </button>
+    </form>
+  </div>
+
+</div>
+
+  <div class="site-footer">
+    <div class="inner first">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <ul class="list-unstyled social">
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                <li><a href="#"><span class="icon-apple"></span></a></li>
+                <li><a href="#"><span class="icon-google"></span></a></li>
+              </ul>
             </div>
             <div class="col-md-8 col-lg-2 pl-lg-5">
               <div class="widget">

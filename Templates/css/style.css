@@ -118,18 +118,83 @@ h4,
   color: #ffffff;
 }
 
-.btn.btn-search {
-  border: 2px solid #ffffff;
+.btn-admin-custom {
+  background-color: #1A374D;
+  color: white;
+  border: none;
+  padding: 18px 30px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+  margin: 10px;
+  min-width: 250px;
+  justify-content: center;
+}
+
+.btn-admin-custom:hover {
+  background-color: #264e6d;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(254, 252, 252, 0.2);
+  color: white;
+}
+
+.material-symbols-outlined {
+  font-size: 24px;
+  color: white;
+}
+
+
+.search-box {
+  display: flex;
+  position: relative;
+  width: 280px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 18px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
   background: #1A374D;
   border-color: #1A374D;
   color: #ffffff;
-  width: 25%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 30px;
+  text-align: center;
 }
+
+.search-box input:focus {
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 4px rgba(13, 110, 253, 0.4);
+
+}
+
 #buscadorViaje::placeholder {
-    color: white;
+  color: white;
 }
+
 #buscadorUsuario::placeholder {
-    color: white;
+  color: white;
 }
 
 
@@ -958,8 +1023,8 @@ h4,
 }
 
 .media-thumb img {
-  aspect-ratio: 3/4;    
-  object-fit: cover;   
+  aspect-ratio: 3/4;
+  object-fit: cover;
   width: 100%;
   -webkit-transform: scale(1.03);
   -ms-transform: scale(1.03);
@@ -2060,6 +2125,7 @@ h4,
   position: relative;
   margin-left: 30px;
   margin-right: 30px;
+  list-style: none;  
 }
 
 /* Ocultar la flecha por defecto que traen los <details> */
@@ -2142,4 +2208,21 @@ h4,
 .userImage {
   width: 60%;
   margin: 0 auto;
+}
+.destinos{
+  margin-top: 150px !important;
+}
+.reseñas{
+  max-height: 260px; overflow-y: auto;
+}
+
+.aboutNuestrosViajes{
+  display: block;
+}
+
+.aboutEquipo{
+  display: block;
+}
+.gestion{
+  text-align: center;
 }
