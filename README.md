@@ -91,17 +91,19 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 
 ### **Participación de Miembros en la Práctica 1**
 
-#### **Alumno 1 - [Nombre Completo]**
+#### **María Abdallah El Lakkis**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Mi responsabilidad principal se centró en el diseño y desarrollo del Panel de Administración, estructurando la gestión de usuarios y viajes en módulos independientes (admin.html, userManagement.html, journeyManagement.html). Asimismo, implementé con colaboración de Vanessa Fernandes la página de identificación (signin.html) y la sección Sobre Nosotros (about.html), asegurando la coherencia visual mediante la actualización de cabeceras en todas las páginas.
+
+Complementé estas tareas con la creación de gráficos de usuario y trayectos para la visualización de datos. Además de estas funcionalidades clave, realicé una labor constante de mantenimiento y corrección de errores en diversas páginas del proyecto, optimizando el código y resolviendo fallos técnicos para garantizar la estabilidad y el correcto funcionamiento global de la aplicación.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [Identificación hecha](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c8e0dbd31ed37645b5ab96bb98a32b27bd88a95e)  | [signin.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c8e0dbd31ed37645b5ab96bb98a32b27bd88a95e#diff-3f706d449e7e721f0dcbe5c344f9ffd5a03e508fd94f0ab702f5f44fe83b4b09)   |
+|2| [Sobre nosotros actualizado](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/9958cdf782b09c3725e17a133caaf39597b9ae2f)  | [about.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/9958cdf782b09c3725e17a133caaf39597b9ae2f#diff-df3150978f5fb18d5af7dfdf1ecf8f16ec617ef55839313a228015cd38456f64)   |
+|3| [admin page avanzada y cambios en la cabecera de las páginas](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/f9e827ccd6b4f00d75801ae199ec0d7d2cc4a001)  | [admin.html](URL_archivo_3)   |
+|4| [Realización de gráficos de usuario y de viajes](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/979265cc729d3831149510a6f3bcc529ef9771fa#diff-79f07eae294232fd92dbfa14398cb2e54ced757e1dcc4bda777688d00e763ca9)  | [graphUser.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/979265cc729d3831149510a6f3bcc529ef9771fa#diff-79f07eae294232fd92dbfa14398cb2e54ced757e1dcc4bda777688d00e763ca9) [graphJourney.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/979265cc729d3831149510a6f3bcc529ef9771fa#diff-be2ba4bc1915f55fbc69fe4fd3c2a91ae2dc841e5590bf3ee8d0e1bfc2855ee5)  |
+|5| [separación gestión panel de administración y adición de usuarios y viajes](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/0eac79eded2903a30d37ff91cd086d3ef97a0050)  | [admin.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/0eac79eded2903a30d37ff91cd086d3ef97a0050#diff-92d2464dc932f171c36d255e0715278298ccc7c6607136069d1ab12daf09e9d2) [journeyManagement.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/0eac79eded2903a30d37ff91cd086d3ef97a0050#diff-0d28112ec9f7e43ce3079baf272c8bc5016e926bbb377b343221cf03c7e47da2) [userManagement.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/0eac79eded2903a30d37ff91cd086d3ef97a0050#diff-a3e0682a4f72dfc43a580237f975b348d14b3e7bda21471633f74dcf008c8d44)   |
 
 ---
 
