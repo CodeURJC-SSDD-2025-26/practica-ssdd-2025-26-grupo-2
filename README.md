@@ -133,7 +133,7 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 
 ---
 
-#### **Alumno 4 - [Nombre Completo]**
+#### **Yadira Reimundez Queimadelos**
 
 [Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
 
