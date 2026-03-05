@@ -83,9 +83,11 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 ### **Capturas de Pantalla y Descripción de Páginas**
 
 #### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+![Página Principal](images/inicioByeBye.png)
 
-> [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+> Página de inicio que muestra la primera página que se encuentra el usuario al entrar en la web. En ella se encuentra un menú en el que poder acceder al resto de páginas de la web. A su vez el contenido principal de la página de inicio, es la caja para seleccionar un destino y poder empezar a tramitar el vaije que se quiera. Justo debajo puedes encontrar un slide de fotos en el que se muestran los destinos populares, reseñas de otros usuarios dejando su experiencia y su conformidad con n nuestro servicio.
+Por último, disponemos de una sección de ofertas especiales y descuentos, en los que si el usuario está interesado en algún viaje, le lleva a la página de "Detalle de Viaje", en la que se le proporciona más información sobre el viaje que desea realizar, a su vez que la posibilidad de realizar la reserva (junto a un desplegable para seleccionar el nº de viajeros) o poner/leer una reseñas.
+ 
 
 #### **AQUÍ AÑADIR EL RESTO DE PÁGINAS**
 
