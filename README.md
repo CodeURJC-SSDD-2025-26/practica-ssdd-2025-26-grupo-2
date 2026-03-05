@@ -78,16 +78,15 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 
 ![Diagrama de Navegación](images/navigation-diagram.png)
 
-> [Descripción opcional del flujo de navegación: Ej: "El usuario puede acceder desde la página principal a todas las secciones mediante el menú de navegación. Los usuarios anónimos solo tienen acceso a las páginas públicas, mientras que los registrados pueden acceder a su perfil y panel de usuario."]
+> El flujo de navegación se divide en tres niveles de acceso. El usuario no registrado puede navegar por el catálogo de viajes y las secciones informativas. Al identificarse, el usuario desbloquea su perfil privado para gestionar datos personales y financieros. Por último, el rol de administrador tiene acceso a un ecosistema de gestión integral que incluye el control de la base de usuarios, la edición del catálogo de viajes y el acceso a paneles de métricas y estadísticas para la toma de decisiones.
+
 
 ### **Capturas de Pantalla y Descripción de Páginas**
 
 #### **1. Página Principal / Home**
-![Página Principal](images/inicioByeBye.png)
+![Página Principal](images/home-page.png)
 
-> Página de inicio que muestra la primera página que se encuentra el usuario al entrar en la web. En ella se encuentra un menú en el que poder acceder al resto de páginas de la web. A su vez el contenido principal de la página de inicio, es la caja para seleccionar un destino y poder empezar a tramitar el vaije que se quiera. Justo debajo puedes encontrar un slide de fotos en el que se muestran los destinos populares, reseñas de otros usuarios dejando su experiencia y su conformidad con n nuestro servicio.
-Por último, disponemos de una sección de ofertas especiales y descuentos, en los que si el usuario está interesado en algún viaje, le lleva a la página de "Detalle de Viaje", en la que se le proporciona más información sobre el viaje que desea realizar, a su vez que la posibilidad de realizar la reserva (junto a un desplegable para seleccionar el nº de viajeros) o poner/leer una reseñas.
- 
+> [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
 
 #### **AQUÍ AÑADIR EL RESTO DE PÁGINAS**
 
