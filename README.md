@@ -84,9 +84,71 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 ### **Capturas de Pantalla y Descripción de Páginas**
 
 #### **1. Página Principal / Home**
+![Página Principal](images/inicioByeBye.png)
+
+> Página de inicio que muestra la primera página que se encunetra el usuario al entrar a nuestra web. En ella se puede observar un menú en la parte superior, el cual nos permite viajar a todas las páginas desde nuestra página de inicio. Lo más destacable de esta página es la caja en la que se le permite a el usuario poder seleccionar un viaje junto a la fecha y el nº de viajeros.
+Justo debajo se puede apreciar un slide de fotos en las que aparecen los destinos más populares de nuestra web.
+ 
+A su vez, el usuario puede encontrar un slide de reseñas, es una recopilación de las reseñas que han dejado los usuarios que han confiado en nosotros para su vaije.
+Por último está el apartado de Ofertas especiales y decsuentos, en el que si el usuario desea hacer click en algun destino deseado, le lleva a la página de "Detalle de Viaje", en el que se le permite al usuario poder reservar su viaje, y leer/escribir reseñas.
+#### **2. Página panel de administración**
+![Página panel de administración](images/panel.png)
+
+Página “Panel de Administración” que funciona como menú principal para el administrador, con accesos directos a gestionar usuarios y gestionar viajes. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **3. Página Gestionar Usuarios**
+![Página Gestionar Usuarios](images/panelUsuarios.png)
+
+Página “Gestionar Usuarios” del panel de administración que permite buscar usuarios por correo y verlos en una tabla con información (email, importe gastado, último acceso e imagen). Incluye acciones para eliminar, restablecer imagen, enviar aviso y consultar reseñas, viajes y gráficos del usuario.
+
+#### **4. Página Gestionar Viajes**
+![Página Gestionar Viajes](images/panelViajes.png)
+
+Página “Gestionar Viajes” del panel de administración que permite buscar y añadir viajes, y visualizar el listado en una tabla con datos (destino, país, precio, transporte, alojamiento, plazas, fechas e imagen). Incluye acciones para eliminar, actualizar y ver gráficos de cada viaje.
+
+#### **5. Página Gráficos Usuarios**
+![Página Principal](images/graficosUsuarios.jpeg)
+
+Página “Gráficos del usuario” que muestra estadísticas personales mediante gráficos de barras sobre gastos mensuales, número de viajes y visitas por destino. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **6. Página Gráficos Viajes**
+![Página Graficos viajes](images/graficoViaje.png)
+
+Página “Gráficos del viaje” que muestra estadísticas mensuales mediante gráficos de barras sobre reseñas, reservas y plazas libres. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **7. Página información**
+![Página sobre nosotros](images/info.png)
+Página “Sobre nosotros” que presenta información sobre la empresa, los servicios de viajes que ofrece y el equipo fundador. Incluye navegación principal, sección de contacto y footer con enlaces e información de contacto.
+
+#### **8. Contáctanos**
+![Página de contacto](images/contacto.png)
+
+Página “Contáctanos” con formulario para enviar mensajes (nombre, apellidos, correo y mensaje) y datos de contacto de la empresa (dirección, teléfono y email). Incluye barra de navegación y footer con enlaces y redes sociales.
+
+#### **9. Nuestros viajes**
+![Página Nuestros viajes](images/viajes.png)
+
+Página “Nuestros Viajes” que muestra el catálogo de viajes disponibles en formato tarjetas con imagen, país/destino y precio. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **10. Detalle del viaje**
+![Página Detalle Viaje](images/reserva.png)
+
+Página “Detalle Viaje” que muestra la información completa del viaje seleccionado (imagen, descripción, transporte, alojamiento, precio y duración) y permite reservar indicando el número de personas. Incluye sección de reseñas y formulario para publicar una reseña, con navegación y footer.
+
+#### **1. Página Principal / Home**
 ![Página Principal](images/home-page.png)
 
-> [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+
+#### **1. Página Principal / Home**
+![Página Principal](images/home-page.png)
+
+[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+
+#### **1. Página Principal / Home**
+![Página Principal](images/home-page.png)
+
+[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
 
 #### **AQUÍ AÑADIR EL RESTO DE PÁGINAS**
 
@@ -124,7 +186,7 @@ Asimismo, me he encargado de la creación y actualización de la pagina userProf
 
 ---
 
-#### **Alejandro Hernández de Dios**
+#### **Yadira Reimúndez Queimadelos**
 
 Durante el desarrollo del proyecto, trabajé en pareja con mi compañero Alejandro en la creación de las secciones “About” y “Contáctanos”, encargándonos del diseño, estructura y contenido de ambas páginas.
 
