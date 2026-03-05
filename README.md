@@ -106,22 +106,26 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 ![Página Principal](images/home-page.png)
 
 [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **7. Página información**
+![Página sobre nosotros](images/info.png)
+Página “Sobre nosotros” que presenta información sobre la empresa, los servicios de viajes que ofrece y el equipo fundador. Incluye navegación principal, sección de contacto y footer con enlaces e información de contacto.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **8. Contáctanos**
+![Página de contacto](images/contacto.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Contáctanos” con formulario para enviar mensajes (nombre, apellidos, correo y mensaje) y datos de contacto de la empresa (dirección, teléfono y email). Incluye barra de navegación y footer con enlaces y redes sociales.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+#### **9. Nuestros viajes**
+![Página Nuestros viajes](images/viajes.png)
+
+Página “Nuestros Viajes” que muestra el catálogo de viajes disponibles en formato tarjetas con imagen, país/destino y precio. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **10. Detalle del viaje**
+![Página Detalle Viaje](images/reserva.png)
+
+Página “Detalle Viaje” que muestra la información completa del viaje seleccionado (imagen, descripción, transporte, alojamiento, precio y duración) y permite reservar indicando el número de personas. Incluye sección de reseñas y formulario para publicar una reseña, con navegación y footer.
+
 #### **1. Página Principal / Home**
 ![Página Principal](images/home-page.png)
 
