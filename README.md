@@ -86,26 +86,30 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 ![Página Principal](images/home-page.png)
 
 > [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **2. Página panel de administración**
+![Página panel de administración](images/panel.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Panel de Administración” que funciona como menú principal para el administrador, con accesos directos a gestionar usuarios y gestionar viajes. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **3. Página Gestionar Usuarios**
+![Página Gestionar Usuarios](images/panelUsuarios.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Gestionar Usuarios” del panel de administración que permite buscar usuarios por correo y verlos en una tabla con información (email, importe gastado, último acceso e imagen). Incluye acciones para eliminar, restablecer imagen, enviar aviso y consultar reseñas, viajes y gráficos del usuario.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **4. Página Gestionar Viajes**
+![Página Gestionar Viajes](images/panelViajes.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+Página “Gestionar Viajes” del panel de administración que permite buscar y añadir viajes, y visualizar el listado en una tabla con datos (destino, país, precio, transporte, alojamiento, plazas, fechas e imagen). Incluye acciones para eliminar, actualizar y ver gráficos de cada viaje.
+
+#### **5. Página Gráficos Usuarios**
+![Página Principal](images/graficosUsuarios.jpeg)
+
+Página “Gráficos del usuario” que muestra estadísticas personales mediante gráficos de barras sobre gastos mensuales, número de viajes y visitas por destino. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **6. Página Gráficos Viajes**
+![Página Graficos viajes](images/graficoViaje.png)
+
+Página “Gráficos del viaje” que muestra estadísticas mensuales mediante gráficos de barras sobre reseñas, reservas y plazas libres. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
 
 #### **7. Página información**
 ![Página sobre nosotros](images/info.png)
@@ -177,7 +181,7 @@ Asimismo, me he encargado de la creación y actualización de la pagina userProf
 
 ---
 
-#### **Alejandro Hernández de Dios**
+#### **Yadira Reimúndez Queimadelos**
 
 Durante el desarrollo del proyecto, trabajé en pareja con mi compañero Alejandro en la creación de las secciones “About” y “Contáctanos”, encargándonos del diseño, estructura y contenido de ambas páginas.
 
