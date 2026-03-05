@@ -78,7 +78,8 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 
 ![Diagrama de Navegación](images/navigation-diagram.png)
 
-> [Descripción opcional del flujo de navegación: Ej: "El usuario puede acceder desde la página principal a todas las secciones mediante el menú de navegación. Los usuarios anónimos solo tienen acceso a las páginas públicas, mientras que los registrados pueden acceder a su perfil y panel de usuario."]
+> El flujo de navegación se divide en tres niveles de acceso. El usuario no registrado puede navegar por el catálogo de viajes y las secciones informativas. Al identificarse, el usuario desbloquea su perfil privado para gestionar datos personales y financieros. Por último, el rol de administrador tiene acceso a un ecosistema de gestión integral que incluye el control de la base de usuarios, la edición del catálogo de viajes y el acceso a paneles de métricas y estadísticas para la toma de decisiones.
+
 
 ### **Capturas de Pantalla y Descripción de Páginas**
 
@@ -86,42 +87,50 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 ![Página Principal](images/home-page.png)
 
 > [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **2. Página panel de administración**
+![Página panel de administración](images/panel.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Panel de Administración” que funciona como menú principal para el administrador, con accesos directos a gestionar usuarios y gestionar viajes. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **3. Página Gestionar Usuarios**
+![Página Gestionar Usuarios](images/panelUsuarios.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Gestionar Usuarios” del panel de administración que permite buscar usuarios por correo y verlos en una tabla con información (email, importe gastado, último acceso e imagen). Incluye acciones para eliminar, restablecer imagen, enviar aviso y consultar reseñas, viajes y gráficos del usuario.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **4. Página Gestionar Viajes**
+![Página Gestionar Viajes](images/panelViajes.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Gestionar Viajes” del panel de administración que permite buscar y añadir viajes, y visualizar el listado en una tabla con datos (destino, país, precio, transporte, alojamiento, plazas, fechas e imagen). Incluye acciones para eliminar, actualizar y ver gráficos de cada viaje.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **5. Página Gráficos Usuarios**
+![Página Principal](images/graficosUsuarios.jpeg)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Página “Gráficos del usuario” que muestra estadísticas personales mediante gráficos de barras sobre gastos mensuales, número de viajes y visitas por destino. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+#### **6. Página Gráficos Viajes**
+![Página Graficos viajes](images/graficoViaje.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+Página “Gráficos del viaje” que muestra estadísticas mensuales mediante gráficos de barras sobre reseñas, reservas y plazas libres. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **7. Página información**
+![Página sobre nosotros](images/info.png)
+Página “Sobre nosotros” que presenta información sobre la empresa, los servicios de viajes que ofrece y el equipo fundador. Incluye navegación principal, sección de contacto y footer con enlaces e información de contacto.
+
+#### **8. Contáctanos**
+![Página de contacto](images/contacto.png)
+
+Página “Contáctanos” con formulario para enviar mensajes (nombre, apellidos, correo y mensaje) y datos de contacto de la empresa (dirección, teléfono y email). Incluye barra de navegación y footer con enlaces y redes sociales.
+
+#### **9. Nuestros viajes**
+![Página Nuestros viajes](images/viajes.png)
+
+Página “Nuestros Viajes” que muestra el catálogo de viajes disponibles en formato tarjetas con imagen, país/destino y precio. Incluye barra de navegación superior y footer con enlaces, redes sociales e información de contacto.
+
+#### **10. Detalle del viaje**
+![Página Detalle Viaje](images/reserva.png)
+
+Página “Detalle Viaje” que muestra la información completa del viaje seleccionado (imagen, descripción, transporte, alojamiento, precio y duración) y permite reservar indicando el número de personas. Incluye sección de reseñas y formulario para publicar una reseña, con navegación y footer.
+
 
 #### **11. Identifícate** 
 ![Página identifícate](images/signin-page.png)
@@ -174,7 +183,7 @@ Asimismo, me he encargado de la creación y actualización de la pagina userProf
 
 ---
 
-#### **Alejandro Hernández de Dios**
+#### **Yadira Reimúndez Queimadelos**
 
 Durante el desarrollo del proyecto, trabajé en pareja con mi compañero Alejandro en la creación de las secciones “About” y “Contáctanos”, encargándonos del diseño, estructura y contenido de ambas páginas.
 
