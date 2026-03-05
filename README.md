@@ -147,7 +147,7 @@ Esta es la página a la que puede acceder el usuario tras identificarse. Incluye
 
 Esta página, accesible desde la sección de gestión de viajes del panel de administración, cuenta con un formulario diseñado para introducir todos los datos necesarios al crear un nuevo viaje.
 
-#### **AQUÍ AÑADIR EL RESTO DE PÁGINAS**
+
 
 ### **Participación de Miembros en la Práctica 1**
 
