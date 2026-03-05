@@ -54,9 +54,13 @@ Una aplicacion web interactiva del sector del turismo diseñada para que los via
 
 ### **Gráficos**
 
-- **Reservas mensuales - Gráfico de barras**
-- **Viajes más vendidos - Gráfico de tarta/circular**
-- **Evolución de usuarios registrados - Gráfico de líneas**
+- **Visitas mensuales del usuario- Gráfico de barras**
+- **Gastos mensuales del usuario- Gráfico de barras**
+- **Viajes mensuales del usuario- Gráfico de barras**
+
+- **Reseñas mensuales del viaje- Gráfico de barras**
+- **Reservas mensuales del viaje- Gráfico de barras**
+- **Plazas mensuales libres del viaje- Gráfico de barras**
 
 ### **Tecnología Complementaria**
 
@@ -78,7 +82,7 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 
 ![Diagrama de Navegación](images/navigation-diagram.png)
 
-> El flujo de navegación se divide en tres niveles de acceso. El usuario no registrado puede navegar por el catálogo de viajes y las secciones informativas. Al identificarse, el usuario desbloquea su perfil privado para gestionar datos personales y financieros. Por último, el rol de administrador tiene acceso a un ecosistema de gestión integral que incluye el control de la base de usuarios, la edición del catálogo de viajes y el acceso a paneles de métricas y estadísticas para la toma de decisiones.
+El flujo de navegación se divide en tres niveles de acceso. El usuario no registrado puede navegar por el catálogo de viajes y las secciones informativas. Al identificarse, el usuario desbloquea su perfil privado para gestionar datos personales y financieros. Por último, el rol de administrador tiene acceso a un ecosistema de gestión integral que incluye el control de la base de usuarios, la edición del catálogo de viajes y el acceso a paneles de métricas y estadísticas para la toma de decisiones.
 
 
 ### **Capturas de Pantalla y Descripción de Páginas**
@@ -86,11 +90,10 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 #### **1. Página Principal / Home**
 ![Página Principal](images/inicioByeBye.png)
 
-> Página de inicio que muestra la primera página que se encunetra el usuario al entrar a nuestra web. En ella se puede observar un menú en la parte superior, el cual nos permite viajar a todas las páginas desde nuestra página de inicio. Lo más destacable de esta página es la caja en la que se le permite a el usuario poder seleccionar un viaje junto a la fecha y el nº de viajeros.
-Justo debajo se puede apreciar un slide de fotos en las que aparecen los destinos más populares de nuestra web.
- 
-A su vez, el usuario puede encontrar un slide de reseñas, es una recopilación de las reseñas que han dejado los usuarios que han confiado en nosotros para su vaije.
-Por último está el apartado de Ofertas especiales y decsuentos, en el que si el usuario desea hacer click en algun destino deseado, le lleva a la página de "Detalle de Viaje", en el que se le permite al usuario poder reservar su viaje, y leer/escribir reseñas.
+Página de inicio que muestra la primera página que se encuentra el usuario al entrar a nuestra web. En ella se puede observar un menú en la parte superior, el cual nos permite viajar a todas las páginas desde nuestra página de inicio. Lo más destacable de esta página es la sección en la que se le permite a el usuario poder seleccionar un viaje junto a la fecha y el nº de viajeros.
+Justo debajo se puede apreciar un carrousel de fotos en las que aparecen los destinos más populares de nuestra web.
+A su vez, el usuario puede encontrar una recopilación de las reseñas que han dejado los usuarios que han confiado en nosotros para su vaije.
+Por último está el apartado de Ofertas especiales y decsuentos, en el que si el usuario desea hacer click en algun destino deseado, le lleva a la página de "Detalle de Viaje", en el que se le permitirá reservar su viaje, y leer o escribir reseñas.
 #### **2. Página panel de administración**
 ![Página panel de administración](images/panel.png)
 
