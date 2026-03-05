@@ -143,7 +143,7 @@ Esta página permite al usuario registrarse para crear una cuenta o iniciar sesi
 Esta es la página a la que puede acceder el usuario tras identificarse. Incluye dos formularios: uno para modificar sus datos personales y otro para gestionar sus métodos de pago. Además, presenta un listado de sus reservas con tres funciones clave: consultar los detalles del viaje, descargar el recibo en PDF y cancelar la reserva.  
 
 #### **13. Añadir viaje** 
-![Página Añadir viaje](images/addJOurney-page.png)
+![Página Añadir viaje](images/addJourney-page.png)
 
 Esta página, accesible desde la sección de gestión de viajes del panel de administración, cuenta con un formulario diseñado para introducir todos los datos necesarios al crear un nuevo viaje.
 
