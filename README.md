@@ -122,20 +122,21 @@ Diagrama que muestra cómo se navega entre las diferentes páginas de la aplicac
 ![Página Principal](images/home-page.png)
 
 [Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+#### **11. Identifícate** 
+![Página identifícate](images/signin-page.png)
 
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Esta página permite al usuario registrarse para crear una cuenta o iniciar sesión con sus credenciales. Presenta dos formularios específicos, adaptados según el perfil o tipo de usuario que desee acceder al sistema.
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+#### **12. Mi perfil**
+![Página perfil usuario](images/userProfile-page.png)
 
-#### **1. Página Principal / Home**
-![Página Principal](images/home-page.png)
+Esta es la página a la que puede acceder el usuario tras identificarse. Incluye dos formularios: uno para modificar sus datos personales y otro para gestionar sus métodos de pago. Además, presenta un listado de sus reservas con tres funciones clave: consultar los detalles del viaje, descargar el recibo en PDF y cancelar la reserva.  
 
-[Descripción breve: Ej: "Página de inicio que muestra los productos destacados, categorías principales y un banner promocional. Incluye barra de navegación y acceso a registro/login para usuarios no autenticados."]
+#### **13. Añadir viaje** 
+![Página Añadir viaje](images/addJOurney-page.png)
+
+Esta página, accesible desde la sección de gestión de viajes del panel de administración, cuenta con un formulario diseñado para introducir todos los datos necesarios al crear un nuevo viaje.
 
 #### **AQUÍ AÑADIR EL RESTO DE PÁGINAS**
 
