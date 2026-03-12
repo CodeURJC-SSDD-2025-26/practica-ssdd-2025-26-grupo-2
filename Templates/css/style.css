@@ -2120,7 +2120,6 @@ h4,
   margin-bottom: 0;
 }
 
-/* --- Menú Desplegable de Perfil --- */
 .profile-dropdown {
   position: relative;
   margin-left: 30px;
@@ -2128,7 +2127,6 @@ h4,
   list-style: none;  
 }
 
-/* Ocultar la flecha por defecto que traen los <details> */
 .profile-summary {
   list-style: none;
   cursor: pointer;
@@ -2138,7 +2136,6 @@ h4,
   width: 40px;
   height: 40px;
   object-fit: cover;
-  /* Evita que la foto se deforme si no es cuadrada */
 }
 
 
@@ -2146,7 +2143,6 @@ h4,
   width: 140px;
   height: 140px;
   object-fit: cover;
-  /* Evita que la foto se deforme si no es cuadrada */
 }
 
 .profile-menu {
@@ -2172,7 +2168,6 @@ h4,
 }
 
 
-/* Línea separadora entre "Mi perfil" y "Cerrar sesión" */
 .profile-divider {
   height: 1px;
   background: #eee;
