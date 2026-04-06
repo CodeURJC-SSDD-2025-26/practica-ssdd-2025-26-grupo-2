@@ -4,11 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class AboutController {
-
-	@GetMapping("/about.html")
-	public String about() {
-		return "about";
+public class Travel_pageController {
+    @GetMapping("/travel_page.html")
+	public String travel_page() {
+		return "travel_page";
 	}
 
 }
