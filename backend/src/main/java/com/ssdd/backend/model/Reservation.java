@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "reservas")
-public class Reserva {
+@Table(name = "reservations")
+public class Reservation {
 
     public enum Estado {
         CONFIRMADA,
@@ -18,11 +18,11 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    private User usuario;
 
     @ManyToOne
     @JoinColumn(name = "viaje_id", nullable = false)
-    private Viaje viaje;
+    private Travel viaje;
 
     @Column(nullable = false)
     private int numeroPersonas;
@@ -36,10 +36,10 @@ public class Reserva {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
-    public Reserva() {
+    public Reservation() {
     }
 
-    public Reserva(Usuario usuario, Viaje viaje, int numeroPersonas, LocalDate fechaReserva, double precioTotal, Estado estado) {
+    public Reservation(User usuario, Travel viaje, int numeroPersonas, LocalDate fechaReserva, double precioTotal, Estado estado) {
         this.usuario = usuario;
         this.viaje = viaje;
         this.numeroPersonas = numeroPersonas;
@@ -52,19 +52,19 @@ public class Reserva {
         return id;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 
-    public Viaje getViaje() {
+    public Travel getViaje() {
         return viaje;
     }
 
-    public void setViaje(Viaje viaje) {
+    public void setViaje(Travel viaje) {
         this.viaje = viaje;
     }
 

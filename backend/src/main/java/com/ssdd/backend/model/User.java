@@ -11,8 +11,8 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "users")
+public class User {
 
     public enum Rol {
         USER,
@@ -44,10 +44,10 @@ public class Usuario {
 
     private String caducidadTarjeta;
 
-    public Usuario() {
+    public User() {
     }
 
-    public Usuario(String nombre, String email, String password, Rol rol) {
+    public User(String nombre, String email, String password, Rol rol) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;

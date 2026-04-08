@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "viajes")
-public class Viaje {
+@Table(name = "travels")
+public class Travel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,10 @@ public class Viaje {
     @Lob
     private byte[] imagen; //se pone así porque guardamos la imagen en una base de datos
 
-    public Viaje() {
+    public Travel() {
     }
 
-    public Viaje(String titulo, String destino, double precio) {
+    public Travel(String titulo, String destino, double precio) {
         this.titulo = titulo;
         this.destino = destino;
         this.precio = precio;
