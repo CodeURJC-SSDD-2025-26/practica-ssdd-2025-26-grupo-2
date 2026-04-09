@@ -17,6 +17,10 @@ private String cvv;
 
 private String caducidad;
 
+public Long getId() {
+        return id;
+}
+
 public String getNumTarjeta(){
     return numTarjeta;
 }
