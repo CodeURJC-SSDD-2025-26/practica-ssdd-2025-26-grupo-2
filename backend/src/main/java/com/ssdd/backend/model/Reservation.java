@@ -36,6 +36,9 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
+    @OneToOne
+    private Image imagen;
+
     public Reservation() {
     }
 
@@ -98,5 +101,18 @@ public class Reservation {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation [id=" + id + ", fechaReserva=" + fechaReserva + ", precioTotal=" + precioTotal + "]";
     }
 }

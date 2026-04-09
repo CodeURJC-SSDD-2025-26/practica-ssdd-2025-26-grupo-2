@@ -9,9 +9,9 @@ public class Travel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //el id que pone el SQL
+    private Long id;
 
-    private String titulo; //lo que ve el usuario
+    private String titulo;
 
     @Column(length = 1000)
     private String descripcion;
@@ -29,8 +29,8 @@ public class Travel {
 
     private String tipo;
 
-    @Lob
-    private byte[] imagen; //se pone así porque guardamos la imagen en una base de datos
+    @OneToOne
+    private Image imagen;
 
     public Travel() {
     }
@@ -41,7 +41,7 @@ public class Travel {
         this.precio = precio;
     }
 
-     public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -93,7 +93,7 @@ public class Travel {
         this.fechaFin = fechaFin;
     }
 
-     public int getMaxPlazas() {
+    public int getMaxPlazas() {
         return maxPlazas;
     }
 
@@ -117,11 +117,16 @@ public class Travel {
         this.tipo = tipo;
     }
 
-     public byte[] getImagen() {
-        return imagen;
+    public Image getImagen() {
+        return image;
     }
 
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
+    public void setImagen(Image imagen) {
+        this.image = imagen;
+    }
+
+    @Override
+    public String toString() {
+        return "Travel [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + "]";
     }
 }

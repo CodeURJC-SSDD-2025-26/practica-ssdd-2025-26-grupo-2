@@ -7,7 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,7 +18,7 @@ public class User {
         USER,
         ADMIN
     }
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,10 +33,10 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Rol rol; // USER o ADMIN
+    private Rol rol;
 
-    @Lob
-    private byte[] imagenPerfil;    
+    @OneToOne
+    private Image imagenPerfil;
 
     public User() {
     }
@@ -84,11 +84,16 @@ public class User {
         this.rol = rol;
     }
 
-    public byte[] getImagenPerfil() {
+    public Image getImagenPerfil() {
         return imagenPerfil;
     }
 
-    public void setImagenPerfil(byte[] imagenPerfil) {
+    public void setImagenPerfil(Image imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + "]";
     }
 }
