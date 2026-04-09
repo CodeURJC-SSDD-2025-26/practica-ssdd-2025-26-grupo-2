@@ -11,46 +11,52 @@ public class Travel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titulo;
+    private String nombre;
 
     @Column(length = 1000)
     private String descripcion;
 
-    private String destino;
+    private String pais;
 
     private double precio;
+
+    private String transporte;
+    private String alojamiento;
 
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
 
     private int maxPlazas;
 
-    private int duracion;
+    private int numNoches;
 
-    private String tipo;
-
+    
     @OneToOne
     private Image imagen;
 
     public Travel() {
     }
 
-    public Travel(String titulo, String destino, double precio) {
-        this.titulo = titulo;
-        this.destino = destino;
+    public Travel(String nombre, String pais, double precio, String transporte, String alojamiento, int maxPlazas, int numNoches) {
+        this.nombre = nombre;
+        this.pais = pais;
         this.precio = precio;
+        this.transporte = transporte; 
+        this.alojamiento = alojamiento; 
+        this.maxPlazas = maxPlazas; 
+        this.numNoches = numNoches; 
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNombre(String titulo) {
+        this.nombre = titulo;
     }
 
     public String getDescripcion() {
@@ -61,12 +67,12 @@ public class Travel {
         this.descripcion = descripcion;
     }
 
-    public String getDestino() {
-        return destino;
+    public String getPais() {
+        return pais;
     }
 
-    public void setDestino(String destino) {
-        this.destino = destino;
+    public void setPais(String destino) {
+        this.pais = destino;
     }
 
     public double getPrecio() {
@@ -101,21 +107,30 @@ public class Travel {
         this.maxPlazas = maxPlazas;
     }
 
-    public int getDuracion() {
-        return duracion;
+    public int getNumNoches() {
+        return numNoches;
     }
 
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
+    public void setNumNoches(int numNoches) {
+        this.numNoches = numNoches;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getAlojamiento() {
+        return alojamiento;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setAlojamiento(String alojamiento) {
+        this.alojamiento = alojamiento;
     }
+
+     public String getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(String transporte) {
+        this.transporte = transporte;
+    }
+    
 
     public Image getImagen() {
         return imagen;
@@ -127,6 +142,6 @@ public class Travel {
 
     @Override
     public String toString() {
-        return "Travel [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + "]";
+        return "Travel [id=" + id + ", titulo=" + nombre + ", descripcion=" + descripcion + "]";
     }
 }
