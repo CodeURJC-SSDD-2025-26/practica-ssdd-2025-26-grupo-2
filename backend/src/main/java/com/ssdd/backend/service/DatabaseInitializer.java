@@ -42,8 +42,9 @@ public class DatabaseInitializer {
             User user2 = new User("María López", "maria@gmail.com", "pass123", User.Rol.USER);
 
             try {
-                setUserImage(user1, "static/images/avatar1.jpg"); 
-                setUserImage(user2, "static/images/avatar2.jpg");
+                setUserImage(admin, "/sample_images/profile_image.png");
+                setUserImage(user1, "/sample_images/profile_image.png");
+                setUserImage(user2, "/sample_images/profile_image.png");
             } catch (Exception e) {
                 System.out.println("Aviso: No se encontraron las imágenes de perfil. Se crearán sin foto.");
             }
@@ -68,7 +69,7 @@ public class DatabaseInitializer {
             viaje2.setTipo("Aventura");
 
             try {
-                setTravelImage(viaje1, "static/images/paris.jpg"); 
+                setTravelImage(viaje1, "static/images/paris.jpg");
                 setTravelImage(viaje2, "static/images/alpes.jpg");
             } catch (Exception e) {
                 System.out.println("Aviso: No se encontraron las imágenes de los viajes. Se crearán sin foto.");
@@ -78,8 +79,10 @@ public class DatabaseInitializer {
             travelRepository.save(viaje2);
 
             // 3. CREAR RESERVAS
-            Reservation reserva1 = new Reservation(user1, viaje1, 2, LocalDate.now(), 900.0, Reservation.Estado.CONFIRMADA);
-            Reservation reserva2 = new Reservation(user2, viaje2, 1, LocalDate.now(), 850.0, Reservation.Estado.CONFIRMADA);
+            Reservation reserva1 = new Reservation(user1, viaje1, 2, LocalDate.now(), 900.0,
+                    Reservation.Estado.CONFIRMADA);
+            Reservation reserva2 = new Reservation(user2, viaje2, 1, LocalDate.now(), 850.0,
+                    Reservation.Estado.CONFIRMADA);
 
             reservationRepository.save(reserva1);
             reservationRepository.save(reserva2);
