@@ -44,9 +44,10 @@ public class DatabaseInitializer {
 
             try {
                
-                setUserImage(user1, "static/images/avatar1.jpg"); 
-                setUserImage(user2, "static/images/avatar2.jpg");
-                setUserImage(user3, "static/images/avatar3.jpg");
+                setUserImage(admin, "/sample_images/profile_image.png");
+                setUserImage(user1, "/sample_images/profile_image.png");
+                setUserImage(user2, "/sample_images/profile_image.png");
+                setUserImage(user3, "/sample_images/profile_image.png");
             } catch (Exception e) {
                 System.out.println("Aviso: No se encontraron algunas imágenes de perfil. Se crearán sin foto.");
             }
@@ -187,8 +188,10 @@ public class DatabaseInitializer {
             travelRepository.save(viaje8);
             
             // 3. CREAR RESERVAS
-            Reservation reserva1 = new Reservation(user1, viaje1, 2, LocalDate.now(), 900.0, Reservation.Estado.CONFIRMADA);
-            Reservation reserva2 = new Reservation(user2, viaje2, 1, LocalDate.now(), 850.0, Reservation.Estado.CONFIRMADA);
+            Reservation reserva1 = new Reservation(user1, viaje1, 2, LocalDate.now(), 900.0,
+                    Reservation.Estado.CONFIRMADA);
+            Reservation reserva2 = new Reservation(user2, viaje2, 1, LocalDate.now(), 850.0,
+                    Reservation.Estado.CONFIRMADA);
 
             reservationRepository.save(reserva1);
             reservationRepository.save(reserva2);

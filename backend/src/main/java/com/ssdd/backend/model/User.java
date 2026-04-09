@@ -1,23 +1,20 @@
 package com.ssdd.backend.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
-
-    public enum Rol {
-        USER,
-        ADMIN
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +29,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
+    @ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
 
     @OneToOne
     private Image imagenPerfil;
@@ -41,11 +38,11 @@ public class User {
     public User() {
     }
 
-    public User(String nombre, String email, String password, Rol rol) {
+    public User(String nombre, String email, String password, String roles) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
-        this.rol = rol;
+        this.roles = List.of(roles);;
     }
 
     public Long getId() {
@@ -76,13 +73,14 @@ public class User {
         this.password = password;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
+    
+	public List<String> getRoles() {
+		return roles;
+	}
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
 
     public Image getImagenPerfil() {
         return imagenPerfil;
