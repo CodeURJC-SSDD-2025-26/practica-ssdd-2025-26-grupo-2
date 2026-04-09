@@ -1,3 +1,4 @@
+
 package com.ssdd.backend.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class WebSecurityConfig {
-
     @Autowired
     private RepositoryUserDetailsService userDetailsService;
 
@@ -65,4 +65,8 @@ public class WebSecurityConfig {
 
         return http.build();
     }
+
+    
 }
+
+

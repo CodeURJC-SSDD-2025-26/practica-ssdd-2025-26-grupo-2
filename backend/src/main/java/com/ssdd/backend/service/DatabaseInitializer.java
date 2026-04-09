@@ -37,9 +37,9 @@ public class DatabaseInitializer {
         if (userRepository.count() == 0) {
 
             // 1. CREAR USUARIOS
-            User admin = new User("Admin", "admin@byebye.com", "admin123", User.Rol.ADMIN);
-            User user1 = new User("Juan Pérez", "juan@gmail.com", "pass123", User.Rol.USER);
-            User user2 = new User("María López", "maria@gmail.com", "pass123", User.Rol.USER);
+            User admin = new User("Admin", "admin@byebye.com", "admin123", "ADMIN, USER");
+            User user1 = new User("Juan Pérez", "juan@gmail.com", "pass123", "USER");
+            User user2 = new User("María López", "maria@gmail.com", "pass123", "USER");
 
             try {
                 setUserImage(admin, "/sample_images/profile_image.png");

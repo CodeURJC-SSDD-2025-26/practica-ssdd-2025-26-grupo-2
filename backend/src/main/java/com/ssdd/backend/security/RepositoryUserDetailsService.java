@@ -1,3 +1,5 @@
+
+
 package com.ssdd.backend.security;
 
 import java.util.ArrayList;
@@ -23,12 +25,17 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 
          User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        List<GrantedAuthority> rol = new ArrayList<>();
-        rol.add(new SimpleGrantedAuthority("ROLE_" + user.getRol().name()));
+        List<GrantedAuthority> roles = new ArrayList<>();
+        
+		for (String role : user.getRoles()) {
+			roles.add(new SimpleGrantedAuthority("ROLE_" + role));
+		}
 
         return new org.springframework.security.core.userdetails.User(user.getNombre(), 
-				user.getPassword(), rol);
+				user.getPassword(), roles);
     }
 
 
 }
+
+
