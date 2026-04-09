@@ -36,13 +36,7 @@ public class User {
     private Rol rol; // USER o ADMIN
 
     @Lob
-    private byte[] imagenPerfil;
-
-    private String numTarjeta;
-
-    private String cvv;
-
-    private String caducidadTarjeta;
+    private byte[] imagenPerfil;    
 
     public User() {
     }
@@ -97,17 +91,4 @@ public class User {
     public void setImagenPerfil(byte[] imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
     }
-
-    public String getNumTarjeta(){
-        return numTarjeta;
-    }
-
-    public String getCvv(){
-        return cvv;
-    }
-
-    public String getCaducidadTarjeta(){
-        return caducidadTarjeta;
-    }
-
 }

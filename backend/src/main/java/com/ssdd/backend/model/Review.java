@@ -1,16 +1,7 @@
 package com.ssdd.backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-package com.ssdd.backend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -34,13 +25,13 @@ public class Review {
     // Relación Muchos a Uno: Muchas reseñas pueden pertenecer a un mismo usuario
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario autor;
+    private User autor;
 
     public Review() {
     }
 
     // Constructor con parámetros
-    public Review(int puntuacion, String comentario, Usuario autor) {
+    public Review(int puntuacion, String comentario, User autor) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
         this.autor = autor;
@@ -71,11 +62,11 @@ public class Review {
         return fecha;
     }
 
-    public Usuario getAutor() {
+    public User getAutor() {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(User autor) {
         this.autor = autor;
     }
 }
