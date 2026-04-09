@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Travel_page_extController {
-    @GetMapping("/travel_page_ext.html")
+    @GetMapping("/travel_page_ext")
 	public String travel_page_ext() {
 		return "travel_page_ext";
 	}

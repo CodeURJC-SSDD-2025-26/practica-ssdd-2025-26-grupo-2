@@ -3,7 +3,7 @@ package com.ssdd.backend.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name= "credit cards")
+@Table(name= "credit_cards")
 
 public class CreditCard {
     

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class JourneyManagementController {
-    @GetMapping("/journeyManagement.html")
+    @GetMapping("/journeyManagement")
 	public String journeyManagement() {
 		return "journeyManagement";
 	}
