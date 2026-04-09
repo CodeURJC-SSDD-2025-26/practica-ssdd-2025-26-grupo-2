@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserManagementController {
-    @GetMapping("/userManagement")
+    @GetMapping("/userManagement.html")
 	public String userManagement() {
 		return "userManagement";
 	}

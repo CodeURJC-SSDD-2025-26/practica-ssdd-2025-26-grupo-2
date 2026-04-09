@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class GraphUserController {
-    @GetMapping("/graphUser")
+    @GetMapping("/graphUser.html")
 	public String graphUser() {
 		return "graphUser";
 	}
