@@ -118,11 +118,11 @@ public class Travel {
     }
 
     public Image getImagen() {
-        return image;
+        return imagen;
     }
 
     public void setImagen(Image imagen) {
-        this.image = imagen;
+        this.imagen = imagen;
     }
 
     @Override
