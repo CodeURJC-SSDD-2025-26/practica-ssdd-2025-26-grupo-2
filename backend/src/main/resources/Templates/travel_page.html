@@ -1,186 +1,58 @@
+{{>header}}
 
-  {{>header}}
-
-  <div class="hero hero-inner">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mx-auto text-center">
-          <div class="intro-wrap">
-            <h1 class="mb-0">Nuestros Viajes</h1>
-            <p class="text-white">A continuación te presentamos el catálogo de nuestros viajes planificados.</p>
-          </div>
+<div class="hero hero-inner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mx-auto text-center">
+        <div class="intro-wrap">
+          <h1 class="mb-0">Nuestros Viajes</h1>
+          <p class="text-white">A continuación te presentamos el catálogo de nuestros viajes planificados.</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<div class="untree_co-section">
+  <div class="container">
 
+    <div class="row">
 
-  <div class="untree_co-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/hero-slider-1.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Estados Unidos</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">San Francisco</a></h3>
-                <div class="price ml-auto">
-                  <span>1250.00€</span>
-                </div>
+      {{#viajes}}
+      <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
+        <div class="media-1">
+
+          <a href="/viajes/{{id}}" class="d-block mb-3">
+
+            {{#tieneImagen}}
+            <img src="/viajes/{{id}}/imagen" alt="Imagen de {{nombre}}" class="img-fluid foto-tarjeta">
+            {{/tieneImagen}}
+
+            {{^tieneImagen}}
+            <img src="/images/hero-slider-1.jpg" alt="Imagen por defecto" class="img-fluid foto-tarjeta">
+            {{/tieneImagen}}
+
+          </a>
+
+          <span class="d-flex align-items-center loc mb-2">
+            <span class="icon-room mr-3"></span>
+            <span>{{pais}}</span>
+          </span>
+
+          <div class="d-flex align-items-center">
+            <div>
+              <h3><a href="/viajes/{{id}}">{{nombre}}</a></h3>
+              <div class="price ml-auto">
+                <span>{{precio}}€</span>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Francia</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Paris</a></h3>
-                <div class="price ml-auto">
-                  <span>300.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Malasia</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Putrajaya</a></h3>
-                <div class="price ml-auto">
-                  <span>750.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Polinesia Francesa</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Bora Bora</a></h3>
-                <div class="price ml-auto">
-                  <span>520.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/Viaje_kenia.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Kenia</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Nairobi</a></h3>
-                <div class="price ml-auto">
-                  <span>760.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/descarga.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Australia</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Sidney</a></h3>
-                <div class="price ml-auto">
-                  <span>820.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/Machu Picchu, Peru.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Perú</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Machu Picchu</a></h3>
-                <div class="price ml-auto">
-                  <span>955.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
-          <div class="media-1">
-            <a href="travel_page_ext.html" class="d-block mb-3">
-              <img src="images/bergen.jpg" alt="Image" class="img-fluid">
-            </a>
-            <span class="d-flex align-items-center loc mb-2">
-              <span class="icon-room mr-3"></span>
-              <span>Noruega</span>
-            </span>
-            <div class="d-flex align-items-center">
-              <div>
-                <h3><a href="travel_page_ext.html">Bergen</a></h3>
-                <div class="price ml-auto">
-                  <span>568.00€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
+      {{/viajes}}
     </div>
   </div>
+</div>
 
-  {{>footer}}
+{{>footer}}

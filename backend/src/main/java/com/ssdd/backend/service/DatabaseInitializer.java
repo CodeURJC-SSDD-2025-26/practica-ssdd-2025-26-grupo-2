@@ -162,16 +162,19 @@ public class DatabaseInitializer {
             viaje8.setFechaInicio(LocalDate.now().plusDays(15));
             viaje8.setFechaFin(LocalDate.now().plusDays(20));
 
-            // ASIGNAR IMÁGENES
+            
+           // ASIGNAR IMÁGENES
             try {
-                setTravelImage(viaje1, "static/images/sanfrancisco.jpg"); 
-                setTravelImage(viaje2, "static/images/paris.jpg");
-                setTravelImage(viaje3, "static/images/putrajaya.jpg");
-                setTravelImage(viaje4, "static/images/borabora.jpg");
-                setTravelImage(viaje5, "static/images/nairobi.jpg");
-                setTravelImage(viaje6, "static/images/sidney.jpg");
-                setTravelImage(viaje7, "static/images/machupicchu.jpg");
-                setTravelImage(viaje8, "static/images/bergen.jpg");
+                // Ahora apuntamos a la carpeta sample_images
+                setTravelImage(viaje1, "sample_images/San-Francisco.jpg");
+                setTravelImage(viaje2, "sample_images/Paris.jpg");
+                setTravelImage(viaje3, "sample_images/Putrajaya.jpg");
+                setTravelImage(viaje4, "sample_images/Bora-Bora.jpg");
+                setTravelImage(viaje5, "sample_images/Nairobi.jpg"); 
+                setTravelImage(viaje6, "sample_images/Sidney.jpg");
+                setTravelImage(viaje7, "sample_images/Machu-Piccu.jpg"); 
+                setTravelImage(viaje8, "sample_images/Bergen.jpg");
+                
             } catch (Exception e) {
                 System.out.println("Aviso: No se encontraron algunas imágenes de los viajes. Se crearán sin foto.");
             }

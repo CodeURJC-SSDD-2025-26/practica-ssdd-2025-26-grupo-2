@@ -144,4 +144,9 @@ public class Travel {
     public String toString() {
         return "Travel [id=" + id + ", titulo=" + nombre + ", descripcion=" + descripcion + "]";
     }
+    
+    // Método auxiliar para que Mustache sepa si hay foto sin cambiar de contexto
+    public boolean getTieneImagen() {
+        return this.imagen != null;
+    }
 }
