@@ -4,45 +4,60 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name= "credit_cards")
-
 public class CreditCard {
     
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-private String numTarjeta;
+    
+    @OneToOne
+    private User usuario;
+    
 
-private String cvv;
+    private String titular; 
+    private String numTarjeta;
+    private String cvv;
+    private String caducidad;
 
-private String caducidad;
-
-public Long getId() {
+    
+    public Long getId() {
         return id;
-}
+    }
 
-public String getNumTarjeta(){
-    return numTarjeta;
-}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-public void setNumTarjeta(String numTarjeta){
-    this.numTarjeta = numTarjeta;
-}
+    public String getTitular() {
+        return titular;
+    }
 
-public String getCVV(){
-    return cvv;
-}
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
 
-public void setCVV(String cvv){
-    this.cvv = cvv;
-}
+    public String getNumTarjeta(){
+        return numTarjeta;
+    }
 
-public String caducidad(){
-    return caducidad;
-}
+    public void setNumTarjeta(String numTarjeta){
+        this.numTarjeta = numTarjeta;
+    }
 
-public void setCaducidad(String caducidad){
-    this.caducidad = caducidad;
-}
+    public String getCvv(){ 
+        return cvv;
+    }
 
+    public void setCvv(String cvv){
+        this.cvv = cvv;
+    }
+
+    public String getCaducidad(){
+        return caducidad;
+    }
+
+    public void setCaducidad(String caducidad){
+        this.caducidad = caducidad;
+    }
 }
