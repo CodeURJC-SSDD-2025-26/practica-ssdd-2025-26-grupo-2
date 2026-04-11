@@ -161,11 +161,11 @@ public class TravelWebController {
         // Comprobamos si el viaje existe y si tiene una imagen guardada
         if (viaje.isPresent() && viaje.get().getImagen() != null) {
             
-            // Extraemos la foto de la base de datos (Usando la lógica de tu profe)
+            // Extraemos la foto de la base de datos 
             Resource file = new InputStreamResource(viaje.get().getImagen().getImageFile().getBinaryStream());
             
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_TYPE, "image/jpeg") // Le decimos al navegador que es una foto
+                    .header(HttpHeaders.CONTENT_TYPE, "image/jpeg") 
                     .contentLength(viaje.get().getImagen().getImageFile().length())
                     .body(file);
         } else {

@@ -41,8 +41,6 @@ public class WebSecurityConfig {
                 .requestMatchers("/error403.html", "/error404.html").permitAll()
 
                 // Admin pages
-                //.requestMatchers("/admin", "/graphJourney", "/graphUser", "/journeyManagement", 
-                  //                              "/UserManagement", "/addJourney").hasRole("ADMIN")
                 .requestMatchers("/admin.html", "/admin/**", "/graphJourney.html", "/graphUser.html", "/journeyManagement.html", 
                          "/UserManagement.html", "/addJourney.html").hasRole("ADMIN") 
 
@@ -65,6 +63,8 @@ public class WebSecurityConfig {
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)     
+                .deleteCookies("JSESSIONID")     
                 .permitAll()
             )
             .exceptionHandling(exception -> exception

@@ -36,7 +36,6 @@ public class UserService {
 
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            // Comparamos la contraseña en bruto con la encriptada de la DB
             if (passwordEncoder.matches(rawPassword, user.getPassword())) {
                 return userOpt;
             }

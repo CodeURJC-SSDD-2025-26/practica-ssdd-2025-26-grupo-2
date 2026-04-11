@@ -20,32 +20,9 @@ import java.util.Optional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Controller
-public class SigninWebController {
+public class UserRegisterController {
     @Autowired
     private UserService userService;
-    @Autowired
-	private ImageService imageService;
-    @Autowired
-    private UserRepository userRepository;
-
-
-
-	@ModelAttribute
-	public void addAttributes(Model model, HttpServletRequest request) {
-
-		Principal principal = request.getUserPrincipal();
-        //meter imagen
-		if (principal != null) {
-
-			model.addAttribute("logged", true);
-			model.addAttribute("userName", principal.getName());
-			model.addAttribute("admin", request.isUserInRole("ADMIN"));
-
-		} else {
-			model.addAttribute("logged", false);
-            
-		}
-	}
 
     @PostMapping("/register")
     public String register(

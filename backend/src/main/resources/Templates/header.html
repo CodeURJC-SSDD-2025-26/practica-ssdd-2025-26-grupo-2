@@ -53,7 +53,9 @@
                 <a href="index.html" class="logo m-0">ByeBye</a>
 
                 <ul class="js-clone-nav d-none d-xl-inline-block text-left site-menu float-right">
-                    <li><a href="/admin.html">Panel Administración</a></li>
+                    {{#admin}}
+                        <li><a href="/admin.html">Panel Administración</a></li>
+                    {{/admin}}    
                     <li><a href="/index.html">Inicio</a></li>
                     <li><a href="/about.html">Información</a></li>
                     <li><a href="/contact.html">Contáctanos</a></li>
@@ -72,9 +74,20 @@
                             <ul class="profile-menu">
                                 <li><a href="signin.html" class="profile-link">Identifícate</a></li>
                                 <li class="profile-divider"></li>
-                                <li><a href="userProfile.html" class="profile-link">Mi perfil</a></li>
-                                <li class="profile-divider"></li>
-                                <li><a href="index.html" class="profile-link">Cerrar sesión</a></li>
+                                {{#logged}}
+                                    <li><a href="userProfile.html" class="profile-link">Mi perfil</a></li>
+                                    <li class="profile-divider"></li>
+                                    <li>
+                                        <form action="/logout" method="post" id="logoutForm" style="display: none;">
+                                            <input type="hidden" name="_csrf" value="{{token}}">
+                                        </form>
+                                        <a href="javascript:void(0)" 
+                                            class="profile-link" 
+                                            onclick="document.getElementById('logoutForm').submit();">
+                                            Cerrar sesión
+                                        </a>
+                                    </li>
+                                {{/logged}}
                             </ul>
 
                         </details>
