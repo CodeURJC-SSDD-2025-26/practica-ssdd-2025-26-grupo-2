@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
+
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.UserRepository;
 
@@ -27,12 +28,15 @@ public class RepositoryUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         List<GrantedAuthority> roles = new ArrayList<>();
         
-		for (String role : user.getRoles()) {
+		for (String role : user.getRoles()) { 
 			roles.add(new SimpleGrantedAuthority("ROLE_" + role));
 		}
 
-        return new org.springframework.security.core.userdetails.User(user.getNombre(), 
-				user.getPassword(), roles);
+        return new org.springframework.security.core.userdetails.User(
+        user.getEmail(),    // ✅ el username será el email
+        user.getPassword(),
+        roles);
+
     }
 
 
