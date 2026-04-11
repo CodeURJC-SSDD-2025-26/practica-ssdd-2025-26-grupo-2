@@ -43,7 +43,8 @@ public class WebSecurityConfig {
                 // Admin pages
                 //.requestMatchers("/admin", "/graphJourney", "/graphUser", "/journeyManagement", 
                   //                              "/UserManagement", "/addJourney").hasRole("ADMIN")
-                .requestMatchers("/admin.html", "/admin/**").hasRole("ADMIN") 
+                .requestMatchers("/admin.html", "/admin/**", "/graphJourney.html", "/graphUser.html", "/journeyManagement.html", 
+                         "/UserManagement.html", "/addJourney.html").hasRole("ADMIN") 
 
                 // Logged users
                 .requestMatchers("/userProfile.html", "/profile/**").hasAnyRole("USER", "ADMIN")
@@ -54,6 +55,7 @@ public class WebSecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/signin")
+                .loginProcessingUrl("/signin")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .failureUrl("/loginFailure")

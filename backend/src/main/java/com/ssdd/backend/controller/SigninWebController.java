@@ -51,7 +51,7 @@ public class SigninWebController {
     public String register(
             @RequestParam String name,
             @RequestParam String lastName,
-            @RequestParam String mail,
+            @RequestParam String email,
             @RequestParam String password,
             @RequestParam(required = false) String conditions,
             Model model) {
@@ -62,7 +62,7 @@ public class SigninWebController {
         }
 
         try {
-            userService.registerUser(name + " " + lastName, mail, password);
+            userService.registerUser(name + " " + lastName, email, password);
             model.addAttribute("successRegister", "Usuario registrado correctamente.");
         } catch (RuntimeException e) {
             model.addAttribute("error", e.getMessage());

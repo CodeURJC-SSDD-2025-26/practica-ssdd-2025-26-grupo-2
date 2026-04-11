@@ -23,20 +23,27 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        // ESTO DEBERÍA SALIR EN LA DEBUG CONSOLE NADA MÁS DARLE AL BOTÓN
+        System.out.println(">>>> [PASO 1] El formulario ha llegado al servidor. Email recibido: " + email);
 
-         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> {
+                    System.out.println(">>>> [ERROR] El email [" + email + "] no existe en la base de datos.");
+                    return new UsernameNotFoundException("User not found");
+                });
+
+        System.out.println(">>>> [PASO 2] Usuario encontrado en DB. Password (hash): " + user.getPassword());
+
         List<GrantedAuthority> roles = new ArrayList<>();
-        
-		for (String role : user.getRoles()) { 
-			roles.add(new SimpleGrantedAuthority("ROLE_" + role));
-		}
+        for (String role : user.getRoles()) {
+            System.out.println(">>>> [PASO 3] Cargando rol: ROLE_" + role);
+            roles.add(new SimpleGrantedAuthority("ROLE_" + role));
+        }
 
         return new org.springframework.security.core.userdetails.User(
-        user.getEmail(),    // ✅ el username será el email
-        user.getPassword(),
-        roles);
-
+                user.getEmail(),
+                user.getPassword(),
+                roles);
     }
 
 
