@@ -1,6 +1,11 @@
 package com.ssdd.backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name= "credit_cards")
@@ -12,7 +17,7 @@ public class CreditCard {
 
     
     @OneToOne
-    private User usuario;
+    private User user;
     
 
     private String titular; 

@@ -1,0 +1,19 @@
+<form action="/reviews/new" method="post">
+    <input type="hidden" name="_csrf" value="{{token}}"> <label>Puntuación (1-5):</label>
+    <input type="number" name="puntuacion" min="1" max="5" required>
+    
+    <label>Tu comentario:</label>
+    <textarea name="comentario" required></textarea>
+    
+    <button type="submit">Publicar Reseña</button>
+</form>
+
+<hr>
+
+{{#reviews}}
+<div class="review-item">
+    <strong>{{autor.name}}</strong> - {{puntuacion}}/5
+    <p>{{comentario}}</p>
+    <small>{{fecha}}</small>
+</div>
+{{/reviews}}

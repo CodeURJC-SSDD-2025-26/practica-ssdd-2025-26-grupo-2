@@ -1,4 +1,5 @@
 package com.ssdd.backend.model;
+
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -21,12 +22,18 @@ public class User {
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
-	private List<String> roles;
+    private List<String> roles;
 
-    @OneToOne
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservas;
+
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Image imagenPerfil;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private CreditCard tarjeta;
 
     public User() {
@@ -36,7 +43,28 @@ public class User {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
-        this.roles = List.of(roles);;
+        this.roles = List.of(roles);
+        ;
+    }
+
+    public List<Reservation> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reservation> reservas) {
+        this.reservas = reservas;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Long getIdParaImagen() {
+        return this.id;
     }
 
     public Long getId() {
@@ -67,14 +95,13 @@ public class User {
         this.password = password;
     }
 
-    
-	public List<String> getRoles() {
-		return roles;
-	}
+    public List<String> getRoles() {
+        return roles;
+    }
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     public Image getImagenPerfil() {
         return imagenPerfil;
