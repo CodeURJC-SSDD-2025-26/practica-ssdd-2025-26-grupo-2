@@ -20,7 +20,7 @@ public class Review {
     private Long id;
 
     @Column(nullable = false)
-    private int puntuacion; // Por ejemplo, de 1 a 5
+    private Integer puntuacion; // Por ejemplo, de 1 a 5
 
     @Column(columnDefinition = "TEXT") // Usamos TEXT por si el comentario es largo
     private String comentario;
@@ -30,7 +30,7 @@ public class Review {
     // Relación Muchos a Uno: Muchas reseñas pueden pertenecer a un mismo usuario
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private User usuario;
+    private User autor;
 
     public Review() {
     }
@@ -40,7 +40,7 @@ public class Review {
 
     
     // Actualiza el constructor
-    public Review(int puntuacion, String comentario, User autor, Travel viaje) {
+    public Review(Integer puntuacion, String comentario, User autor, Travel viaje) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
         this.autor = autor;
@@ -56,7 +56,7 @@ public class Review {
     public Review(int puntuacion, String comentario, User autor) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
-        this.usuario = autor;
+        this.autor = autor;
         this.fecha = LocalDate.now(); 
     }
 
@@ -84,11 +84,11 @@ public class Review {
         return fecha;
     }
 
-    public User getUsuario() {
-        return usuario;
+    public User getAutor() {
+        return autor;
     }
 
-    public void setUsuario(User autor) {
-        this.usuario = autor;
+    public void setAutor(User autor) {
+        this.autor = autor;
     }
 }

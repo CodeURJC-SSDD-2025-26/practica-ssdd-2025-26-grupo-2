@@ -67,26 +67,31 @@
                                     <img src="/usuario/imagen/{{id}}" 
                                         class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
                                 {{/user.imagenPerfil}}
-
-                        <ul class="profile-menu">
-                            <li><a href="/signin" class="profile-link">Identifícate</a></li>
-                            <li class="profile-divider"></li>
-                            
-                            {{#logged}}
-                                <li><a href="/userProfile.html" class="profile-link">Mi perfil</a></li>
-                                <li class="profile-divider"></li>
-                                <li>
-                                    <form action="/logout" method="post" id="logoutForm" style="display: none;">
-                                        <input type="hidden" name="_csrf" value="{{token}}">
-                                    </form>
-                                    <a href="javascript:void(0)" class="profile-link"
-                                       onclick="document.getElementById('logoutForm').submit();">
-                                       Cerrar sesión
-                                    </a>
-                                </li>
-                            {{/logged}}
-                        </ul>
-                    </details>
+                                {{^imagenPerfil}}
+                                    <img src="/images/default_profile.jpg" alt="Perfil"
+                                        class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                                {{/imagenPerfil}}
+                            </summary>
+                                <ul class="profile-menu">
+                                    <li><a href="/signin" class="profile-link">Identifícate</a></li>
+                                    <li class="profile-divider"></li>
+                                    
+                                    {{#logged}}
+                                        <li><a href="/userProfile.html" class="profile-link">Mi perfil</a></li>
+                                        <li class="profile-divider"></li>
+                                        <li>
+                                            <form action="/logout" method="post" id="logoutForm" style="display: none;">
+                                                <input type="hidden" name="_csrf" value="{{token}}">
+                                            </form>
+                                            <a href="javascript:void(0)" class="profile-link"
+                                            onclick="document.getElementById('logoutForm').submit();">
+                                            Cerrar sesión
+                                            </a>
+                                        </li>
+                                    {{/logged}}
+                                </ul>
+                        </details>
+                    </li>
                 </li>
             </ul>
 
