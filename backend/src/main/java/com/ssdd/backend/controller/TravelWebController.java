@@ -46,15 +46,7 @@ public class TravelWebController {
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
-        } else {
-            // --- TRUCO TEMPORAL PARA DESARROLLO ---
-            // Como no hay usuarios aún, forzamos a que el sistema crea 
-            // que estamos logueados y que somos administradores.
-            model.addAttribute("logged", true);
-            model.addAttribute("userName", "Admin Temporal");
-            model.addAttribute("admin", true);
-            // --------------------------------------
-        }
+        } 
     }
 
     // 1. Mostrar TODOS los viajes 

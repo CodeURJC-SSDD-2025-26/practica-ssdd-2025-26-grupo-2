@@ -67,6 +67,7 @@
                         <div class="botones-admin text-center">
                             
                             <form action="/borrarviaje/{{id}}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este viaje de la base de datos?');">
+                                <input type="hidden" name="_csrf" value="{{token}}">
                                 <button type="submit" class="btn btn-rm">Eliminar</button>
                             </form>
                             

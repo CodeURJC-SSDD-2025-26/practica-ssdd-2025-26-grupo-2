@@ -14,6 +14,7 @@
 
 <div class="container mt-5 mb-5">
     <form action="/nuevoviaje" method="POST" class="contact-form bg-white p-4 shadow-sm border rounded">
+        <input type="hidden" name="_csrf" value="{{token}}">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group mb-3">
