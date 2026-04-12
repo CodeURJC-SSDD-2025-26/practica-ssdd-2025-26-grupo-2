@@ -87,7 +87,7 @@ public class TravelWebController {
 
 
 
-// ... (tus otros imports)
+
 
 @PostMapping("/nuevoviaje")
 public String newTravelProcess(Travel viaje, @org.springframework.web.bind.annotation.RequestParam(value = "imagenOculta", required = false) String imagenOculta) throws IOException {
