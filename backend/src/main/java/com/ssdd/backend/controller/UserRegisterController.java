@@ -1,23 +1,18 @@
 package com.ssdd.backend.controller;
 
-import com.ssdd.backend.repository.UserRepository;
-import com.ssdd.backend.service.ImageService;
 import com.ssdd.backend.service.UserService;
-import com.ssdd.backend.model.User;
 
-import jakarta.servlet.http.HttpServletRequest;
 
-import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
-import java.util.Optional;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @Controller
 public class UserRegisterController {
@@ -42,9 +37,11 @@ public class UserRegisterController {
             userService.registerUser(name + " " + lastName, email, password);
             model.addAttribute("successRegister", "Usuario registrado correctamente.");
         } catch (RuntimeException e) {
-            model.addAttribute("error", e.getMessage());
+            model.addAttribute("errorRegister", e.getMessage());
         }
 
         return "signin";
     }
+
+    
 }

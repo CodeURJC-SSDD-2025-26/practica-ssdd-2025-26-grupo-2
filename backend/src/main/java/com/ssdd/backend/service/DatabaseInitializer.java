@@ -48,10 +48,10 @@ public class DatabaseInitializer {
             User user3 = new User("Lucía Gómez", "lucia@gmail.com",  passwordEncoder.encode("pass123"), "USER");
             try {
                
-                setUserImage(admin, "/sample_images/profile_image.png");
-                setUserImage(user1, "/sample_images/profile_image.png");
-                setUserImage(user2, "/sample_images/profile_image.png");
-                setUserImage(user3, "/sample_images/profile_image.png");
+                setUserImage(admin, "/sample_images/person_4.jpg");
+                setUserImage(user1, "/sample_images/default_profile.jpg");
+                setUserImage(user2, "/sample_images/person_3.jpg");
+                setUserImage(user3, "/sample_images/person_2.jpg");
             } catch (Exception e) {
                 System.out.println("Aviso: No se encontraron algunas imágenes de perfil. Se crearán sin foto.");
             }
