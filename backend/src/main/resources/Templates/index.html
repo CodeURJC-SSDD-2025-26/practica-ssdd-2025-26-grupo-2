@@ -160,52 +160,41 @@
 
 
 	<div class="untree_co-section testimonial-section mt-5">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-7 text-center">
-					<h2 class="section-title text-center mb-5">Reseñas</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <h2 class="section-title text-center mb-5">Reseñas</h2>
 
-					<div class="owl-single owl-carousel no-nav">
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="images/person_2.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Lucía Gómez</h3>
-							<blockquote>
-								<p>&ldquo;El viaje a París fue una experiencia inolvidable, un sitio 10/10 para ir con
-									la familia y el alojamiento muy completo y cerca del centro.&rdquo;</p>
-							</blockquote>
-						</div>
+                <div class="owl-single owl-carousel no-nav">
+                    
+                    {{#reviews}}
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="images/person_2.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">{{autor.nombre}}</h3>
+                        <div class="rating">
+                            <span>Puntuación: {{puntuacion}}/5</span>
+                        </div>
+                        <blockquote>
+                            <p>&ldquo;{{comentario}}&rdquo;</p>
+                        </blockquote>
+                        <small>{{fecha}}</small>
+                    </div>
+                    {{/reviews}}
 
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="images/person_3.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Lucas Torres</h3>
-							<blockquote>
-								<p>&ldquo;Me fui de escapada romántica con mi mujer 5 días a Grecia, un paisaje
-									precioso, muchísimas actividades y se come de lujo!.&rdquo;</p>
-							</blockquote>
-						</div>
+                    {{^reviews}}
+                    <div class="testimonial mx-auto">
+                        <p>Aún no hay reseñas. ¡Sé el primero en escribir una desde la página de un viaje!</p>
+                    </div>
+                    {{/reviews}}
 
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="images/person_4.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Carla Llorente</h3>
-							<blockquote>
-								<p>&ldquo;Jamás había salido de España y llevaba años soñando con ir a San Francisco, un
-									sueño hecho realidad. El alojamiento estuvo super completo y es un destino que
-									merece la pena!&rdquo;</p>
-							</blockquote>
-						</div>
+                </div>
 
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 	<div class="untree_co-section">

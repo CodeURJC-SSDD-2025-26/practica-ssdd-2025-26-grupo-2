@@ -48,59 +48,55 @@
     </div>
 
     <nav class="site-nav">
-        <div class="container">
-            <div class="site-navigation">
-                <a href="index.html" class="logo m-0">ByeBye</a>
+    <div class="container">
+        <div class="site-navigation">
+            <a href="/" class="logo m-0">ByeBye</a>
 
-                <ul class="js-clone-nav d-none d-xl-inline-block text-left site-menu float-right">
-                    {{#admin}}
-                        <li><a href="/admin.html">Panel Administración</a></li>
-                    {{/admin}}    
-                    <li><a href="/index.html">Inicio</a></li>
-                    <li><a href="/about.html">Información</a></li>
-                    <li><a href="/contact.html">Contáctanos</a></li>
-                    <li><a href="/viajes">Nuestros Viajes</a></li>
-                    <li class="profile-dropdown">
-                        <details>
-                            <summary class="profile-summary">
+            <ul class="js-clone-nav d-none d-xl-inline-block text-left site-menu float-right">
+                {{#admin}}
+                    <li><a href="/admin.html">Panel Administración</a></li>
+                {{/admin}}    
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about.html">Información</a></li>
+                <li><a href="/contact.html">Contáctanos</a></li>
+                <li><a href="/viajes">Nuestros Viajes</a></li>
+                
+                <li class="profile-dropdown">
+                    <details>
+                        <summary class="profile-summary">
+                            <img src="/images/profile_image.png" alt="Perfil"
+                                class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                            <span class="d-block d-xl-none mobile-profile-text">Perfil usuario</span>
+                        </summary>
 
-                                <img src="/images/profile_image.png" alt="Perfil"
-                                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
-
-                                <span class="d-block d-xl-none mobile-profile-text">Perfil usuario</span>
-
-                            </summary>
-
-                            <ul class="profile-menu">
-                                <li><a href="signin.html" class="profile-link">Identifícate</a></li>
+                        <ul class="profile-menu">
+                            <li><a href="/signin" class="profile-link">Identifícate</a></li>
+                            <li class="profile-divider"></li>
+                            {{#logged}}
+                                <li><a href="/userProfile.html" class="profile-link">Mi perfil</a></li>
                                 <li class="profile-divider"></li>
-                                {{#logged}}
-                                    <li><a href="userProfile.html" class="profile-link">Mi perfil</a></li>
-                                    <li class="profile-divider"></li>
-                                    <li>
-                                        <form action="/logout" method="post" id="logoutForm" style="display: none;">
-                                            <input type="hidden" name="_csrf" value="{{token}}">
-                                        </form>
-                                        <a href="javascript:void(0)" 
-                                            class="profile-link" 
-                                            onclick="document.getElementById('logoutForm').submit();">
-                                            Cerrar sesión
-                                        </a>
-                                    </li>
-                                {{/logged}}
-                            </ul>
+                                <li>
+                                    <form action="/logout" method="post" id="logoutForm" style="display: none;">
+                                        <input type="hidden" name="_csrf" value="{{token}}">
+                                    </form>
+                                    <a href="javascript:void(0)" 
+                                        class="profile-link" 
+                                        onclick="document.getElementById('logoutForm').submit();">
+                                        Cerrar sesión
+                                    </a>
+                                </li>
+                            {{/logged}}
+                        </ul>
+                    </details>
+                </li>
+            </ul>
 
-                        </details>
-                    </li>
-                </ul>
-
-                <a href="#"
-                    class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-xl-none light"
-                    data-toggle="collapse" data-target="#main-navbar">
-                    <span> </span>
-                </a>
-
-            </div>
+            <a href="#"
+                class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-xl-none light"
+                data-toggle="collapse" data-target="#main-navbar">
+                <span> </span>
+            </a>
         </div>
-    </nav>
+    </div>
+</nav>
     
