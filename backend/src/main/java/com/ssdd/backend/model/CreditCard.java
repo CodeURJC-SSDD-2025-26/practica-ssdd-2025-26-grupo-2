@@ -12,7 +12,7 @@ public class CreditCard {
 
     
     @OneToOne
-    private User usuario;
+    private User user;
     
 
     private String titular; 

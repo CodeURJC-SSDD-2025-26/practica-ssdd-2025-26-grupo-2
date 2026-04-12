@@ -22,7 +22,7 @@ public class Review {
     // Relación Muchos a Uno: Muchas reseñas pueden pertenecer a un mismo usuario
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private User autor;
+    private User usuario;
 
     public Review() {
     }
@@ -31,7 +31,7 @@ public class Review {
     public Review(int puntuacion, String comentario, User autor) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
-        this.autor = autor;
+        this.usuario = autor;
         this.fecha = LocalDate.now(); 
     }
 
@@ -59,11 +59,11 @@ public class Review {
         return fecha;
     }
 
-    public User getAutor() {
-        return autor;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setAutor(User autor) {
-        this.autor = autor;
+    public void setUsuario(User autor) {
+        this.usuario = autor;
     }
 }

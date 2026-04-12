@@ -42,7 +42,7 @@ public class WebSecurityConfig {
 
                 // Admin pages
                 .requestMatchers("/admin.html", "/admin/**", "/graphJourney.html", "/graphUser.html", "/journeyManagement.html", 
-                         "/UserManagement.html", "/addJourney.html").hasRole("ADMIN") 
+                         "/userManagement.html", "/addJourney.html").hasRole("ADMIN") 
 
                 // Logged users
                 .requestMatchers("/userProfile.html", "/profile/**","/profile").hasAnyRole("USER", "ADMIN")

@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -50,5 +53,22 @@ public class UserService {
 
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
+    public Optional<User> findById(long id) {
+        return userRepository.findById(id);
+    }
+    
+    @Transactional
+    public void deleteById(Long id) {
+        // Verificamos si existe antes de borrar
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("No se pudo eliminar: El usuario con ID " + id + " no existe.");
+        }
     }
 }

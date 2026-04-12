@@ -1,239 +1,155 @@
-
 {{>header}}
 
-    <div class="hero hero-inner">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mx-auto text-center">
-                    <div class="intro-wrap">
-                        <h1 class="mb-0">Gestionar Usuarios</h1>
-                    </div>
+<form id="csrf-form" style="display:none;">
+    <input type="hidden" name="_csrf" value="{{token}}">
+</form>
+
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Gestionar Usuarios</h1>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
+<br>
+<div class="col-11-5 mx-auto mb-5">
     <br>
-    <div class="col-11-5 mx-auto mb-5">
-        <br>
-        <div class="row align-items-center gap-3 ">
-            <div class="search-box">
-                <i class="bi bi-search"></i>
-                <input type="text" id="buscadorUsuario" placeholder="Buscar usuario por correo...">
-            </div>
-            
+    <div class="row align-items-center gap-3 ">
+        <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" id="buscadorUsuario" placeholder="Buscar usuario por correo...">
         </div>
 
-        <table class="tabla-admin">
-            <thead>
-                <tr>
-                    <th>Correo electrónico</th>
-                    <th>Importe gastado</th>
-                    <th>Fecha último acceso</th>
-                    <th class="col-1">Imagen</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div>
-                            <p>usuarioEjemplo@gmail.com</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>10000€</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>10/02/2026</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="userImage">
-                            <img src="images/profile_image.png" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="botones-admin-user text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <button class="btn btn-primary rImg">Reestablecer imagen</button>
-                            <button class="btn btn-primary adv">Aviso</button>
-                            <button class="btn btn-primary">Reseñas</button>
-                            <button class="btn btn-primary">Viajes</button>
-                            <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            <p>carla.llorente@gmail.com</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>1250€</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>15/02/2026</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="userImage">
-                            <img src="images/person_4.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="botones-admin-user text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <button class="btn btn-primary rImg">Reestablecer imagen</button>
-                            <button class="btn btn-primary adv">Aviso</button>
-                            <button class="btn btn-primary">Reseñas</button>
-                            <button class="btn btn-primary">Viajes</button>
-                            <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div>
-                            <p>lucas.torres@hotmail.com</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>3420€</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>02/02/2026</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="userImage">
-                            <img src="images/person_3.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="botones-admin-user text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <button class="btn btn-primary rImg">Reestablecer imagen</button>
-                            <button class="btn btn-primary adv">Aviso</button>
-                            <button class="btn btn-primary">Reseñas</button>
-                            <button class="btn btn-primary">Viajes</button>
-                            <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div>
-                            <p>lucia.gomez.dev@yahoo.com</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>850€</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div>
-                            <p>20/01/2026</p>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="userImage">
-                            <img src="images/person_2.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="botones-admin-user text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <button class="btn btn-primary rImg">Reestablecer imagen</button>
-                            <button class="btn btn-primary adv">Aviso</button>
-                            <button class="btn btn-primary">Reseñas</button>
-                            <button class="btn btn-primary">Viajes</button>
-                            <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-
     </div>
 
-        <script>
-        document.addEventListener("click", function (e) {
-            if (e.target.classList.contains("btn-rm")) {
+    <table class="tabla-admin">
+        <thead>
+            <tr>
+                <th>Correo electrónico</th>
+                <th>Importe gastado</th>
+                <th>Fecha último acceso</th>
+                <th class="col-1">Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#usuarios}}
+            <tr>
+                <td>
+                    <div>
+                        <p>{{email}}</p>
+                    </div>
+                </td>
 
-                const confirmDelete = confirm("¿Estás seguro de que quieres eliminar esta fila?");
-                if (!confirmDelete) return;
-                const motivo = prompt("Indique el motivo de la eliminación:");
-                if (motivo === null || motivo.trim() === "") {
-                    alert("Debe indicar un motivo para eliminar.");
-                    return;
-                }
+                <td>
+                    <div>
+                        <p>10000€</p>
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <p>10/02/2026</p>
+                    </div>
+                </td>
+
+                <td>
+                    {{#imagenPerfil}}
+                    <img src="/usuario/imagen/{{idParaImagen}}"
+                        class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                    {{/imagenPerfil}}
+
+                    {{^imagenPerfil}}
+                    <img src="/images/default_profile.jpg" alt="Perfil"
+                        class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                    {{/imagenPerfil}}
+                </td>
+
+                <td>
+                    <div class="botones-admin-user text-center">
+                        <button class="btn btn-rm" data-id="{{id}}">Eliminar</button>
+                        <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
+                        <button class="btn btn-primary adv">Aviso</button>
+                        <button class="btn btn-primary">Reseñas</button>
+                        <button class="btn btn-primary">Viajes</button>
+                        <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
+                    </div>
+                </td>
+            </tr>
+            {{/usuarios}}
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    document.addEventListener("click", async function (e) {
+        if (e.target.classList.contains("btn-rm")) {
+            const userId = e.target.getAttribute("data-id");
+
+            const confirmDelete = confirm("¿Estás seguro de que quieres eliminar este usuario?");
+            if (!confirmDelete) return;
+
+            const motivo = prompt("Indique el motivo de la eliminación:");
+            if (!motivo || motivo.trim() === "") {
+                alert("Debe indicar un motivo.");
+                return;
+            }
+
+            // Llamada al backend
+            const response = await fetch(`/admin/usuarios/eliminar/${userId}`, {
+                method: 'POST',
+                headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value } // Si tienes Spring Security
+            });
+
+            if (response.ok) {
                 e.target.closest("tr").remove();
+                alert("Usuario eliminado correctamente.");
+            } else {
+                alert("Error en el servidor al intentar eliminar.");
             }
-        });
-    </script>
+        }
+    });
+</script>
 
-    <script>
-        document.addEventListener("click", function (e) {
-            if (e.target.classList.contains("adv")) {
-                const motivo = prompt("Escriba el aviso que desee enviar:");
-                if (motivo === null || motivo.trim() === "") {
-                    alert("Debe indicar un aviso.");
-                    return;
-                }
+<script>
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("adv")) {
+            const motivo = prompt("Escriba el aviso que desee enviar:");
+            if (motivo === null || motivo.trim() === "") {
+                alert("Debe indicar un aviso.");
+                return;
             }
-        });
-    </script>
-    <script>
-        document.addEventListener("click", function (e) {
-            if (e.target.classList.contains("rImg")) {
+        }
+    });
+</script>
+<script>
+    document.addEventListener("click", async function (e) {
+        if (e.target.classList.contains("rImg")) {
+            const userId = e.target.getAttribute("data-id");
 
-                const confirmDelete = confirm("¿Estás seguro de que quieres reestablecer esta imagen?");
-                if (!confirmDelete) return;
+            if (!confirm("¿Reestablecer imagen de perfil?")) return;
 
-                const motivo = prompt("Indique el motivo");
-                if (motivo === null || motivo.trim() === "") {
-                    alert("Debe indicar un motivo para reestablecer una imagen.");
-                    return;
-                }
+            const response = await fetch(`/admin/usuarios/reset-imagen/${userId}`, {
+                method: 'POST',
+                headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value }
+            });
+
+            if (response.ok) {
                 const fila = e.target.closest("tr");
                 const img = fila.querySelector("img");
-                img.src = "images/profile_image.png";
-                img.alt = "Image";
-
-                alert("Imagen reestablecida correctamente.");
+                img.src = "/images/default_profile.jpg"; // Cambiamos a la imagen por defecto
+                alert("Imagen reestablecida.");
+            } else {
+                alert("Error al resetear la imagen.");
             }
-        });
-    </script>
+        }
+    });
+</script>
 
 {{>footer}}
