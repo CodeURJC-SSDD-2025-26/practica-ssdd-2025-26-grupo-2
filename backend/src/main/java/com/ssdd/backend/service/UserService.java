@@ -43,4 +43,12 @@ public class UserService {
 
         return Optional.empty();
     }
+
+    public boolean checkPassword(User user, String rawPassword) {
+        return passwordEncoder.matches(rawPassword, user.getPassword());
+    }
+
+    public void save(User user) {
+        userRepository.save(user);
+    }
 }
