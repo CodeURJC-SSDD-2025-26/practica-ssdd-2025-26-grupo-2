@@ -60,10 +60,10 @@
 				</div>
 				<div class="col-lg-5">
 					<div class="slides">
-						<img src="images/sf.jpg" alt="Image" class="img-fluid">
+						<img src="images/sf.jpg" alt="Image" class="img-fluid active">
 						<img src="images/paris.jpg" alt="Image" class="img-fluid">
 						<img src="images/African Savannah.jpg" alt="Image" class="img-fluid">
-						<img src="images/descarga (1).jpg" alt="Image" class="img-fluid active">
+						<img src="images/descarga (1).jpg" alt="Image" class="img-fluid">
 						<img src="images/Hotel in Bora Bora.jpg" alt="Image" class="img-fluid">
 						<img src="images/Lima.jpg" alt="Image" class="img-fluid">
 						<img src="images/Putrajaya, Malaysia.jpg" alt="Image" class="img-fluid">
@@ -341,34 +341,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-		$(function () {
-			var slides = $('.slides'),
-				images = slides.find('img');
-
-			images.each(function (i) {
-				$(this).attr('data-id', i + 1);
-			})
-
-			var typed = new Typed('.typed-words', {
-				strings: ["San Francisco.", " París.", " Nairobi. ", " Sidney. ", " Bora Bora. ", " Lima. ", " Putrajaya. "],
-				typeSpeed: 90,
-				backSpeed: 100,
-				backDelay: 2000,
-				startDelay: 1000,
-				loop: true,
-				showCursor: true,
-				preStringTyped: (arrayPos, self) => {
-					arrayPos++;
-					console.log(arrayPos);
-					$('.slides img').removeClass('active');
-					$('.slides img[data-id="' + arrayPos + '"]').addClass('active');
-				}
-
-			});
-		})
-	</script>
 
 	{{>footer}}
 
