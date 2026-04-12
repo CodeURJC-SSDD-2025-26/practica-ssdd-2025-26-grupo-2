@@ -1,18 +1,26 @@
 package com.ssdd.backend.service;
 
-import com.ssdd.backend.model.*;
-import com.ssdd.backend.repository.*;
-import jakarta.annotation.PostConstruct;
+import java.io.IOException;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.ssdd.backend.model.Image;
+import com.ssdd.backend.model.Reservation;
+import com.ssdd.backend.model.Review;
+import com.ssdd.backend.model.Travel;
+import com.ssdd.backend.model.User;
+import com.ssdd.backend.repository.ReservationRepository;
+import com.ssdd.backend.repository.ReviewRepository;
+import com.ssdd.backend.repository.TravelRepository;
+import com.ssdd.backend.repository.UserRepository;
 
-import java.io.IOException;
-import java.time.LocalDate;
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class DatabaseInitializer {
@@ -204,9 +212,11 @@ public class DatabaseInitializer {
             reservationRepository.save(reserva2);
 
             // 4. CREAR RESEÑAS
-            Review review1 = new Review(5, "Viaje increíble, todo muy bien organizado y el hotel espectacular.", user1);
-            Review review2 = new Review(4, "Muy buena experiencia. El transporte fue cómodo y puntual.", user2);
-            Review review3 = new Review(5, "Muy buena experiencia... y el itinerario perfecto.", user3); // Lucía (Texto recortado para la parte clara)
+            // 4. CREAR RESEÑAS (MODIFICADO)
+            // Añadimos el objeto 'viaje' como cuarto parámetro en el constructor
+            Review review1 = new Review(5, "Viaje increíble, todo muy bien organizado y el hotel espectacular.", user1, viaje1);
+            Review review2 = new Review(4, "Muy buena experiencia. El transporte fue cómodo y puntual.", user2, viaje2);
+            Review review3 = new Review(5, "Muy buena experiencia... y el itinerario perfecto.", user3, viaje1); 
 
             reviewRepository.save(review1);
             reviewRepository.save(review2);

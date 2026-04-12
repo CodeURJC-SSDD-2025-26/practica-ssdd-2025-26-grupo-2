@@ -1,5 +1,4 @@
-
-    <div class="site-footer">
+<div class="site-footer">
         <div class="inner first">
             <div class="container">
                 <div class="row">
@@ -20,18 +19,18 @@
                     <div class="col-md-8 col-lg-2 pl-lg-5">
                         <div class="widget">
                             <h3 class="heading">
-                                <a href="index.html">Inicio</a>
+                                <a href="/">Inicio</a>
                             </h3>
                             <ul class="links list-unstyled">
-                                <li><a href="signin.html">Registrarse</a></li>
-                                <li><a href="about.html">Sobre Nosotros</a></li>
+                                <li><a href="/signin">Registrarse</a></li>
+                                <li><a href="/about.html">Sobre Nosotros</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="widget">
                             <ul class="list-unstyled quick-info links">
-                                <li class="email"><a href="#">@info@byebye.com</a></li>
+                                <li class="email"><a href="mailto:info@byebye.com">info@byebye.com</a></li>
                                 <li class="phone"><a href="#">+34 123 456 789</a></li>
                                 <li class="address"><a href="#">Calle Tulipán, s/n, 28933 Móstoles, Madrid</a></li>
                             </ul>
@@ -40,7 +39,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="/js/jquery-3.4.1.min.js"></script>
@@ -53,11 +51,43 @@
     <script src="/js/aos.js"></script>
     <script src="/js/moment.min.js"></script>
     <script src="/js/daterangepicker.js"></script>
-
+    
     <script src="/js/typed.js"></script>
-
     <script src="/js/custom.js"></script>
 
-</body>
+    <script src="/js/typed.js"></script>
+    <script src="/js/custom.js"></script>
 
+    <script>
+    $(document).ready(function () {
+        console.log("Comprobando carga de scripts...");
+
+        // Solo ejecutamos si estamos en la página de inicio (donde existe .typed-words)
+        if ($('.typed-words').length > 0) {
+            console.log("Iniciando Typed.js");
+            
+            // Sincronizamos las imágenes con sus IDs
+            $('.slides img').each(function (i) {
+                $(this).attr('data-id', i + 1);
+            });
+
+            var typed = new Typed('.typed-words', {
+                strings: ["San Francisco.", " París.", " Nairobi.", " Sidney.", " Bora Bora.", " Lima.", " Putrajaya."],
+                typeSpeed: 90,
+                backSpeed: 100,
+                backDelay: 2000,
+                startDelay: 500,
+                loop: true,
+                showCursor: true,
+                preStringTyped: (arrayPos, self) => {
+                    var currentId = arrayPos + 1;
+                    $('.slides img').removeClass('active');
+                    $('.slides img[data-id="' + currentId + '"]').addClass('active');
+                }
+            });
+        }
+    });
+    </script>
+</body>
 </html>
+

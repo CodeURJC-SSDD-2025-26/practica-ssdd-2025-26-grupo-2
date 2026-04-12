@@ -1,9 +1,12 @@
 package com.ssdd.backend.repository;
 
-import com.ssdd.backend.model.Review;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ssdd.backend.model.Review; // IMPORTANTE: Asegúrate de tener este import
+
 public interface ReviewRepository extends JpaRepository<Review, Long> {
+    // Spring generará la consulta automáticamente al ver el nombre del método
+    List<Review> findByViajeId(Long viajeId);
 }

@@ -5,9 +5,11 @@ import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +18,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.InputStreamResource;
-import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.Image;
-import com.ssdd.backend.service.TravelService;
+import com.ssdd.backend.model.Travel;
+import com.ssdd.backend.repository.ReviewRepository;
 import com.ssdd.backend.service.ImageService;
+import com.ssdd.backend.service.TravelService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class TravelWebController {
@@ -33,6 +34,8 @@ public class TravelWebController {
 
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private ReviewRepository reviewRepository; 
 
     // Este método se ejecuta SIEMPRE antes de cargar cualquier página.
     // Es ideal para saber si hay que mostrar el botón de "Login" o el nombre del usuario.
@@ -57,16 +60,18 @@ public class TravelWebController {
     }
 
     // 2. Mostrar UN viaje en detalle
+    // 2. Mostrar UN viaje en detalle
     @GetMapping("/viajes/{id}")
     public String showTravel(Model model, @PathVariable long id) {
-        Optional<Travel> viaje = travelService.getTravelById(id);
-        if (viaje.isPresent()) {
-            model.addAttribute("viaje", viaje.get());
-            return "travel_page_ext"; 
-        } else {
-            return "redirect:/"; 
-        }
+    Optional<Travel> viaje = travelService.getTravelById(id);
+    if (viaje.isPresent()) {
+        model.addAttribute("viaje", viaje.get());
+        // TRAEMOS SOLO LAS RESEÑAS DE ESTE VIAJE
+        model.addAttribute("reviews", reviewRepository.findByViajeId(id)); 
+        return "travel_page_ext";
     }
+    return "redirect:/";
+}
 
     // 3. Borrar un viaje
     @PostMapping("/borrarviaje/{id}")

@@ -36,19 +36,22 @@ public class WebSecurityConfig {
         http
             .authorizeHttpRequests(authorize -> authorize
                 // Public pages
-                .requestMatchers("/", "/index", "/about", "/signin", "/contact").permitAll()
+                .requestMatchers("/", "/index", "/signin", "/about", "/contact", "/viajes").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
                 .requestMatchers("/error403.html", "/error404.html").permitAll()
+                
 
                 // Admin pages
                 .requestMatchers("/admin.html", "/admin/**", "/graphJourney.html", "/graphUser.html", "/journeyManagement.html", 
                          "/userManagement.html", "/addJourney.html").hasRole("ADMIN") 
 
                 // Logged users
-                .requestMatchers("/userProfile.html", "/profile/**","/profile").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/userProfile.html", "/profile/**", "/profile").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/reservations/**").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/travels/*/reserve").hasAnyRole("USER", "ADMIN")
-                
+
+                .requestMatchers("/reviews/new").hasAnyRole("USER", "ADMIN") 
+                .requestMatchers("/reviews").permitAll()
 
                 .anyRequest().permitAll()
             )
@@ -71,6 +74,7 @@ public class WebSecurityConfig {
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/error403.html")
             );
+
 
         return http.build();
     }
