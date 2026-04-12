@@ -45,8 +45,9 @@ public class WebSecurityConfig {
                          "/UserManagement.html", "/addJourney.html").hasRole("ADMIN") 
 
                 // Logged users
-                .requestMatchers("/userProfile.html", "/profile/**").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/reservation/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/userProfile.html", "/profile/**","/profile").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/reservations/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/travels/*/reserve").hasAnyRole("USER", "ADMIN")
                 
 
                 .anyRequest().permitAll()
