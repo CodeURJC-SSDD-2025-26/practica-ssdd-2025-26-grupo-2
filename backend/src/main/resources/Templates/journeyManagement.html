@@ -1,4 +1,3 @@
-
 {{>header}}
 
     <div class="hero hero-inner">
@@ -12,8 +11,8 @@
             </div>
         </div>
     </div>
-    </div>
     <br>
+    
     <div class="col-11-5 mx-auto mb-5">
         <br>
         <div class="row align-items-center gap-3 ">
@@ -21,7 +20,7 @@
                 <i class="bi bi-search"></i>
                 <input type="text" id="buscadorUsuario" placeholder="Buscar viaje por nombre...">
             </div>
-            <a href="addJourney.html" class="btn btn-primary mx-3">Añadir viaje</a>
+            <a href="/nuevoviaje" class="btn btn-primary mx-3">Añadir viaje</a>
         </div>
 
         <table class="tabla-admin">
@@ -40,206 +39,47 @@
                 </tr>
             </thead>
             <tbody>
+                
+                {{#viajes}}
                 <tr>
-                    <td>San Francisco</td>
-                    <td>Estados Unidos</td>
-                    <td class="col-prize">1250.00€</td>
-                    <td>Avión</td>
-                    <td>Hotel</td>
-                    <td class="col-prize">2</td>
-                    <td>01/09/2026</td>
-                    <td>15/09/2026</td>
+                    <td>{{nombre}}</td>
+                    <td>{{pais}}</td>
+                    <td class="col-prize">{{precio}}€</td>
+                    <td>{{transporte}}</td>
+                    <td>{{alojamiento}}</td>
+                    <td class="col-prize">{{maxPlazas}}</td>
+                    <td>{{fechaInicio}}</td>
+                    <td>{{fechaFin}}</td>
                     <td class="col-file">
                         <div class="userImage">
-                            <img src="images/hero-slider-1.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                            
+                            {{#tieneImagen}}
+                                <img src="/viajes/{{id}}/imagen" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                            {{/tieneImagen}}
+                            
+                            {{^tieneImagen}}
+                                <img src="/images/hero-slider-1.jpg" alt="Image default" class="rounded-circle img-thumbnail mb-3">
+                            {{/tieneImagen}}
+                            
                         </div>
                     </td>
                     <td>
                         <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Paris</td>
-                    <td>Francia</td>
-                    <td class="col-prize">300.00€</td>
-                    <td>Tren</td>
-                    <td>Hotel</td>
-                    <td class="col-prize">3</td>
-                    <td>05/11/2026</td>
-                    <td>10/11/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/hero-slider-2.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
+                            
+                            <form action="/borrarviaje/{{id}}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este viaje de la base de datos?');">
+                                <button type="submit" class="btn btn-rm">Eliminar</button>
+                            </form>
+                            
+                            <a href="/editarviaje/{{id}}" class="btn btn-primary btn-update">Actualizar</a>
+                            
                             <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>Putrajaya</td>
-                    <td>Malasia</td>
-                    <td class="col-prize">750.00€</td>
-                    <td>Avión</td>
-                    <td>Resort</td>
-                    <td class="col-prize">2</td>
-                    <td>02/04/2026</td>
-                    <td>12/04/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/Putrajaya, Malaysia.jpg" alt="Image"
-                                class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Bora Bora</td>
-                    <td>Polinesia Francesa</td>
-                    <td class="col-prize">520.00€</td>
-                    <td>Avión</td>
-                    <td>Bungalow</td>
-                    <td class="col-prize">2</td>
-                    <td>17/05/2026</td>
-                    <td>29/05/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/Hotel in Bora Bora.jpg" alt="Image"
-                                class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nairobi</td>
-                    <td>Kenia</td>
-                    <td class="col-prize">760.00€</td>
-                    <td>Avión</td>
-                    <td>Hotel</td>
-                    <td class="col-prize">2</td>
-                    <td>10/07/2026</td>
-                    <td>30/07/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/Viaje_kenia.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Sidney</td>
-                    <td>Australia</td>
-                    <td class="col-prize">820.00€</td>
-                    <td>Avión</td>
-                    <td>Hotel</td>
-                    <td class="col-prize">1</td>
-                    <td>11/11/2026</td>
-                    <td>02/12/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/Sidney_viaje.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Machu Picchu</td>
-                    <td>Perú</td>
-                    <td class="col-prize">955.00€</td>
-                    <td>Avión</td>
-                    <td>Apartamento</td>
-                    <td class="col-prize">2</td>
-                    <td>01/12/2026</td>
-                    <td>26/12/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/Machu Picchu, Peru.jpg" alt="Image"
-                                class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Bergen</td>
-                    <td>Noruega</td>
-                    <td class="col-prize">568.00€</td>
-                    <td>Crucero</td>
-                    <td>Apartamento</td>
-                    <td class="col-prize">3</td>
-                    <td>12/09/2026</td>
-                    <td>25/09/2026</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            <img src="images/bergen.jpg" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            <button class="btn btn-rm">Eliminar</button>
-                            <a href="addJourney.html" class="btn btn-primary btn-update">Actualizar</a>
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-
+                {{/viajes}}
+                
             </tbody>
         </table>
-
     </div>
-
-    <script>
-        document.addEventListener("click", function (e) {
-            if (e.target.classList.contains("btn-rm")) {
-
-                const confirmDelete = confirm("¿Estás seguro de que quieres eliminar esta fila?");
-                if (!confirmDelete) return;
-                const motivo = prompt("Indique el motivo de la eliminación:");
-                if (motivo === null || motivo.trim() === "") {
-                    alert("Debe indicar un motivo para eliminar.");
-                    return;
-                }
-                e.target.closest("tr").remove();
-            }
-        });
-    </script>
 
 {{>footer}}

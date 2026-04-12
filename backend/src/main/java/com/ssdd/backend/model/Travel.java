@@ -2,6 +2,7 @@ package com.ssdd.backend.model;
 
 import java.time.LocalDate;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "travels")
@@ -34,6 +35,10 @@ public class Travel {
     @OneToOne
     private Image imagen;
 
+
+    @OneToMany(mappedBy = "viaje", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservas;
+    
     public Travel() {
     }
 
