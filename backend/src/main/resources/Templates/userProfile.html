@@ -1,146 +1,163 @@
-
 {{>header}}
 
-    <div class="hero hero-inner">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mx-auto text-center">
-                    <div class="intro-wrap">
-                        <h1 class="mb-0">Perfil</h1>
-                    </div>
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Mi Perfil</h1>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+
+        <div class="col-lg-5 mb-4t">
+
+            <div class="text-center">
+                <h2 class="section-title mb-4 text-center"><b>Modifica tus datos</b></h2>
+            </div>
+            {{#error}}
+                <div class="alert alert-danger text-center">{{error}}</div>
+            {{/error}}            
+            <form action="/update_image" method="post" enctype="multipart/form-data"
+                class="contact-form bg-white p-4 shadow-sm border rounded">
+                <input type="hidden" name="_csrf" value="{{token}}">
+                <div class="d-flex flex-column align-items-center mb-4">
+                    {{#user.imagenPerfil}}
+                    <img src="/usuario/imagen" class="rounded-circle img-thumbnail profile-img2 mb-3">
+                    {{/user.imagenPerfil}}
+
+                    {{^user.imagenPerfil}}
+                    <img src="/images/default_profile.jpg" class="rounded-circle img-thumbnail profile-img2 mb-3">
+                    {{/user.imagenPerfil}}
+                    <input type="file" name="image" id="inputFotoPerfil" accept="image/png, image/jpeg" class="d-none">
+                    <label for="inputFotoPerfil" class="btn btn-primary">Cambiar foto de perfil</label>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="text-black" for="login-email">Dirección de correo</label>
+                    <input name="email" type="email" class="form-control" id="login-email">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="text-black" for="login-password">Contraseña actual</label>
+                    <input name="password" type="password" class="form-control" id="login-password">
+                    <div class="text-right mt-2">
+                        <a href="#" data-toggle="modal" data-target="#modalContrasena">He olvidado mi contraseña</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
+            </form>
+        </div>
+
+
+        <div class="col-lg-5 mb-4 ">
+            <div class="text-center">
+                <h2 class="section-title text-center mb-4"><b>Añade tu método de pago</b></h2>
+            </div>
+            <form class="bg-white p-4 shadow-sm border rounded">
+
+                <div class="form-group mb-3">
+                    <label for="cardNumber">Número de tarjeta</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456"
+                        maxlength="19">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="cardName">Nombre del titular</label>
+                    <input type="text" class="form-control" id="cardName"
+                        placeholder="Nombre que aparece en la tarjeta">
+                </div>
+
+                <div class="form-row mb-4">
+                    <div class="col form-group mb-0">
+                        <label for="cardExpiry">Fecha de expiración</label>
+                        <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="col form-group mb-0">
+                        <label for="cardCVV">CVV</label>
+                        <input type="password" class="form-control" id="cardCVV" placeholder="•••" maxlength="4">
+                    </div>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="saveDefault">
+                    <label class="form-check-label" for="saveDefault">Guardar como método predeterminado</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
+            </form>
+        </div>
+
     </div>
+</div>
 
-    <div class="container py-5">
-        <div class="row justify-content-center">
+<div class="container py-5">
+    <h2 class="section-title text-center mb-4"><b>Tus reservas</b></h2>
 
+    <div class="bg-white p-4 shadow-sm border rounded">
+        <ul class="list-group list-group-flush" id="lista-reservas">
 
-            <div class="col-lg-5 mb-4t">
-                <div class="text-center">
-                    <h2 class="section-title mb-4 text-center"><b>Modifica tus datos</b></h2>
+            {{#reservations}}
+            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                <div>
+                    <p class="mb-1 fw-bold">{{viaje.nombre}} - {{viaje.pais}}</p>
+                    <small>
+                        Personas: {{numeroPersonas}} |
+                        Fecha reserva: {{fechaReserva}} |
+                        Estado: {{estado}} |
+                        Total: {{precioTotal}} €
+                    </small>
                 </div>
-                <form class="contact-form bg-white p-4 shadow-sm border rounded">
 
-                    <div class="d-flex flex-column align-items-center mb-4">
-                        <img src="images/profile_image.png" alt="Perfil"
-                            class="rounded-circle img-thumbnail profile-img2 mb-3">
-                        <input type="file" id="inputFotoPerfil" accept="image/png, image/jpeg"  class="d-none">
-                        <label for="inputFotoPerfil" class="btn btn-primary">Cambiar foto de perfil</label>
-                    </div>
+                <div>
+                    <a href="/reservations/{{id}}" class="btn btn-adv">Visualizar detalles</a>
+                    <a href="/reservations/{{id}}/edit" class="btn btn-primary">Editar</a>
 
-                    <div class="form-group mb-3">
-                        <label class="text-black" for="login-email">Dirección de correo</label>
-                        <input type="email" class="form-control" id="login-email">
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <label class="text-black" for="login-password">Contraseña actual</label>
-                        <input type="password" class="form-control" id="login-password">
-                        <div class="text-right mt-2">
-                            <a href="#" data-toggle="modal" data-target="#modalContrasena">He olvidado mi contraseña</a>
-                        </div>
-                    </div>
-
-                    <div class="form-group mb-2">
-                        <label class="text-black" for="login-password-new">Contraseña nueva</label>
-                        <input type="password" class="form-control" id="login-password-new">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
-                </form>
-            </div>
-
-
-            <div class="col-lg-5 mb-4 ">
-                <div class="text-center">
-                    <h2 class="section-title text-center mb-4"><b>Añade tu método de pago</b></h2>
+                    <form action="/reservations/{{id}}/cancel" method="post" style="display:inline;"
+                        onsubmit="return confirm('¿Seguro que quieres cancelar esta reserva?');">
+                        <input type="hidden" name="_csrf" value="{{token}}">
+                        <button type="submit" class="btn btn-rm">Cancelar</button>
+                    </form>
                 </div>
-                <form class="bg-white p-4 shadow-sm border rounded">
+            </li>
+            {{/reservations}}
 
-                    <div class="form-group mb-3">
-                        <label for="cardNumber">Número de tarjeta</label>
-                        <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456"
-                            maxlength="19">
-                    </div>
+            {{^reservations}}
+            <li class="list-group-item py-3 text-center">
+                No tienes reservas todavía.
+            </li>
+            {{/reservations}}
 
-                    <div class="form-group mb-3">
-                        <label for="cardName">Nombre del titular</label>
-                        <input type="text" class="form-control" id="cardName"
-                            placeholder="Nombre que aparece en la tarjeta">
-                    </div>
+        </ul>
+    </div>
+</div>
 
-                    <div class="form-row mb-4">
-                        <div class="col form-group mb-0">
-                            <label for="cardExpiry">Fecha de expiración</label>
-                            <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" maxlength="5">
-                        </div>
-                        <div class="col form-group mb-0">
-                            <label for="cardCVV">CVV</label>
-                            <input type="password" class="form-control" id="cardCVV" placeholder="•••" maxlength="4">
-                        </div>
-                    </div>
-
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="saveDefault">
-                        <label class="form-check-label" for="saveDefault">Guardar como método predeterminado</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
-                </form>
+<div class="modal fade" id="modalContrasena" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Recuperar contraseña</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-
+            <div class="modal-body">
+                <p>Introduce tu correo electrónico y te enviaremos un enlace para recuperar tu contraseña.</p>
+                <input type="email" class="form-control" placeholder="Tu correo electrónico">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-rm" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
         </div>
     </div>
-
-    <div class="container py-5">
-        <h2 class="section-title text-center mb-4"><b>Tus reservas</b></h2>
-
-        <div class="bg-white p-4 shadow-sm border rounded">
-            <ul class="list-group list-group-flush" id="lista-reservas">
-
-                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                    <p class="mb-0 fw-bold">Reserva ejemplo 1</p>
-                    <div>
-                        <button class="btn btn-adv">Visualizar detalles</button>
-                        <button class="btn btn-primary">Imprimir recibo</button>
-                        <button class="btn btn-rm">Cancelar</button>
-                    </div>
-                </li>
-
-                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                    <p class="mb-0 fw-bold">Reserva ejemplo 2</p>
-                    <div>
-                        <button class="btn btn-adv">Visualizar detalles</button>
-                        <button class="btn btn-primary">Imprimir recibo</button>
-                        <button class="btn btn-rm">Cancelar</button>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalContrasena" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Recuperar contraseña</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <p>Introduce tu correo electrónico y te enviaremos un enlace para recuperar tu contraseña.</p>
-                    <input type="email" class="form-control" placeholder="Tu correo electrónico">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-rm" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
 
 {{>footer}}

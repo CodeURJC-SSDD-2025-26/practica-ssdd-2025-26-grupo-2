@@ -1,9 +1,12 @@
 package com.ssdd.backend.repository;
 
-import com.ssdd.backend.model.Reservation;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ssdd.backend.model.Reservation;
+import com.ssdd.backend.model.User;
+
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+    List<Reservation> findByUsuario(User usuario);
 }

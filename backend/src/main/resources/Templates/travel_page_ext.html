@@ -93,11 +93,14 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="paymentForm">
+        <form id="paymentForm" action="/travels/{{id}}/reserve" method="post">
+          <input type="hidden" name="_csrf" value="{{token}}">
+          <input type="hidden" name="numeroPersonas" id="hiddenNumeroPersonas" value="1">
+
           <div class="form-group">
             <label for="cardNumber">Número de tarjeta</label>
             <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456"
-              pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" maxlength="19" required>
+              pattern="[0-9 ]{19}" maxlength="19" required>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -107,8 +110,8 @@
             </div>
             <div class="form-group col-md-6">
               <label for="cvv">CVV</label>
-              <input type="password" id="cvv" class="form-control" placeholder="123" pattern="[0-9]{3}" maxlength="3"
-                required>
+              <input type="password" id="cvv" class="form-control" placeholder="123" 
+                pattern="[0-9]{3}" maxlength="3" required>
             </div>
           </div>
         </form>
@@ -117,7 +120,7 @@
         <button type="button" class="btn btn-rm" data-dismiss="modal">Cancelar</button>
         <div class="ml-auto d-flex flex-column">
           <button type="submit" form="paymentForm" class="btn btn-primary mb-2">Confirmar</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">Pagar con tarjeta guardada</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Pagar con tarjeta guardada</button>
         </div>
       </div>
     </div>
@@ -162,6 +165,10 @@
 </div>
 
 <script>
+  document.getElementById("select").addEventListener("change", function () {
+    document.getElementById("hiddenNumeroPersonas").value = this.value;
+  });
+  
   document.getElementById("btnConfirmar")?.addEventListener("click", function () {
     $('#modalPago').modal('hide');
   });

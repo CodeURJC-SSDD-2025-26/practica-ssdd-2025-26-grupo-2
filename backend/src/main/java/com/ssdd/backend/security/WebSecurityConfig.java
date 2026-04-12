@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 public class WebSecurityConfig {
     @Autowired
@@ -35,28 +36,36 @@ public class WebSecurityConfig {
         http
             .authorizeHttpRequests(authorize -> authorize
                 // Public pages
-                .requestMatchers("/", "/index", "/login", "/signup").permitAll()
+                .requestMatchers("/", "/index", "/about", "/signin", "/contact").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
                 .requestMatchers("/error403.html", "/error404.html").permitAll()
 
                 // Admin pages
-                .requestMatchers("/admin.html", "/admin/**").hasRole("ADMIN")
+                .requestMatchers("/admin.html", "/admin/**", "/graphJourney.html", "/graphUser.html", "/journeyManagement.html", 
+                         "/UserManagement.html", "/addJourney.html").hasRole("ADMIN") 
 
                 // Logged users
-                .requestMatchers("/userProfile.html", "/profile/**").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/reservation/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/userProfile.html", "/profile/**","/profile").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/reservations/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/travels/*/reserve").hasAnyRole("USER", "ADMIN")
+                
 
                 .anyRequest().permitAll()
             )
             .formLogin(form -> form
-                .loginPage("/login")
-                .failureUrl("/loginerror")
+                .loginPage("/signin")
+                .loginProcessingUrl("/signin")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .failureUrl("/loginFailure")
                 .defaultSuccessUrl("/", true)
                 .permitAll()
             )
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)     
+                .deleteCookies("JSESSIONID")     
                 .permitAll()
             )
             .exceptionHandling(exception -> exception

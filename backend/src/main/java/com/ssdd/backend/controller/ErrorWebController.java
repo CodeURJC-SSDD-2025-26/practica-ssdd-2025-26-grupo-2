@@ -16,4 +16,9 @@ public class ErrorWebController {
     public String show403Page() {
         return "error/403";
     }
+
+    @GetMapping("/loginFailure")
+    public String showLoginFailurePage() {
+        return "error/loginFailure";
+    }
 }

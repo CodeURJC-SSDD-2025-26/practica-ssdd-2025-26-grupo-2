@@ -8,6 +8,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -30,6 +32,9 @@ public class DatabaseInitializer {
     @Autowired
     private ImageService imageService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostConstruct
     @Transactional // <-- AÑADIDO PARA EVITAR ERRORES DE SESIÓN/RELACIONES
     public void init() throws IOException {
@@ -37,16 +42,16 @@ public class DatabaseInitializer {
         if (userRepository.count() == 0) {
 
             // 1. CREAR USUARIOS
-            User admin = new User("Admin", "admin@byebye.com", "admin123", "ADMIN");
-            User user1 = new User("Carla Llorente", "carla@gmail.com", "pass123", "USER");
-            User user2 = new User("Lucas Torres", "lucas@gmail.com", "pass123", "USER");
-            User user3 = new User("Lucía Gómez", "lucia@gmail.com", "pass123", "USER");
+            User admin = new User("Admin", "admin@byebye.com", passwordEncoder.encode("admin123"), "ADMIN");
+            User user1 = new User("Carla Llorente", "carla@gmail.com",  passwordEncoder.encode("pass123"), "USER");
+            User user2 = new User("Lucas Torres", "lucas@gmail.com",  passwordEncoder.encode("pass123"), "USER");
+            User user3 = new User("Lucía Gómez", "lucia@gmail.com",  passwordEncoder.encode("pass123"), "USER");
             try {
                
-                setUserImage(admin, "/sample_images/profile_image.png");
-                setUserImage(user1, "/sample_images/profile_image.png");
-                setUserImage(user2, "/sample_images/profile_image.png");
-                setUserImage(user3, "/sample_images/profile_image.png");
+                setUserImage(admin, "/sample_images/person_4.jpg");
+                setUserImage(user1, "/sample_images/default_profile.jpg");
+                setUserImage(user2, "/sample_images/person_3.jpg");
+                setUserImage(user3, "/sample_images/person_2.jpg");
             } catch (Exception e) {
                 System.out.println("Aviso: No se encontraron algunas imágenes de perfil. Se crearán sin foto.");
             }

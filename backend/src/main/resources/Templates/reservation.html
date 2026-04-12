@@ -1,0 +1,52 @@
+{{>header}}
+
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Detalle de la reserva</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="bg-white p-4 shadow-sm border rounded">
+
+                <h2 class="section-title mb-4 text-center"><b>Información de tu reserva</b></h2>
+
+                <div class="mb-3">
+                    <p><b>Viaje:</b> {{reservation.viaje.nombre}}</p>
+                    <p><b>País:</b> {{reservation.viaje.pais}}</p>
+                    <p><b>Descripción:</b> {{reservation.viaje.descripcion}}</p>
+                    <p><b>Transporte:</b> {{reservation.viaje.transporte}}</p>
+                    <p><b>Alojamiento:</b> {{reservation.viaje.alojamiento}}</p>
+                    <p><b>Fecha de inicio:</b> {{reservation.viaje.fechaInicio}}</p>
+                    <p><b>Fecha de fin:</b> {{reservation.viaje.fechaFin}}</p>
+                    <p><b>Número de personas:</b> {{reservation.numeroPersonas}}</p>
+                    <p><b>Fecha de la reserva:</b> {{reservation.fechaReserva}}</p>
+                    <p><b>Precio total:</b> {{reservation.precioTotal}} €</p>
+                    <p><b>Estado:</b> {{reservation.estado}}</p>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="/userProfile.html" class="btn btn-primary">Volver al perfil</a>
+                    <a href="/reservations/{{reservation.id}}/edit" class="btn btn-adv">Editar reserva</a>
+
+                    <form action="/reservations/{{reservation.id}}/cancel" method="post" style="display:inline;"
+                        onsubmit="return confirm('¿Seguro que quieres cancelar esta reserva?');">
+                        <input type="hidden" name="_csrf" value="{{token}}">
+                        <button type="submit" class="btn btn-rm">Cancelar reserva</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>footer}}
