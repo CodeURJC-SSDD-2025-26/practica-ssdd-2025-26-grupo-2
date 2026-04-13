@@ -7,23 +7,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.InputStreamResource;
+
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.model.Image;
 import com.ssdd.backend.service.UserService;
@@ -31,59 +29,69 @@ import com.ssdd.backend.service.ImageService;
 
 @Controller
 public class UserImageController {
-	@Autowired
-	private UserService userService;
 
-	@Autowired
-	private ImageService imageService;
-	private final List<String> ALLOWED_EXTENSIONS = Arrays.asList("image/jpeg", "image/png", "image/jpg");
+    @Autowired
+    private UserService userService;
 
-	@GetMapping("/usuario/imagen/{id}")
-	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
-		Optional<User> user = userService.findById(id);
+    @Autowired
+    private ImageService imageService;
 
-		if (user.isPresent() && user.get().getImagenPerfil() != null) {
-			Image imagen = user.get().getImagenPerfil();
-			Resource file = new InputStreamResource(imagen.getImageFile().getBinaryStream());
+    private final List<String> ALLOWED_EXTENSIONS = Arrays.asList("image/jpeg", "image/png", "image/jpg");
 
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(imagen.getImageFile().length())
-					.body(file);
-		}
-		return ResponseEntity.notFound().build();
-	}
+    // MODIFICADO: URL cambiada para que coincida con el index.html
+    @GetMapping("/usuario/{id}/imagen")
+    public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+        
+        Optional<User> user = userService.findById(id);
 
-	@PostMapping("/update_image")
-	public String updateImage(
-			@RequestParam String email,
-			@RequestParam String password,
-			@RequestParam MultipartFile image,
-			Principal principal,
-			Model model) throws IOException, SQLException {
+        if (user.isPresent() && user.get().getImagenPerfil() != null) {
+            Image imagen = user.get().getImagenPerfil();
+            
+            // Convertimos el contenido del Blob en un recurso que Spring pueda enviar
+            Resource file = new InputStreamResource(imagen.getImageFile().getBinaryStream());
 
-		// buscamos el usuario por el correo de la sesion no el introducido para evitar
-		// procesar datos incorrectos
-		String currentEmail = principal.getName();
-		User user = userService.findByEmail(currentEmail).orElseThrow();
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_JPEG) // Esto le dice al navegador que es una imagen
+                    .contentLength(imagen.getImageFile().length())
+                    .body(file);
+        }
+        
+        return ResponseEntity.notFound().build();
+    }
 
-		if (!userService.checkPassword(user, password)) {
-			model.addAttribute("error", "La contraseña actual no es correcta.");
-			return "userProfile";
-		}
+    @PostMapping("/update_image")
+    public String updateImage(
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam MultipartFile image,
+            Principal principal,
+            Model model) throws IOException, SQLException {
 
-		if (!image.isEmpty()) {
-			String contentType = image.getContentType();
-			if (contentType == null || !ALLOWED_EXTENSIONS.contains(contentType.toLowerCase())) {
-				model.addAttribute("error", "Solo se permiten imágenes JPG o PNG.");
-				return "userProfile";
-			}
-			Image nuevaImagen = imageService.createImage(image.getInputStream());
-			user.setImagenPerfil(nuevaImagen);
-		}
+        // Buscamos el usuario por el correo de la sesión (Seguridad)
+        String currentEmail = principal.getName();
+        User user = userService.findByEmail(currentEmail).orElseThrow();
 
-		userService.save(user);
+        // Verificamos contraseña antes de dejar cambiar la foto
+        if (!userService.checkPassword(user, password)) {
+            model.addAttribute("error", "La contraseña actual no es correcta.");
+            return "userProfile";
+        }
 
-		return "userProfile";
-	}
+        if (!image.isEmpty()) {
+            String contentType = image.getContentType();
+            if (contentType == null || !ALLOWED_EXTENSIONS.contains(contentType.toLowerCase())) {
+                model.addAttribute("error", "Solo se permiten imágenes JPG o PNG.");
+                return "userProfile";
+            }
+            
+            // Creamos la imagen en la base de datos y la vinculamos al usuario
+            Image nuevaImagen = imageService.createImage(image.getInputStream());
+            user.setImagenPerfil(nuevaImagen);
+        }
+
+        userService.save(user);
+
+        // Redirigimos al perfil para que se vean los cambios
+        return "redirect:/userProfile.html"; 
+    }
 }

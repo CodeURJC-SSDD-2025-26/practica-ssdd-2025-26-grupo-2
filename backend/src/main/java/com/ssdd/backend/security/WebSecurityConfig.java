@@ -39,6 +39,8 @@ public class WebSecurityConfig {
                 .requestMatchers("/", "/index", "/signin", "/about", "/contact", "/viajes", "/contact.html").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
                 .requestMatchers("/error403.html", "/error404.html").permitAll()
+                .requestMatchers("/", "/index", "/js/**", "/css/**", "/images/**", "/usuario/*/imagen").permitAll() 
+
                 
 
                 // Admin pages

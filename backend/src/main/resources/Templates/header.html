@@ -64,14 +64,27 @@
                     <li class="profile-dropdown">
                         <details>
                             <summary class="profile-summary">
-                                {{#user.imagenPerfil}}
-                                <img src="/usuario/imagen/{{id}}"
-                                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
-                                {{/user.imagenPerfil}}
-                                {{^imagenPerfil}}
-                                <img src="/images/default_profile.jpg" alt="Perfil"
-                                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
-                                {{/imagenPerfil}}
+                                {{#logged}}
+                                    {{#user.id}}
+                                        <img src="/usuario/{{user.id}}/imagen" alt="Perfil"
+                                            class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
+                                            style="width: 40px !important; height: 40px !important; object-fit: cover;">
+                                    {{/user.id}}
+                                    
+                                    {{^user.id}}
+                                        <img src="/images/default_profile.jpg" alt="Perfil"
+                                            class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
+                                            style="width: 40px !important; height: 40px !important; object-fit: cover;">
+                                    {{/user.id}}
+                                {{/logged}}
+
+                                {{^logged}}
+                                    <img src="/images/profile_image.png" alt="Invitado"
+                                        class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
+                                        style="width: 40px !important; height: 40px !important; object-fit: cover;">
+                                {{/logged}}
+                                
+                                <span class="d-block d-xl-none mobile-profile-text">Perfil usuario</span>
                             </summary>
 
                             <ul class="profile-menu">
@@ -79,7 +92,7 @@
                                 <li class="profile-divider"></li>
 
                                 {{#logged}}
-                                <li><a href="/userProfile" class="profile-link">Mi perfil</a></li>
+                                <li><a href="/userProfile.html" class="profile-link">Mi perfil</a></li>
                                 <li class="profile-divider"></li>
                                 <li>
                                     <form action="/logout" method="post" id="logoutForm" style="display: none;">

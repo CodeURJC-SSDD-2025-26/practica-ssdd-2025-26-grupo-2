@@ -170,14 +170,15 @@
 					<div class="testimonial mx-auto">
 						<figure class="img-wrap">
 							{{#autor.imagenPerfil}}
-							<img src="/usuario/{{autor.id}}"
-								class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
-								alt="Foto de {{autor.nombre}}">
+								<img src="/usuario/{{autor.id}}/imagen" 
+									class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
+									style="width: 80px; height: 80px; object-fit: cover;"
+									alt="Foto de {{autor.nombre}}">
 							{{/autor.imagenPerfil}}
 
 							{{^autor.imagenPerfil}}
-							<img src="/images/default_profile.jpg" alt="Perfil"
-								class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+								<img src="/images/default_profile.jpg" alt="Perfil por defecto"
+									class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
 							{{/autor.imagenPerfil}}
 						</figure>
 						<h3 class="name">{{autor.nombre}}</h3>
