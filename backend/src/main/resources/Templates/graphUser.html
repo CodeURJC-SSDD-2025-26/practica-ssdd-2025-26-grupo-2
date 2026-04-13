@@ -1,25 +1,80 @@
 {{>header}}
 
-    <div class="hero hero-inner">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mx-auto text-center">
-                    <div class="intro-wrap">
-                        <h1 class="mb-0">Gráficos del usuario</h1>
-                    </div>
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Gráficos del usuario</h1>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container p-4">
-        <div class="row justify-content-center">
-            <img src="images/graphMoneyUser.png">
-            <img src="images/graphJourneysUser.png">
-            <img src="images/graphVisitsUser.png">
-        </div>
+</div>
 
-    </div>
+<div class="container py-5">
+    <h2 class="text-center mb-4">Gasto total por mes</h2>
+    <canvas id="chartGastos" height="100"></canvas>
+
+    <h2 class="text-center mt-5 mb-4">Reservas por mes</h2>
+    <canvas id="chartReservas" height="100"></canvas>
+
+    <h2 class="text-center mt-5 mb-4">Países con más reservas</h2>
+    <canvas id="chartPaises" height="100"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch('/api/graphs/user')
+        .then(r => r.json())
+        .then(data => {
+            new Chart(document.getElementById('chartGastos'), {
+                type: 'bar',
+                data: {
+                    labels: data.meses,
+                    datasets: [{
+                        label: 'Gasto total (€)',
+                        data: data.gastos,
+                        backgroundColor: '#1a3c5e'
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+
+            new Chart(document.getElementById('chartReservas'), {
+                type: 'bar',
+                data: {
+                    labels: data.meses,
+                    datasets: [{
+                        label: 'Número de reservas',
+                        data: data.numReservas,
+                        backgroundColor: '#1a3c5e'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('chartPaises'), {
+                type: 'bar',
+                data: {
+                    labels: data.paisesLabels,
+                    datasets: [{
+                        label: 'Número de reservas',
+                        data: data.paisesData,
+                        backgroundColor: '#1a3c5e'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+        });
+</script>
 
 {{>footer}}
-
- 

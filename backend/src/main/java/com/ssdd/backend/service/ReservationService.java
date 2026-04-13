@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssdd.backend.model.Reservation;
+import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.ReservationRepository;
 
@@ -30,5 +31,13 @@ public class ReservationService {
 
     public void deleteById(Long id) {
         reservationRepository.deleteById(id);
+    }
+
+    public List<Reservation> findAll() {
+        return reservationRepository.findAll();
+    }
+
+    public List<Reservation> findByViaje(Travel travel) {
+        return reservationRepository.findByViaje(travel);
     }
 }

@@ -10,4 +10,14 @@ public class AdminController {
 		return "admin";
 	}
     
+	@GetMapping("/graphJourney.html")
+    public String graphJourney() {
+        return "graphJourney";
+    }
+
+    @GetMapping("/graphUser.html")
+    public String graphUser() {
+        return "graphUser";
+    }
+	
 }
