@@ -26,6 +26,10 @@ import com.ssdd.backend.service.TravelService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+import java.util.Base64;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 @Controller
 public class TravelWebController {
 
@@ -37,8 +41,6 @@ public class TravelWebController {
     @Autowired
     private ReviewRepository reviewRepository; 
 
-    // Este método se ejecuta SIEMPRE antes de cargar cualquier página.
-    // Es ideal para saber si hay que mostrar el botón de "Login" o el nombre del usuario.
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -47,9 +49,7 @@ public class TravelWebController {
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
-        } else {
-            model.addAttribute("logged", false);
-        }
+        } 
     }
 
     // 1. Mostrar TODOS los viajes 
@@ -81,7 +81,7 @@ public class TravelWebController {
             // Si la entidad tiene imagen, quizás quieras borrarla del ImageService primero
             travelService.delete(id); 
         }
-        return "redirect:/"; 
+        return "redirect:/journeyManagement"; 
     }
 
     // 4. Mostrar el formulario para crear un viaje nuevo
@@ -90,21 +90,34 @@ public class TravelWebController {
         return "addJourney"; // El HTML con el formulario vacío
     }
 
-    // 5. Recibir y guardar los datos del nuevo viaje
-    @PostMapping("/nuevoviaje")
-    public String newTravelProcess(Model model, Travel viaje, MultipartFile imageField) throws IOException {
+
+
+// ... (tus otros imports)
+
+@PostMapping("/nuevoviaje")
+public String newTravelProcess(Travel viaje, @org.springframework.web.bind.annotation.RequestParam(value = "imagenOculta", required = false) String imagenOculta) throws IOException {
+    
+    if (imagenOculta != null && !imagenOculta.isEmpty()) {
+        // 1. Extraemos solo la parte del código (quitando el encabezado "data:image...")
+        String base64Data = imagenOculta.split(",")[1];
         
-        // Si han subido una foto, la guardamos y se la asignamos al viaje
-        if (!imageField.isEmpty()) {
-            Image image = imageService.createImage(imageField.getInputStream());
-            viaje.setImagen(image);
-        }
-
-        travelService.save(viaje);
-
-        // Redirigimos a la página de detalle del viaje recién creado
-        return "redirect:/viajes/" + viaje.getId();
+        // 2. Decodificamos el texto a bytes
+        byte[] decodedBytes = Base64.getDecoder().decode(base64Data);
+        
+        // 3. Lo convertimos en un chorro de datos (InputStream)
+        InputStream inputStream = new ByteArrayInputStream(decodedBytes);
+        
+        // 4. ¡Aquí usamos TU ImageService! 
+        // Tu método createImage probablemente ya devuelve un objeto de tipo Image
+        Image image = imageService.createImage(inputStream);
+        
+        // 5. Y lo asociamos a tu entidad Travel
+        viaje.setImagen(image);
     }
+
+    travelService.save(viaje);
+    return "redirect:/journeyManagement";
+}
 
     // 6. Mostrar el formulario para editar un viaje que ya existe
     @GetMapping("/editarviaje/{id}")
@@ -128,6 +141,19 @@ public class TravelWebController {
         travelService.save(viaje);
 
         return "redirect:/viajes/" + viaje.getId();
+    }
+
+    // Mostrar la tabla de gestión de viajes
+    @GetMapping("/journeyManagement")
+    public String showManagementTable(Model model) {
+        model.addAttribute("viajes", travelService.getAllTravels());
+        return "journeyManagement"; 
+    }
+
+    // Mostrar el menú principal de administración
+    @GetMapping("/admin")
+    public String showAdminMenu() {
+        return "admin"; 
     }
 
     // Método auxiliar para gestionar la lógica de cambiar/borrar la foto

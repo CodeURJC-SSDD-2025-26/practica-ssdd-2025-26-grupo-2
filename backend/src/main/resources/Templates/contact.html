@@ -17,30 +17,37 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
+        <form class="contact-form" action="/contact" method="post" data-aos="fade-up" data-aos-delay="200">
+          <input type="hidden" name="_csrf" value="{{token}}">
           <div class="row">
             <div class="col-6">
               <div class="form-group">
-                <label class="text-black" for="fname"> Nombre</label>
-                <input type="text" class="form-control" id="fname">
+                <label class="text-black" for="fname">Nombre</label>
+                <input type="text" class="form-control" id="fname" name="nombre" required>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label class="text-black" for="lname">Apellidos</label>
-                <input type="text" class="form-control" id="lname">
+                <input type="text" class="form-control" id="lname" name="apellidos" required>
               </div>
             </div>
           </div>
           <div class="form-group">
             <label class="text-black" for="email">Dirección de correo</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" name="email" required>
           </div>
-
           <div class="form-group">
             <label class="text-black" for="message">Mensaje</label>
-            <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+            <textarea class="form-control" id="message" name="mensaje" cols="30" rows="5" required></textarea>
           </div>
+
+          {{#enviado}}
+          <div class="alert alert-success mb-3">¡Mensaje enviado correctamente!</div>
+          <script>
+            window.history.replaceState({}, document.title, "/contact.html");
+          </script>
+          {{/enviado}}
 
           <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
         </form>

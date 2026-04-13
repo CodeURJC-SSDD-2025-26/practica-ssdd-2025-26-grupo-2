@@ -19,71 +19,72 @@
 <br>
 <div class="col-11-5 mx-auto mb-5">
     <br>
-    <div class="row align-items-center gap-3 ">
+    <div class="row align-items-center gap-3">
         <div class="search-box">
             <i class="bi bi-search"></i>
             <input type="text" id="buscadorUsuario" placeholder="Buscar usuario por correo...">
         </div>
-
+        <a href="/graphUser.html" class="btn btn-adv mx-3">Ver gráficos</a>
     </div>
 
-    <table class="tabla-admin">
-        <thead>
-            <tr>
-                <th>Correo electrónico</th>
-                <th>Importe gastado</th>
-                <th>Fecha último acceso</th>
-                <th class="col-1">Imagen</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#usuarios}}
-            <tr>
-                <td>
-                    <div>
-                        <p>{{email}}</p>
-                    </div>
-                </td>
+</div>
 
-                <td>
-                    <div>
-                        <p>10000€</p>
-                    </div>
-                </td>
+<table class="tabla-admin">
+    <thead>
+        <tr>
+            <th>Correo electrónico</th>
+            <th>Importe gastado</th>
+            <th>Fecha último acceso</th>
+            <th class="col-1">Imagen</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#usuarios}}
+        <tr>
+            <td>
+                <div>
+                    <p>{{email}}</p>
+                </div>
+            </td>
 
-                <td>
-                    <div>
-                        <p>10/02/2026</p>
-                    </div>
-                </td>
+            <td>
+                <div>
+                    <p>10000€</p>
+                </div>
+            </td>
 
-                <td>
-                    {{#imagenPerfil}}
-                    <img src="/usuario/imagen/{{idParaImagen}}"
-                        class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
-                    {{/imagenPerfil}}
+            <td>
+                <div>
+                    <p>10/02/2026</p>
+                </div>
+            </td>
 
-                    {{^imagenPerfil}}
-                    <img src="/images/default_profile.jpg" alt="Perfil"
-                        class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
-                    {{/imagenPerfil}}
-                </td>
+            <td>
+                {{#imagenPerfil}}
+                <img src="/usuario/imagen/{{idParaImagen}}"
+                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                {{/imagenPerfil}}
 
-                <td>
-                    <div class="botones-admin-user text-center">
-                        <button class="btn btn-rm" data-id="{{id}}">Eliminar</button>
-                        <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
-                        <button class="btn btn-primary adv">Aviso</button>
-                        <button class="btn btn-primary">Reseñas</button>
-                        <button class="btn btn-primary">Viajes</button>
-                        <a href="graphUser.html" class="btn btn-adv">Gráficos</a>
-                    </div>
-                </td>
-            </tr>
-            {{/usuarios}}
-        </tbody>
-    </table>
+                {{^imagenPerfil}}
+                <img src="/images/default_profile.jpg" alt="Perfil"
+                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                {{/imagenPerfil}}
+            </td>
+
+            <td>
+                <div class="botones-admin-user text-center">
+                    <button class="btn btn-rm" data-id="{{id}}">Eliminar</button>
+                    <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
+                    <button class="btn btn-primary adv">Aviso</button>
+                    <button class="btn btn-primary">Reseñas</button>
+                    <button class="btn btn-primary">Viajes</button>
+                </div>
+            </td>
+        </tr>
+        {{/usuarios}}
+    </tbody>
+</table>
 
 </div>
 

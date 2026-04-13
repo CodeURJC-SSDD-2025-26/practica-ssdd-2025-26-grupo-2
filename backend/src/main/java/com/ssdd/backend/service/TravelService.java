@@ -2,11 +2,17 @@ package com.ssdd.backend.service;
 
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.repository.TravelRepository;
+
+import jakarta.persistence.OneToMany;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+
+
 
 @Service
 public class TravelService {

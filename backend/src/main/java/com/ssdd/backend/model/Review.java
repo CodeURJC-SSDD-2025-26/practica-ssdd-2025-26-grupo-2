@@ -11,6 +11,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "reviews") // Define el nombre de la tabla en la base de datos
 public class Review {
@@ -32,14 +35,17 @@ public class Review {
     @JoinColumn(name = "usuario_id", nullable = false)
     private User autor;
 
-    public Review() {
-    }
+    
     @ManyToOne
     @JoinColumn(name = "viaje_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE) 
     private Travel viaje;
 
-    
-    // Actualiza el constructor
+    // Constructor vacío
+    public Review() {
+    }
+
+    // Constructor completo
     public Review(Integer puntuacion, String comentario, User autor, Travel viaje) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
@@ -48,17 +54,17 @@ public class Review {
         this.fecha = LocalDate.now();
     }
 
-    // Añade el getter y setter de viaje
-    public Travel getViaje() { return viaje; }
-    public void setViaje(Travel viaje) { this.viaje = viaje; }
-
-    // Constructor con parámetros
+    // Constructor sin viaje (por si lo usas en otra parte)
     public Review(int puntuacion, String comentario, User autor) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
         this.autor = autor;
         this.fecha = LocalDate.now(); 
     }
+
+    // Getters y Setters
+    public Travel getViaje() { return viaje; }
+    public void setViaje(Travel viaje) { this.viaje = viaje; }
 
     public Long getId() {
         return id;
