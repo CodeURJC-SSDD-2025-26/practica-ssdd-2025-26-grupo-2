@@ -78,5 +78,15 @@
         </tbody>
     </table>
 </div>
+<script>
+    document.getElementById("buscadorUsuario").addEventListener("input", function () {
+        const filtro = this.value.toLowerCase();
+        const filas = document.querySelectorAll("tbody tr");
 
+        filas.forEach(fila => {
+            const nombre = fila.querySelector("td").textContent.toLowerCase();
+            fila.style.display = nombre.includes(filtro) ? "" : "none";
+        });
+    });
+</script>
 {{>footer}}
