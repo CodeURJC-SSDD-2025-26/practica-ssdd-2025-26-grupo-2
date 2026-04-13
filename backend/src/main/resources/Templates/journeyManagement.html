@@ -1,86 +1,88 @@
 {{>header}}
 
-    <div class="hero hero-inner">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mx-auto text-center">
-                    <div class="intro-wrap">
-                        <h1 class="mb-0">Gestionar Viajes</h1>
-                    </div>
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Gestionar Viajes</h1>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    
-    <div class="col-11-5 mx-auto mb-5">
-        <br>
-        <div class="row align-items-center gap-3 ">
-            <div class="search-box">
-                <i class="bi bi-search"></i>
-                <input type="text" id="buscadorUsuario" placeholder="Buscar viaje por nombre...">
-            </div>
-            <a href="/nuevoviaje" class="btn btn-primary mx-3">Añadir viaje</a>
-        </div>
+</div>
+<br>
 
-        <table class="tabla-admin">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>País</th>
-                    <th class="col-prize">Precio</th>
-                    <th>Transporte</th>
-                    <th>Alojamiento</th>
-                    <th class="col-prize">Personas</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th class="col-file">Imágenes</th>
-                    <th class="col-actions">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                {{#viajes}}
-                <tr>
-                    <td>{{nombre}}</td>
-                    <td>{{pais}}</td>
-                    <td class="col-prize">{{precio}}€</td>
-                    <td>{{transporte}}</td>
-                    <td>{{alojamiento}}</td>
-                    <td class="col-prize">{{maxPlazas}}</td>
-                    <td>{{fechaInicio}}</td>
-                    <td>{{fechaFin}}</td>
-                    <td class="col-file">
-                        <div class="userImage">
-                            
-                            {{#tieneImagen}}
-                                <img src="/viajes/{{id}}/imagen" alt="Image" class="rounded-circle img-thumbnail mb-3">
-                            {{/tieneImagen}}
-                            
-                            {{^tieneImagen}}
-                                <img src="/images/hero-slider-1.jpg" alt="Image default" class="rounded-circle img-thumbnail mb-3">
-                            {{/tieneImagen}}
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div class="botones-admin text-center">
-                            
-                            <form action="/borrarviaje/{{id}}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este viaje de la base de datos?');">
-                                <input type="hidden" name="_csrf" value="{{token}}">
-                                <button type="submit" class="btn btn-rm">Eliminar</button>
-                            </form>
-                            
-                            <a href="/editarviaje/{{id}}" class="btn btn-primary btn-update">Actualizar</a>
-                            
-                            <a href="graphJourney.html" class="btn btn-adv">Gráficos</a>
-                        </div>
-                    </td>
-                </tr>
-                {{/viajes}}
-                
-            </tbody>
-        </table>
+<div class="col-11-5 mx-auto mb-5">
+    <br>
+    <div class="row align-items-center gap-3">
+        <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" id="buscadorUsuario" placeholder="Buscar viaje por nombre...">
+        </div>
+        <a href="/nuevoviaje" class="btn btn-primary mx-3">Añadir viaje</a>
+        <a href="/graphJourney.html" class="btn btn-adv">Ver gráficos</a>
     </div>
+
+    <table class="tabla-admin">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>País</th>
+                <th class="col-prize">Precio</th>
+                <th>Transporte</th>
+                <th>Alojamiento</th>
+                <th class="col-prize">Personas</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th class="col-file">Imágenes</th>
+                <th class="col-actions">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {{#viajes}}
+            <tr>
+                <td>{{nombre}}</td>
+                <td>{{pais}}</td>
+                <td class="col-prize">{{precio}}€</td>
+                <td>{{transporte}}</td>
+                <td>{{alojamiento}}</td>
+                <td class="col-prize">{{maxPlazas}}</td>
+                <td>{{fechaInicio}}</td>
+                <td>{{fechaFin}}</td>
+                <td class="col-file">
+                    <div class="userImage">
+
+                        {{#tieneImagen}}
+                        <img src="/viajes/{{id}}/imagen" alt="Image" class="rounded-circle img-thumbnail mb-3">
+                        {{/tieneImagen}}
+
+                        {{^tieneImagen}}
+                        <img src="/images/hero-slider-1.jpg" alt="Image default"
+                            class="rounded-circle img-thumbnail mb-3">
+                        {{/tieneImagen}}
+
+                    </div>
+                </td>
+                <td>
+                    <div class="botones-admin text-center">
+
+                        <form action="/borrarviaje/{{id}}" method="POST" style="display: inline;"
+                            onsubmit="return confirm('¿Estás seguro de que quieres eliminar este viaje de la base de datos?');">
+                            <input type="hidden" name="_csrf" value="{{token}}">
+                            <button type="submit" class="btn btn-rm">Eliminar</button>
+                        </form>
+
+                        <a href="/editarviaje/{{id}}" class="btn btn-primary btn-update">Actualizar</a>
+
+                    </div>
+                </td>
+            </tr>
+            {{/viajes}}
+
+        </tbody>
+    </table>
+</div>
 
 {{>footer}}

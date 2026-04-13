@@ -1,23 +1,91 @@
 {{>header}}
 
-    <div class="hero hero-inner">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mx-auto text-center">
-                    <div class="intro-wrap">
-                        <h1 class="mb-0">Gráficos del viaje</h1>
-                    </div>
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Gráficos del viaje</h1>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container py-1">
-        <div class="row justify-content-center">
-            <img src="images/graphReviewJourney.png">
-            <img src="images/graphBookingJourney.png">
-            <img src="images/graphSpotsJourney.png">
-        </div>
+</div>
 
-    </div>
+<div class="container py-5">
+    <h2 class="text-center mb-4">Puntuación media por viaje</h2>
+    <canvas id="chartReviews" height="100"></canvas>
+
+    <h2 class="text-center mt-5 mb-4">Reservas por viaje</h2>
+    <canvas id="chartReservations" height="100"></canvas>
+
+    <h2 class="text-center mt-5 mb-4">Plazas ocupadas vs libres</h2>
+    <canvas id="chartSpots" height="100"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch('/api/graphs/journey')
+        .then(r => r.json())
+        .then(data => {
+            new Chart(document.getElementById('chartReviews'), {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Puntuación media',
+                        data: data.avgReviews,
+                        backgroundColor: '#1a3c5e'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, max: 5, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('chartReservations'), {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Número de reservas',
+                        data: data.totalReservations,
+                        backgroundColor: '#1a3c5e'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('chartSpots'), {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        {
+                            label: 'Plazas ocupadas',
+                            data: data.plazasOcupadas,
+                            backgroundColor: '#1a3c5e'
+                        },
+                        {
+                            label: 'Plazas libres',
+                            data: data.plazasLibres,
+                            backgroundColor: '#4a9d9f'
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+        });
+</script>
 
 {{>footer}}
