@@ -1,8 +1,11 @@
 package com.ssdd.backend.controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssdd.backend.model.Image;
 import com.ssdd.backend.model.Travel;
@@ -25,10 +29,6 @@ import com.ssdd.backend.service.TravelService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import java.util.Base64;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 @Controller
 public class TravelWebController {
 
@@ -37,9 +37,9 @@ public class TravelWebController {
 
     @Autowired
     private ImageService imageService;
-    
+
     @Autowired
-    private ReviewRepository reviewRepository; 
+    private ReviewRepository reviewRepository;
 
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
@@ -49,24 +49,30 @@ public class TravelWebController {
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
-        } 
+        }
+
+        var csrfToken = (org.springframework.security.web.csrf.CsrfToken) request
+                .getAttribute(org.springframework.security.web.csrf.CsrfToken.class.getName());
+        if (csrfToken != null) {
+            model.addAttribute("token", csrfToken.getToken());
+        }
     }
 
-    // 1. Mostrar TODOS los viajes 
-    @GetMapping("/viajes") 
+    // 1. Mostrar TODOS los viajes
+    @GetMapping("/viajes")
     public String showTravels(Model model) {
         model.addAttribute("viajes", travelService.getAllTravels());
-        return "travel_page"; 
+        return "travel_page";
     }
 
     // 2. Mostrar UN viaje en detalle
     @GetMapping("/viajes/{id}")
-    public String showTravel(Model model, @PathVariable long id) {
+    public String showTravel(Model model, @PathVariable("id") Long id) {
         Optional<Travel> viaje = travelService.getTravelById(id);
         if (viaje.isPresent()) {
             model.addAttribute("viaje", viaje.get());
             // TRAEMOS SOLO LAS RESEÑAS DE ESTE VIAJE
-            model.addAttribute("reviews", reviewRepository.findByViajeId(id)); 
+            model.addAttribute("reviews", reviewRepository.findByViajeId(id));
             return "travel_page_ext";
         }
         return "redirect:/";
@@ -74,12 +80,12 @@ public class TravelWebController {
 
     // 3. Borrar un viaje
     @PostMapping("/borrarviaje/{id}")
-    public String removeTravel(Model model, @PathVariable long id) {
+    public String removeTravel(Model model, @PathVariable("id") Long id) {
         Optional<Travel> viaje = travelService.getTravelById(id);
         if (viaje.isPresent()) {
-            travelService.delete(id); 
+            travelService.delete(id);
         }
-        return "redirect:/journeyManagement"; 
+        return "redirect:/journeyManagement";
     }
 
     // 4. Mostrar el formulario para crear un viaje nuevo
@@ -90,8 +96,10 @@ public class TravelWebController {
 
     // 5. Procesar la creación de un viaje nuevo
     @PostMapping("/nuevoviaje")
-    public String newTravelProcess(Travel viaje, @org.springframework.web.bind.annotation.RequestParam(value = "imagenOculta", required = false) String imagenOculta) throws IOException {
-        
+    public String newTravelProcess(Travel viaje,
+            @RequestParam(value = "imagenOculta", required = false) String imagenOculta)
+            throws IOException {
+
         if (imagenOculta != null && !imagenOculta.isEmpty()) {
             String base64Data = imagenOculta.split(",")[1];
             byte[] decodedBytes = Base64.getDecoder().decode(base64Data);
@@ -104,31 +112,41 @@ public class TravelWebController {
         return "redirect:/journeyManagement";
     }
 
+    // ---------------------------------------------------------
+    // --- NUEVAS RUTAS "LIMPIAS" PARA MODIFICAR EL VIAJE ------
+    // ---------------------------------------------------------
+
     // 6. Mostrar el formulario para editar un viaje que ya existe
-    @GetMapping("/editarviaje/{id}")
-    public String editTravel(Model model, @PathVariable("id") long id) { // <-- ¡Fíjate en el ("id")!
+    @GetMapping("/modificarviaje/{id}")
+    public String editTravel(Model model, @PathVariable long id) { 
+        
+        // --- NUESTRO CHIVATO ---
+        System.out.println(">>>>>>>>>> ¡BINGO! JAVA HA RECIBIDO EL CLIC PARA EL VIAJE: " + id);
+
         Optional<Travel> viaje = travelService.getTravelById(id);
+
         if (viaje.isPresent()) {
             model.addAttribute("viaje", viaje.get());
-            return "editTravelPage"; 
+            return "editJourney"; 
         } else {
-            return "redirect:/";
+            return "redirect:/journeyManagement";
         }
     }
 
-    // 7. Recibir y guardar los cambios del viaje editado (¡LA VERSIÓN ÚNICA Y CORRECTA!)
-    @PostMapping("/editarviaje")
-    public String editTravelProcess(Travel viaje, 
-            @org.springframework.web.bind.annotation.RequestParam(value = "imagenOculta", required = false) String imagenOculta,
-            @org.springframework.web.bind.annotation.RequestParam(value = "removeImage", required = false, defaultValue = "false") boolean removeImage) 
-            throws IOException, java.sql.SQLException {
+    // 7. Recibir y guardar los cambios del viaje editado
+    // 7. Recibir y guardar los cambios del viaje editado
+    @PostMapping("/modificarviaje")
+    public String editTravelProcess(Travel viaje,
+            @RequestParam(value = "imagenOculta", required = false) String imagenOculta,
+            @RequestParam(value = "removeImage", required = false, defaultValue = "false") boolean removeImage)
+            throws IOException, SQLException {
 
         Travel dbTravel = travelService.getTravelById(viaje.getId()).orElseThrow();
 
         if (imagenOculta != null && !imagenOculta.isEmpty()) {
             String base64Data = imagenOculta.split(",")[1];
             byte[] decodedBytes = java.util.Base64.getDecoder().decode(base64Data);
-            java.io.InputStream inputStream = new java.io.ByteArrayInputStream(decodedBytes);
+            InputStream inputStream = new ByteArrayInputStream(decodedBytes);
 
             if (dbTravel.getImagen() == null) {
                 Image image = imageService.createImage(inputStream);
@@ -137,44 +155,43 @@ public class TravelWebController {
                 Image image = imageService.replaceImageFile(dbTravel.getImagen().getId(), inputStream);
                 viaje.setImagen(image);
             }
-        } 
-        else if (removeImage) {
+        } else if (removeImage) {
             if (dbTravel.getImagen() != null) {
                 imageService.deleteImage(dbTravel.getImagen().getId());
                 viaje.setImagen(null);
             }
-        } 
-        else {
+        } else {
             viaje.setImagen(dbTravel.getImagen());
         }
 
         travelService.save(viaje);
         return "redirect:/journeyManagement";
     }
+    // ---------------------------------------------------------
 
     // Mostrar la tabla de gestión de viajes
     @GetMapping("/journeyManagement")
     public String showManagementTable(Model model) {
         model.addAttribute("viajes", travelService.getAllTravels());
-        return "journeyManagement"; 
+        return "journeyManagement";
     }
 
     // Mostrar el menú principal de administración
     @GetMapping("/admin")
     public String showAdminMenu() {
-        return "admin"; 
+        return "admin";
     }
 
     // Este método devuelve la foto real del viaje
     @GetMapping("/viajes/{id}/imagen")
-    public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+    public ResponseEntity<Object> downloadImage(@PathVariable("id") Long id) throws SQLException {
         Optional<Travel> viaje = travelService.getTravelById(id);
 
         if (viaje.isPresent() && viaje.get().getImagen() != null) {
             Resource file = new InputStreamResource(viaje.get().getImagen().getImageFile().getBinaryStream());
-            
+
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_TYPE, "image/jpeg") 
+                    .header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
                     .contentLength(viaje.get().getImagen().getImageFile().length())
                     .body(file);
         } else {
