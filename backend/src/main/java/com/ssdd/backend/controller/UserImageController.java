@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +20,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.InputStreamResource;
-
-import com.ssdd.backend.model.User;
 import com.ssdd.backend.model.Image;
-import com.ssdd.backend.service.UserService;
+import com.ssdd.backend.model.User;
 import com.ssdd.backend.service.ImageService;
+import com.ssdd.backend.service.UserService;
 
 @Controller
 public class UserImageController {
