@@ -11,11 +11,10 @@
         </div>
     </div>
 </div>
-<br>
 
 <div class="col-11-5 mx-auto mb-5">
     <br>
-    <div class="row align-items-center gap-3">
+    <div class="row align-items-center gap-3 mb-4">
         <div class="search-box">
             <i class="bi bi-search"></i>
             <input type="text" id="buscadorUsuario" placeholder="Buscar viaje por nombre...">
@@ -40,7 +39,6 @@
             </tr>
         </thead>
         <tbody>
-
             {{#viajes}}
             <tr>
                 <td>{{nombre}}</td>
@@ -53,34 +51,30 @@
                 <td>{{fechaFin}}</td>
                 <td class="col-file">
                     <div class="userImage">
-
                         {{#tieneImagen}}
                         <img src="/viajes/{{id}}/imagen" alt="Image" class="rounded-circle img-thumbnail mb-3">
                         {{/tieneImagen}}
 
                         {{^tieneImagen}}
-                        <img src="/images/hero-slider-1.jpg" alt="Image default"
-                            class="rounded-circle img-thumbnail mb-3">
+                        <img src="/images/hero-slider-1.jpg" alt="Image default" class="rounded-circle img-thumbnail mb-3">
                         {{/tieneImagen}}
-
                     </div>
                 </td>
                 <td>
-                    <div class="botones-admin text-center">
-
-                        <form action="/borrarviaje/{{id}}" method="POST" style="display: inline;"
-                            onsubmit="return confirm('¿Estás seguro de que quieres eliminar este viaje de la base de datos?');">
+                    <div class="botones-admin" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        
+                        <form action="/borrarviaje/{{id}}" method="POST" style="margin: 0; width: 100%; display: flex; justify-content: center;"
+                            onsubmit="return confirm('¿Estás seguro de que quieres eliminar este viaje?');">
                             <input type="hidden" name="_csrf" value="{{token}}">
-                            <button type="submit" class="btn btn-rm">Eliminar</button>
+                            <button type="submit" class="btn btn-rm" style="width: 100px;">Eliminar</button>
                         </form>
 
-                        <a href="/editarviaje/{{id}}" class="btn btn-primary btn-update">Actualizar</a>
-
+                        <a href="/modificarviaje/{{id}}" class="btn btn-primary" style="margin: 0; width: 100px; text-align: center;">Editar</a>
+                        
                     </div>
                 </td>
             </tr>
             {{/viajes}}
-
         </tbody>
     </table>
 </div>
