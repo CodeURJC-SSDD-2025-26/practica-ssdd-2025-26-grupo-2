@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.repository.ReviewRepository;
-import com.ssdd.backend.service.TravelService; // <-- IMPORTANTE: Ahora sabe qué es TravelService
+import com.ssdd.backend.service.TravelService; 
 
 @Controller
 public class IndexController {
@@ -19,37 +19,34 @@ public class IndexController {
     private ReviewRepository reviewRepository;
 
     @Autowired
-    private TravelService travelService; // <-- IMPORTANTE: Le inyectamos el servicio de viajes
+    private TravelService travelService; 
 
-    // Unimos "/" y "/index.html" en un solo método maestro
     @GetMapping({"/", "/index.html"})
     public String showIndex(Model model) {
         
-        // 1. LÓGICA DE VIAJES
         List<Travel> todosLosViajes = travelService.getAllTravels();
 
-        List<Travel> primeros6 = todosLosViajes.stream()
-                .limit(6)
+        // 1. VIAJES PARA EL CARRUSEL (Simplemente cortamos 6)
+        List<Travel> paraCarrusel = todosLosViajes.stream()
+                .limit(6) 
                 .toList();
 
-        String nombresAnimados = primeros6.stream()
-                .map(Travel::getNombre)
-                .collect(Collectors.joining(","));
-
-        List<Travel> masPopulares = todosLosViajes.stream()
-                .sorted((viaje1, viaje2) -> {
-                    int reservas1 = (viaje1.getReservas() != null) ? viaje1.getReservas().size() : 0;
-                    int reservas2 = (viaje2.getReservas() != null) ? viaje2.getReservas().size() : 0;
-                    return Integer.compare(reservas2, reservas1);
-                })
+        // 2. VIAJES PARA LAS OFERTAS Y FONDOS (Simplemente cortamos 4, pero ignorando Putrajaya)
+        List<Travel> paraOfertas = todosLosViajes.stream()
+                .filter(viaje -> !viaje.getNombre().equalsIgnoreCase("Putrajaya")) 
                 .limit(4) 
                 .toList();
 
-        // 2. ENVIAMOS TODO AL HTML (Viajes y Reseñas a la vez)
-        model.addAttribute("viajesNuevos", primeros6);
-        model.addAttribute("viajesPopulares", masPopulares);
-        model.addAttribute("nombresAnimados", nombresAnimados);
-        model.addAttribute("reviews", reviewRepository.findAll()); // <-- Aquí van las reseñas
+        // 3. NOMBRES ANIMADOS (Usamos la barra mágica "|")
+        String nombresAnimados = paraOfertas.stream()
+                .map(Travel::getNombre)
+                .collect(Collectors.joining("|"));
+
+        
+        model.addAttribute("viajesPopulares", paraCarrusel); 
+        model.addAttribute("viajesNuevos", paraOfertas);     
+        model.addAttribute("nombresAnimados", nombresAnimados); // <-- ¡El salvavidas!
+        model.addAttribute("reviews", reviewRepository.findAll()); 
 
         return "index";
     }

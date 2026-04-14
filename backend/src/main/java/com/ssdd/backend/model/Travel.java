@@ -2,6 +2,8 @@ package com.ssdd.backend.model;
 
 import java.time.LocalDate;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,8 +38,14 @@ public class Travel {
     private Image imagen;
 
 
-    @OneToMany(mappedBy = "viaje", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reservation> reservas;
+    
+
+    // EN TU ARCHIVO Travel.java
+    
+    // 1. Añadimos el fetch = FetchType.EAGER
+    @OneToMany(mappedBy = "viaje", fetch = FetchType.EAGER)
+    // 2. Aseguramos que la lista se inicialice vacía, no en null
+    private List<Reservation> reservas = new ArrayList<>();
     
     public Travel() {
     }
