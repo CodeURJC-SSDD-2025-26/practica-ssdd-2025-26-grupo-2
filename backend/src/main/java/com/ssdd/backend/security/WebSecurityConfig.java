@@ -35,7 +35,7 @@ public class WebSecurityConfig {
         http
             .authorizeHttpRequests(authorize -> authorize
                 // Public pages
-                .requestMatchers("/", "/index", "/signin", "/about", "/contact", "/viajes", "/contact.html").permitAll()
+                .requestMatchers("/", "/index", "/signin", "/about", "/contact", "/viajes", "/contact.html", "/forgot-password").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
                 .requestMatchers("/error403.html", "/error404.html", "/loginFailure").permitAll()
                 .requestMatchers("/", "/index", "/js/**", "/css/**", "/images/**", "/usuario/*/imagen").permitAll() 
