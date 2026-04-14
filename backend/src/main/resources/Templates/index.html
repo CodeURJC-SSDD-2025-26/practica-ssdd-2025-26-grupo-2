@@ -10,27 +10,21 @@
 
 					<div class="row">
 						<div class="col-10">
-							<form class="form">
+							<form action="indexSearch" method="post" class="form">
+								<input type="hidden" name="_csrf" value="{{token}}">
 								<div class="row mb-2">
 									<div class="col-lg-4 mb-2">
-										<select name="" id="" class="form-control custom-select">
-											<option value="">Destino</option>
-											<option value="">Peru</option>
-											<option value="">Estados Unidos</option>
-											<option value="">Malasia</option>
-											<option value="">Polinesia Francesa</option>
-											<option value="">Australia</option>
-											<option value="">Noruega</option>
-											<option value="">Francia</option>
-											<option value="">Kenia</option>
+										<select name="country" id="" class="form-control custom-select required">
+											{{#viajes}}
+											<option value="{{pais}}">{{pais}}</option>
+											{{/viajes}}
 										</select>
 									</div>
 									<div class="col-lg-6 mb-2">
-										<input type="text" class="form-control custom-select" name="daterange">
+										<input type="text" class="form-control custom-select" name="daterange" required>
 									</div>
 									<div class="col-lg-2">
-										<select name="viajeros" class="form-control custom-select">
-											<option value=""></option>
+										<select name="travelers" class="form-control custom-select" required>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -42,13 +36,6 @@
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
 										<input type="submit" class="btn btn-primary btn-block" value="Buscar">
 									</div>
-									<div class="col-lg-8">
-										<label class="control control--checkbox mt-3">
-											<span class="caption">Guardar esta búsqueda</span>
-											<input type="checkbox" checked="checked" />
-											<div class="control__indicator"></div>
-										</label>
-									</div>
 								</div>
 							</form>
 						</div>
@@ -59,15 +46,15 @@
 				<div id="nombres-destinos" data-nombres="{{nombresAnimados}}"></div>
 				<div class="slides">
 					{{#viajesNuevos}}
-						{{#tieneImagen}}
-							<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid dinamic-slide">
-						{{/tieneImagen}}
-						{{^tieneImagen}}
-							<img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide">
-						{{/tieneImagen}}
+					{{#tieneImagen}}
+					<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid dinamic-slide">
+					{{/tieneImagen}}
+					{{^tieneImagen}}
+					<img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide">
+					{{/tieneImagen}}
 					{{/viajesNuevos}}
 					{{^viajesNuevos}}
-						<img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide active">
+					<img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide active">
 					{{/viajesNuevos}}
 				</div>
 			</div>
@@ -92,16 +79,16 @@
 						<span class="location">{{pais}}</span>
 					</div>
 					{{#tieneImagen}}
-						<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
+					<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
 					{{/tieneImagen}}
 					{{^tieneImagen}}
-						<img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
+					<img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
 					{{/tieneImagen}}
 				</a>
 			</div>
 			{{/viajesNuevos}}
 			{{^viajesNuevos}}
-				<p class="text-center w-100 mt-4">Aún no hay destinos disponibles.</p>
+			<p class="text-center w-100 mt-4">Aún no hay destinos disponibles.</p>
 			{{/viajesNuevos}}
 		</div>
 	</div>
@@ -118,15 +105,17 @@
 					<div class="testimonial mx-auto">
 						<figure class="img-wrap">
 							{{#autor.imagenPerfil}}
-								<img src="/usuario/{{autor.id}}/imagen"
-									class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
-									alt="Foto de {{autor.nombre}}">
+							<img src="/usuario/{{autor.id}}/imagen"
+								class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
+								style="width: 80px; height: 80px; object-fit: cover;" alt="Foto de {{autor.nombre}}">
 							{{/autor.imagenPerfil}}
+
 							{{^autor.imagenPerfil}}
-								<img src="/images/default_profile.jpg" alt="Perfil por defecto"
-									class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+							<img src="/images/default_profile.jpg" alt="Perfil por defecto"
+								class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
 							{{/autor.imagenPerfil}}
 						</figure>
+
 						<h3 class="name">{{autor.nombre}}</h3>
 						<div class="rating">
 							<span>Puntuación: {{puntuacion}}/5</span>
@@ -164,10 +153,10 @@
 				<div class="media-1">
 					<a href="/viajes/{{id}}" class="d-block mb-3">
 						{{#tieneImagen}}
-							<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
+						<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
 						{{/tieneImagen}}
 						{{^tieneImagen}}
-							<img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
+						<img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
 						{{/tieneImagen}}
 					</a>
 					<span class="d-flex align-items-center loc mb-2">
@@ -186,7 +175,7 @@
 			</div>
 			{{/viajesPopulares}}
 			{{^viajesPopulares}}
-				<p class="text-center w-100">Aún no hay ofertas disponibles.</p>
+			<p class="text-center w-100">Aún no hay ofertas disponibles.</p>
 			{{/viajesPopulares}}
 		</div>
 	</div>
@@ -236,37 +225,37 @@
 {{>footer}}
 
 <script>
-$(document).ready(function () {
-	if ($('.typed-words').length > 0) {
-		var datosOcultos = document.getElementById('nombres-destinos');
-		var listaNombres = [" Tus destinos favoritos."];
+	$(document).ready(function () {
+		if ($('.typed-words').length > 0) {
+			var datosOcultos = document.getElementById('nombres-destinos');
+			var listaNombres = [" Tus destinos favoritos."];
 
-		if (datosOcultos && datosOcultos.getAttribute('data-nombres')) {
-			var nombresExtraidos = datosOcultos.getAttribute('data-nombres').split(',');
-			listaNombres = nombresExtraidos.map(function(nombre) {
-				return " " + nombre + ".";
+			if (datosOcultos && datosOcultos.getAttribute('data-nombres')) {
+				var nombresExtraidos = datosOcultos.getAttribute('data-nombres').split(',');
+				listaNombres = nombresExtraidos.map(function (nombre) {
+					return " " + nombre + ".";
+				});
+			}
+
+			$('.slides img').each(function (i) {
+				$(this).attr('data-id', i + 1);
+			});
+
+			var typed = new Typed('.typed-words', {
+				strings: listaNombres,
+				typeSpeed: 90,
+				backSpeed: 50,
+				backDelay: 4000,
+				startDelay: 500,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					var totalFotos = $('.slides img').length;
+					var currentId = (arrayPos % totalFotos) + 1;
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="' + currentId + '"]').addClass('active');
+				}
 			});
 		}
-
-		$('.slides img').each(function (i) {
-			$(this).attr('data-id', i + 1);
-		});
-
-		var typed = new Typed('.typed-words', {
-			strings: listaNombres,
-			typeSpeed: 90,
-			backSpeed: 50,
-			backDelay: 4000,
-			startDelay: 500,
-			loop: true,
-			showCursor: true,
-			preStringTyped: (arrayPos, self) => {
-				var totalFotos = $('.slides img').length;
-				var currentId = (arrayPos % totalFotos) + 1;
-				$('.slides img').removeClass('active');
-				$('.slides img[data-id="' + currentId + '"]').addClass('active');
-			}
-		});
-	}
-});
+	});
 </script>
