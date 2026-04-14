@@ -27,10 +27,21 @@ import com.ssdd.backend.repository.ReviewRepository;
 import com.ssdd.backend.service.ImageService;
 import com.ssdd.backend.service.TravelService;
 
+import com.ssdd.backend.model.CreditCard;
+import com.ssdd.backend.model.User;
+import com.ssdd.backend.service.CreditCardService;
+import com.ssdd.backend.service.UserService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class TravelWebController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private CreditCardService creditCardService;
 
     @Autowired
     private TravelService travelService;
@@ -67,14 +78,43 @@ public class TravelWebController {
 
     // 2. Mostrar UN viaje en detalle
     @GetMapping("/viajes/{id}")
-    public String showTravel(Model model, @PathVariable("id") Long id) {
+    public String showTravel(Model model, @PathVariable("id") Long id, Principal principal) {
         Optional<Travel> viaje = travelService.getTravelById(id);
+
         if (viaje.isPresent()) {
             model.addAttribute("viaje", viaje.get());
-            // TRAEMOS SOLO LAS RESEÑAS DE ESTE VIAJE
             model.addAttribute("reviews", reviewRepository.findByViajeId(id));
+            model.addAttribute("tieneImagen", viaje.get().getImagen() != null);
+
+            if (principal != null) {
+                Optional<User> userOpt = userService.findByEmail(principal.getName());
+
+                if (userOpt.isPresent()) {
+                    User user = userOpt.get();
+
+                    model.addAttribute("logged", true);
+                    model.addAttribute("userName", user.getNombre());
+
+                    Optional<CreditCard> creditCardOpt = creditCardService.findByUser(user);
+
+                    if (creditCardOpt.isPresent()) {
+                        CreditCard savedCard = creditCardOpt.get();
+                        model.addAttribute("hasSavedCard", true);
+                        model.addAttribute("savedCard", savedCard);
+                        model.addAttribute("ultimos4", savedCard.getUltimosCuatro());
+                    } else {
+                        model.addAttribute("hasSavedCard", false);
+                    }
+                } else {
+                    model.addAttribute("hasSavedCard", false);
+                }
+            } else {
+                model.addAttribute("hasSavedCard", false);
+            }
+
             return "travel_page_ext";
         }
+
         return "redirect:/";
     }
 
@@ -118,8 +158,8 @@ public class TravelWebController {
 
     // 6. Mostrar el formulario para editar un viaje que ya existe
     @GetMapping("/modificarviaje/{id}")
-    public String editTravel(Model model, @PathVariable long id) { 
-        
+    public String editTravel(Model model, @PathVariable long id) {
+
         // --- NUESTRO CHIVATO ---
         System.out.println(">>>>>>>>>> ¡BINGO! JAVA HA RECIBIDO EL CLIC PARA EL VIAJE: " + id);
 
@@ -127,7 +167,7 @@ public class TravelWebController {
 
         if (viaje.isPresent()) {
             model.addAttribute("viaje", viaje.get());
-            return "editJourney"; 
+            return "editJourney";
         } else {
             return "redirect:/journeyManagement";
         }

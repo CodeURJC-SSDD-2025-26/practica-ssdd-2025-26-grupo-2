@@ -26,7 +26,10 @@ public class CreditCardService {
     public Optional<CreditCard> findByUserId(Long userId) {
         return repository.findByUserId(userId);
     }
-
+     public Optional<CreditCard> findByUser(User user) {
+        return repository.findByUser(user);
+    }
+    
     public void delete(CreditCard card) {
         repository.delete(card);
     }
