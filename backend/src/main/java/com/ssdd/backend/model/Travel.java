@@ -149,6 +149,14 @@ public class Travel {
         this.imagen = imagen;
     }
 
+    public List<Reservation> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reservation> reservas) {
+        this.reservas = reservas;
+    }
+
     @Override
     public String toString() {
         return "Travel [id=" + id + ", titulo=" + nombre + ", descripcion=" + descripcion + "]";

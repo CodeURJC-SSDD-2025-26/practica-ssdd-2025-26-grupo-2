@@ -58,36 +58,7 @@
     <script src="/js/typed.js"></script>
     <script src="/js/custom.js"></script>
 
-    <script>
-    $(document).ready(function () {
-        console.log("Comprobando carga de scripts...");
-
-        // Solo ejecutamos si estamos en la página de inicio (donde existe .typed-words)
-        if ($('.typed-words').length > 0) {
-            console.log("Iniciando Typed.js");
-            
-            // Sincronizamos las imágenes con sus IDs
-            $('.slides img').each(function (i) {
-                $(this).attr('data-id', i + 1);
-            });
-
-            var typed = new Typed('.typed-words', {
-                strings: ["San Francisco.", " París.", " Nairobi.", " Sidney.", " Bora Bora.", " Lima.", " Putrajaya."],
-                typeSpeed: 90,
-                backSpeed: 100,
-                backDelay: 2000,
-                startDelay: 500,
-                loop: true,
-                showCursor: true,
-                preStringTyped: (arrayPos, self) => {
-                    var currentId = arrayPos + 1;
-                    $('.slides img').removeClass('active');
-                    $('.slides img[data-id="' + currentId + '"]').addClass('active');
-                }
-            });
-        }
-    });
-    </script>
+   
 </body>
 </html>
 
