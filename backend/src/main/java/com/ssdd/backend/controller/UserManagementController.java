@@ -45,8 +45,8 @@ public class UserManagementController {
     public ResponseEntity<String> resetearImagen(@PathVariable Long id) {
         try {
             User user = userService.findById(id).orElseThrow();
-            user.setImagenPerfil(null); // Eliminamos la asociación con la imagen
-            userService.save(user); // Guardamos el cambio
+            user.setImagenPerfil(null);
+            userService.save(user); 
             return ResponseEntity.ok("Imagen reseteada");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al resetear imagen");

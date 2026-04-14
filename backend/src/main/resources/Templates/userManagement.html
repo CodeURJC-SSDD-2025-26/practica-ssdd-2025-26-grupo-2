@@ -33,8 +33,8 @@
     <thead>
         <tr>
             <th>Correo electrónico</th>
-            <th>Importe gastado</th>
-            <th>Fecha último acceso</th>
+            <th>Nombre</th>
+            <th>Roles</th>
             <th class="col-1">Imagen</th>
             <th>Acciones</th>
         </tr>
@@ -50,25 +50,25 @@
 
             <td>
                 <div>
-                    <p>10000€</p>
+                    <p>{{nombre}}</p>
                 </div>
             </td>
 
             <td>
                 <div>
-                    <p>10/02/2026</p>
+                    <p>{{roles}}</p>
                 </div>
             </td>
 
             <td>
                 {{#imagenPerfil}}
-                <img src="/usuario/imagen/{{idParaImagen}}"
-                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                <img src="/usuario/{{idParaImagen}}/imagen"
+                    class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block"> 
                 {{/imagenPerfil}}
 
                 {{^imagenPerfil}}
                 <img src="/images/default_profile.jpg" alt="Perfil"
-                    class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+                    class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block">
                 {{/imagenPerfil}}
             </td>
 
@@ -102,10 +102,10 @@
                 return;
             }
 
-            // Llamada al backend
+            //backend call
             const response = await fetch(`/admin/usuarios/eliminar/${userId}`, {
                 method: 'POST',
-                headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value } // Si tienes Spring Security
+                headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value } 
             });
 
             if (response.ok) {
@@ -144,7 +144,8 @@
             if (response.ok) {
                 const fila = e.target.closest("tr");
                 const img = fila.querySelector("img");
-                img.src = "/images/default_profile.jpg"; // Cambiamos a la imagen por defecto
+                img.src = "/images/default_profile.jpg";
+                 
                 alert("Imagen reestablecida.");
             } else {
                 alert("Error al resetear la imagen.");

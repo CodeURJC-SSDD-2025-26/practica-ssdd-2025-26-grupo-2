@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,6 @@ public class UserImageController {
 
     private final List<String> ALLOWED_EXTENSIONS = Arrays.asList("image/jpeg", "image/png", "image/jpg");
 
-    // MODIFICADO: URL cambiada para que coincida con el index.html
     @GetMapping("/usuario/{id}/imagen")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
         
@@ -45,11 +45,11 @@ public class UserImageController {
         if (user.isPresent() && user.get().getImagenPerfil() != null) {
             Image imagen = user.get().getImagenPerfil();
             
-            // Convertimos el contenido del Blob en un recurso que Spring pueda enviar
             Resource file = new InputStreamResource(imagen.getImageFile().getBinaryStream());
 
             return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_JPEG) // Esto le dice al navegador que es una imagen
+                    .cacheControl(CacheControl.noCache().mustRevalidate())
+                    .contentType(MediaType.IMAGE_JPEG) 
                     .contentLength(imagen.getImageFile().length())
                     .body(file);
         }
@@ -65,11 +65,9 @@ public class UserImageController {
             Principal principal,
             Model model) throws IOException, SQLException {
 
-        // Buscamos el usuario por el correo de la sesión (Seguridad)
         String currentEmail = principal.getName();
         User user = userService.findByEmail(currentEmail).orElseThrow();
 
-        // Verificamos contraseña antes de dejar cambiar la foto
         if (!userService.checkPassword(user, password)) {
             model.addAttribute("error", "La contraseña actual no es correcta.");
             return "userProfile";
@@ -82,14 +80,12 @@ public class UserImageController {
                 return "userProfile";
             }
             
-            // Creamos la imagen en la base de datos y la vinculamos al usuario
             Image nuevaImagen = imageService.createImage(image.getInputStream());
             user.setImagenPerfil(nuevaImagen);
         }
 
         userService.save(user);
 
-        // Redirigimos al perfil para que se vean los cambios
         return "redirect:/userProfile.html"; 
     }
 }

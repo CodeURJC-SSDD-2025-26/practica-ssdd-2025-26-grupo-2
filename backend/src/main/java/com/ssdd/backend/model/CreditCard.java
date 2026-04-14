@@ -8,24 +8,21 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "credit_cards")
+@Table(name = "credit_cards")
 public class CreditCard {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
     @OneToOne
     private User user;
-    
 
-    private String titular; 
+    private String titular;
     private String numTarjeta;
     private String cvv;
     private String caducidad;
 
-    
     public Long getId() {
         return id;
     }
@@ -42,27 +39,38 @@ public class CreditCard {
         this.titular = titular;
     }
 
-    public String getNumTarjeta(){
+    public String getNumTarjeta() {
         return numTarjeta;
     }
 
-    public void setNumTarjeta(String numTarjeta){
+    public void setNumTarjeta(String numTarjeta) {
         this.numTarjeta = numTarjeta;
     }
 
-    public String getCvv(){ 
+    public String getCvv() {
         return cvv;
     }
 
-    public void setCvv(String cvv){
+    public void setCvv(String cvv) {
         this.cvv = cvv;
     }
 
-    public String getCaducidad(){
+    public String getCaducidad() {
         return caducidad;
     }
 
-    public void setCaducidad(String caducidad){
+    public void setCaducidad(String caducidad) {
         this.caducidad = caducidad;
+    }
+
+    public String getUltimosCuatro() {
+        if (this.numTarjeta != null && this.numTarjeta.length() >= 4) {
+            return this.numTarjeta.substring(this.numTarjeta.length() - 4);
+        }
+        return "****";
+    }
+
+    public void setUser(User user2) {
+        this.user = user2;
     }
 }

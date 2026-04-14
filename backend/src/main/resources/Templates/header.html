@@ -52,16 +52,16 @@
                     <li class="profile-dropdown">
                         <details>
                             <summary class="profile-summary">
-                                {{#logged}}
+                                {{#user.imagenPerfil}}
                                     <img src="/usuario/{{user.id}}/imagen" alt="Perfil"
                                          class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
                                          style="width: 40px !important; height: 40px !important; object-fit: cover;">
-                                {{/logged}}
-                                {{^logged}}
+                                {{/user.imagenPerfil}}
+                                {{^user.imagenPerfil}}
                                     <img src="/images/profile_image.png" alt="Invitado"
                                          class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
                                          style="width: 40px !important; height: 40px !important; object-fit: cover;">
-                                {{/logged}}
+                                {{/user.imagenPerfil}}
                                 <span class="d-block d-xl-none mobile-profile-text">Perfil usuario</span>
                             </summary>
 

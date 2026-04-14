@@ -34,6 +34,7 @@ public class User {
     private Image imagenPerfil;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JoinColumn(name = "tarjeta_id", referencedColumnName = "id") 
     private CreditCard tarjeta;
 
     public User() {
@@ -111,8 +112,17 @@ public class User {
         this.imagenPerfil = imagenPerfil;
     }
 
+
     @Override
     public String toString() {
         return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + "]";
+    }
+
+    public CreditCard getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(CreditCard card) {
+        this.tarjeta = card;
     }
 }
