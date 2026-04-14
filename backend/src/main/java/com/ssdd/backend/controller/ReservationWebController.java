@@ -95,7 +95,11 @@ public class ReservationWebController {
     }
 
     @GetMapping("/reservations/{id}/edit")
-    public String editReservationPage(@PathVariable Long id, Principal principal, Model model) {
+    public String editReservationPage(@PathVariable Long id,
+            @RequestParam(required = false) String returnTo,
+            Principal principal,
+            Model model) {
+
         if (principal == null) {
             return "redirect:/signin";
         }
@@ -112,12 +116,14 @@ public class ReservationWebController {
         }
 
         model.addAttribute("reservation", reservation);
+        model.addAttribute("returnTo", returnTo != null ? returnTo : "");
         return "editReservationPage";
     }
 
     @PostMapping("/reservations/{id}/edit")
     public String editReservationProcess(@PathVariable Long id,
             @RequestParam int numeroPersonas,
+            @RequestParam(required = false) String returnTo,
             Principal principal) {
 
         if (principal == null) {
@@ -130,6 +136,9 @@ public class ReservationWebController {
         }
 
         if (numeroPersonas <= 0) {
+            if (returnTo != null && !returnTo.isBlank()) {
+                return "redirect:/reservations/" + id + "/edit?returnTo=" + returnTo;
+            }
             return "redirect:/reservations/" + id + "/edit";
         }
 
@@ -143,23 +152,38 @@ public class ReservationWebController {
         reservation.setPrecioTotal(reservation.getViaje().getPrecio() * numeroPersonas);
         reservationService.save(reservation);
 
+        if (returnTo != null && !returnTo.isBlank()) {
+            return "redirect:" + returnTo;
+        }
+
         return "redirect:/userProfile.html";
     }
 
     @PostMapping("/reservations/{id}/cancel")
-    public String cancelReservation(@PathVariable Long id, Principal principal) {
-        if (principal == null)
+    public String cancelReservation(@PathVariable Long id,
+            @RequestParam(required = false) String returnTo,
+            Principal principal) {
+
+        if (principal == null) {
             return "redirect:/signin";
+        }
 
         Optional<Reservation> reservationOpt = reservationService.findById(id);
-        if (reservationOpt.isEmpty())
+        if (reservationOpt.isEmpty()) {
             return "error/404";
+        }
 
         Reservation reservation = reservationOpt.get();
-        if (!isAuthorized(reservation, principal))
+        if (!isAuthorized(reservation, principal)) {
             return "error/403";
+        }
 
-        reservationService.deleteById(id); // antes hacía save con estado CANCELADA
+        reservationService.deleteById(id);
+
+        if (returnTo != null && !returnTo.isBlank()) {
+            return "redirect:" + returnTo;
+        }
+
         return "redirect:/userProfile.html";
     }
 

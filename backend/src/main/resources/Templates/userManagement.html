@@ -63,7 +63,7 @@
             <td>
                 {{#imagenPerfil}}
                 <img src="/usuario/{{idParaImagen}}/imagen"
-                    class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block"> 
+                    class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block">
                 {{/imagenPerfil}}
 
                 {{^imagenPerfil}}
@@ -78,7 +78,7 @@
                     <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
                     <button class="btn btn-primary adv">Aviso</button>
                     <button class="btn btn-primary">Reseñas</button>
-                    <button class="btn btn-primary">Viajes</button>
+                    <button class="btn btn-primary viajes" data-id="{{id}}">Viajes</button>
                 </div>
             </td>
         </tr>
@@ -105,7 +105,7 @@
             //backend call
             const response = await fetch(`/admin/usuarios/eliminar/${userId}`, {
                 method: 'POST',
-                headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value } 
+                headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value }
             });
 
             if (response.ok) {
@@ -145,7 +145,7 @@
                 const fila = e.target.closest("tr");
                 const img = fila.querySelector("img");
                 img.src = "/images/default_profile.jpg";
-                 
+
                 alert("Imagen reestablecida.");
             } else {
                 alert("Error al resetear la imagen.");
@@ -163,6 +163,13 @@
             const email = fila.querySelector("td p").textContent.toLowerCase();
             fila.style.display = email.includes(filtro) ? "" : "none";
         });
+    });
+
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("viajes")) {
+            const userId = e.target.getAttribute("data-id");
+            window.location.href = `/admin/usuarios/${userId}/reservas`;
+        }
     });
 </script>
 

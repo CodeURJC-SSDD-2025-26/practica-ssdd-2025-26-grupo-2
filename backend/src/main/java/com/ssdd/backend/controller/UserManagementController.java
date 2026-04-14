@@ -10,33 +10,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.ssdd.backend.model.Reservation;
 import com.ssdd.backend.model.User;
+import com.ssdd.backend.service.ReservationService;
 import com.ssdd.backend.service.UserService;
 import org.springframework.ui.Model;
 
-
-
 @Controller
 public class UserManagementController {
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ReservationService reservationService;
 
-	@GetMapping("/userManagement.html")
-	public String displayUsers(Model model) {
-		List<User> listaUsuarios = userService.findAll();
+    @GetMapping("/userManagement.html")
+    public String displayUsers(Model model) {
+        List<User> listaUsuarios = userService.findAll();
 
-		model.addAttribute("usuarios", listaUsuarios);
+        model.addAttribute("usuarios", listaUsuarios);
 
-		return "userManagement"; 
-	}
+        return "userManagement";
+    }
 
-	@PostMapping("/admin/usuarios/eliminar/{id}")
+    @PostMapping("/admin/usuarios/eliminar/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) {
         try {
             userService.deleteById(id);
             return ResponseEntity.ok("Usuario eliminado");
         } catch (Exception e) {
-			e.printStackTrace();
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar");
         }
     }
@@ -46,11 +48,20 @@ public class UserManagementController {
         try {
             User user = userService.findById(id).orElseThrow();
             user.setImagenPerfil(null);
-            userService.save(user); 
+            userService.save(user);
             return ResponseEntity.ok("Imagen reseteada");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al resetear imagen");
         }
+    }
+
+    @GetMapping("/admin/usuarios/{id}/reservas")
+    public String reservasUsuario(@PathVariable Long id, Model model) {
+        User user = userService.findById(id).orElseThrow();
+        List<Reservation> reservas = reservationService.findByUsuario(user);
+        model.addAttribute("user", user);
+        model.addAttribute("reservas", reservas);
+        return "userReservas";
     }
 
 }

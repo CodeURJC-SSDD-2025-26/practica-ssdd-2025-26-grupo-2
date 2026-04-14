@@ -21,6 +21,7 @@
 
                 <form action="/reservations/{{reservation.id}}/edit" method="post">
                     <input type="hidden" name="_csrf" value="{{token}}">
+                    <input type="hidden" name="returnTo" value="{{returnTo}}">
 
                     <div class="form-group mb-3">
                         <label class="text-black"><b>Viaje</b></label>
@@ -46,7 +47,14 @@
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+                        {{#returnTo}}
+                        <a href="{{returnTo}}" class="btn btn-rm">Cancelar</a>
+                        {{/returnTo}}
+
+                        {{^returnTo}}
                         <a href="/userProfile.html" class="btn btn-rm">Cancelar</a>
+                        {{/returnTo}}
                     </div>
 
                 </form>
