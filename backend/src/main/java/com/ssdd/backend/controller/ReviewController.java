@@ -1,19 +1,19 @@
 package com.ssdd.backend.controller;
 
 import java.security.Principal;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssdd.backend.model.Review;
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.ReviewRepository;
 import com.ssdd.backend.repository.UserRepository;
-
-import jakarta.servlet.http.HttpServletRequest;
+import com.ssdd.backend.service.ReviewService;
+import com.ssdd.backend.service.UserService;
 
 @Controller
 public class ReviewController {
@@ -26,21 +26,26 @@ public class ReviewController {
 
     @Autowired
     private com.ssdd.backend.service.TravelService travelService;
+    @Autowired
+    private ReviewService reviewService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/reviews/new")
-    // 1. Añadimos el parámetro Long viajeId que vendrá del formulario
-    public String addReview(String comentario, int puntuacion, Long viajeId, HttpServletRequest request) {
-    Principal principal = request.getUserPrincipal();
-    if (principal != null) {
-        Optional<User> user = userRepository.findByEmail(principal.getName());
-        Optional<Travel> viaje = travelService.getTravelById(viajeId); // Buscamos el viaje
-
-        if (user.isPresent() && viaje.isPresent()) {
-            // Guardamos la reseña asociada al autor Y al viaje
-            Review review = new Review(puntuacion, comentario, user.get(), viaje.get());
-            reviewRepository.save(review);
+    public String addReview(
+        @RequestParam String comentario, 
+        @RequestParam int puntuacion, 
+        @RequestParam Long viajeId, // Este debe coincidir con el 'name' del input hidden
+        Principal principal) {
+        
+        if (principal != null) {
+            User user = userService.findByEmail(principal.getName()).get();
+            Travel viaje = travelService.getTravelById(viajeId).get();
+            
+            Review review = new Review(puntuacion, comentario, user, viaje);
+            reviewService.save(review);
         }
+        return "redirect:/viajes/" + viajeId;
     }
-    return "redirect:/viajes/" + viajeId;
-}
 }

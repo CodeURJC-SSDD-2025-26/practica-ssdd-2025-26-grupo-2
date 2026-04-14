@@ -7,12 +7,12 @@
     <div class="row mb-4 justify-content-between align-items-center">
         <div class="col-lg-8">
             {{#targetUser}}
-            <h2 class="section-title">Moderación: <span class="text-primary">{{nombre}}</span></h2>
+            <h2 class="section-title">Moderación de reseñas: <span class="text-primary">{{nombre}}</span></h2>
             <p class="text-muted">{{email}}</p>
             {{/targetUser}}
         </div>
         <div class="col-lg-3 text-right">
-            <a href="/userManagement" class="btn btn-outline-primary btn-sm">Volver a Usuarios</a>
+            <a href="/userManagement.html" class="btn btn-outline-primary btn-sm">Volver a Usuarios</a>
         </div>
     </div>
 
@@ -25,11 +25,11 @@
                         <th>Comentario</th>
                         <th>Acciones</th>
                     </tr>
-                </thread>
+                </thead>
                 <tbody>
                     {{#userReviews}}
                     <tr id="fila-{{id}}">
-                        <td>{{#viaje}}{{nombre}}{{/viaje}}</td>
+                        <td><strong>{{#viaje}}{{nombre}}{{/viaje}}</strong></td>
                         <td>"{{comentario}}"</td>
                         <td>
                             <button type="button" class="btn btn-danger btn-sm" onclick="borrarReview('{{id}}')">
@@ -38,14 +38,16 @@
                         </td>
                     </tr>
                     {{/userReviews}}
+                    {{^userReviews}}
+                    <tr>
+                        <td colspan="3" class="text-center py-4 text-muted">Este usuario no tiene reseñas.</td>
+                    </tr>
+                    {{/userReviews}}
                 </tbody>
             </table>
         </div>
     </div>  
 </div>
-
-
-
 
 <script>
 async function borrarReview(reviewId) {
@@ -53,7 +55,6 @@ async function borrarReview(reviewId) {
 
     const token = document.getElementById('tokenCsrf').value;
     
-    // Creamos los datos para enviar (formato formulario)
     const formData = new URLSearchParams();
     formData.append('reviewId', reviewId);
     formData.append('_csrf', token);
@@ -66,8 +67,11 @@ async function borrarReview(reviewId) {
         });
 
         if (response.ok) {
-            // Si funciona, borramos la fila de la tabla sin refrescar la página
-            document.getElementById(fila-${reviewId}).remove();
+            // CORREGIDO: Se añaden las comillas invertidas para que el ID sea dinámico
+            const elemento = document.getElementById(`fila-${reviewId}`);
+            if (elemento) {
+                elemento.remove();
+            }
             alert('Reseña eliminada correctamente');
         } else {
             alert('Error al eliminar: El servidor respondió con error ' + response.status);

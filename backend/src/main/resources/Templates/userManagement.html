@@ -15,7 +15,6 @@
         </div>
     </div>
 </div>
-</div>
 <br>
 <div class="col-11-5 mx-auto mb-5">
     <br>
@@ -26,7 +25,6 @@
         </div>
         <a href="/graphUser.html" class="btn btn-adv mx-3">Ver gráficos</a>
     </div>
-
 </div>
 
 <table class="tabla-admin">
@@ -77,8 +75,15 @@
                     <button class="btn btn-rm" data-id="{{id}}">Eliminar</button>
                     <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
                     <button class="btn btn-primary adv">Aviso</button>
+<<<<<<< HEAD
                     <button class="btn btn-primary">Reseñas</button>
                     <button class="btn btn-primary viajes" data-id="{{id}}">Viajes</button>
+=======
+                    
+                    <a href="/admin/usuarios/{{id}}/reseñas" class="btn btn-primary">Reseñas</a>
+                    
+                    <button class="btn btn-primary">Viajes</button>
+>>>>>>> f57e849733b13aa5d5b1bb3c84d86517d7a37a1f
                 </div>
             </td>
         </tr>
@@ -86,13 +91,10 @@
     </tbody>
 </table>
 
-</div>
-
 <script>
     document.addEventListener("click", async function (e) {
         if (e.target.classList.contains("btn-rm")) {
             const userId = e.target.getAttribute("data-id");
-
             const confirmDelete = confirm("¿Estás seguro de que quieres eliminar este usuario?");
             if (!confirmDelete) return;
 
@@ -102,7 +104,6 @@
                 return;
             }
 
-            //backend call
             const response = await fetch(`/admin/usuarios/eliminar/${userId}`, {
                 method: 'POST',
                 headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value }
@@ -116,9 +117,7 @@
             }
         }
     });
-</script>
 
-<script>
     document.addEventListener("click", function (e) {
         if (e.target.classList.contains("adv")) {
             const motivo = prompt("Escriba el aviso que desee enviar:");
@@ -128,12 +127,10 @@
             }
         }
     });
-</script>
-<script>
+
     document.addEventListener("click", async function (e) {
         if (e.target.classList.contains("rImg")) {
             const userId = e.target.getAttribute("data-id");
-
             if (!confirm("¿Reestablecer imagen de perfil?")) return;
 
             const response = await fetch(`/admin/usuarios/reset-imagen/${userId}`, {
@@ -152,9 +149,7 @@
             }
         }
     });
-</script>
 
-<script>
     document.getElementById("buscadorUsuario").addEventListener("input", function () {
         const filtro = this.value.toLowerCase();
         const filas = document.querySelectorAll("tbody tr");
