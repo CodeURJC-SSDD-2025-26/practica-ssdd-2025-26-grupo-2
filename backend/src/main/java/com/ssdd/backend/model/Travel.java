@@ -43,7 +43,8 @@ public class Travel {
     // EN TU ARCHIVO Travel.java
     
     // 1. Añadimos el fetch = FetchType.EAGER
-    @OneToMany(mappedBy = "viaje", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "viaje", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+
     // 2. Aseguramos que la lista se inicialice vacía, no en null
     private List<Reservation> reservas = new ArrayList<>();
     
