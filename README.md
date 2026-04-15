@@ -316,9 +316,15 @@ Diagrama de clases de la aplicación con diferenciación por colores o secciones
 
 ---
 
-#### **Alumno 2 - [Nombre Completo]**
+#### **Alumno 2 - Alejandro Hernández de Dios**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Me he ocupado principalmente de la correcta funcionalidad del apartado de las reseñas del usuario en cada viaje. Por un lado hice que solo los usuarios registrados puedan poner reseñas para así evitar falsos testimonios. También hice que una vez se cierra sesión con el usuario que usaste para poner una reseña esa reseña perdura en la web, apareciendo en la seccion de reseñas de la página principal (en donde también me ocupé de que las fotos de perfil del usuario propietario de dicha reseña, aparezca sin porblema en esa sección) y en el apartado de nuestros viajes en dicho viaje.
+
+Centrándonos en la cuenta del administrador, le di utilidad al botón de reseñas que se encuentra en el panel de administración. 
+Una vez haces click en Gestionar Usuarios se carga una pantalla en la cual puedes consultar todos los usuarios con una cuenta registrada dentro de la web. 
+En cada ficha de usuario se encuentra este botón llamado Reseñas, el cual si accedes a el te carga una nueva pantalla en la cual puedes ver todo el registro de reseñas que ha escrito dicho usuario. Además, dentro de esta página, se encuentra la funcionalidad de poder eliminar la reseña de ese mismo usuario en caso de que el administrador lo encuentre necesario por temas como: faltas de respeto, lengiuaje soez, entre otros...
+
+
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
