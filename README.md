@@ -228,11 +228,29 @@ Posteriormente, me responsabilicé de forma individual de la elaboración del í
 
 #### **Diagrama de Navegación**
 
-Solo si ha cambiado.
+![Diagrama de Navegación](images/diagramapractica2.png)
+Sobre todo hemos actualizado las págins en las cuales se puede hacceder desde la cuenta del administrador. Teniendo en cuenta los gráficos de gestión de usuarios y gestión de viajes, los cuales nos proporcionan diferentes datos sobre los usuarios y las reservas de los viajes que hacen en nuestra página.
 
 #### **Capturas de Pantalla Actualizadas**
 
-Solo si han cambiado.
+#### **1. Página de gráficos de los viajes**
+![Graficos de Viajes](images/GraficosViaje.png)
+Estos gráficos nos proporcionan diferentes datos que nos hacen tomar referencia sobre los destinos más solicitados entre la comunidad de nuestros usuarios. También nos orientan sobre la disponibilidad de dichos viajes.
+
+#### **2. Página de Lectura de reseñas siendo Admin**
+![Reseñas de los usuarios](images/ReseñaUsuario.png)
+Esta nueva funcionalidad nos permite ser capaces de leer y borrar reseñas de nuestros usuarios (si accedemos desde la cuenta del administrador). 
+Es una funcionalidad muy util para tener controlado las reseñas de nuestros usuarios y tener el poder de borrar algún comentario si es soez o falta el respeto de alguna manera.
+
+#### **3. Página de Graficos de Usuarios siendo Admin**
+![Gráficos de Usuarios](images/GraficosUsuario.png)
+Este gráfico nos proporciona datos muy interesantes sobre los usuarios de nuestra web. Como sus gastos, su numero de reservas y los paises que suele reservar.
+
+
+#### **4. Página de Añadir Viajes siendo Admin**
+![Añadir Viajes](images/AñadirViaje.png)
+Esta funcionalidad permite al administrador gestionar la reserva de un viaje.
+
 
 ### **Instrucciones de Ejecución**
 
