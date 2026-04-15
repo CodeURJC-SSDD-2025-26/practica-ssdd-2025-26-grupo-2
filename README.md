@@ -228,8 +228,9 @@ Posteriormente, me responsabilicé de forma individual de la elaboración del í
 
 #### **Diagrama de Navegación**
 
-![Diagrama de Navegación](images/diagramapractica2.png)
+![Diagrama de Navegación](images/diagrama2final.png)
 Sobre todo hemos actualizado las págins en las cuales se puede hacceder desde la cuenta del administrador. Teniendo en cuenta los gráficos de gestión de usuarios y gestión de viajes, los cuales nos proporcionan diferentes datos sobre los usuarios y las reservas de los viajes que hacen en nuestra página.
+También podemos apreciar la funcionalidad de recuperar la contraseña para los usuarios que no recuerden la actual y una página que permite al usuario poder consultar todos los detalles de su reserva.
 
 #### **Capturas de Pantalla Actualizadas**
 
@@ -250,6 +251,14 @@ Este gráfico nos proporciona datos muy interesantes sobre los usuarios de nuest
 #### **4. Página de Añadir Viajes siendo Admin**
 ![Añadir Viajes](images/AñadirViaje.png)
 Esta funcionalidad permite al administrador gestionar la reserva de un viaje.
+
+#### **5. Página de Recuperar Contraseña**
+![Recuperar contraseña](images/recuperarContraseña.png)
+Esta funcionalidad permite al usuario poder cambiar su contraseña en el caso de que haya olvidado su contraseña actual.
+
+#### **6. Página de Recuperar Contraseña**
+![Detalle de Reserva](images/detalleReserva.png)
+Esta funcionalidad permite al usuario poder consultar los datos de su reserva.
 
 
 ### **Instrucciones de Ejecución**
