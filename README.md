@@ -229,7 +229,7 @@ Posteriormente, me responsabilicé de forma individual de la elaboración del í
 #### **Diagrama de Navegación**
 
 ![Diagrama de Navegación](images/diagrama2final.png)
-Sobre todo hemos actualizado las págins en las cuales se puede hacceder desde la cuenta del administrador. Teniendo en cuenta los gráficos de gestión de usuarios y gestión de viajes, los cuales nos proporcionan diferentes datos sobre los usuarios y las reservas de los viajes que hacen en nuestra página.
+Sobre todo hemos actualizado las páginas en las cuales se puede acceder desde la cuenta del administrador. Teniendo en cuenta los gráficos de gestión de usuarios y gestión de viajes, los cuales nos proporcionan diferentes datos sobre los usuarios y las reservas de los viajes que hacen en nuestra página.
 También podemos apreciar la funcionalidad de recuperar la contraseña para los usuarios que no recuerden la actual y una página que permite al usuario poder consultar todos los detalles de su reserva.
 
 #### **Capturas de Pantalla Actualizadas**
