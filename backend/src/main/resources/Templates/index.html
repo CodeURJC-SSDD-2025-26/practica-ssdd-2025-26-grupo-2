@@ -1,125 +1,106 @@
 {{>header}}
 
 <div class="hero">
-    <div class="container">
-        <div class="row align-items-center">
-            
-            <div class="col-lg-6">
-                <div class="intro-wrap">
-                    <h1 class="mb-5"><span class="d-block">Disfruta de tu viaje</span>Viaja a <span
-                            class="typed-words"></span></h1>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7">
+				<div class="intro-wrap">
+					<h1 class="mb-5"><span class="d-block">Disfruta de tu viaje</span>Viaja a <span
+							class="typed-words"></span></h1>
 
-                    <div class="row">
-                        <div class="col-10">
-                            <form class="form">
-                                <div class="row mb-2">
-                                    <div class="col-lg-4 mb-2">
-                                        <select name="" id="" class="form-control custom-select">
-                                            <option value="">Destino</option>
-                                            <option value="">Peru</option>
-                                            <option value="">Estados Unidos</option>
-                                            <option value="">Malasia</option>
-                                            <option value="">Polinesia Francesa</option>
-                                            <option value="">Australia</option>
-                                            <option value="">Noruega</option>
-                                            <option value="">Francia</option>
-                                            <option value="">Kenia</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <input type="text" class="form-control custom-select" name="daterange">
-                                    </div>
-
-                                    <div class="col-lg-2">
-                                        <select name="viajeros" class="form-control custom-select">
-                                            <option value=""></option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center">
-                                    <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                        <input type="submit" class="btn btn-primary btn-block" value="Buscar">
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <label class="control control--checkbox mt-3">
-                                            <span class="caption">Guardar esta búsqueda</span>
-                                            <input type="checkbox" checked="checked" />
-                                            <div class="control__indicator"></div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-5 offset-lg-1">
-                <div id="nombres-destinos" data-nombres="{{nombresAnimados}}" class="d-none"></div>
-                <div class="slides">
-                    {{#viajesNuevos}}
-                        {{#tieneImagen}}
-                            <img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid dinamic-slide">
-                        {{/tieneImagen}}
-                        {{^tieneImagen}}
-                            <img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide">
-                        {{/tieneImagen}}
-                    {{/viajesNuevos}}
-                    
-                    {{^viajesNuevos}}
-                        <img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide active">
-                    {{/viajesNuevos}}
-                </div>
-            </div>
-            
-        </div>
-    </div>
+					<div class="row">
+						<div class="col-10">
+							<form action="indexSearch" method="post" class="form">
+								<input type="hidden" name="_csrf" value="{{token}}">
+								<div class="row mb-2">
+									<div class="col-lg-4 mb-2">
+										<select name="country" id="" class="form-control custom-select required">
+											{{#viajes}}
+											<option value="{{pais}}">{{pais}}</option>
+											{{/viajes}}
+										</select>
+									</div>
+									<div class="col-lg-6 mb-2">
+										<input type="text" class="form-control custom-select" name="daterange" required>
+									</div>
+									<div class="col-lg-2">
+										<select name="travelers" class="form-control custom-select" required>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</div>
+								<div class="row align-items-center">
+									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+										<input type="submit" class="btn btn-primary btn-block" value="Buscar">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div id="nombres-destinos" data-nombres="{{nombresAnimados}}"></div>
+				<div class="slides">
+					{{#viajesNuevos}}
+					{{#tieneImagen}}
+					<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid dinamic-slide">
+					{{/tieneImagen}}
+					{{^tieneImagen}}
+					<img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide">
+					{{/tieneImagen}}
+					{{/viajesNuevos}}
+					{{^viajesNuevos}}
+					<img src="/images/hero-slider-1.jpg" alt="Default" class="img-fluid dinamic-slide active">
+					{{/viajesNuevos}}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="untree_co-section mt-5">
-    <div class="container">
-        <div class="row text-center justify-content-center mb-5">
-            <div class="col-lg-12">
-                <h2 class="section-title text-center">Destinos Populares</h2>
-            </div>
-        </div>
+	<div class="container">
+		<div class="row text-center justify-content-center mb-5">
+			<div class="col-lg-12">
+				<h2 class="section-title text-center">Destinos Populares</h2>
+			</div>
+		</div>
 
-        <div class="owl-carousel owl-3-slider">
-            {{#viajesPopulares}}
-            <div class="item">
-                <a class="media-thumb" href="/viajes/{{id}}">
-                    <div class="media-text">
-                        <h3>{{nombre}}</h3>
-                        <span class="location">{{pais}}</span>
-                    </div>
-                    {{#tieneImagen}}
-                        <img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
-                    {{/tieneImagen}}
-                    {{^tieneImagen}}
-                        <img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
-                    {{/tieneImagen}}
-                </a>
-            </div>
-            {{/viajesPopulares}}
-            
-            {{^viajesPopulares}}
-                <p class="text-center w-100 mt-4">Aún no hay destinos disponibles.</p>
-            {{/viajesPopulares}}
-        </div>
-    </div>
+		<div class="owl-carousel owl-3-slider">
+			{{#viajesNuevos}}
+			<div class="item">
+				<a class="media-thumb" href="/viajes/{{id}}">
+					<div class="media-text">
+						<h3>{{nombre}}</h3>
+						<span class="location">{{pais}}</span>
+					</div>
+					{{#tieneImagen}}
+					<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
+					{{/tieneImagen}}
+					{{^tieneImagen}}
+					<img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
+					{{/tieneImagen}}
+				</a>
+			</div>
+			{{/viajesNuevos}}
+			{{^viajesNuevos}}
+			<p class="text-center w-100 mt-4">Aún no hay destinos disponibles.</p>
+			{{/viajesNuevos}}
+		</div>
+	</div>
 </div>
 
 <div class="untree_co-section testimonial-section mt-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 text-center">
-                <h2 class="section-title text-center mb-5">Reseñas</h2>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7 text-center">
+				<h2 class="section-title text-center mb-5">Reseñas</h2>
 
-                <div class="owl-single owl-carousel no-nav">
+				<div class="owl-single owl-carousel no-nav">
 					{{#reviews}}
 					<div class="testimonial mx-auto">
 						<figure class="img-wrap">
@@ -157,126 +138,124 @@
 </div>
 
 <div class="untree_co-section">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-6">
-                <h2 class="section-title text-center mb-3">¡Ofertas Especiales y Descuentos!</h2>
-                <p>Aprovecha nuestras ofertas exclusivas a tus destinos favoritos, no dejes pasar la oportunidad de
-                    vivir una experiencia inolvidable a un precio inigualable.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            {{#viajesNuevos}}
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <div class="media-1">
-                    <a href="/viajes/{{id}}" class="d-block mb-3">
-                        {{#tieneImagen}}
-                            <img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
-                        {{/tieneImagen}}
-                        {{^tieneImagen}}
-                            <img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
-                        {{/tieneImagen}}
-                    </a>
-                    <span class="d-flex align-items-center loc mb-2">
-                        <span class="icon-room mr-3"></span>
-                        <span>{{pais}}</span>
-                    </span>
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h3><a href="/viajes/{{id}}">{{nombre}}</a></h3>
-                            <div class="price ml-auto">
-                                <span>{{precio}}€</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{/viajesNuevos}}
-            
-            {{^viajesNuevos}}
-                <p class="text-center w-100">Aún no hay ofertas disponibles.</p>
-            {{/viajesNuevos}}
-        </div>
-    </div>
+	<div class="container">
+		<div class="row justify-content-center text-center mb-5">
+			<div class="col-lg-6">
+				<h2 class="section-title text-center mb-3">¡Ofertas Especiales y Descuentos!</h2>
+				<p>Aprovecha nuestras ofertas exclusivas a tus destinos favoritos, no dejes pasar la oportunidad de
+					vivir una experiencia inolvidable a un precio inigualable.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			{{#viajesPopulares}}
+			<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+				<div class="media-1">
+					<a href="/viajes/{{id}}" class="d-block mb-3">
+						{{#tieneImagen}}
+						<img src="/viajes/{{id}}/imagen" alt="{{nombre}}" class="img-fluid">
+						{{/tieneImagen}}
+						{{^tieneImagen}}
+						<img src="/images/hero-slider-1.jpg" alt="Image default" class="img-fluid">
+						{{/tieneImagen}}
+					</a>
+					<span class="d-flex align-items-center loc mb-2">
+						<span class="icon-room mr-3"></span>
+						<span>{{pais}}</span>
+					</span>
+					<div class="d-flex align-items-center">
+						<div>
+							<h3><a href="/viajes/{{id}}">{{nombre}}</a></h3>
+							<div class="price ml-auto">
+								<span>{{precio}}€</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/viajesPopulares}}
+			{{^viajesPopulares}}
+			<p class="text-center w-100">Aún no hay ofertas disponibles.</p>
+			{{/viajesPopulares}}
+		</div>
+	</div>
 </div>
 
 <div class="untree_co-section">
-    <div class="container">
-        <div class="row mb-4 justify-content-center">
-            <div class="col-lg-6 text-center">
-                <h2 class="section-title text-center mb-3">Más Servicios</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="feature-1 text-center">
-                    <span class="flaticon-mail display-4 text-primary"></span>
-                    <h3>Fácil llegar a nosotros</h3>
-                    <p class="mb-0">
-                        Ofrecemos atención cercana y respuestas rápidas para que tu experiencia sea sencilla.
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="feature-1 text-center">
-                    <span class="flaticon-phone-call display-4 text-primary"></span>
-                    <h3>Soporte 24/7</h3>
-                    <p class="mb-0">
-                        Te acompañamos en cada paso, con atención personalizada y disponibilidad total.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row mb-4 justify-content-center">
+			<div class="col-lg-6 text-center">
+				<h2 class="section-title text-center mb-3">Más Servicios</h2>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="feature-1 text-center">
+					<span class="flaticon-mail display-4 text-primary"></span>
+					<h3>Fácil llegar a nosotros</h3>
+					<p class="mb-0">
+						Ofrecemos atención cercana y respuestas rápidas para que tu experiencia sea sencilla.
+					</p>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="feature-1 text-center">
+					<span class="flaticon-phone-call display-4 text-primary"></span>
+					<h3>Soporte 24/7</h3>
+					<p class="mb-0">
+						Te acompañamos en cada paso, con atención personalizada y disponibilidad total.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="py-5 cta-section">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12">
-                <p class="mb-1"><a href="contact.html"
-                        class="btn btn-outline-white text-white btn-grande font-weight-bold">Contáctanos</a></p>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-md-12">
+				<p class="mb-1"><a href="contact.html"
+						class="btn btn-outline-white text-white btn-grande font-weight-bold">Contáctanos</a></p>
+			</div>
+		</div>
+	</div>
 </div>
 
 {{>footer}}
 
 <script>
-$(document).ready(function () {
-    if ($('.typed-words').length > 0) {
-        var datosOcultos = document.getElementById('nombres-destinos');
-        var listaNombres = [" Tus destinos favoritos."];
+	$(document).ready(function () {
+		if ($('.typed-words').length > 0) {
+			var datosOcultos = document.getElementById('nombres-destinos');
+			var listaNombres = [" Tus destinos favoritos."];
 
-        if (datosOcultos && datosOcultos.getAttribute('data-nombres')) {
-            var nombresExtraidos = datosOcultos.getAttribute('data-nombres').split('|');
-            listaNombres = nombresExtraidos.map(function(nombre) {
-                return " " + nombre + ".";
-            });
-        }
+			if (datosOcultos && datosOcultos.getAttribute('data-nombres')) {
+				var nombresExtraidos = datosOcultos.getAttribute('data-nombres').split(',');
+				listaNombres = nombresExtraidos.map(function (nombre) {
+					return " " + nombre + ".";
+				});
+			}
 
-        $('.slides img').each(function (i) {
-            $(this).attr('data-id', i + 1);
-        });
+			$('.slides img').each(function (i) {
+				$(this).attr('data-id', i + 1);
+			});
 
-        var typed = new Typed('.typed-words', {
-            strings: listaNombres,
-            typeSpeed: 90,
-            backSpeed: 50,
-            backDelay: 4000,
-            startDelay: 500,
-            loop: true,
-            showCursor: true,
-            preStringTyped: (arrayPos, self) => {
-                var totalFotos = $('.slides img').length;
-                var currentId = (arrayPos % totalFotos) + 1;
-                
-                $('.slides img').removeClass('active');
-                $('.slides img[data-id="' + currentId + '"]').addClass('active');
-            }
-        });
-    }
-});
+			var typed = new Typed('.typed-words', {
+				strings: listaNombres,
+				typeSpeed: 90,
+				backSpeed: 50,
+				backDelay: 4000,
+				startDelay: 500,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					var totalFotos = $('.slides img').length;
+					var currentId = (arrayPos % totalFotos) + 1;
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="' + currentId + '"]').addClass('active');
+				}
+			});
+		}
+	});
 </script>
