@@ -280,15 +280,9 @@ Diagrama de clases de la aplicación con diferenciación por colores o secciones
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [inicio de sesión de usuarios con contraseñas encriptadas realizado](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2071b2728277a17bdf91860c6b46a366013eab67)  | [WebSecurityConfig.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2071b2728277a17bdf91860c6b46a366013eab67#diff-415d09308ca7883a8ba6a0f07f805171dc663ca1dd18d612d5fa7582159852e7) 
-[UserService.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2071b2728277a17bdf91860c6b46a366013eab67#diff-8457d6a7465c0d8faebcdcf6cc4d702526ad86b10dbf60228a72fe0f38369b99)   |
 
-|2| [post cambio de imagen realizado y userProfile y header modificados](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201)  
-
-| [UserImageController](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201)   
-[GlobalControllerAdvice.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201)  
-[userProfile.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201#diff-cd0a43556d5cd2946e2ee0a4a409568b3e7f984829e78d046ba7436df8f3ae0b)  
-|
+|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
+|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
 |3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
 |4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
 |5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |

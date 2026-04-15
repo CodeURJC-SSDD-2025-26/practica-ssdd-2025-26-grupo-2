@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface TravelRepository extends JpaRepository<Travel, Long> {
     @Query("SELECT t FROM Travel t WHERE t.pais = :country " +
             "AND t.maxPlazas >= :travelers " +
-            "AND (t.fechaInicio <= :start AND t.fechaFin >= :end)")
+            "AND t.fechaInicio <= :end " +
+            "AND t.fechaFin >= :start")
     List<Travel> findCustomTrips(String country, int travelers, LocalDate start, LocalDate end);
 }
