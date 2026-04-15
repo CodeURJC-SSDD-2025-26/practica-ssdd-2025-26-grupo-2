@@ -120,38 +120,40 @@
                 <h2 class="section-title text-center mb-5">Reseñas</h2>
 
                 <div class="owl-single owl-carousel no-nav">
-                    {{#reviews}}
-                    <div class="testimonial mx-auto">
-                        <figure class="img-wrap">
-                            {{#autor.imagenPerfil}}
-                                <img src="/usuario/{{autor.id}}/imagen"
-                                    class="rounded-circle img-thumbnail profile-img1"
-                                    alt="Foto de {{autor.nombre}}">
-                            {{/autor.imagenPerfil}}
-                            {{^autor.imagenPerfil}}
-                                <img src="/images/default_profile.jpg" alt="Perfil por defecto"
-                                    class="rounded-circle img-thumbnail profile-img1">
-                            {{/autor.imagenPerfil}}
-                        </figure>
-                        <h3 class="name">{{autor.nombre}}</h3>
-                        <div class="rating">
-                            <span>Puntuación: {{puntuacion}}/5</span>
-                        </div>
-                        <blockquote>
-                            <p>&ldquo;{{comentario}}&rdquo;</p>
-                        </blockquote>
-                        <small>{{fecha}}</small>
-                    </div>
-                    {{/reviews}}
-                    {{^reviews}}
-                    <div class="testimonial mx-auto">
-                        <p>Aún no hay reseñas. ¡Sé el primero en escribir una desde la página de un viaje!</p>
-                    </div>
-                    {{/reviews}}
-                </div>
-            </div>
-        </div>
-    </div>
+					{{#reviews}}
+					<div class="testimonial mx-auto">
+						<figure class="img-wrap">
+							{{#autor.imagenPerfil}}
+							<img src="/usuario/{{autor.id}}/imagen"
+								class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block"
+								style="width: 80px; height: 80px; object-fit: cover;" alt="Foto de {{autor.nombre}}">
+							{{/autor.imagenPerfil}}
+
+							{{^autor.imagenPerfil}}
+							<img src="/images/default_profile.jpg" alt="Perfil por defecto"
+								class="rounded-circle img-thumbnail profile-img1 d-none d-xl-inline-block">
+							{{/autor.imagenPerfil}}
+						</figure>
+
+						<h3 class="name">{{autor.nombre}}</h3>
+						<div class="rating">
+							<span>Puntuación: {{puntuacion}}/5</span>
+						</div>
+						<blockquote>
+							<p>&ldquo;{{comentario}}&rdquo;</p>
+						</blockquote>
+						<small>{{fecha}}</small>
+					</div>
+					{{/reviews}}
+					{{^reviews}}
+					<div class="testimonial mx-auto">
+						<p>Aún no hay reseñas. ¡Sé el primero en escribir una desde la página de un viaje!</p>
+					</div>
+					{{/reviews}}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="untree_co-section">

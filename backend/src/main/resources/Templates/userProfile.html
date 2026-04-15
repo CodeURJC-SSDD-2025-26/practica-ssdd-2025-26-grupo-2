@@ -80,25 +80,25 @@
                 <div class="form-group mb-3">
                     <label for="cardNumber">Número de tarjeta</label>
                     <input type="text" class="form-control" name="number" id="cardNumber"
-                        placeholder="1234 5678 9012 3456" 
+                        placeholder="1234 5678 9012 3456" required
                         {{#tarjeta}}value="**** **** **** {{ultimosCuatro}}"{{/tarjeta}}>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="cardName">Nombre del titular</label>
-                    <input type="text" class="form-control" name="owner" id="cardName"
+                    <input type="text" class="form-control" name="owner" id="cardName" required
                         value="{{#tarjeta}}{{titular}}{{/tarjeta}}">
                 </div>
 
                 <div class="form-row mb-4">
                     <div class="col form-group mb-0">
                         <label for="cardExpiration">Expiración</label>
-                        <input type="text" class="form-control" name="expirationDate" id="cardExpiration"
+                        <input type="text" class="form-control" name="expirationDate" id="cardExpiration" required
                             placeholder="MM/AA" value="{{#tarjeta}}{{caducidad}}{{/tarjeta}}">
                     </div>
                     <div class="col form-group mb-0">
                         <label for="cardCVV">CVV</label>
-                        <input type="password" class="form-control" name="cvv" id="cardCVV" placeholder="•••">
+                        <input type="password" class="form-control" name="cvv" id="cardCVV" required placeholder="•••">
                     </div>
                 </div>
                 {{/user}}

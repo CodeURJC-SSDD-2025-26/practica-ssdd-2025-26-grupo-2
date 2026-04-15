@@ -1,5 +1,7 @@
 package com.ssdd.backend.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,24 +20,33 @@ public class TravelService {
     @Autowired
     private TravelRepository travelRepository;
 
-    // 1. Obtener todos 
     public List<Travel> getAllTravels() {
         return travelRepository.findAll();
     }
-
-    // 2. Obtener uno por ID 
+ 
     public Optional<Travel> getTravelById(Long id) {
         return travelRepository.findById(id);
     }
 
-    // 3. GUARDAR 
-    // Usamos 'public Travel' para que nos devuelva el objeto guardado con su ID
     public Travel save(Travel travel) {
         return travelRepository.save(travel);
     }
 
-    // 4. BORRAR 
+    
     public void delete(long id) {
         travelRepository.deleteById(id);
+    }
+    public List<Travel> searchTrips(String country, String daterange, Integer travelers) {
+        if (daterange == null || !daterange.contains(" - ") || country == null || travelers == null) {
+            return null; 
+        }
+
+        String[] dates = daterange.split(" - ");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        
+        LocalDate startDate = LocalDate.parse(dates[0], formatter);
+        LocalDate endDate = LocalDate.parse(dates[1], formatter);
+
+        return travelRepository.findCustomTrips(country, travelers, startDate, endDate);
     }
 }

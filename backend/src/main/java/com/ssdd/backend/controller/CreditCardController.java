@@ -28,27 +28,27 @@ public class CreditCardController {
             @RequestParam String cvv,
             Principal principal) {
 
+        if(number == null || owner == null || expirationDate == null || cvv == null){
+            return "redirect:/userProfile.html";
+        }
         String email = principal.getName();
         User user = userService.findByEmail(email).orElseThrow();
 
         CreditCard card = user.getTarjeta();
-
+        
         if (card == null) {
             card = new CreditCard();
             card.setUser(user);
         }
 
-        // 3. Actualizamos los datos
         card.setTitular(owner);
         card.setNumTarjeta(number.replaceAll("\\s+", ""));
         card.setCaducidad(expirationDate);
         card.setCvv(cvv);
 
-        // 4. PERSISTENCIA: Usamos el servicio específico de tarjetas
-        // Primero guardamos la tarjeta
+       
         creditCardService.save(card);
 
-        // Actualizamos la referencia en el usuario y guardamos el usuario
         user.setTarjeta(card);
         userService.save(user);
 
@@ -62,7 +62,7 @@ public class CreditCardController {
 
         if (user.getTarjeta() != null) {
             creditCardService.deleteFromUser(user);
-            userService.save(user); // Guardamos al usuario sin la referencia a la tarjeta
+            userService.save(user); 
         }
 
         return "redirect:/userProfile.html";
