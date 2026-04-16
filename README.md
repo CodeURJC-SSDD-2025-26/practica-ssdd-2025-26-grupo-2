@@ -252,6 +252,7 @@ Solo si han cambiado.
 
 2. **AQUÍ INDICAR LO SIGUIENTES PASOS**
 
+
 #### **Credenciales de prueba**
 - **Usuario Admin**: correo electrónico: `admin@byebye.com`, contraseña: `admin123`
 - **Usuario Registrado**: correo electrónico: `carla@gmail.com`, contraseña: `pass123`
@@ -260,9 +261,8 @@ Solo si han cambiado.
 
 Diagrama mostrando las entidades, sus campos y relaciones:
 
-![Diagrama Entidad-Relación](images/diagramaEntidades.png)
+![Diagrama Entidad-Relación](images/DiagramaEntidades.png)
 
-> [Descripción opcional: Ej: "El diagrama muestra las 4 entidades principales: Usuario, Producto, Pedido y Categoría, con sus respectivos atributos y relaciones 1:N y N:M."]
 
 ### **Diagrama de Clases y Templates**
 
@@ -280,7 +280,6 @@ Diagrama de clases de la aplicación con diferenciación por colores o secciones
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-
 |1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
 |2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
 |3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |

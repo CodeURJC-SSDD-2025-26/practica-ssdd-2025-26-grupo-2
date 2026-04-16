@@ -38,7 +38,8 @@
           <li><span class="text-primary font-weight-bold">Modo de transporte:</span> {{transporte}}</li>
           <li><span class="text-primary font-weight-bold">Alojamiento:</span> {{alojamiento}}</li>
           <li><span class="text-primary font-weight-bold">Precio por persona:</span> {{precio}}€</li>
-          <li><span class="text-primary font-weight-bold">Número máximo de personas por reserva:</span> {{maxPlazas}}</li>
+          <li><span class="text-primary font-weight-bold">Número máximo de personas por reserva:</span> {{maxPlazas}}
+          </li>
           <li><span class="text-primary font-weight-bold">Duración de la estancia:</span> {{numNoches}} noches</li>
         </ul>
 
@@ -96,8 +97,8 @@
 
             <div class="form-group col-md-6">
               <label for="cvv">CVV</label>
-              <input type="password" id="cvv" class="form-control" placeholder="123"
-                pattern="[0-9]{3}" maxlength="3" required>
+              <input type="password" id="cvv" class="form-control" placeholder="123" pattern="[0-9]{3}" maxlength="3"
+                required>
             </div>
           </div>
         </form>
@@ -109,7 +110,8 @@
           <button type="submit" form="paymentForm" class="btn btn-primary mb-2">Confirmar</button>
 
           {{#hasSavedCard}}
-          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalTarjetaGuardada">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalTarjetaGuardada">
             Pagar con tarjeta guardada
           </button>
           {{/hasSavedCard}}
@@ -189,10 +191,29 @@
       <div id="reviewsBox" class="border rounded p-4 bg-white shadow-sm">
         {{#reviews}}
         <div class="mb-3 border-bottom pb-2">
-          <strong>{{autor.nombre}}</strong> <span class="text-warning">({{puntuacion}}/5)</span>
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+              <strong>{{autor.nombre}}</strong>
+              <span class="text-warning ml-1">({{puntuacion}}/5)</span>
+            </div>
+
+            {{#isOwner}}
+            <form action="/reviews/delete" method="POST" class="m-0" 
+                onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta reseña? Esta acción no se puede deshacer.');">
+              <input type="hidden" name="_csrf" value="{{token}}">
+              <input type="hidden" name="reviewId" value="{{id}}">
+              <input type="hidden" name="viajeId" value="{{viaje.id}}">
+              <button type="submit" class="btn btn-link text-danger p-0 border-0" title="Eliminar reseña">
+                <i class="bi bi-trash" style="font-size: 1.1rem;"></i> 🗑️
+              </button>
+            </form>
+            {{/isOwner}}
+          </div>
           <p class="mb-1 text-dark">"{{comentario}}"</p>
           <small class="text-muted">{{fecha}}</small>
         </div>
+
         {{/reviews}}
 
         {{^reviews}}

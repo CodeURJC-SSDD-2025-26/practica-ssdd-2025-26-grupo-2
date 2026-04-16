@@ -10,12 +10,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "reviews") // Define el nombre de la tabla en la base de datos
+@Table(name = "reviews") 
 public class Review {
 
     @Id
@@ -23,15 +24,12 @@ public class Review {
     private Long id;
 
     @Column(nullable = false)
-    private Integer puntuacion; // Por ejemplo, de 1 a 5
+    private Integer puntuacion; 
 
-    @Column(columnDefinition = "TEXT") // Usamos TEXT por si el comentario es largo
+    @Column(columnDefinition = "TEXT") 
     private String comentario;
 
-    private LocalDate fecha;
-
-    // Relación Muchos a Uno: Muchas reseñas pueden pertenecer a un mismo usuario
-    @ManyToOne
+    private LocalDate fecha;    @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private User autor;
 
@@ -41,11 +39,20 @@ public class Review {
     @OnDelete(action = OnDeleteAction.CASCADE) 
     private Travel viaje;
 
-    // Constructor vacío
+    @Transient
+    private boolean isOwner; 
+
+    public boolean isIsOwner() {
+        return isOwner;
+    }
+
+    public void setIsOwner(boolean isOwner) {
+        this.isOwner = isOwner;
+    }
+
     public Review() {
     }
 
-    // Constructor completo
     public Review(Integer puntuacion, String comentario, User autor, Travel viaje) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
@@ -54,7 +61,6 @@ public class Review {
         this.fecha = LocalDate.now();
     }
 
-    // Constructor sin viaje (por si lo usas en otra parte)
     public Review(int puntuacion, String comentario, User autor) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
@@ -62,7 +68,6 @@ public class Review {
         this.fecha = LocalDate.now(); 
     }
 
-    // Getters y Setters
     public Travel getViaje() { return viaje; }
     public void setViaje(Travel viaje) { this.viaje = viaje; }
 

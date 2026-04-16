@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssdd.backend.model.Image;
+import com.ssdd.backend.model.Review;
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.repository.ReviewRepository;
 import com.ssdd.backend.service.ImageService;
@@ -89,12 +90,18 @@ public class TravelWebController {
 
             if (principal != null) {
                 Optional<User> userOpt = userService.findByEmail(principal.getName());
+                List<Review> reviews = reviewRepository.findByViajeId(id);
 
                 if (userOpt.isPresent()) {
                     User user = userOpt.get();
 
                     model.addAttribute("logged", true);
                     model.addAttribute("userName", user.getNombre());
+                    for (Review r : reviews) {
+                        if (r.getAutor().getId().equals(user.getId())) {
+                            r.setIsOwner(true);
+                        }
+                    }
 
                     Optional<CreditCard> creditCardOpt = creditCardService.findByUser(user);
 
@@ -109,9 +116,11 @@ public class TravelWebController {
                 } else {
                     model.addAttribute("hasSavedCard", false);
                 }
+                model.addAttribute("reviews", reviews);
             } else {
                 model.addAttribute("hasSavedCard", false);
             }
+            
 
             return "travel_page_ext";
         }
@@ -240,5 +249,4 @@ public class TravelWebController {
         }
     }
 
-   
 }
