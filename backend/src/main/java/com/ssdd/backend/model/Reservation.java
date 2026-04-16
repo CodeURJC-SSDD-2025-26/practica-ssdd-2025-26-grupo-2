@@ -3,6 +3,9 @@ package com.ssdd.backend.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "reservations")
 public class Reservation {
@@ -18,6 +21,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User usuario;
 
     @ManyToOne

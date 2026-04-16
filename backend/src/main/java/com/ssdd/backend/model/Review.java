@@ -33,6 +33,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE) 
     private User autor;
 
     

@@ -30,7 +30,7 @@ public class ReservationService {
         return reservationRepository.findByUsuario(user);
     }
 
-     public void deleteById(Long id) {
+    public void deleteById(Long id) {
         Reservation reservation = reservationRepository.findById(id).orElseThrow();
 
         User user = reservation.getUsuario();

@@ -34,7 +34,6 @@ public class User {
     private Image imagenPerfil;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @JoinColumn(name = "tarjeta_id", referencedColumnName = "id") 
     private CreditCard tarjeta;
 
     public User() {
