@@ -11,6 +11,7 @@ import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.ReservationRepository;
 
+
 @Service
 public class ReservationService {
 
@@ -29,8 +30,22 @@ public class ReservationService {
         return reservationRepository.findByUsuario(user);
     }
 
-    public void deleteById(Long id) {
-        reservationRepository.deleteById(id);
+     public void deleteById(Long id) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+
+        User user = reservation.getUsuario();
+        Travel travel = reservation.getViaje();
+
+        if (user != null && user.getReservas() != null) {
+            user.getReservas().remove(reservation);
+        }
+
+        if (travel != null && travel.getReservas() != null) {
+            travel.getReservas().remove(reservation);
+        }
+
+        reservationRepository.delete(reservation);
+        reservationRepository.flush();
     }
 
     public List<Reservation> findAll() {
