@@ -44,12 +44,12 @@ public class DatabaseInitializer {
     private PasswordEncoder passwordEncoder;
 
     @PostConstruct
-    @Transactional // <-- AÑADIDO PARA EVITAR ERRORES DE SESIÓN/RELACIONES
+    @Transactional 
     public void init() throws IOException {
 
         if (userRepository.count() == 0) {
 
-            // 1. CREAR USUARIOS
+            
             User admin = new User("Admin", "admin@byebye.com", passwordEncoder.encode("admin123"), "ADMIN");
             User user1 = new User("Carla Llorente", "carla@gmail.com",  passwordEncoder.encode("pass123"), "USER");
             User user2 = new User("Lucas Torres", "lucas@gmail.com",  passwordEncoder.encode("pass123"), "USER");
@@ -69,7 +69,7 @@ public class DatabaseInitializer {
             userRepository.save(user2);
             userRepository.save(user3);
 
-           // 2. CREAR VIAJES 
+            
             
             Travel viaje1 = new Travel(
                 "San Francisco", 
@@ -176,9 +176,9 @@ public class DatabaseInitializer {
             viaje8.setFechaFin(LocalDate.now().plusDays(20));
 
             
-           // ASIGNAR IMÁGENES
+           
             try {
-                // Ahora apuntamos a la carpeta sample_images
+                
                 setTravelImage(viaje1, "sample_images/San-Francisco.jpg");
                 setTravelImage(viaje2, "sample_images/Paris.jpg");
                 setTravelImage(viaje3, "sample_images/Putrajaya.jpg");
@@ -192,7 +192,7 @@ public class DatabaseInitializer {
                 System.out.println("Aviso: No se encontraron algunas imágenes de los viajes. Se crearán sin foto.");
             }
 
-            // GUARDAR EN BASE DE DATOS
+            
             travelRepository.save(viaje1);
             travelRepository.save(viaje2);
             travelRepository.save(viaje3);
@@ -202,7 +202,7 @@ public class DatabaseInitializer {
             travelRepository.save(viaje7);
             travelRepository.save(viaje8);
             
-            // 3. CREAR RESERVAS
+            
             Reservation reserva1 = new Reservation(user1, viaje1, 2, LocalDate.now(), 900.0,
                     Reservation.Estado.CONFIRMADA);
             Reservation reserva2 = new Reservation(user2, viaje2, 1, LocalDate.now(), 850.0,
@@ -211,9 +211,7 @@ public class DatabaseInitializer {
             reservationRepository.save(reserva1);
             reservationRepository.save(reserva2);
 
-            // 4. CREAR RESEÑAS
-            // 4. CREAR RESEÑAS (MODIFICADO)
-            // Añadimos el objeto 'viaje' como cuarto parámetro en el constructor
+            
             Review review1 = new Review(5, "Viaje increíble, todo muy bien organizado y el hotel espectacular.", user1, viaje1);
             Review review2 = new Review(4, "Muy buena experiencia. El transporte fue cómodo y puntual.", user2, viaje2);
             Review review3 = new Review(5, "Muy buena experiencia... y el itinerario perfecto.", user3, viaje1); 

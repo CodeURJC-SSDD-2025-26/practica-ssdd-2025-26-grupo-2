@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.User;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

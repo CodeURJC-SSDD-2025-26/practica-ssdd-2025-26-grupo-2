@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.Review;
 
 import java.util.List;
 
@@ -28,7 +28,6 @@ public class AdminReviewController {
     @Autowired
     private UserService userService;
 
-    // Este método carga la página de reseñas de un usuario específico
     @GetMapping("/admin/usuarios/{id}/reseñas")
     public String verReseñasUsuario(Model model, @PathVariable long id, HttpServletRequest request) {
         User targetUser = userService.findById(id).orElseThrow();
@@ -37,7 +36,6 @@ public class AdminReviewController {
         model.addAttribute("targetUser", targetUser);
         model.addAttribute("userReviews", userReviews);
         
-        // Token CSRF para el borrado posterior
         var csrf = (org.springframework.security.web.csrf.CsrfToken) request.getAttribute("_csrf");
         if (csrf != null) {
             model.addAttribute("tokenSeguridad", csrf.getToken());
@@ -46,7 +44,6 @@ public class AdminReviewController {
         return "admin_user_reviews";
     }
 
-    // Este método procesa el borrado por Fetch
     @PostMapping("/admin/reviews/delete")
     @ResponseBody
     public ResponseEntity<Void> deleteReview(@RequestParam long reviewId) {

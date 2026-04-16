@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.repository.ReviewRepository;
-import com.ssdd.backend.service.TravelService; // <-- IMPORTANTE: Ahora sabe qué es TravelService
+import com.ssdd.backend.service.TravelService; 
 
 @Controller
 public class IndexController {
@@ -19,13 +19,13 @@ public class IndexController {
     private ReviewRepository reviewRepository;
 
     @Autowired
-    private TravelService travelService; // <-- IMPORTANTE: Le inyectamos el servicio de viajes
+    private TravelService travelService; 
 
-    // Unimos "/" y "/index.html" en un solo método maestro
+    
     @GetMapping({"/", "/index.html"})
     public String showIndex(Model model) {
         
-        // 1. LÓGICA DE VIAJES
+        
         List<Travel> todosLosViajes = travelService.getAllTravels();
 
         List<Travel> primeros6 = todosLosViajes.stream()
@@ -45,7 +45,6 @@ public class IndexController {
                 .limit(4) 
                 .toList();
 
-        // 2. ENVIAMOS TODO AL HTML (Viajes y Reseñas a la vez)
         model.addAttribute("viajesNuevos", primeros6);
         model.addAttribute("viajesPopulares", masPopulares);
         model.addAttribute("nombresAnimados", nombresAnimados);

@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.Review;
 
 import java.security.Principal;
 
@@ -36,7 +36,7 @@ public class ReviewController {
     public String addReview(
         @RequestParam String comentario, 
         @RequestParam int puntuacion, 
-        @RequestParam Long viajeId, // Este debe coincidir con el 'name' del input hidden
+        @RequestParam Long viajeId, 
         Principal principal) {
         
         if (principal != null) {
