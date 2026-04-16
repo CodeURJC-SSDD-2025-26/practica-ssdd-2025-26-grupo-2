@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +63,6 @@ public class UserService {
     
     @Transactional
     public void deleteById(Long id) {
-        // Verificamos si existe antes de borrar
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {

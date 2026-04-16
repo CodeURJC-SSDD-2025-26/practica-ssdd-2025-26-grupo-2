@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.User;
 
 import java.util.*;
 
@@ -35,7 +35,6 @@ public class GraphUserRestController {
         double[] gastos = new double[12];
         int[] numReservas = new int[12];
 
-        // Inicializa todos los países con 0
         Map<String, Integer> paises = new LinkedHashMap<>();
         for (Travel t : travels) {
             paises.put(t.getPais(), 0);

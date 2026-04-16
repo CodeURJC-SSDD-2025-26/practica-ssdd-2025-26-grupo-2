@@ -38,14 +38,8 @@ public class Travel {
     private Image imagen;
 
 
-    
-
-    // EN TU ARCHIVO Travel.java
-    
-    // 1. Añadimos el fetch = FetchType.EAGER
     @OneToMany(mappedBy = "viaje", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 
-    // 2. Aseguramos que la lista se inicialice vacía, no en null
     private List<Reservation> reservas = new ArrayList<>();
     
     public Travel() {
@@ -171,7 +165,6 @@ public class Travel {
         return "Travel [id=" + id + ", titulo=" + nombre + ", descripcion=" + descripcion + "]";
     }
     
-    // Método auxiliar para que Mustache sepa si hay foto sin cambiar de contexto
     public boolean getTieneImagen() {
         return this.imagen != null;
     }

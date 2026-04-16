@@ -29,7 +29,9 @@ public class Review {
     @Column(columnDefinition = "TEXT") 
     private String comentario;
 
-    private LocalDate fecha;    @ManyToOne
+    private LocalDate fecha;
+
+    @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private User autor;
 

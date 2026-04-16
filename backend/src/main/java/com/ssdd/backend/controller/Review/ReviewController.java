@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.Review;
 
 import java.security.Principal;
 import java.util.Optional;

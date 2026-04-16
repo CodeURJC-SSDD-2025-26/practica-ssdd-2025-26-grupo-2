@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.User;
 
 import java.io.IOException;
 import java.security.Principal;

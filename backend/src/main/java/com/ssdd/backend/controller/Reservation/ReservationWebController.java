@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.Reservation;
 
 import java.security.Principal;
 import java.time.LocalDate;

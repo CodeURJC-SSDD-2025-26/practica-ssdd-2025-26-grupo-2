@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.Travel;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -71,14 +71,14 @@ public class TravelWebController {
         }
     }
 
-    // 1. Mostrar TODOS los viajes
+    
     @GetMapping("/viajes")
     public String showTravels(Model model) {
         model.addAttribute("viajes", travelService.getAllTravels());
         return "travel_page";
     }
 
-    // 2. Mostrar UN viaje en detalle
+
     @GetMapping("/viajes/{id}")
     public String showTravel(Model model, @PathVariable("id") Long id, Principal principal) {
         Optional<Travel> viaje = travelService.getTravelById(id);
@@ -128,7 +128,7 @@ public class TravelWebController {
         return "redirect:/";
     }
 
-    // 3. Borrar un viaje
+
     @PostMapping("/borrarviaje/{id}")
     public String removeTravel(Model model, @PathVariable("id") Long id) {
         Optional<Travel> viaje = travelService.getTravelById(id);
@@ -138,13 +138,13 @@ public class TravelWebController {
         return "redirect:/journeyManagement";
     }
 
-    // 4. Mostrar el formulario para crear un viaje nuevo
+    
     @GetMapping("/nuevoviaje")
     public String newTravel(Model model) {
-        return "addJourney"; // El HTML con el formulario vacío
+        return "addJourney"; 
     }
 
-    // 5. Procesar la creación de un viaje nuevo
+    
     @PostMapping("/nuevoviaje")
     public String newTravelProcess(Travel viaje,
             @RequestParam(value = "imagenOculta", required = false) String imagenOculta)
@@ -162,16 +162,8 @@ public class TravelWebController {
         return "redirect:/journeyManagement";
     }
 
-    // ---------------------------------------------------------
-    // --- NUEVAS RUTAS "LIMPIAS" PARA MODIFICAR EL VIAJE ------
-    // ---------------------------------------------------------
-
-    // 6. Mostrar el formulario para editar un viaje que ya existe
     @GetMapping("/modificarviaje/{id}")
     public String editTravel(Model model, @PathVariable long id) {
-
-        // --- NUESTRO CHIVATO ---
-        System.out.println(">>>>>>>>>> ¡BINGO! JAVA HA RECIBIDO EL CLIC PARA EL VIAJE: " + id);
 
         Optional<Travel> viaje = travelService.getTravelById(id);
 

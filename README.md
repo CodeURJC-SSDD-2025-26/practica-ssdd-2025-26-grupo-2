@@ -228,11 +228,38 @@ Posteriormente, me responsabilicé de forma individual de la elaboración del í
 
 #### **Diagrama de Navegación**
 
-Solo si ha cambiado.
+![Diagrama de Navegación](images/diagrama2final.png)
+Sobre todo hemos actualizado las páginas en las cuales se puede acceder desde la cuenta del administrador. Teniendo en cuenta los gráficos de gestión de usuarios y gestión de viajes, los cuales nos proporcionan diferentes datos sobre los usuarios y las reservas de los viajes que hacen en nuestra página.
+También podemos apreciar la funcionalidad de recuperar la contraseña para los usuarios que no recuerden la actual y una página que permite al usuario poder consultar todos los detalles de su reserva.
 
 #### **Capturas de Pantalla Actualizadas**
 
-Solo si han cambiado.
+#### **1. Página de gráficos de los viajes**
+![Graficos de Viajes](images/GraficosViaje.png)
+Estos gráficos nos proporcionan diferentes datos que nos hacen tomar referencia sobre los destinos más solicitados entre la comunidad de nuestros usuarios. También nos orientan sobre la disponibilidad de dichos viajes.
+
+#### **2. Página de Lectura de reseñas siendo Admin**
+![Reseñas de los usuarios](images/ReseñaUsuario.png)
+Esta nueva funcionalidad nos permite ser capaces de leer y borrar reseñas de nuestros usuarios (si accedemos desde la cuenta del administrador). 
+Es una funcionalidad muy util para tener controlado las reseñas de nuestros usuarios y tener el poder de borrar algún comentario si es soez o falta el respeto de alguna manera.
+
+#### **3. Página de Graficos de Usuarios siendo Admin**
+![Gráficos de Usuarios](images/GraficosUsuario.png)
+Este gráfico nos proporciona datos muy interesantes sobre los usuarios de nuestra web. Como sus gastos, su numero de reservas y los paises que suele reservar.
+
+
+#### **4. Página de Añadir Viajes siendo Admin**
+![Añadir Viajes](images/AñadirViaje.png)
+Esta funcionalidad permite al administrador gestionar la reserva de un viaje.
+
+#### **5. Página de Recuperar Contraseña**
+![Recuperar contraseña](images/recuperarContraseña.png)
+Esta funcionalidad permite al usuario poder cambiar su contraseña en el caso de que haya olvidado su contraseña actual.
+
+#### **6. Página de Recuperar Contraseña**
+![Detalle de Reserva](images/detalleReserva.png)
+Esta funcionalidad permite al usuario poder consultar los datos de su reserva.
+
 
 ### **Instrucciones de Ejecución**
 
@@ -288,9 +315,15 @@ Diagrama de clases de la aplicación con diferenciación por colores o secciones
 
 ---
 
-#### **Alumno 2 - [Nombre Completo]**
+#### **Alumno 2 - Alejandro Hernández de Dios**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Me he ocupado principalmente de la correcta funcionalidad del apartado de las reseñas del usuario en cada viaje. Por un lado hice que solo los usuarios registrados puedan poner reseñas para así evitar falsos testimonios. También hice que una vez se cierra sesión con el usuario que usaste para poner una reseña esa reseña perdura en la web, apareciendo en la seccion de reseñas de la página principal (en donde también me ocupé de que las fotos de perfil del usuario propietario de dicha reseña, aparezca sin porblema en esa sección) y en el apartado de nuestros viajes en dicho viaje.
+
+Centrándonos en la cuenta del administrador, le di utilidad al botón de reseñas que se encuentra en el panel de administración. 
+Una vez haces click en Gestionar Usuarios se carga una pantalla en la cual puedes consultar todos los usuarios con una cuenta registrada dentro de la web. 
+En cada ficha de usuario se encuentra este botón llamado Reseñas, el cual si accedes a el te carga una nueva pantalla en la cual puedes ver todo el registro de reseñas que ha escrito dicho usuario. Además, dentro de esta página, se encuentra la funcionalidad de poder eliminar la reseña de ese mismo usuario en caso de que el administrador lo encuentre necesario por temas como: faltas de respeto, lengiuaje soez, entre otros...
+
+
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
