@@ -273,17 +273,30 @@ Esta funcionalidad permite al usuario poder consultar los datos de su reserva.
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/[usuario]/[nombre-repositorio].git
+   git clone https://github.com/[usuario]/[practica-ssdd-2025-26-grupo-2].git
    cd [nombre-repositorio]
    ```
 
-2. **AQUÍ INDICAR LO SIGUIENTES PASOS**
-
+2. **Accedemos a la carpeta backend**
+    ```bash
+    cd backend
+    ```
+3. **Ejecutamos la aplicacion**
+    ```bash
+    mvn spring-boot:run
+    ```
 
 #### **Credenciales de prueba**
-- **Usuario Admin**: correo electrónico: `admin@byebye.com`, contraseña: `admin123`
-- **Usuario Registrado**: correo electrónico: `carla@gmail.com`, contraseña: `pass123`
+- **Usuario Admin**: 
 
+    correo electrónico: `admin@byebye.com`, contraseña: `admin123`
+- **Usuarios Registrados**: 
+
+    correo electrónico: `carla@gmail.com`, contraseña: `pass123`
+
+    correo electrónico: `lucas@gmail.com`, contraseña: `pass123`
+
+    correo electrónico: `lucia@gmail.com`, contraseña: `pass123`
 ### **Diagrama de Entidades de Base de Datos**
 
 Diagrama mostrando las entidades, sus campos y relaciones:
@@ -303,15 +316,17 @@ Diagrama de clases de la aplicación con diferenciación por colores o secciones
 
 #### **Alumno 1 - María Abdallah El Lakkis**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Durante el desarrollo del proyecto, participé activamente en la implementación de funcionalidades tanto en backend como en frontend. Me encargué del desarrollo del sistema de registro e inicio de sesión de usuarios, incluyendo la gestión de contraseñas encriptadas, así como de la implementación de funcionalidades relacionadas con el perfil de usuario, como la actualización de imágenes, la personalización de la interfaz y el registro de tarjetas bancarias. También trabajé en la creación de herramientas de administración de usuarios y en la implementación de un sistema de búsqueda que mejora la navegación y experiencia dentro de la aplicación.
+
+Además, llevé a cabo la integración y conexión con la base de datos, asegurando la correcta persistencia y relación de los datos. Paralelamente, participé de forma continua en la revisión del código, detección y corrección de errores, contribuyendo a mejorar la estabilidad, el rendimiento y el correcto funcionamiento general del sistema.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [Registro de usuario realizado](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/08c80865e549226cec93b533ee307fb37474a510)  | [SiginWebController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/08c80865e549226cec93b533ee307fb37474a510#diff-dc32c934f0e13611df37bc7aaa196b3bb19f9e7d600a81aa3c6e5b99bdd11896)     [UserService.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/08c80865e549226cec93b533ee307fb37474a510#diff-8457d6a7465c0d8faebcdcf6cc4d702526ad86b10dbf60228a72fe0f38369b99) |
+|2| [Inicio de sesión de usuarios con contraseñas encriptadas realizado](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2071b2728277a17bdf91860c6b46a366013eab67)| [WebSecurityConfig.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2071b2728277a17bdf91860c6b46a366013eab67#diff-415d09308ca7883a8ba6a0f07f805171dc663ca1dd18d612d5fa7582159852e7) [signin.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2071b2728277a17bdf91860c6b46a366013eab67#diff-3ec4ca9b76ee4b7cdcf3a4d13aaff51717ef233edb0ac76ff942fa1ee6c53699)   |
+|3| [Post cambio de imagen realizado y userProfile y header modificados](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201)  | [UserImageController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201#diff-1502704a0e359cbe5a07beaa1f33c5327ada3e2fcc76f2cdb4b386709e38e8f0) [userProfile.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201#diff-cd0a43556d5cd2946e2ee0a4a409568b3e7f984829e78d046ba7436df8f3ae0b) [header.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dbc6a6dbc6f30f959acc4779c3b2717e190f0201#diff-3491f074e6ba69e27536cee967464b28761ec74a7837168942622c78b2d4c6c8)    |
+|4| [gestion de usuarios desde el panel realizada](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/80371ecf587ce84dd52bd02417e55c15ed45642c#diff-0d5b63f27f89cf7e7b30c2ae54141c80efddc80dcd4a976017ab302920b5c8f0)  | [UserManagementController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/80371ecf587ce84dd52bd02417e55c15ed45642c#diff-0d5b63f27f89cf7e7b30c2ae54141c80efddc80dcd4a976017ab302920b5c8f0) [userManagement.html](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/80371ecf587ce84dd52bd02417e55c15ed45642c#diff-93d1b2bb3f0616970eef03386cb79bc957ea234bcf4d9e2f22ec07d8866aa9de)  |
+|5| [buscador principal implementado](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/827434439d795e7bf28ef7605a260039e602cb5d)  | [TripSearcherController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/827434439d795e7bf28ef7605a260039e602cb5d#diff-1d637d55f17f2507276eeb8b0f710d7925d9d751b51f9026a290c738118643f4)  [TravelRepository.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/827434439d795e7bf28ef7605a260039e602cb5d#diff-a3a431c211c8e93418137a83475d3db93b3091d52e3d899e377707f5e4a6198b)  |
 
 ---
 
@@ -321,7 +336,7 @@ Me he ocupado principalmente de la correcta funcionalidad del apartado de las re
 
 Centrándonos en la cuenta del administrador, le di utilidad al botón de reseñas que se encuentra en el panel de administración. 
 Una vez haces click en Gestionar Usuarios se carga una pantalla en la cual puedes consultar todos los usuarios con una cuenta registrada dentro de la web. 
-En cada ficha de usuario se encuentra este botón llamado Reseñas, el cual si accedes a el te carga una nueva pantalla en la cual puedes ver todo el registro de reseñas que ha escrito dicho usuario. Además, dentro de esta página, se encuentra la funcionalidad de poder eliminar la reseña de ese mismo usuario en caso de que el administrador lo encuentre necesario por temas como: faltas de respeto, lengiuaje soez, entre otros...
+En cada ficha de usuario se encuentra este botón llamado Reseñas, el cual si accedes a el te carga una nueva pantalla en la cual puedes ver todo el registro de reseñas que ha escrito dicho usuario. Además, dentro de esta página, se encuentra la funcionalidad de poder eliminar la reseña de ese mismo usuario en caso de que el administrador lo encuentre necesario por temas como: faltas de respeto, lenguaje soez, entre otros...
 
 
 

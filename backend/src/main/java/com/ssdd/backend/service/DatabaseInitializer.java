@@ -97,18 +97,7 @@ public class DatabaseInitializer {
             viaje2.setFechaInicio(LocalDate.now().plusDays(10));
             viaje2.setFechaFin(LocalDate.now().plusDays(13));
 
-            Travel viaje3 = new Travel(
-                "Putrajaya", 
-                "Malasia", 
-                750.00, 
-                "Vuelo largo radio", 
-                "Resort de lujo con vistas al lago", 
-                15, 
-                10
-            );
-            viaje3.setDescripcion("Descubre la majestuosa arquitectura y los tranquilos lagos de la capital administrativa de Malasia.");
-            viaje3.setFechaInicio(LocalDate.now().plusDays(40));
-            viaje3.setFechaFin(LocalDate.now().plusDays(50));
+            
 
             Travel viaje4 = new Travel(
                 "Bora Bora", 
@@ -181,7 +170,6 @@ public class DatabaseInitializer {
                 
                 setTravelImage(viaje1, "sample_images/San-Francisco.jpg");
                 setTravelImage(viaje2, "sample_images/Paris.jpg");
-                setTravelImage(viaje3, "sample_images/Putrajaya.jpg");
                 setTravelImage(viaje4, "sample_images/Bora-Bora.jpg");
                 setTravelImage(viaje5, "sample_images/Nairobi.jpg"); 
                 setTravelImage(viaje6, "sample_images/Sidney.jpg");
@@ -195,7 +183,6 @@ public class DatabaseInitializer {
             
             travelRepository.save(viaje1);
             travelRepository.save(viaje2);
-            travelRepository.save(viaje3);
             travelRepository.save(viaje4);
             travelRepository.save(viaje5);
             travelRepository.save(viaje6);
