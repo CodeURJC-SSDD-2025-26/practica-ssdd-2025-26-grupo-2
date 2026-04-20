@@ -364,17 +364,23 @@ En cada ficha de usuario se encuentra este botón llamado Reseñas, el cual si a
 
 ---
 
-#### **Alumno 4 - [Nombre Completo]**
+#### **Alumno 4 - Yadira Reimúndez Queimadelos**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+He sido responsable principalmente de la gestión de reservas dentro del proyecto, tanto en la parte del usuario como en la del administrador, desarrollando la lógica necesaria para crear, visualizar, editar, cancelar y administrar las reservas en la aplicación.
+
+Además, me he encargado de adaptar los gráficos para que reflejen correctamente la información existente en la base de datos, asegurando que los datos mostrados fuesen coherentes con el estado real del sistema.
+
+También desarrollé la lógica del sistema de correo vinculada al apartado de contacto, de forma que cualquier duda, consulta o petición enviada por un usuario llegase correctamente al correo correspondiente.
+
+Por otro lado, participé en la implementación de algunas páginas de error y en la funcionalidad de cambio o recuperación de contraseña para los usuarios que la hubiesen olvidado.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [entidades reserva, usuario y viaje](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a6ce53c85430f24016cdfeea416f3cdf1e7dfa02)  | [backend/src/main/java/com/ssdd/backend/model](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a6ce53c85430f24016cdfeea416f3cdf1e7dfa02)   |
+|2| [Lógica de la reserva de viajes hecha](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/bc10480da683b601b26fecffc9c4fec04b907850)  | [backend/src/main/java/com/ssdd/backend/controller/ReservationWebController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/bc10480da683b601b26fecffc9c4fec04b907850#diff-e7c50b4ce531d12d141a8b539a3fec023be1fbae53c0804e6cfe9f4cf0dc80ec)   |
+|3| [Gráficas de usuario y gráficas viajes](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fef424c8aed60ff00f10771322d71aacebb7a74d)  | [backend/src/main/java/com/ssdd/backend/controller/GraphUserRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fef424c8aed60ff00f10771322d71aacebb7a74d#diff-e50a8ea1100dfb4f1b645713cfc022d34b78707a2cc6a11ef8c70aecc4d053e5)   |
+|4| [Correo para que nos puedan contactar](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/80fce03cf059bdbd1f28c1d05108211ce926799c)  | [backend/src/main/java/com/ssdd/backend/service/EmailService.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/80fce03cf059bdbd1f28c1d05108211ce926799c#diff-e6edb82576a7fb0fd8826bc7dbe3303c159a1f39d145b79c995bc155273d522d)   |
+|5| [gestionar las reservas de un usuario siendo admin](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/ba519411b1f46173a8a56f127c2657b0aa19753d)  | [backend/src/main/java/com/ssdd/backend/controller/ReservationWebController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/ba519411b1f46173a8a56f127c2657b0aa19753d#diff-e7c50b4ce531d12d141a8b539a3fec023be1fbae53c0804e6cfe9f4cf0dc80ec)   |
 
 ---
 
