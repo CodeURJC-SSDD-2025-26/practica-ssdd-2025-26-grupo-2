@@ -308,9 +308,9 @@ Diagrama mostrando las entidades, sus campos y relaciones:
 
 Diagrama de clases de la aplicación con diferenciación por colores o secciones:
 
-![Diagrama de Clases](images/classes-diagram.png)
+![Diagrama de Clases](images/classes-and-templates-diagram.png)
 
-> [Descripción opcional del diagrama y relaciones principales]
+
 
 ### **Participación de Miembros en la Práctica 2**
 
@@ -350,17 +350,19 @@ En cada ficha de usuario se encuentra este botón llamado Reseñas, el cual si a
 
 ---
 
-#### **Alumno 3 - [Nombre Completo]**
+#### **Alumno 3 - Vanessa Fernandes Franco**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Durante el desarrollo del proyecto, mi responsabilidad principal ha sido la gestión integral de la entidad de viajes (Travel). Me he encargado de implementar toda la lógica necesaria, tanto en el perfil administrativo como en el de usuario, para realizar las operaciones necesatias como: añadir nuevos viajes, modificar sus atributos y eliminar destinos desde el panel de administración. Además, desarrollé la funcionalidad para que estos viajes se rendericen dinámicamente en el catálogo general de la aplicación, diseñando e integrando también su respectiva página de detalle individual, donde se muestra toda la información específica de cada destino.
+
+Por otro lado, me encargué de la configuración y desarrollo del inicializador de datos de prueba de la aplicación. Mediante este archivo, aseguré que la base de datos se poblara automáticamente en el arranque con información coherente, realista y bien relacionada.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [database: inicialización user y travel](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fdaeb68ba59fcc22142d0302148df0436f0f2bd6)  | [DataBaseInitializer.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fdaeb68ba59fcc22142d0302148df0436f0f2bd6#diff-9e43273096ca491a667217c99858505092ccbbed6de03e62e4a1109c767eddb5)   |
+|2| [Añadir y eliminar biaje hecho](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b4e99d8b88ef159b01cc5355df85dd77ed1acb16)  | [TravelWebController.java](URL_archttps://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b4e99d8b88ef159b01cc5355df85dd77ed1acb16#diff-11f94ae1026c5a4c9f6e55c9f6a0a50a74fc55a0b2ba8d257b5f6476a152b9c8hivo_2)   |
+|3| [Editar viaje hecho](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c5327d85dc5fe7ce64204c8233f1a031affdc1d1)  | [TravelWebController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c5327d85dc5fe7ce64204c8233f1a031affdc1d1#diff-11f94ae1026c5a4c9f6e55c9f6a0a50a74fc55a0b2ba8d257b5f6476a152b9c8)   |
+|4| [travel con su controller y service hecho + paginas travel_page](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dc8be4a5c0b95843dd7f295dc23629d5dc73d59c)  | [TravelWebService.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/dc8be4a5c0b95843dd7f295dc23629d5dc73d59c#diff-11f94ae1026c5a4c9f6e55c9f6a0a50a74fc55a0b2ba8d257b5f6476a152b9c8)   |
+|5| [Index usando base de datos hecho](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/0d446cd2cac19f914ec114c47fd7c7a0b6896048)  | [index.html](URL_ahttps://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/0d446cd2cac19f914ec114c47fd7c7a0b6896048#diff-a529e700d317114345c83c2fb9e5f8d6c7618204a06e84e67f7e8dba54bc58e3rchivo_5)   |
 
 ---
 
