@@ -175,8 +175,7 @@ public class TravelWebController {
         }
     }
 
-    // 7. Recibir y guardar los cambios del viaje editado
-    // 7. Recibir y guardar los cambios del viaje editado
+    
     @PostMapping("/modificarviaje")
     public String editTravelProcess(Travel viaje,
             @RequestParam(value = "imagenOculta", required = false) String imagenOculta,
@@ -209,22 +208,20 @@ public class TravelWebController {
         travelService.save(viaje);
         return "redirect:/journeyManagement";
     }
-    // ---------------------------------------------------------
-
-    // Mostrar la tabla de gestión de viajes
+    
     @GetMapping("/journeyManagement")
     public String showManagementTable(Model model) {
         model.addAttribute("viajes", travelService.getAllTravels());
         return "journeyManagement";
     }
 
-    // Mostrar el menú principal de administración
+    
     @GetMapping("/admin")
     public String showAdminMenu() {
         return "admin";
     }
 
-    // Este método devuelve la foto real del viaje
+    
     @GetMapping("/viajes/{id}/imagen")
     public ResponseEntity<Object> downloadImage(@PathVariable("id") Long id) throws SQLException {
         Optional<Travel> viaje = travelService.getTravelById(id);
