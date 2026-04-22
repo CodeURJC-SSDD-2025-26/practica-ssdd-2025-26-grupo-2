@@ -10,6 +10,7 @@ import com.ssdd.backend.model.CreditCard;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.service.UserService;
 import com.ssdd.backend.service.CreditCardService; // Asumiendo que existe
+import org.springframework.util.StringUtils;
 
 @Controller
 public class CreditCardController {
@@ -28,14 +29,17 @@ public class CreditCardController {
             @RequestParam String cvv,
             Principal principal) {
 
-        if(number == null || owner == null || expirationDate == null || cvv == null){
+        if (!StringUtils.hasText(number) ||
+                !StringUtils.hasText(owner) ||
+                !StringUtils.hasText(expirationDate) ||
+                !StringUtils.hasText(cvv)) {
             return "redirect:/userProfile.html";
         }
         String email = principal.getName();
         User user = userService.findByEmail(email).orElseThrow();
 
         CreditCard card = user.getTarjeta();
-        
+
         if (card == null) {
             card = new CreditCard();
             card.setUser(user);
@@ -46,7 +50,6 @@ public class CreditCardController {
         card.setCaducidad(expirationDate);
         card.setCvv(cvv);
 
-       
         creditCardService.save(card);
 
         user.setTarjeta(card);
@@ -62,7 +65,7 @@ public class CreditCardController {
 
         if (user.getTarjeta() != null) {
             creditCardService.deleteFromUser(user);
-            userService.save(user); 
+            userService.save(user);
         }
 
         return "redirect:/userProfile.html";
