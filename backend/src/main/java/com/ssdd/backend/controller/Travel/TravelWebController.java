@@ -145,18 +145,24 @@ public class TravelWebController {
     }
 
     
-    @PostMapping("/nuevoviaje")
+   @PostMapping("/nuevoviaje")
     public String newTravelProcess(Travel viaje,
-            @RequestParam(value = "imagenOculta", required = false) String imagenOculta)
-            throws IOException {
+            @RequestParam(value = "imagenOculta", required = false) String imagenOculta,
+            Model model) throws IOException {
 
-        if (imagenOculta != null && !imagenOculta.isEmpty()) {
-            String base64Data = imagenOculta.split(",")[1];
-            byte[] decodedBytes = Base64.getDecoder().decode(base64Data);
-            InputStream inputStream = new ByteArrayInputStream(decodedBytes);
-            Image image = imageService.createImage(inputStream);
-            viaje.setImagen(image);
+        if (imagenOculta == null || imagenOculta.isEmpty()) {
+           
+            model.addAttribute("error", "Es obligatorio subir una imagen para crear el viaje.");
+            
+            return "addJourney"; 
         }
+
+    
+        String base64Data = imagenOculta.split(",")[1];
+        byte[] decodedBytes = Base64.getDecoder().decode(base64Data);
+        InputStream inputStream = new ByteArrayInputStream(decodedBytes);
+        Image image = imageService.createImage(inputStream);
+        viaje.setImagen(image);
 
         travelService.save(viaje);
         return "redirect:/journeyManagement";
