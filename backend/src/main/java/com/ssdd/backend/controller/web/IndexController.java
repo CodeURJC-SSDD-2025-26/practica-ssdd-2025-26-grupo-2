@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.web;
 
 import java.util.List;
 import java.util.stream.Collectors;

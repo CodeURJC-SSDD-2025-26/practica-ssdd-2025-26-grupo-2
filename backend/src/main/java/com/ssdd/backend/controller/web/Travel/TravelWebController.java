@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.Travel;
+package com.ssdd.backend.controller.web.Travel;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

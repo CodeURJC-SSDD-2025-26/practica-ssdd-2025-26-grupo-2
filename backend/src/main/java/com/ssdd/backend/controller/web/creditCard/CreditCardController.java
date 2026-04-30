@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.creditCard;
+package com.ssdd.backend.controller.web.creditCard;
 
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;

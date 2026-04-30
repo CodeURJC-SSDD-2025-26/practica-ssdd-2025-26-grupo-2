@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.Review;
+package com.ssdd.backend.controller.web.Review;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.Travel;
+package com.ssdd.backend.controller.web.Travel;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

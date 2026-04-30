@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.User;
+package com.ssdd.backend.controller.web.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

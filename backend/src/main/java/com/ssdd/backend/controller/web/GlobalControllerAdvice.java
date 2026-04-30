@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller;
+package com.ssdd.backend.controller.web;
 
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.service.UserService;
