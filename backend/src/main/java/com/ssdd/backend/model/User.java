@@ -24,6 +24,7 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservas;
 
