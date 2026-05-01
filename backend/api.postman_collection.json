@@ -434,6 +434,273 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "AboutRestController",
+      "description": "Peticiones para probar la informacion de la pagina About expuesta por AboutRestController.",
+      "item": [
+        {
+          "name": "Obtener about - /api/v1/pages/about",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const text = pm.response.text();",
+                  "",
+                  "pm.test(\"Devuelve contenido de About\", function () {",
+                  "    pm.expect(text).to.include(\"Sobre nosotros\");",
+                  "    pm.expect(text).to.include(\"Sobre nuestros viajes\");",
+                  "    pm.expect(text).to.include(\"Equipo:\");",
+                  "});",
+                  "",
+                  "pm.test(\"Devuelve miembros del equipo\", function () {",
+                  "    pm.expect(text).to.include(\"Vanessa Fernandes Franco\");",
+                  "    pm.expect(text).to.include(\"Alejandro\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:8443/api/v1/pages/about",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "pages", "about"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ContactRestController",
+      "description": "Peticiones para probar la informacion de contacto y el envio de mensajes.",
+      "item": [
+        {
+          "name": "Obtener contacto - /api/v1/contact",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Devuelve los datos de contacto\", function () {",
+                  "    pm.expect(json).to.have.property(\"titulo\", \"Contactanos\");",
+                  "    pm.expect(json).to.have.property(\"direccion\", \"Calle Tulipan, s/n, 28933 Mostoles, Madrid\");",
+                  "    pm.expect(json).to.have.property(\"telefono\", \"+34 123 456 789\");",
+                  "    pm.expect(json).to.have.property(\"email\", \"byebye.application@gmail.com\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:8443/api/v1/contact",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "contact"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener contacto - /api/v1/contact/",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Devuelve los datos de contacto\", function () {",
+                  "    pm.expect(json).to.have.property(\"titulo\", \"Contactanos\");",
+                  "    pm.expect(json).to.have.property(\"direccion\", \"Calle Tulipan, s/n, 28933 Mostoles, Madrid\");",
+                  "    pm.expect(json).to.have.property(\"telefono\", \"+34 123 456 789\");",
+                  "    pm.expect(json).to.have.property(\"email\", \"byebye.application@gmail.com\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:8443/api/v1/contact/",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "contact", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enviar contacto - /api/v1/contact",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Confirma el envio\", function () {",
+                  "    pm.expect(json).to.have.property(\"enviado\", true);",
+                  "    pm.expect(json).to.have.property(\"mensaje\", \"Mensaje enviado correctamente\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\",\n    \"mensaje\": \"Hola, quiero mas informacion sobre vuestros viajes.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:8443/api/v1/contact",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "contact"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enviar contacto - /api/v1/contact/",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Confirma el envio\", function () {",
+                  "    pm.expect(json).to.have.property(\"enviado\", true);",
+                  "    pm.expect(json).to.have.property(\"mensaje\", \"Mensaje enviado correctamente\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\",\n    \"mensaje\": \"Hola, quiero mas informacion sobre vuestros viajes.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:8443/api/v1/contact/",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "contact", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enviar contacto - Error (mensaje obligatorio)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:8443/api/v1/contact",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "contact"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
