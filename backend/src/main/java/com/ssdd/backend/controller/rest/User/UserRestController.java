@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.rest;
+package com.ssdd.backend.controller.rest.User;
 
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class UserRestController {
         // 1. Convertimos el Record DTO a Entidad
         User user = userMapper.toEntity(userDTO);
         
-        // 2. Llamamos al servicio para registrar (sin cifrar, como pediste)
+        // 2. Llamamos al servicio que cifrará la contraseña 
         User newUser = userService.registerUser(user.getNombre(), user.getEmail(), user.getPassword());
         
         // 3. Convertimos la entidad guardada de vuelta a Record DTO
