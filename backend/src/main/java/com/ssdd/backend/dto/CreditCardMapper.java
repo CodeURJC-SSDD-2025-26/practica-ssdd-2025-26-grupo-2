@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface CreditCardMapper {
 
-    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "userId", source = "id")
     @Mapping(target = "ultimosCuatro", expression = "java(card.getUltimosCuatro())")
     CreditCardDTO toDTO(CreditCard card);
 
