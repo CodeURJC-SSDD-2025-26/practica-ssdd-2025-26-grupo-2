@@ -186,6 +186,108 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "ErrorWebRestController",
+      "description": "Peticiones para probar las respuestas REST de error.",
+      "item": [
+        {
+          "name": "Error 404 - Pagina no encontrada",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Mensaje de error correcto\", function () {",
+                  "    pm.expect(pm.response.text()).to.eql(\"Error 404 - Pagina no encontrada\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:8443/api/v1/errors/404",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "errors", "404"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Error 403 - Acceso denegado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"Mensaje de error correcto\", function () {",
+                  "    pm.expect(pm.response.text()).to.eql(\"Error 403 - Acceso denegado\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:8443/api/v1/errors/403",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "errors", "403"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Error login - Credenciales incorrectas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Mensaje de error correcto\", function () {",
+                  "    pm.expect(pm.response.text()).to.eql(\"Error de autenticacion - Credenciales incorrectas\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:8443/api/v1/errors/loginFailure",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "errors", "loginFailure"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
