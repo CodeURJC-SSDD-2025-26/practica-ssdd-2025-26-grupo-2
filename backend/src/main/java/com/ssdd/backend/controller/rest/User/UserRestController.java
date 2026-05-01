@@ -13,7 +13,7 @@ import com.ssdd.backend.service.UserService;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
-@RequestMapping("/api/v1/users") 
+@RequestMapping("/api/v1/users")
 public class UserRestController {
 
     @Autowired
@@ -24,17 +24,17 @@ public class UserRestController {
 
     @PostMapping("/")
     public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO) {
-        
-        // 1. Convertimos el Record DTO a Entidad
+
         User user = userMapper.toEntity(userDTO);
-        
-        // 2. Llamamos al servicio que cifrará la contraseña 
+        if (user.getAcceptTerms() == null || !user.getAcceptTerms()) {
+            throw new IllegalArgumentException("No se puede registrar un usuario sin aceptar los términos.");
+        }
+
         User newUser = userService.registerUser(user.getNombre(), user.getEmail(), user.getPassword());
-        
-        // 3. Convertimos la entidad guardada de vuelta a Record DTO
+
         UserDTO responseDTO = userMapper.toDTO(newUser);
 
-        // 4. Construimos la URI: /api/v1/users/{id}
+        // Construcción de URI más segura
         URI location = fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(responseDTO.id())

@@ -12,7 +12,7 @@ import com.ssdd.backend.model.Review;
 public interface ReviewMapper {
 
 
-    @Mapping(source = "autor.id", target = "autorId")
+    @Mapping(source = "autor.id", target = "nombreAutor")
     @Mapping(source = "viaje.id", target = "viajeId")
     ReviewDTO toDTO(Review review);
 
@@ -25,5 +25,7 @@ public interface ReviewMapper {
     @Mapping(target = "viaje", ignore = true)
     Review toEntity(ReviewDTO reviewDTO);
 }
+
+
 
 

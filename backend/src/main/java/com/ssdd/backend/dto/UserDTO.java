@@ -9,5 +9,6 @@ public record UserDTO(
     String password,
     List<String> roles,
     Long imagenPerfilId,
-    Long creditCardId
+    Long creditCardId,
+    Boolean acceptTerms
 ) {}

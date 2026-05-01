@@ -63,7 +63,7 @@ public class SecurityConfig {
                         // PRIVATE ENDPOINTS
 
                         // users
-                        .requestMatchers(HttpMethod.POST, "/api/v1/users**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/books/**").hasRole("USER")
                         .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN")
 

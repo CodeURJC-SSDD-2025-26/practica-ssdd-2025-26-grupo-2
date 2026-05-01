@@ -24,7 +24,6 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
-
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservas;
 
@@ -37,6 +36,16 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private CreditCard tarjeta;
 
+    private Boolean acceptTerms;
+
+    public Boolean getAcceptTerms() {
+        return acceptTerms;
+    }
+
+    public void setAcceptTerms(boolean acceptTerms) {
+        this.acceptTerms = acceptTerms;
+    }
+
     public User() {
     }
 
@@ -45,7 +54,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = List.of(roles);
-        ;
+    }
+    
+    public User(String nombre, String email, String password, String roles, Boolean acceptTerm) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.roles = List.of(roles);
+        this.acceptTerms = acceptTerm;
     }
 
     public List<Reservation> getReservas() {
@@ -111,7 +127,6 @@ public class User {
     public void setImagenPerfil(Image imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
     }
-
 
     @Override
     public String toString() {
