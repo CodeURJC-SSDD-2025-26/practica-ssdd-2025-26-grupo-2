@@ -19,7 +19,7 @@
           }
         },
         "url": {
-          "raw": "https://localhost:8443/api/v1/users/",
+          "raw": "{{baseUrl}}/api/v1/users/",
           "protocol": "https",
           "host": ["localhost"],
           "port": "8443",
@@ -43,7 +43,79 @@
           }
         },
         "url": {
-          "raw": "https://localhost:8443/api/v1/users/",
+          "raw": "{{baseUrl}}/api/v1/users",
+          "protocol": "https",
+          "host": ["localhost"],
+          "port": "8443",
+          "path": ["api", "v1", "users", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Iniciar sesión Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin@byebye.com\",\n }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/login",
+          "protocol": "https",
+          "host": ["localhost"],
+          "port": "8443",
+          "path": ["api", "v1", "users", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cerrar sesión Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/logout",
+          "protocol": "https",
+          "host": ["localhost"],
+          "port": "8443",
+          "path": ["api", "v1", "users", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Refrescar sesión Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/refresh",
           "protocol": "https",
           "host": ["localhost"],
           "port": "8443",
@@ -90,7 +162,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/pages",
+              "raw": "{{baseUrl}}/api/v1/pages",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
@@ -133,7 +205,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/pages/",
+              "raw": "{{baseUrl}}/api/v1/pages/",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
@@ -176,7 +248,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/pages/index",
+              "raw": "{{baseUrl}}/api/v1/pages/index",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
@@ -189,399 +261,115 @@
     },
     {
       "name": "ErrorWebRestController",
-      "description": "Peticiones para probar las respuestas REST de error.",
       "item": [
         {
           "name": "Error 404 - Pagina no encontrada",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 404\", function () {",
-                  "    pm.response.to.have.status(404);",
-                  "});",
-                  "",
-                  "pm.test(\"Mensaje de error correcto\", function () {",
-                  "    pm.expect(pm.response.text()).to.eql(\"Error 404 - Pagina no encontrada\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/errors/404",
+              "raw": "{{baseUrl}}/api/v1/errors/404",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "errors", "404"]
             }
-          },
-          "response": []
+          }
         },
         {
           "name": "Error 403 - Acceso denegado",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "});",
-                  "",
-                  "pm.test(\"Mensaje de error correcto\", function () {",
-                  "    pm.expect(pm.response.text()).to.eql(\"Error 403 - Acceso denegado\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/errors/403",
+              "raw": "{{baseUrl}}/api/v1/errors/403",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "errors", "403"]
             }
-          },
-          "response": []
+          }
         },
         {
           "name": "Error login - Credenciales incorrectas",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 401\", function () {",
-                  "    pm.response.to.have.status(401);",
-                  "});",
-                  "",
-                  "pm.test(\"Mensaje de error correcto\", function () {",
-                  "    pm.expect(pm.response.text()).to.eql(\"Error de autenticacion - Credenciales incorrectas\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/errors/loginFailure",
+              "raw": "{{baseUrl}}/api/v1/errors/loginFailure",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "errors", "loginFailure"]
             }
-          },
-          "response": []
+          }
         }
       ]
     },
     {
       "name": "GlobalRestController",
-      "description": "Peticiones para probar los atributos globales expuestos por GlobalRestController.",
       "item": [
         {
           "name": "Obtener atributos globales - /api/v1/global",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "const json = pm.response.json();",
-                  "",
-                  "pm.test(\"Devuelve las claves esperadas\", function () {",
-                  "    pm.expect(json).to.have.property(\"viajes\");",
-                  "    pm.expect(json).to.have.property(\"logged\");",
-                  "});",
-                  "",
-                  "pm.test(\"viajes es array\", function () {",
-                  "    pm.expect(json.viajes).to.be.an(\"array\");",
-                  "});",
-                  "",
-                  "pm.test(\"logged es booleano\", function () {",
-                  "    pm.expect(json.logged).to.be.a(\"boolean\");",
-                  "});",
-                  "",
-                  "pm.test(\"Si hay viajes, tienen las claves esperadas\", function () {",
-                  "    if (json.viajes.length > 0) {",
-                  "        pm.expect(json.viajes[0]).to.include.all.keys(",
-                  "            \"id\",",
-                  "            \"nombre\",",
-                  "            \"descripcion\",",
-                  "            \"pais\",",
-                  "            \"precio\",",
-                  "            \"transporte\",",
-                  "            \"alojamiento\",",
-                  "            \"fechaInicio\",",
-                  "            \"fechaFin\",",
-                  "            \"maxPlazas\",",
-                  "            \"numNoches\",",
-                  "            \"tieneImagen\"",
-                  "        );",
-                  "    }",
-                  "});",
-                  "",
-                  "pm.test(\"Si esta autenticado, devuelve datos de usuario\", function () {",
-                  "    if (json.logged) {",
-                  "        pm.expect(json).to.have.property(\"userName\");",
-                  "        pm.expect(json).to.have.property(\"admin\");",
-                  "        pm.expect(json.admin).to.be.a(\"boolean\");",
-                  "    }",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/global",
+              "raw": "{{baseUrl}}/api/v1/global",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "global"]
             }
-          },
-          "response": []
+          }
         },
         {
           "name": "Obtener atributos globales - /api/v1/global/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "const json = pm.response.json();",
-                  "",
-                  "pm.test(\"Devuelve las claves esperadas\", function () {",
-                  "    pm.expect(json).to.have.property(\"viajes\");",
-                  "    pm.expect(json).to.have.property(\"logged\");",
-                  "});",
-                  "",
-                  "pm.test(\"viajes es array\", function () {",
-                  "    pm.expect(json.viajes).to.be.an(\"array\");",
-                  "});",
-                  "",
-                  "pm.test(\"logged es booleano\", function () {",
-                  "    pm.expect(json.logged).to.be.a(\"boolean\");",
-                  "});",
-                  "",
-                  "pm.test(\"Si hay viajes, tienen las claves esperadas\", function () {",
-                  "    if (json.viajes.length > 0) {",
-                  "        pm.expect(json.viajes[0]).to.include.all.keys(",
-                  "            \"id\",",
-                  "            \"nombre\",",
-                  "            \"descripcion\",",
-                  "            \"pais\",",
-                  "            \"precio\",",
-                  "            \"transporte\",",
-                  "            \"alojamiento\",",
-                  "            \"fechaInicio\",",
-                  "            \"fechaFin\",",
-                  "            \"maxPlazas\",",
-                  "            \"numNoches\",",
-                  "            \"tieneImagen\"",
-                  "        );",
-                  "    }",
-                  "});",
-                  "",
-                  "pm.test(\"Si esta autenticado, devuelve datos de usuario\", function () {",
-                  "    if (json.logged) {",
-                  "        pm.expect(json).to.have.property(\"userName\");",
-                  "        pm.expect(json).to.have.property(\"admin\");",
-                  "        pm.expect(json.admin).to.be.a(\"boolean\");",
-                  "    }",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/global/",
+              "raw": "{{baseUrl}}/api/v1/global/",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "global", ""]
             }
-          },
-          "response": []
+          }
         }
       ]
     },
     {
       "name": "AboutRestController",
-      "description": "Peticiones para probar la informacion de la pagina About expuesta por AboutRestController.",
       "item": [
         {
           "name": "Obtener about - /api/v1/pages/about",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "const text = pm.response.text();",
-                  "",
-                  "pm.test(\"Devuelve contenido de About\", function () {",
-                  "    pm.expect(text).to.include(\"Sobre nosotros\");",
-                  "    pm.expect(text).to.include(\"Sobre nuestros viajes\");",
-                  "    pm.expect(text).to.include(\"Equipo:\");",
-                  "});",
-                  "",
-                  "pm.test(\"Devuelve miembros del equipo\", function () {",
-                  "    pm.expect(text).to.include(\"Vanessa Fernandes Franco\");",
-                  "    pm.expect(text).to.include(\"Alejandro\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/pages/about",
+              "raw": "{{baseUrl}}/api/v1/pages/about",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "pages", "about"]
             }
-          },
-          "response": []
+          }
         }
       ]
     },
     {
       "name": "ContactRestController",
-      "description": "Peticiones para probar la informacion de contacto y el envio de mensajes.",
       "item": [
         {
-          "name": "Obtener contacto - /api/v1/contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "const json = pm.response.json();",
-                  "",
-                  "pm.test(\"Devuelve los datos de contacto\", function () {",
-                  "    pm.expect(json).to.have.property(\"titulo\", \"Contactanos\");",
-                  "    pm.expect(json).to.have.property(\"direccion\", \"Calle Tulipan, s/n, 28933 Mostoles, Madrid\");",
-                  "    pm.expect(json).to.have.property(\"telefono\", \"+34 123 456 789\");",
-                  "    pm.expect(json).to.have.property(\"email\", \"byebye.application@gmail.com\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
+          "name": "Obtener contacto",
           "request": {
             "method": "GET",
-            "header": [],
             "url": {
-              "raw": "https://localhost:8443/api/v1/contact",
+              "raw": "{{baseUrl}}/api/v1/contact",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "contact"]
             }
-          },
-          "response": []
+          }
         },
         {
-          "name": "Obtener contacto - /api/v1/contact/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "const json = pm.response.json();",
-                  "",
-                  "pm.test(\"Devuelve los datos de contacto\", function () {",
-                  "    pm.expect(json).to.have.property(\"titulo\", \"Contactanos\");",
-                  "    pm.expect(json).to.have.property(\"direccion\", \"Calle Tulipan, s/n, 28933 Mostoles, Madrid\");",
-                  "    pm.expect(json).to.have.property(\"telefono\", \"+34 123 456 789\");",
-                  "    pm.expect(json).to.have.property(\"email\", \"byebye.application@gmail.com\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "https://localhost:8443/api/v1/contact/",
-              "protocol": "https",
-              "host": ["localhost"],
-              "port": "8443",
-              "path": ["api", "v1", "contact", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Enviar contacto - /api/v1/contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 201\", function () {",
-                  "    pm.response.to.have.status(201);",
-                  "});",
-                  "",
-                  "const json = pm.response.json();",
-                  "",
-                  "pm.test(\"Confirma el envio\", function () {",
-                  "    pm.expect(json).to.have.property(\"enviado\", true);",
-                  "    pm.expect(json).to.have.property(\"mensaje\", \"Mensaje enviado correctamente\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
+          "name": "Enviar contacto",
           "request": {
             "method": "POST",
             "header": [
@@ -592,113 +380,16 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\",\n    \"mensaje\": \"Hola, quiero mas informacion sobre vuestros viajes.\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
+              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\",\n    \"mensaje\": \"Hola, quiero mas informacion sobre vuestros viajes.\"\n}"
             },
             "url": {
-              "raw": "https://localhost:8443/api/v1/contact",
+              "raw": "{{baseUrl}}/api/v1/contact",
               "protocol": "https",
               "host": ["localhost"],
               "port": "8443",
               "path": ["api", "v1", "contact"]
             }
-          },
-          "response": []
-        },
-        {
-          "name": "Enviar contacto - /api/v1/contact/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 201\", function () {",
-                  "    pm.response.to.have.status(201);",
-                  "});",
-                  "",
-                  "const json = pm.response.json();",
-                  "",
-                  "pm.test(\"Confirma el envio\", function () {",
-                  "    pm.expect(json).to.have.property(\"enviado\", true);",
-                  "    pm.expect(json).to.have.property(\"mensaje\", \"Mensaje enviado correctamente\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\",\n    \"mensaje\": \"Hola, quiero mas informacion sobre vuestros viajes.\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "https://localhost:8443/api/v1/contact/",
-              "protocol": "https",
-              "host": ["localhost"],
-              "port": "8443",
-              "path": ["api", "v1", "contact", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Enviar contacto - Error (mensaje obligatorio)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Respuesta 400\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "https://localhost:8443/api/v1/contact",
-              "protocol": "https",
-              "host": ["localhost"],
-              "port": "8443",
-              "path": ["api", "v1", "contact"]
-            }
-          },
-          "response": []
+          }
         }
       ]
     }

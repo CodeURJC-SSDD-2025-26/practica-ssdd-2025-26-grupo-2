@@ -34,7 +34,6 @@ public class UserRestController {
 
         UserDTO responseDTO = userMapper.toDTO(newUser);
 
-        // Construcción de URI más segura
         URI location = fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(responseDTO.id())
