@@ -247,6 +247,63 @@
       "response": []
     },
     {
+      "name": "Resetear Imagen de Perfil",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/1/image",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1",
+            "image"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar Usuarios - Paginado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/list?page=0&size=5",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0",
+              "description": "Número de página (empieza en 0)"
+            },
+            {
+              "key": "size",
+              "value": "5",
+              "description": "Cantidad de usuarios por página"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "IndexRestController",
       "description": "Peticiones para probar los mappings de IndexRestController.",
       "item": [

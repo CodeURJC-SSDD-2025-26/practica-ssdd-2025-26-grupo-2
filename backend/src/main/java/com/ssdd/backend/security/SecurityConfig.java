@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +21,7 @@ import com.ssdd.backend.security.jwt.JwtTokenProvider;
 import com.ssdd.backend.security.jwt.UnauthorizedHandlerJwt;
 
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Autowired
@@ -72,6 +74,9 @@ public class SecurityConfig {
 
                         //admin
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/users/*/image").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/users/list**").hasRole("ADMIN")
+
 
                         // PUBLIC ENDPOINTS
                         .anyRequest().permitAll());

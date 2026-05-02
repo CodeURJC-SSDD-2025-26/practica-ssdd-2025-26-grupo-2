@@ -10,11 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssdd.backend.model.Reservation;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.service.ReservationService;
 import com.ssdd.backend.service.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @Controller
 public class UserManagementController {
@@ -24,10 +28,22 @@ public class UserManagementController {
     private ReservationService reservationService;
 
     @GetMapping("/userManagement.html")
-    public String displayUsers(Model model) {
-        List<User> listaUsuarios = userService.findAll();
+    public String displayUsers(
+            Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<User> usuariosPage = userService.findAll(pageable);
 
-        model.addAttribute("usuarios", listaUsuarios);
+        model.addAttribute("usuarios", usuariosPage.getContent());
+        model.addAttribute("currentPage", page + 1); 
+        model.addAttribute("totalPages", usuariosPage.getTotalPages());
+
+        model.addAttribute("hasNext", usuariosPage.hasNext());
+        model.addAttribute("hasPrevious", usuariosPage.hasPrevious());
+
+        model.addAttribute("currentPagePlusOne", page + 1);
+        model.addAttribute("currentPageMinusOne", page - 1);
 
         return "userManagement";
     }

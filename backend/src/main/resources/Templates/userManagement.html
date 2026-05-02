@@ -26,63 +26,90 @@
         <a href="/graphUser.html" class="btn btn-adv mx-3">Ver gráficos</a>
     </div>
 </div>
+<div class="container-fluid">
+    <table class="tabla-admin px-3 align-items-center">
+        <thead>
+            <tr>
+                <th>Correo electrónico</th>
+                <th>Nombre</th>
+                <th>Roles</th>
+                <th class="col-1">Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#usuarios}}
+            <tr>
+                <td>
+                    <div>
+                        <p>{{email}}</p>
+                    </div>
+                </td>
 
-<table class="tabla-admin">
-    <thead>
-        <tr>
-            <th>Correo electrónico</th>
-            <th>Nombre</th>
-            <th>Roles</th>
-            <th class="col-1">Imagen</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#usuarios}}
-        <tr>
-            <td>
-                <div>
-                    <p>{{email}}</p>
-                </div>
-            </td>
+                <td>
+                    <div>
+                        <p>{{nombre}}</p>
+                    </div>
+                </td>
 
-            <td>
-                <div>
-                    <p>{{nombre}}</p>
-                </div>
-            </td>
+                <td>
+                    <div>
+                        <p>{{roles}}</p>
+                    </div>
+                </td>
 
-            <td>
-                <div>
-                    <p>{{roles}}</p>
-                </div>
-            </td>
+                <td>
+                    {{#imagenPerfil}}
+                    <img src="/usuario/{{idParaImagen}}/imagen"
+                        class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block">
+                    {{/imagenPerfil}}
 
-            <td>
-                {{#imagenPerfil}}
-                <img src="/usuario/{{idParaImagen}}/imagen"
-                    class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block">
-                {{/imagenPerfil}}
+                    {{^imagenPerfil}}
+                    <img src="/images/default_profile.jpg" alt="Perfil"
+                        class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block">
+                    {{/imagenPerfil}}
+                </td>
 
-                {{^imagenPerfil}}
-                <img src="/images/default_profile.jpg" alt="Perfil"
-                    class="rounded-circle img-thumbnail profile-img1 img-fluid d-xl-inline-block">
-                {{/imagenPerfil}}
-            </td>
+                <td>
+                    <div class="botones-admin-user text-center">
+                        <button class="btn btn-rm" data-id="{{id}}">Eliminar</button>
+                        <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
+                        <button class="btn btn-primary adv">Aviso</button>
+                        <a href="/admin/usuarios/{{id}}/reseñas" class="btn btn-primary">Reseñas</a>
+                        <button class="btn btn-primary viajes" data-id="{{id}}">Viajes</button>
+                    </div>
+                </td>
+            </tr>
+            {{/usuarios}}
+        </tbody>
+    </table>
 
-            <td>
-                <div class="botones-admin-user text-center">
-                    <button class="btn btn-rm" data-id="{{id}}">Eliminar</button>
-                    <button class="btn btn-primary rImg" data-id="{{id}}">Reestablecer imagen</button>
-                    <button class="btn btn-primary adv">Aviso</button>
-                    <a href="/admin/usuarios/{{id}}/reseñas" class="btn btn-primary">Reseñas</a>
-                    <button class="btn btn-primary viajes" data-id="{{id}}">Viajes</button>
-                </div>
-            </td>
-        </tr>
-        {{/usuarios}}
-    </tbody>
-</table>
+</div>
+
+
+
+<div class="pagination-container">
+
+    <div class="pagination-left">
+        {{#hasPrevious}}
+        <a href="/userManagement.html?page={{currentPageMinusOne}}" class="btn btn-primary">
+            Anterior
+        </a>
+        {{/hasPrevious}}
+
+        {{#hasNext}}
+        <a href="/userManagement.html?page={{currentPagePlusOne}}" class="btn btn-primary">
+            Siguiente
+        </a>
+        {{/hasNext}}
+    </div>
+
+
+    <div class="pagination-right">
+        Página {{currentPage}} de {{totalPages}}
+    </div>
+
+</div>
 
 <script>
     document.addEventListener("click", async function (e) {

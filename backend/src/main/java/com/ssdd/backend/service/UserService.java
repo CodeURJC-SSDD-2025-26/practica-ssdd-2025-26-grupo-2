@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class UserService {
@@ -40,6 +42,10 @@ public class UserService {
         return userRepository.findByEmail(email.trim());
     }
 
+    public Page<User> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+
     public Optional<User> login(String email, String rawPassword) {
         Optional<User> userOpt = userRepository.findByEmail(email);
 
@@ -57,7 +63,7 @@ public class UserService {
     public void updatePassword(Long id, String newRawPassword) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-        
+
         user.setPassword(passwordEncoder.encode(newRawPassword));
         userRepository.save(user);
     }
@@ -78,7 +84,7 @@ public class UserService {
 
         return userRepository.save(user);
     }
-    
+
     public boolean checkPassword(User user, String rawPassword) {
         return passwordEncoder.matches(rawPassword, user.getPassword());
     }
@@ -87,13 +93,14 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepository.findAll();
     }
+
     public Optional<User> findById(long id) {
         return userRepository.findById(id);
     }
-    
+
     @Transactional
     public void deleteById(Long id) {
         if (userRepository.existsById(id)) {

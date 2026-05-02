@@ -5,7 +5,16 @@ body {
   overflow-x: hidden;
   font-size: 14px;
 }
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
 
+.pagination-right {
+    margin-left: auto;
+}
 body:before {
   content: "";
   position: fixed;
