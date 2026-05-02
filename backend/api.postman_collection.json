@@ -7,7 +7,7 @@
     {
       "name": "Registrar Usuario - Éxito",
       "request": {
-        "method": "POST",
+        "method": "PUT",
         "header": [],
         "body": {
           "mode": "raw",
@@ -21,9 +21,16 @@
         "url": {
           "raw": "{{baseUrl}}/api/v1/users/",
           "protocol": "https",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "8443",
-          "path": ["api", "v1", "users", ""]
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
         }
       },
       "response": []
@@ -45,9 +52,16 @@
         "url": {
           "raw": "{{baseUrl}}/api/v1/users",
           "protocol": "https",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "8443",
-          "path": ["api", "v1", "users", ""]
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
         }
       },
       "response": []
@@ -69,9 +83,16 @@
         "url": {
           "raw": "{{baseUrl}}/api/v1/auth/login",
           "protocol": "https",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "8443",
-          "path": ["api", "v1", "users", ""]
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
         }
       },
       "response": []
@@ -93,9 +114,16 @@
         "url": {
           "raw": "{{baseUrl}}/api/v1/auth/logout",
           "protocol": "https",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "8443",
-          "path": ["api", "v1", "users", ""]
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
         }
       },
       "response": []
@@ -117,9 +145,103 @@
         "url": {
           "raw": "{{baseUrl}}/api/v1/auth/refresh",
           "protocol": "https",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "8443",
-          "path": ["api", "v1", "users", ""]
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar Contraseña",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"password\": \"nuevaPassword123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/1/password",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1",
+            "password"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar Imagen de Perfil",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/1/profile-image",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1",
+            "profile-image"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar Usuario",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/2",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1"
+          ]
         }
       },
       "response": []
@@ -164,9 +286,15 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/pages",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "pages"]
+              "path": [
+                "api",
+                "v1",
+                "pages"
+              ]
             }
           },
           "response": []
@@ -207,9 +335,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/pages/",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "pages", ""]
+              "path": [
+                "api",
+                "v1",
+                "pages",
+                ""
+              ]
             }
           },
           "response": []
@@ -250,9 +385,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/pages/index",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "pages", "index"]
+              "path": [
+                "api",
+                "v1",
+                "pages",
+                "index"
+              ]
             }
           },
           "response": []
@@ -269,9 +411,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/errors/404",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "errors", "404"]
+              "path": [
+                "api",
+                "v1",
+                "errors",
+                "404"
+              ]
             }
           }
         },
@@ -282,9 +431,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/errors/403",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "errors", "403"]
+              "path": [
+                "api",
+                "v1",
+                "errors",
+                "403"
+              ]
             }
           }
         },
@@ -295,9 +451,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/errors/loginFailure",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "errors", "loginFailure"]
+              "path": [
+                "api",
+                "v1",
+                "errors",
+                "loginFailure"
+              ]
             }
           }
         }
@@ -313,9 +476,15 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/global",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "global"]
+              "path": [
+                "api",
+                "v1",
+                "global"
+              ]
             }
           }
         },
@@ -326,9 +495,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/global/",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "global", ""]
+              "path": [
+                "api",
+                "v1",
+                "global",
+                ""
+              ]
             }
           }
         }
@@ -344,9 +520,16 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/pages/about",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "pages", "about"]
+              "path": [
+                "api",
+                "v1",
+                "pages",
+                "about"
+              ]
             }
           }
         }
@@ -362,9 +545,15 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/contact",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "contact"]
+              "path": [
+                "api",
+                "v1",
+                "contact"
+              ]
             }
           }
         },
@@ -385,9 +574,15 @@
             "url": {
               "raw": "{{baseUrl}}/api/v1/contact",
               "protocol": "https",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "8443",
-              "path": ["api", "v1", "contact"]
+              "path": [
+                "api",
+                "v1",
+                "contact"
+              ]
             }
           }
         }
