@@ -2,9 +2,11 @@ package com.ssdd.backend.controller.rest;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.ssdd.backend.dto.TravelDTO;
 import com.ssdd.backend.dto.TravelMapper;
@@ -26,7 +29,6 @@ import com.ssdd.backend.model.Image;
 import com.ssdd.backend.service.TravelService;
 import com.ssdd.backend.service.ImageService;
 
-// Importaciones estáticas para acortar el código (Estilo Profesor)
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentContextPath;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -46,26 +48,31 @@ public class TravelRestController {
     @Autowired
     private ImageMapper imageMapper;
 
-    // Equivale a tu antiguo GET /viajes (pero devuelve JSON)
-    @GetMapping("/")
-    public Collection<TravelDTO> getTravels() {
-        return travelService.getAllTravels().stream()
-                .map(travelMapper::toDTO)
-                .toList();
+    // Get all travels (Paginated)
+    @GetMapping({"", "/"})
+    public Page<TravelDTO> getTravels(Pageable pageable) {
+        return travelService.getAllTravels(pageable).map(travelMapper::toDTO);
     }
 
-    // Equivale a tu antiguo GET /viajes/{id}
+    // Get a single travel by ID
     @GetMapping("/{id}")
     public TravelDTO getTravel(@PathVariable long id) {
-        // Usamos orElseThrow() para que lance error 404 si no existe
-        Travel travel = travelService.getTravelById(id).orElseThrow(); 
-        
+        Travel travel = travelService.getTravelById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
         return travelMapper.toDTO(travel);
     }
 
-    // Equivale a tu antiguo POST /nuevoviaje (pero SIN imagen)
-    @PostMapping("/")
+    // Create a new travel
+    @PostMapping({"", "/"})
     public ResponseEntity<TravelDTO> createTravel(@RequestBody TravelDTO travelDTO) {
+
+        // --- MANUAL VALIDATION ---
+        if (travelDTO.precio() <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Price must be greater than 0");
+        }
+        if (travelDTO.nombre() == null || travelDTO.nombre().trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Travel name cannot be empty");
+        }
 
         Travel travel = travelMapper.toEntity(travelDTO);
         travel = travelService.save(travel); 
@@ -76,47 +83,54 @@ public class TravelRestController {
         return ResponseEntity.created(location).body(savedTravelDTO);
     }
 
-    // Equivale a tu antiguo POST /modificarviaje (en REST se usa PUT)
+    // Update an existing travel
     @PutMapping("/{id}")
     public TravelDTO replaceTravel(@PathVariable long id, @RequestBody TravelDTO updatedTravelDTO) {
 
+        // --- MANUAL VALIDATION (Classmate Style) ---
+        if (updatedTravelDTO.precio() <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Price must be greater than 0");
+        }
+        if (updatedTravelDTO.nombre() == null || updatedTravelDTO.nombre().trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Travel name cannot be empty");
+        }
+
+        Travel oldTravel = travelService.getTravelById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
+
         Travel updatedTravel = travelMapper.toEntity(updatedTravelDTO);
         updatedTravel.setId(id);
-        
-        // Obtenemos el antiguo para no perder la imagen ni las reservas al actualizar
-        Travel viajeAntiguo = travelService.getTravelById(id).orElseThrow();
-        updatedTravel.setImagen(viajeAntiguo.getImagen());
-        updatedTravel.setReservas(viajeAntiguo.getReservas());
+        updatedTravel.setImagen(oldTravel.getImagen());
+        updatedTravel.setReservas(oldTravel.getReservas());
         
         updatedTravel = travelService.save(updatedTravel);
+        
         return travelMapper.toDTO(updatedTravel);
     }
 
-    // Equivale a tu antiguo POST /borrarviaje/{id} (en REST se usa DELETE)
+    // Delete a travel
     @DeleteMapping("/{id}")
     public TravelDTO deleteTravel(@PathVariable long id) {
-        Travel travel = travelService.getTravelById(id).orElseThrow();
+        Travel travel = travelService.getTravelById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
+        
         travelService.delete(id);
         return travelMapper.toDTO(travel);
     }
 
-    // --- MÉTODOS PARA GESTIONAR LA IMAGEN  ---
+    // --- IMAGE MANAGEMENT ---
 
-    // Subir imagen separada
     @PostMapping("/{id}/images/")
-    public ResponseEntity<ImageDTO> createTravelImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
-            throws IOException {
-
+    public ResponseEntity<ImageDTO> createTravelImage(@PathVariable long id, @RequestParam MultipartFile imageFile) throws IOException {
         if (imageFile.isEmpty()) {
-            throw new IllegalArgumentException("Image file cannot be empty");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image file cannot be empty");
         }
+
+        Travel travel = travelService.getTravelById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
 
         Image image = imageService.createImage(imageFile.getInputStream());
         
-        // Se lo asignamos al viaje
-        Travel travel = travelService.getTravelById(id).orElseThrow();
-        
-        // Si ya tenía imagen, borramos la antigua para no dejar basura en la BBDD
         if (travel.getImagen() != null) {
             imageService.deleteImage(travel.getImagen().getId());
         }
@@ -124,7 +138,6 @@ public class TravelRestController {
         travel.setImagen(image);
         travelService.save(travel);
 
-        // Genera la URL para que el cliente sepa dónde descargarla luego
         URI location = fromCurrentContextPath()
                 .path("/api/v1/images/{imageId}/media")
                 .buildAndExpand(image.getId())
@@ -133,14 +146,16 @@ public class TravelRestController {
         return ResponseEntity.created(location).body(imageMapper.toDTO(image));
     }
 
-    // Borrar la imagen de un viaje
     @DeleteMapping("/{travelId}/images/{imageId}")
     public ImageDTO deleteTravelImage(@PathVariable long travelId, @PathVariable long imageId) {
-
-        Travel travel = travelService.getTravelById(travelId).orElseThrow();
-        Image image = travel.getImagen();
+        Travel travel = travelService.getTravelById(travelId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
         
-        // Desvinculamos y borramos
+        Image image = travel.getImagen();
+        if (image == null || !image.getId().equals(imageId)) {
+             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Image not found for this travel");
+        }
+        
         travel.setImagen(null);
         travelService.save(travel);
         imageService.deleteImage(imageId);

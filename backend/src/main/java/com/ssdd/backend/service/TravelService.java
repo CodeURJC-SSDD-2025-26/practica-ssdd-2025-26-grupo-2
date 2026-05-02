@@ -8,6 +8,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.repository.TravelRepository;
 
@@ -22,6 +25,10 @@ public class TravelService {
 
     public List<Travel> getAllTravels() {
         return travelRepository.findAll();
+    }
+
+    public Page<Travel> getAllTravels(Pageable pageable) {
+        return travelRepository.findAll(pageable);
     }
  
     public Optional<Travel> getTravelById(Long id) {
