@@ -1,20 +1,27 @@
 package com.ssdd.backend.service;
 
+import com.ssdd.backend.model.Image;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserService {
 
     @Autowired
+    private ImageService imageService;
+
+    @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -46,6 +53,32 @@ public class UserService {
         return Optional.empty();
     }
 
+    @Transactional
+    public void updatePassword(Long id, String newRawPassword) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        
+        user.setPassword(passwordEncoder.encode(newRawPassword));
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public User updateProfileImage(Long id, MultipartFile file) throws IOException {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        if (user.getImagenPerfil() == null) {
+            // Si no tiene imagen, creamos una nueva entidad Image
+            Image newImage = imageService.createImage(file.getInputStream());
+            user.setImagenPerfil(newImage);
+        } else {
+            // Si ya tiene, usamos el método replace de tu ImageService
+            imageService.replaceImageFile(user.getImagenPerfil().getId(), file.getInputStream());
+        }
+
+        return userRepository.save(user);
+    }
+    
     public boolean checkPassword(User user, String rawPassword) {
         return passwordEncoder.matches(rawPassword, user.getPassword());
     }

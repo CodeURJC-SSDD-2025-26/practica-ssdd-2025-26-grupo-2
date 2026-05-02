@@ -64,7 +64,14 @@ public class SecurityConfig {
 
                         // users
                         .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/logout").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/refresh").hasAnyRole("USER", "ADMIN")
+
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/users/*/profile-image").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/users/*/password").hasAnyRole("USER", "ADMIN")
+
+                        //admin
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
 
                         // PUBLIC ENDPOINTS
                         .anyRequest().permitAll());

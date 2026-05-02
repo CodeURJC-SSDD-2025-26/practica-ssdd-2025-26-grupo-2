@@ -1,9 +1,13 @@
 package com.ssdd.backend.controller.rest.User;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ssdd.backend.dto.UserDTO;
 import com.ssdd.backend.dto.UserMapper;
@@ -40,5 +44,28 @@ public class UserRestController {
                 .toUri();
 
         return ResponseEntity.created(location).body(responseDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
+        return ResponseEntity.noContent().build(); 
+    }
+
+    @PatchMapping("/{id}/password")
+    public ResponseEntity<Void> updatePassword(@PathVariable Long id, @RequestBody Map<String, String> passwords) {
+        String newPassword = passwords.get("password");
+        userService.updatePassword(id, newPassword);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}/profile-image")
+    public ResponseEntity<UserDTO> updateProfileImage(
+            @PathVariable Long id,
+            @RequestParam("file") MultipartFile file) throws IOException { 
+
+        User updatedUser = userService.updateProfileImage(id, file);
+
+        return ResponseEntity.ok(userMapper.toDTO(updatedUser));
     }
 }
