@@ -14,5 +14,4 @@ public record TravelDTO(
         LocalDate fechaFin,
         int maxPlazas,
         int numNoches,
-        ImageDTO imagen) {
-}
+        ImageDTO imagen) {}
