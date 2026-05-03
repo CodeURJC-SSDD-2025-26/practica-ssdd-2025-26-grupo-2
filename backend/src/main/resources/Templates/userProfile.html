@@ -152,6 +152,28 @@
 
         </ul>
     </div>
+
+    {{#showReservationPagination}}
+    <div class="pagination-container mt-4">
+        <div class="pagination-left">
+            {{#hasPrevious}}
+            <a href="/userProfile.html?page={{currentPageMinusOne}}&size={{pageSize}}" class="btn btn-primary">
+                Anterior
+            </a>
+            {{/hasPrevious}}
+
+            {{#hasNext}}
+            <a href="/userProfile.html?page={{currentPagePlusOne}}&size={{pageSize}}" class="btn btn-primary">
+                Siguiente
+            </a>
+            {{/hasNext}}
+        </div>
+
+        <div class="pagination-right">
+            Página {{currentPage}} de {{totalPages}}
+        </div>
+    </div>
+    {{/showReservationPagination}}
 </div>
 
 {{>footer}}

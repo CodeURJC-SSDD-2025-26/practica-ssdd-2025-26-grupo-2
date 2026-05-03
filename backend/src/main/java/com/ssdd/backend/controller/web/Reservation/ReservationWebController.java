@@ -2,10 +2,12 @@ package com.ssdd.backend.controller.web.Reservation;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,16 +32,29 @@ public class ReservationWebController {
     private TravelService travelService;
 
     @GetMapping({ "/profile", "/userProfile.html" })
-    public String showUserProfile(Principal principal, Model model) {
+    public String showUserProfile(
+            Principal principal,
+            Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size) {
         if (principal == null) {
             return "redirect:/signin";
         }
 
         User user = userService.findByEmail(principal.getName()).orElseThrow();
-        List<Reservation> reservations = reservationService.findByUsuario(user);
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Reservation> reservationsPage = reservationService.findByUsuario(user, pageable);
 
         model.addAttribute("user", user);
-        model.addAttribute("reservations", reservations);
+        model.addAttribute("reservations", reservationsPage.getContent());
+        model.addAttribute("currentPage", page + 1);
+        model.addAttribute("totalPages", reservationsPage.getTotalPages());
+        model.addAttribute("hasNext", reservationsPage.hasNext());
+        model.addAttribute("hasPrevious", reservationsPage.hasPrevious());
+        model.addAttribute("currentPagePlusOne", page + 1);
+        model.addAttribute("currentPageMinusOne", page - 1);
+        model.addAttribute("pageSize", size);
+        model.addAttribute("showReservationPagination", reservationsPage.getTotalPages() > 1);
 
         return "userProfile";
     }
