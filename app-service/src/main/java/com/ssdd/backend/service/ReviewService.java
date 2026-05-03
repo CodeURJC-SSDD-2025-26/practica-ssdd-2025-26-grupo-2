@@ -63,4 +63,8 @@ public class ReviewService {
     public Page<Review> findAll(Pageable pageable) {
         return reviewRepository.findAll(pageable);
     }
+
+    public List<Review> findAllByViaje(Travel travel) {
+        return reviewRepository.findByViaje(travel);
+    }
 }

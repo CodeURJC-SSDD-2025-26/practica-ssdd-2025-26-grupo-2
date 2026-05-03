@@ -1,9 +1,16 @@
 package com.ssdd.backend.controller.rest;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdd.backend.model.Reservation;
 import com.ssdd.backend.model.Review;
@@ -70,7 +77,7 @@ public class GraphUserRestController {
         for (Travel t : travels) {
             labels.add(t.getNombre());
 
-            List<Review> reviews = reviewService.findByViaje(t);
+            List<Review> reviews = reviewService.findAllByViaje(t);
             double avg = reviews.stream()
                     .mapToInt(Review::getPuntuacion)
                     .average()
