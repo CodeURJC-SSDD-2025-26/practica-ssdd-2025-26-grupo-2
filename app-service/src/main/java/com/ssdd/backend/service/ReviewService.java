@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ssdd.backend.model.Review;
@@ -11,8 +13,6 @@ import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.ReviewRepository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 @Service
 public class ReviewService {
@@ -24,8 +24,8 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public List<Review> findByViaje(Travel travel) {
-        return reviewRepository.findByViaje(travel);
+    public Page<Review> findByViaje(Travel travel, Pageable pageable) {
+        return reviewRepository.findByViaje(travel, pageable);
     }
 
     public Review save(Review review) {

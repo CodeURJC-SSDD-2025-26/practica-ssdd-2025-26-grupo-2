@@ -191,34 +191,46 @@
       <div id="reviewsBox" class="border rounded p-4 bg-white shadow-sm">
         {{#reviews}}
         <div class="mb-3 border-bottom pb-2">
+          <!-- ... (Contenido de cada reseña) ... -->
           <div class="d-flex justify-content-between align-items-center">
-
             <div>
               <strong>{{autor.nombre}}</strong>
               <span class="text-warning ml-1">({{puntuacion}}/5)</span>
             </div>
-
             {{#isOwner}}
-            <form action="/reviews/delete" method="POST" class="m-0" 
-                onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta reseña? Esta acción no se puede deshacer.');">
-              <input type="hidden" name="_csrf" value="{{token}}">
-              <input type="hidden" name="reviewId" value="{{id}}">
-              <input type="hidden" name="viajeId" value="{{viaje.id}}">
-              <button type="submit" class="btn btn-link text-danger p-0 border-0" title="Eliminar reseña">
-                <i class="bi bi-trash" style="font-size: 1.1rem;"></i> 🗑️
-              </button>
+            <form action="/reviews/delete" method="POST" class="m-0">
+               <!-- ... (Formulario de borrado) ... -->
             </form>
             {{/isOwner}}
           </div>
           <p class="mb-1 text-dark">"{{comentario}}"</p>
           <small class="text-muted">{{fecha}}</small>
         </div>
-
         {{/reviews}}
 
         {{^reviews}}
         <p class="text-muted">Aún no hay reseñas. ¡Sé el primero!</p>
         {{/reviews}}
+
+        {{#hasReviewsPages}}
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          {{#hasPrevious}}
+          <a href="/viajes/{{viaje.id}}?page={{prevPage}}" class="btn btn-sm btn-outline-primary">&laquo; Anterior</a>
+          {{/hasPrevious}}
+          {{^hasPrevious}}
+          <span class="btn btn-sm disabled">&laquo; Anterior</span>
+          {{/hasPrevious}}
+
+          <small>Página {{displayPage}} de {{totalPages}}</small>
+
+          {{#hasNext}}
+          <a href="/viajes/{{viaje.id}}?page={{nextPage}}" class="btn btn-sm btn-outline-primary">Siguiente &raquo;</a>
+          {{/hasNext}}
+          {{^hasNext}}
+          <span class="btn btn-sm disabled">Siguiente &raquo;</span>
+          {{/hasNext}}
+        </div>
+        {{/hasReviewsPages}}
       </div>
     </div>
 
