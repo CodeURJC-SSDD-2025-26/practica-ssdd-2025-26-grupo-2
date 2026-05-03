@@ -1,0 +1,179 @@
+{{>header}}
+
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Mi Perfil</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-5 mb-4">
+            <div class="text-center">
+                <h2 class="section-title mb-4 text-center"><b>Modifica tus datos</b></h2>
+            </div>
+            
+            {{#error}}
+            <div class="alert alert-danger text-center">{{error}}</div>
+            {{/error}}
+            
+            <form action="/update_image" method="post" enctype="multipart/form-data"
+                class="contact-form bg-white p-4 shadow-sm border rounded">
+                <input type="hidden" name="_csrf" value="{{token}}">
+                
+                <div class="d-flex flex-column align-items-center mb-4">
+                    {{#user.imagenPerfil}}
+                    <img src="/usuario/{{user.id}}/imagen" class="rounded-circle img-thumbnail profile-img2 mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    {{/user.imagenPerfil}}
+
+                    {{^user.imagenPerfil}}
+                    <img src="/images/default_profile.jpg" class="rounded-circle img-thumbnail profile-img2 mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    {{/user.imagenPerfil}}
+                    
+                    <input type="file" name="image" id="inputFotoPerfil" accept="image/png, image/jpeg" class="d-none">
+                    <label for="inputFotoPerfil" class="btn btn-primary">Cambiar foto de perfil</label>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="text-black" for="login-email">Dirección de correo</label>
+                    <input name="email" type="email" class="form-control" id="login-email" value="{{user.email}}">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="text-black" for="login-password">Contraseña actual</label>
+                    <input name="password" type="password" class="form-control" id="login-password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Confirmar Cambios</button>
+            </form>
+        </div>
+
+        <div class="col-lg-5 mb-4">
+            <div class="text-center">
+                <h2 class="section-title text-center mb-4"><b>Método de pago</b></h2>
+            </div>
+
+            {{#user.tarjeta}}
+            <div class="alert alert-success shadow-sm mb-4 d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="mb-0"><strong>Tarjeta actual:</strong> **** **** **** {{ultimosCuatro}}</p>
+                    <small class="text-muted">Titular: {{titular}}</small>
+                </div>
+                <form action="/deleteCard" method="post" onsubmit="return confirm('¿Eliminar esta tarjeta?');">
+                    <input type="hidden" name="_csrf" value="{{token}}">
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                </form>
+            </div>
+            {{/user.tarjeta}}
+
+            <form action="/addCard" method="post" class="bg-white p-4 shadow-sm border rounded">
+                <input type="hidden" name="_csrf" value="{{token}}">
+
+                {{#user}}
+                <div class="form-group mb-3">
+                    <label for="cardNumber">Número de tarjeta</label>
+                    <input type="text" class="form-control" name="number" id="cardNumber"
+                        placeholder="1234 5678 9012 3456" required
+                        {{#tarjeta}}value="**** **** **** {{ultimosCuatro}}"{{/tarjeta}}>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="cardName">Nombre del titular</label>
+                    <input type="text" class="form-control" name="owner" id="cardName" required
+                        value="{{#tarjeta}}{{titular}}{{/tarjeta}}">
+                </div>
+
+                <div class="form-row mb-4">
+                    <div class="col form-group mb-0">
+                        <label for="cardExpiration">Expiración</label>
+                        <input type="text" class="form-control" name="expirationDate" id="cardExpiration" required
+                            placeholder="MM/AA" value="{{#tarjeta}}{{caducidad}}{{/tarjeta}}">
+                    </div>
+                    <div class="col form-group mb-0">
+                        <label for="cardCVV">CVV</label>
+                        <input type="password" class="form-control" name="cvv" id="cardCVV" required placeholder="•••">
+                    </div>
+                </div>
+                {{/user}}
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    {{#user.tarjeta}}Actualizar Tarjeta{{/user.tarjeta}}
+                    {{^user.tarjeta}}Guardar Tarjeta{{/user.tarjeta}}
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="container py-5">
+    <h2 class="section-title text-center mb-4"><b>Tus reservas</b></h2>
+
+    <div class="bg-white p-4 shadow-sm border rounded">
+        <ul class="list-group list-group-flush" id="lista-reservas">
+
+            {{#reservations}}
+            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                <div>
+                    <p class="mb-1 fw-bold">{{viaje.nombre}} - {{viaje.pais}}</p>
+                    <small>
+                        Personas: {{numeroPersonas}} |
+                        Fecha reserva: {{fechaReserva}} |
+                        Estado: {{estado}} |
+                        Total: {{precioTotal}} €
+                    </small>
+                </div>
+
+                <div>
+                    <a href="/reservations/{{id}}" class="btn btn-adv">Visualizar detalles</a>
+                    <a href="/reservations/{{id}}/edit" class="btn btn-primary">Editar</a>
+
+                    <form action="/reservations/{{id}}/cancel" method="post" style="display:inline;"
+                        onsubmit="return confirm('¿Seguro que quieres cancelar esta reserva?');">
+                        <input type="hidden" name="_csrf" value="{{token}}">
+                        <button type="submit" class="btn btn-rm">Cancelar</button>
+                    </form>
+                </div>
+            </li>
+            {{/reservations}}
+
+            {{^reservations}}
+            <li class="list-group-item py-3 text-center">
+                No tienes reservas todavía.
+            </li>
+            {{/reservations}}
+
+        </ul>
+    </div>
+
+    {{#showReservationPagination}}
+    <div class="pagination-container mt-4">
+        <div class="pagination-left">
+            {{#hasPrevious}}
+            <a href="/userProfile.html?page={{currentPageMinusOne}}&size={{pageSize}}" class="btn btn-primary">
+                Anterior
+            </a>
+            {{/hasPrevious}}
+
+            {{#hasNext}}
+            <a href="/userProfile.html?page={{currentPagePlusOne}}&size={{pageSize}}" class="btn btn-primary">
+                Siguiente
+            </a>
+            {{/hasNext}}
+        </div>
+
+        <div class="pagination-right">
+            Página {{currentPage}} de {{totalPages}}
+        </div>
+    </div>
+    {{/showReservationPagination}}
+</div>
+
+{{>footer}}

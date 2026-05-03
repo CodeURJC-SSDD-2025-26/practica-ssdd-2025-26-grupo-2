@@ -1,0 +1,886 @@
+{
+  "info": {
+    "name": "ByeBye Api Rest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registrar Usuario - Éxito",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\": \"Pepa\",\n    \"email\": \"test@ejemplo.com\",\n    \"password\": \"123456\",\n    \"acceptTerms\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Registrar Usuario - Error (Condiciones no aceptadas)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\": \"Pepa Error\",\n    \"email\": \"error@ejemplo.com\",\n    \"password\": \"123456\",\n    \"acceptTerms\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Iniciar sesión Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin@byebye.com\",\n }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cerrar sesión Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/logout",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Refrescar sesión Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/refresh",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar Contraseña",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"password\": \"nuevaPassword123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/1/password",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1",
+            "password"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar Imagen de Perfil",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/1/profile-image",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1",
+            "profile-image"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar Usuario",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/2",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Resetear Imagen de Perfil",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/1/image",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1",
+            "image"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar Usuarios - Paginado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/list?page=0&size=5",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "8443",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0",
+              "description": "Número de página (empieza en 0)"
+            },
+            {
+              "key": "size",
+              "value": "5",
+              "description": "Cantidad de usuarios por página"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "IndexRestController",
+      "description": "Peticiones para probar los mappings de IndexRestController.",
+      "item": [
+        {
+          "name": "Obtener index - /api/v1/pages",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Devuelve las claves esperadas\", function () {",
+                  "    pm.expect(json).to.have.property(\"viajesNuevos\");",
+                  "    pm.expect(json).to.have.property(\"viajesPopulares\");",
+                  "    pm.expect(json).to.have.property(\"nombresAnimados\");",
+                  "    pm.expect(json).to.have.property(\"reviews\");",
+                  "});",
+                  "",
+                  "pm.test(\"Las listas principales son arrays\", function () {",
+                  "    pm.expect(json.viajesNuevos).to.be.an(\"array\");",
+                  "    pm.expect(json.viajesPopulares).to.be.an(\"array\");",
+                  "    pm.expect(json.reviews).to.be.an(\"array\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pages",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "pages"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener index - /api/v1/pages/",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Devuelve las claves esperadas\", function () {",
+                  "    pm.expect(json).to.have.property(\"viajesNuevos\");",
+                  "    pm.expect(json).to.have.property(\"viajesPopulares\");",
+                  "    pm.expect(json).to.have.property(\"nombresAnimados\");",
+                  "    pm.expect(json).to.have.property(\"reviews\");",
+                  "});",
+                  "",
+                  "pm.test(\"Las listas principales son arrays\", function () {",
+                  "    pm.expect(json.viajesNuevos).to.be.an(\"array\");",
+                  "    pm.expect(json.viajesPopulares).to.be.an(\"array\");",
+                  "    pm.expect(json.reviews).to.be.an(\"array\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pages/",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "pages",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener index - /api/v1/pages/index",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Respuesta 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Devuelve las claves esperadas\", function () {",
+                  "    pm.expect(json).to.have.property(\"viajesNuevos\");",
+                  "    pm.expect(json).to.have.property(\"viajesPopulares\");",
+                  "    pm.expect(json).to.have.property(\"nombresAnimados\");",
+                  "    pm.expect(json).to.have.property(\"reviews\");",
+                  "});",
+                  "",
+                  "pm.test(\"Las listas principales son arrays\", function () {",
+                  "    pm.expect(json.viajesNuevos).to.be.an(\"array\");",
+                  "    pm.expect(json.viajesPopulares).to.be.an(\"array\");",
+                  "    pm.expect(json.reviews).to.be.an(\"array\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pages/index",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "pages",
+                "index"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ErrorWebRestController",
+      "item": [
+        {
+          "name": "Error 404 - Pagina no encontrada",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/errors/404",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "errors",
+                "404"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Error 403 - Acceso denegado",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/errors/403",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "errors",
+                "403"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Error login - Credenciales incorrectas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/errors/loginFailure",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "errors",
+                "loginFailure"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GlobalRestController",
+      "item": [
+        {
+          "name": "Obtener atributos globales - /api/v1/global",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/global",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "global"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener atributos globales - /api/v1/global/",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/global/",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "global",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AboutRestController",
+      "item": [
+        {
+          "name": "Obtener about - /api/v1/pages/about",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pages/about",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "pages",
+                "about"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ContactRestController",
+      "item": [
+        {
+          "name": "Obtener contacto",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/contact",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "contact"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Enviar contacto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Pepa\",\n    \"apellidos\": \"Lopez Garcia\",\n    \"email\": \"pepa@example.com\",\n    \"mensaje\": \"Hola, quiero mas informacion sobre vuestros viajes.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/contact",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "contact"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ReservationRestController",
+      "item": [
+        {
+          "name": "Listar reservas - Paginado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reservations/?page=0&size=5",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "reservations",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "Numero de pagina (empieza en 0)"
+                },
+                {
+                  "key": "size",
+                  "value": "5",
+                  "description": "Cantidad de reservas por pagina"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener reserva por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reservations/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "reservations",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear reserva",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"viajeId\": 1,\n    \"numeroPersonas\": 2,\n    \"precioTotal\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reservations/",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "reservations",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modificar reserva",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"numeroPersonas\": 3,\n    \"precioTotal\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reservations/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "reservations",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar reserva",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reservations/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "8443",
+              "path": [
+                "api",
+                "v1",
+                "reservations",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+
+    {
+      "name": "ReviewRestController",
+      "item": [
+        {
+          "name": "Listar reseñas - Paginado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/?page=0&size=10",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", ""],
+              "query": [
+                { "key": "page", "value": "0", "description": "Página actual" },
+                { "key": "size", "value": "10", "description": "Reseñas por página" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear nueva reseña",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"comentario\": \"Excelente servicio y puntualidad.\",\n    \"puntuacion\": 5,\n    \"viajeId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar reseña - Como Autor o Admin",
+          "description": "Debe estar logueado como el autor de la reseña o como administrador.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar reseña - ERROR (No autorizado)",
+          "description": "Prueba a borrar una reseña de otro usuario sin ser Admin. Debe devolver 403 Forbidden.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/2",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", "2"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:8443"
+		}
+	]
+}
