@@ -805,49 +805,19 @@
       "name": "ReviewRestController",
       "item": [
         {
-          "name": "Listar todas las reseñas - Paginado",
+          "name": "Listar reseñas - Paginado",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/reviews/?page=0&size=5",
+              "raw": "{{baseUrl}}/api/v1/reviews/?page=0&size=10",
               "protocol": "https",
-              "host": [ "localhost" ],
+              "host": ["localhost"],
               "port": "8443",
-              "path": [ "api", "v1", "reviews", "" ],
+              "path": ["api", "v1", "reviews", ""],
               "query": [
-                {
-                  "key": "page",
-                  "value": "0",
-                  "description": "Número de página (empieza en 0)"
-                },
-                {
-                  "key": "size",
-                  "value": "5",
-                  "description": "Cantidad de reseñas por página"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Obtener reseña por ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/reviews/1",
-              "protocol": "https",
-              "host": [
-                "localhost"
-              ],
-              "port": "8443",
-              "path": [
-                "api",
-                "v1",
-                "reviews",
-                "1"
+                { "key": "page", "value": "0", "description": "Página actual" },
+                { "key": "size", "value": "10", "description": "Reseñas por página" }
               ]
             }
           },
@@ -857,56 +827,49 @@
           "name": "Crear nueva reseña",
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"comentario\": \"¡Increíble viaje! Todo estuvo perfecto.\",\n    \"puntuacion\": 5,\n    \"viajeId\": 1\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
+              "raw": "{\n    \"comentario\": \"Excelente servicio y puntualidad.\",\n    \"puntuacion\": 5,\n    \"viajeId\": 1\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/v1/reviews/",
               "protocol": "https",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "8443",
-              "path": [
-                "api",
-                "v1",
-                "reviews",
-                ""
-              ]
+              "path": ["api", "v1", "reviews", ""]
             }
           },
           "response": []
         },
         {
-          "name": "Eliminar reseña",
+          "name": "Eliminar reseña - Como Autor o Admin",
+          "description": "Debe estar logueado como el autor de la reseña o como administrador.",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/v1/reviews/1",
               "protocol": "https",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "8443",
-              "path": [
-                "api",
-                "v1",
-                "reviews",
-                "1"
-              ]
+              "path": ["api", "v1", "reviews", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar reseña - ERROR (No autorizado)",
+          "description": "Prueba a borrar una reseña de otro usuario sin ser Admin. Debe devolver 403 Forbidden.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/2",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", "2"]
             }
           },
           "response": []
