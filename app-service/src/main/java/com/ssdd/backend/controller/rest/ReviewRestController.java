@@ -1,4 +1,4 @@
-package com.ssdd.backend.controller.web.Review;
+package com.ssdd.backend.controller.rest;
 
 import java.net.URI;
 import java.util.List;
@@ -31,7 +31,7 @@ public class ReviewRestController {
     @GetMapping("/")
     public ResponseEntity<List<ReviewDTO>> getReviews(
             @RequestParam(defaultValue = "0") int page, 
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "5") int size) {
         
         // 1. Creamos el objeto de paginación
         Pageable pageable = PageRequest.of(page, size);

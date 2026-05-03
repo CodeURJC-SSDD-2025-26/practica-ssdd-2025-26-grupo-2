@@ -31,7 +31,7 @@ public class ReviewController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/viajes/{id}")
+    @GetMapping("/review/{id}")
     public String showTravelDetails(@PathVariable Long id, Model model, 
             @RequestParam(defaultValue = "0") int page) {
         
