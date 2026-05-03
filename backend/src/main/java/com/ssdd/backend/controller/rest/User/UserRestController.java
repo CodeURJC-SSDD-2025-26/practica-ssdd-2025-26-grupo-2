@@ -100,7 +100,7 @@ public class UserRestController {
 
     }
 
-    @GetMapping("/list")
+    @GetMapping("/lists")
     public ResponseEntity<Page<UserDTO>> getAllUsers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size) {
