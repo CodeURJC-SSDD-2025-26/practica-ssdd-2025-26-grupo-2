@@ -1,6 +1,7 @@
 package com.ssdd.backend.controller.web.Review;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ssdd.backend.model.CreditCard;
 import com.ssdd.backend.model.Review;
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.User;
+import com.ssdd.backend.service.CreditCardService;
 import com.ssdd.backend.service.ReviewService;
 import com.ssdd.backend.service.TravelService;
 import com.ssdd.backend.service.UserService;
@@ -27,27 +30,68 @@ public class ReviewController {
     @Autowired
     private TravelService travelService;
     @Autowired
+    private CreditCardService creditCardService;
+    @Autowired
     private ReviewService reviewService;
     @Autowired
     private UserService userService;
 
-    @GetMapping("/review/{id}")
+    @GetMapping("/viajes/{id}")
     public String showTravelDetails(@PathVariable Long id, Model model, 
-            @RequestParam(defaultValue = "0") int page) {
+            @RequestParam(defaultValue = "0") int page, Principal principal) {
         
         Optional<Travel> viajeOpt = travelService.getTravelById(id);
         
         if (viajeOpt.isPresent()) {
             Travel viaje = viajeOpt.get();
+            
+            // 1. Datos básicos del viaje que pide el HTML
             model.addAttribute("viaje", viaje);
-            model.addAttribute("id", viaje.getId()); // Para el formulario de reserva
+            model.addAttribute("id", viaje.getId());
+            model.addAttribute("tieneImagen", viaje.getImagen() != null);
 
-            // Paginación de reseñas (3 por página para que se note el efecto)
+            // 2. Lógica de usuario y tarjeta (Copiada del antiguo TravelWebController)
+            if (principal != null) {
+                Optional<User> userOpt = userService.findByEmail(principal.getName());
+                if (userOpt.isPresent()) {
+                    User user = userOpt.get();
+                    model.addAttribute("logged", true);
+                    model.addAttribute("userName", user.getNombre());
+
+                    // Ver si tiene tarjeta guardada
+                    Optional<CreditCard> creditCardOpt = creditCardService.findByUser(user);
+                    if (creditCardOpt.isPresent()) {
+                        CreditCard savedCard = creditCardOpt.get();
+                        model.addAttribute("hasSavedCard", true);
+                        model.addAttribute("savedCard", savedCard);
+                        model.addAttribute("ultimos4", savedCard.getUltimosCuatro());
+                    } else {
+                        model.addAttribute("hasSavedCard", false);
+                    }
+                }
+            } else {
+                model.addAttribute("logged", false);
+                model.addAttribute("hasSavedCard", false);
+            }
+
+            // 3. Paginación de reseñas
             Page<Review> reviewPage = reviewService.findByViaje(viaje, PageRequest.of(page, 3));
-            
-            model.addAttribute("reviews", reviewPage.getContent());
-            
-            // Variables para la lógica de Mustache
+            List<Review> reviews = reviewPage.getContent();
+
+            // 4. Lógica de "isOwner" (para que el usuario vea su papelera de borrar)
+            if (principal != null) {
+                User user = userService.findByEmail(principal.getName()).orElse(null);
+                if (user != null) {
+                    for (Review r : reviews) {
+                        if (r.getAutor().getId().equals(user.getId())) {
+                            r.setIsOwner(true);
+                        }
+                    }
+                }
+            }
+
+            // 5. Pasar todo a Mustache
+            model.addAttribute("reviews", reviews);
             model.addAttribute("hasReviewsPages", reviewPage.getTotalPages() > 1);
             model.addAttribute("hasPrevious", reviewPage.hasPrevious());
             model.addAttribute("hasNext", reviewPage.hasNext());
@@ -55,7 +99,7 @@ public class ReviewController {
             model.addAttribute("nextPage", page + 1);
             model.addAttribute("displayPage", page + 1);
             model.addAttribute("totalPages", reviewPage.getTotalPages());
-            
+
             return "travel_page_ext";
         }
         return "redirect:/viajes";

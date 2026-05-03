@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Base64;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +22,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssdd.backend.model.Image;
-import com.ssdd.backend.model.Review;
 import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.repository.ReviewRepository;
+import com.ssdd.backend.service.CreditCardService;
 import com.ssdd.backend.service.ImageService;
 import com.ssdd.backend.service.TravelService;
-
-import com.ssdd.backend.model.CreditCard;
-import com.ssdd.backend.model.User;
-import com.ssdd.backend.service.CreditCardService;
 import com.ssdd.backend.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -78,7 +73,7 @@ public class TravelWebController {
         return "travel_page";
     }
 
-
+/* 
     @GetMapping("/viajes/{id}")
     public String showTravel(Model model, @PathVariable("id") Long id, Principal principal) {
         Optional<Travel> viaje = travelService.getTravelById(id);
@@ -127,8 +122,7 @@ public class TravelWebController {
 
         return "redirect:/";
     }
-
-
+*/
     @PostMapping("/borrarviaje/{id}")
     public String removeTravel(Model model, @PathVariable("id") Long id) {
         Optional<Travel> viaje = travelService.getTravelById(id);
