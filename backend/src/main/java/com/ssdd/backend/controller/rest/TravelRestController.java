@@ -2,6 +2,7 @@ package com.ssdd.backend.controller.rest;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,7 +50,7 @@ public class TravelRestController {
     private ImageMapper imageMapper;
 
     // Get all travels (Paginated)
-    @GetMapping({"", "/"})
+    @GetMapping({ "", "/" })
     public Page<TravelDTO> getTravels(Pageable pageable) {
         return travelService.getAllTravels(pageable).map(travelMapper::toDTO);
     }
@@ -62,8 +63,33 @@ public class TravelRestController {
         return travelMapper.toDTO(travel);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<TravelDTO>> searchTripsAPI(
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String daterange,
+            @RequestParam(required = false) Integer travelers) {
+
+        // 1. Llamas a tu servicio exactamente igual que en la versión web
+        List<Travel> results = travelService.searchTrips(country, daterange, travelers);
+
+        // 2. Si no hay resultados, devuelves un código 204 No Content (o 404, el que
+        // prefieras)
+        if (results == null || results.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        // 3. Usas tu Mapper para convertir la lista de Entidades a DTOs
+        List<TravelDTO> resultsDTO = results.stream()
+                .map(viaje -> travelMapper.toDTO(viaje)) // Cambia "travelMapper" por el nombre de tu variable si es
+                                                         // distinto
+                .toList();
+
+        // 4. Devuelves la lista JSON con un código 200 OK
+        return ResponseEntity.ok(resultsDTO);
+    }
+
     // Create a new travel
-    @PostMapping({"", "/"})
+    @PostMapping({ "", "/" })
     public ResponseEntity<TravelDTO> createTravel(@RequestBody TravelDTO travelDTO) {
 
         // --- MANUAL VALIDATION ---
@@ -75,7 +101,7 @@ public class TravelRestController {
         }
 
         Travel travel = travelMapper.toEntity(travelDTO);
-        travel = travelService.save(travel); 
+        travel = travelService.save(travel);
         TravelDTO savedTravelDTO = travelMapper.toDTO(travel);
 
         URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedTravelDTO.id()).toUri();
@@ -102,9 +128,9 @@ public class TravelRestController {
         updatedTravel.setId(id);
         updatedTravel.setImagen(oldTravel.getImagen());
         updatedTravel.setReservas(oldTravel.getReservas());
-        
+
         updatedTravel = travelService.save(updatedTravel);
-        
+
         return travelMapper.toDTO(updatedTravel);
     }
 
@@ -113,7 +139,7 @@ public class TravelRestController {
     public TravelDTO deleteTravel(@PathVariable long id) {
         Travel travel = travelService.getTravelById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
-        
+
         travelService.delete(id);
         return travelMapper.toDTO(travel);
     }
@@ -121,7 +147,8 @@ public class TravelRestController {
     // --- IMAGE MANAGEMENT ---
 
     @PostMapping("/{id}/images/")
-    public ResponseEntity<ImageDTO> createTravelImage(@PathVariable long id, @RequestParam MultipartFile imageFile) throws IOException {
+    public ResponseEntity<ImageDTO> createTravelImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+            throws IOException {
         if (imageFile.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image file cannot be empty");
         }
@@ -130,11 +157,11 @@ public class TravelRestController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
 
         Image image = imageService.createImage(imageFile.getInputStream());
-        
+
         if (travel.getImagen() != null) {
             imageService.deleteImage(travel.getImagen().getId());
         }
-        
+
         travel.setImagen(image);
         travelService.save(travel);
 
@@ -150,12 +177,12 @@ public class TravelRestController {
     public ImageDTO deleteTravelImage(@PathVariable long travelId, @PathVariable long imageId) {
         Travel travel = travelService.getTravelById(travelId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel not found"));
-        
+
         Image image = travel.getImagen();
         if (image == null || !image.getId().equals(imageId)) {
-             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Image not found for this travel");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Image not found for this travel");
         }
-        
+
         travel.setImagen(null);
         travelService.save(travel);
         imageService.deleteImage(imageId);

@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +21,7 @@ import com.ssdd.backend.security.jwt.JwtTokenProvider;
 import com.ssdd.backend.security.jwt.UnauthorizedHandlerJwt;
 
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Autowired
@@ -64,7 +66,25 @@ public class SecurityConfig {
 
                         // users
                         .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/logout").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/refresh").hasAnyRole("USER", "ADMIN")
+
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/users/*/profile-image").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/users/*/password").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/v1/reservations/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/v1/credit-cards/**").hasAnyRole("USER", "ADMIN")
+
+                        // viajes (¡Tus endpoints de la API!)
+                        .requestMatchers(HttpMethod.GET, "/api/v1/travels/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/travels/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/travels/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/travels/**").hasRole("ADMIN")
+
+                        //admin
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/users/*/image").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/users/lists**").hasRole("ADMIN")
+
 
                         // PUBLIC ENDPOINTS
                         .anyRequest().permitAll());

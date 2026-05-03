@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.data.domain.Page; 
+import org.springframework.data.domain.Pageable;
 
 import com.ssdd.backend.model.Image;
 import com.ssdd.backend.model.Review;
@@ -72,9 +74,16 @@ public class TravelWebController {
     }
 
     
-    @GetMapping("/viajes")
-    public String showTravels(Model model) {
-        model.addAttribute("viajes", travelService.getAllTravels());
+   @GetMapping("/viajes")
+    public String showTravels(Model model, Pageable pageable) {
+        Page<Travel> travelsPage = travelService.getAllTravels(pageable);
+        
+        model.addAttribute("viajes", travelsPage);
+        model.addAttribute("hasPrev", travelsPage.hasPrevious());
+        model.addAttribute("hasNext", travelsPage.hasNext());
+        model.addAttribute("nextPage", travelsPage.getNumber() + 1);
+        model.addAttribute("prevPage", travelsPage.getNumber() - 1);
+        
         return "travel_page";
     }
 
@@ -216,11 +225,17 @@ public class TravelWebController {
     }
     
     @GetMapping("/journeyManagement")
-    public String showManagementTable(Model model) {
-        model.addAttribute("viajes", travelService.getAllTravels());
+    public String showManagementTable(Model model, Pageable pageable) {
+        Page<Travel> travelsPage = travelService.getAllTravels(pageable);
+        
+        model.addAttribute("viajes", travelsPage);
+        model.addAttribute("hasPrev", travelsPage.hasPrevious());
+        model.addAttribute("hasNext", travelsPage.hasNext());
+        model.addAttribute("nextPage", travelsPage.getNumber() + 1);
+        model.addAttribute("prevPage", travelsPage.getNumber() - 1);
+        
         return "journeyManagement";
-    }
-
+    } 
     
     @GetMapping("/admin")
     public String showAdminMenu() {

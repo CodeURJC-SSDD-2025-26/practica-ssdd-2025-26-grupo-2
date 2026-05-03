@@ -2228,3 +2228,29 @@ h4,
     object-fit: cover; 
     border-radius: 15px; 
 }
+
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-pagination {
+        min-width: 130px;
+        font-weight: 600;
+        border-radius: 30px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 10px 20px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-pagination:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        color: white;
+        text-decoration: none;
+    }

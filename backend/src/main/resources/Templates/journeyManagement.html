@@ -77,6 +77,19 @@
             {{/viajes}}
         </tbody>
     </table>
+    <div class="pagination-container">
+        {{#hasPrev}}
+        <a href="?page={{prevPage}}" class="btn btn-primary btn-pagination">
+            &laquo; Anterior
+        </a>
+        {{/hasPrev}}
+
+        {{#hasNext}}
+        <a href="?page={{nextPage}}" class="btn btn-primary btn-pagination">
+            Siguiente &raquo;
+        </a>
+        {{/hasNext}}
+    </div>
 </div>
 <script>
     document.getElementById("buscadorUsuario").addEventListener("input", function () {
