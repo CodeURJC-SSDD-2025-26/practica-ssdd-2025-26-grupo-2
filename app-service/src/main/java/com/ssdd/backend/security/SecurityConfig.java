@@ -79,7 +79,7 @@ public class SecurityConfig {
                         //admin
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/users/*/image").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/users/list**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/users/lists**").hasRole("ADMIN")
 
 
                         // PUBLIC ENDPOINTS
