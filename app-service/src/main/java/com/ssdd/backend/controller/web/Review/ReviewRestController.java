@@ -1,24 +1,23 @@
 package com.ssdd.backend.controller.web.Review;
+
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import com.ssdd.backend.dto.ReviewDTO;
 import com.ssdd.backend.dto.ReviewMapper;
 import com.ssdd.backend.model.Review;
 import com.ssdd.backend.service.ReviewService;
-
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewRestController {
@@ -29,11 +28,21 @@ public class ReviewRestController {
     @Autowired
     private ReviewMapper mapper;
 
-    // GET - Obtener reseñas (puedes añadir filtros si el Service los soporta)
     @GetMapping("/")
-    public List<ReviewDTO> getReviews() {
-        // Tu profesor devuelve directamente la lista mapeada a DTO
-        return mapper.toDTOs(reviewService.findAll());
+    public ResponseEntity<List<ReviewDTO>> getReviews(
+            @RequestParam(defaultValue = "0") int page, 
+            @RequestParam(defaultValue = "10") int size) {
+        
+        // 1. Creamos el objeto de paginación
+        Pageable pageable = PageRequest.of(page, size);
+        
+        // 2. Obtenemos la página de resultados del servicio
+        Page<Review> reviewPage = reviewService.findAll(pageable);
+        
+        // 3. Convertimos la lista de entidades a DTOs usando el mapper
+        List<ReviewDTO> dtos = mapper.toDTOs(reviewPage.getContent());
+        
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
     // POST - Crear una nueva reseña
@@ -63,13 +72,27 @@ public class ReviewRestController {
     // DELETE - Cancelar/Eliminar reseña
     @DeleteMapping("/{id}")
     public ResponseEntity<ReviewDTO> deleteReview(@PathVariable Long id) {
-        // Seguimos el patrón del profe: el service devuelve el objeto borrado o null
-        Review deletedReview = reviewService.deleteAndReturn(id);
+        // 1. Buscamos la reseña primero para ver quién es el autor
+        Optional<Review> reviewOpt = reviewService.findById(id);
 
-        if (deletedReview == null) {
+        if (reviewOpt.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
+        }
+
+        Review review = reviewOpt.get();
+        
+        // 2. Lógica de seguridad: ¿Es Admin o es el autor?
+        String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
+                          .stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+        // Comprobamos si el autor de la review coincide con el usuario logueado
+        if (isAdmin || review.getAutor().getEmail().equals(currentUser)) {
+            Review deletedReview = reviewService.deleteAndReturn(id);
             return ResponseEntity.ok(mapper.toDTO(deletedReview));
+        } else {
+            // 3. Si no tiene permiso, devolvemos 403 Forbidden
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
 }

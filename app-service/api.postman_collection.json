@@ -799,6 +799,82 @@
           "response": []
         }
       ]
+    },
+
+    {
+      "name": "ReviewRestController",
+      "item": [
+        {
+          "name": "Listar reseñas - Paginado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/?page=0&size=10",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", ""],
+              "query": [
+                { "key": "page", "value": "0", "description": "Página actual" },
+                { "key": "size", "value": "10", "description": "Reseñas por página" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear nueva reseña",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"comentario\": \"Excelente servicio y puntualidad.\",\n    \"puntuacion\": 5,\n    \"viajeId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar reseña - Como Autor o Admin",
+          "description": "Debe estar logueado como el autor de la reseña o como administrador.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar reseña - ERROR (No autorizado)",
+          "description": "Prueba a borrar una reseña de otro usuario sin ser Admin. Debe devolver 403 Forbidden.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reviews/2",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "8443",
+              "path": ["api", "v1", "reviews", "2"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }

@@ -11,6 +11,9 @@ import com.ssdd.backend.model.Travel;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.repository.ReviewRepository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @Service
 public class ReviewService {
 
@@ -55,5 +58,9 @@ public class ReviewService {
         
         // 4. Si no existía, devolvemos null
         return null;
+    }
+
+    public Page<Review> findAll(Pageable pageable) {
+        return reviewRepository.findAll(pageable);
     }
 }
