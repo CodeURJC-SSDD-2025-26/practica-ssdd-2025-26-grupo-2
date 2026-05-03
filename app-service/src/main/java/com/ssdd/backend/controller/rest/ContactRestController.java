@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.ssdd.backend.service.EmailService;
+import com.ssdd.backend.dto.EmailRequestDTO;
+import com.ssdd.backend.service.UtilityEmailClient;
+import org.springframework.beans.factory.annotation.Value;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -24,7 +26,10 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 public class ContactRestController {
 
     @Autowired
-    private EmailService emailService;
+    private UtilityEmailClient utilityEmailClient;
+
+    @Value("${contact.email.to}")
+    private String contactEmailTo;
 
     @GetMapping({ "", "/" })
     public ResponseEntity<Map<String, Object>> getContact() {
@@ -46,7 +51,14 @@ public class ContactRestController {
         String email = getRequiredField(contactRequest, "email");
         String mensaje = getRequiredField(contactRequest, "mensaje");
 
-        emailService.sendContactEmail(nombre, apellidos, email, mensaje);
+        EmailRequestDTO emailRequest = new EmailRequestDTO(
+                contactEmailTo,
+                "Nuevo mensaje de contacto - " + nombre + " " + apellidos,
+                "Nombre: " + nombre + " " + apellidos + "\n" +
+                        "Email: " + email + "\n\n" +
+                        "Mensaje:\n" + mensaje);
+
+        utilityEmailClient.sendEmail(emailRequest);
 
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("enviado", true);

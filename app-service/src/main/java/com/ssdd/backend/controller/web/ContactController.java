@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
-import com.ssdd.backend.service.EmailService;
+import com.ssdd.backend.dto.EmailRequestDTO;
+import com.ssdd.backend.service.UtilityEmailClient;
+import org.springframework.beans.factory.annotation.Value;
 
 @Controller
 public class ContactController {
 
 	@Autowired
-	private EmailService emailService;
+	private UtilityEmailClient utilityEmailClient;
+
+	@Value("${contact.email.to}")
+	private String contactEmailTo;
 
 	@GetMapping({ "/contact", "/contact.html" })
 	public String contact(@RequestParam(required = false) String enviado, Model model) {
@@ -29,7 +34,15 @@ public class ContactController {
 			@RequestParam String email,
 			@RequestParam String mensaje) {
 
-		emailService.sendContactEmail(nombre, apellidos, email, mensaje);
+		EmailRequestDTO emailRequest = new EmailRequestDTO(
+				contactEmailTo,
+				"Nuevo mensaje de contacto - " + nombre + " " + apellidos,
+				"Nombre: " + nombre + " " + apellidos + "\n" +
+						"Email: " + email + "\n\n" +
+						"Mensaje:\n" + mensaje);
+
+		utilityEmailClient.sendEmail(emailRequest);
+
 		return "redirect:/contact?enviado=true";
 	}
 }
