@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ssdd.backend.model.Reservation;
@@ -30,6 +32,10 @@ public class ReservationService {
         return reservationRepository.findByUsuario(user);
     }
 
+    public Page<Reservation> findByUsuario(User user, Pageable pageable) {
+        return reservationRepository.findByUsuario(user, pageable);
+    }
+
     public void deleteById(Long id) {
         Reservation reservation = reservationRepository.findById(id).orElseThrow();
 
@@ -50,6 +56,10 @@ public class ReservationService {
 
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
+    }
+
+    public Page<Reservation> findAll(Pageable pageable) {
+        return reservationRepository.findAll(pageable);
     }
 
     public List<Reservation> findByViaje(Travel travel) {

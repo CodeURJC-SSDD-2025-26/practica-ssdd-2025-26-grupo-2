@@ -3,9 +3,10 @@ package com.ssdd.backend.controller.rest;
 import java.net.URI;
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,15 +41,15 @@ public class ReservationRestController {
     private ReservationMapper reservationMapper;
 
     @GetMapping("/")
-    public Collection<ReservationDTO> getReservations(Principal principal) {
+    public Page<ReservationDTO> getReservations(Principal principal, Pageable pageable) {
 
         User user = getAuthenticatedUser(principal);
 
         if (user.getRoles().contains("ADMIN")) {
-            return reservationMapper.toDTOs(reservationService.findAll());
+            return reservationService.findAll(pageable).map(reservationMapper::toDTO);
         }
 
-        return reservationMapper.toDTOs(reservationService.findByUsuario(user));
+        return reservationService.findByUsuario(user, pageable).map(reservationMapper::toDTO);
     }
 
     @GetMapping("/{id}")

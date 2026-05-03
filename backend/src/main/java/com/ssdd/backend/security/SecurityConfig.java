@@ -71,6 +71,8 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.PUT, "/api/v1/users/*/profile-image").hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/users/*/password").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/v1/reservations/**").hasAnyRole("USER", "ADMIN")
+
 
                         //admin
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
