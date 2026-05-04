@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -63,29 +64,22 @@ public class TravelRestController {
         return travelMapper.toDTO(travel);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<TravelDTO>> searchTripsAPI(
+   @GetMapping("/search")
+    public ResponseEntity<Page<TravelDTO>> searchTripsAPI(
             @RequestParam(required = false) String country,
             @RequestParam(required = false) String daterange,
-            @RequestParam(required = false) Integer travelers) {
+            @RequestParam(required = false) Integer travelers,
+            @PageableDefault(size = 5) Pageable pageable) {
 
-        // 1. Llamas a tu servicio exactamente igual que en la versión web
-        List<Travel> results = travelService.searchTrips(country, daterange, travelers);
+        // Llamamos al service que ahora devuelve Page
+        Page<Travel> results = travelService.searchTrips(country, daterange, travelers, pageable);
 
-        // 2. Si no hay resultados, devuelves un código 204 No Content (o 404, el que
-        // prefieras)
-        if (results == null || results.isEmpty()) {
+        if (results.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
 
-        // 3. Usas tu Mapper para convertir la lista de Entidades a DTOs
-        List<TravelDTO> resultsDTO = results.stream()
-                .map(viaje -> travelMapper.toDTO(viaje)) // Cambia "travelMapper" por el nombre de tu variable si es
-                                                         // distinto
-                .toList();
-
-        // 4. Devuelves la lista JSON con un código 200 OK
-        return ResponseEntity.ok(resultsDTO);
+        // Convertimos Page de entidad a Page de DTO
+        return ResponseEntity.ok(results.map(travelMapper::toDTO));
     }
 
     // Create a new travel

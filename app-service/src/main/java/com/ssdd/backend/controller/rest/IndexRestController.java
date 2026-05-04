@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable; // <-- NUEVO IMPORT
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,8 @@ public class IndexRestController {
     @GetMapping({ "", "/", "/index" })
     public ResponseEntity<Map<String, Object>> showIndex() {
 
-        List<Travel> todosLosViajes = travelService.getAllTravels();
+        // CAMBIO AQUÍ: Pasamos Pageable.unpaged() y sacamos el contenido con .getContent()
+        List<Travel> todosLosViajes = travelService.getAllTravels(Pageable.unpaged()).getContent();
 
         List<Map<String, Object>> primeros6 = todosLosViajes.stream()
                 .limit(6)

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable; 
 import jakarta.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Optional;
@@ -23,7 +24,8 @@ public class GlobalControllerAdvice {
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
-        model.addAttribute("viajes", travelService.getAllTravels());
+        
+        model.addAttribute("viajes", travelService.getAllTravels(Pageable.unpaged()).getContent());
 
         if (principal != null) {
             model.addAttribute("logged", true);

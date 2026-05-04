@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable; // <-- 1. IMPORTANTE: Añadir este import
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,11 @@ public class GlobalRestController {
         Principal principal = request.getUserPrincipal();
 
         Map<String, Object> response = new LinkedHashMap<>();
-        response.put("viajes", travelService.getAllTravels().stream()
+        
+        
+        response.put("viajes", travelService.getAllTravels(Pageable.unpaged())
+                .getContent() 
+                .stream()
                 .map(this::toTravelResponse)
                 .toList());
 

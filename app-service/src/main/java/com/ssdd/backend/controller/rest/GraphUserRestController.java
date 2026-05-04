@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable; 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +35,8 @@ public class GraphUserRestController {
     @GetMapping("/user")
     public Map<String, Object> graphUserData() {
         List<Reservation> reservations = reservationService.findAll();
-        List<Travel> travels = travelService.getAllTravels();
+         
+        List<Travel> travels = travelService.getAllTravels(Pageable.unpaged()).getContent();
 
         String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
@@ -66,7 +68,8 @@ public class GraphUserRestController {
 
     @GetMapping("/journey")
     public Map<String, Object> graphJourneyData() {
-        List<Travel> travels = travelService.getAllTravels();
+        
+        List<Travel> travels = travelService.getAllTravels(Pageable.unpaged()).getContent();
 
         List<String> labels = new ArrayList<>();
         List<Double> avgReviews = new ArrayList<>();

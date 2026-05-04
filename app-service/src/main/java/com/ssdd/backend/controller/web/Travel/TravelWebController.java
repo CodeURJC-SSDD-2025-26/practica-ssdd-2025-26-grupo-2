@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.data.domain.Page; 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 import com.ssdd.backend.model.Image;
 import com.ssdd.backend.model.Travel;
@@ -70,68 +71,26 @@ public class TravelWebController {
 
     
    @GetMapping("/viajes")
-    public String showTravels(Model model, Pageable pageable) {
+    public String showTravels(Model model, @PageableDefault(size = 8) Pageable pageable) {
         Page<Travel> travelsPage = travelService.getAllTravels(pageable);
         
-        model.addAttribute("viajes", travelsPage);
+        // CORRECCIÓN: Usar .getContent() para que Mustache pueda iterar
+        model.addAttribute("viajes", travelsPage.getContent());
+        
         model.addAttribute("hasPrev", travelsPage.hasPrevious());
         model.addAttribute("hasNext", travelsPage.hasNext());
         model.addAttribute("nextPage", travelsPage.getNumber() + 1);
         model.addAttribute("prevPage", travelsPage.getNumber() - 1);
         
+        // Para mostrar "Página X de Y"
+        model.addAttribute("currentPage", travelsPage.getNumber() + 1);
+        model.addAttribute("totalPages", travelsPage.getTotalPages());
+        
         return "travel_page";
     }
 
-/* 
-    @GetMapping("/viajes/{id}")
-    public String showTravel(Model model, @PathVariable("id") Long id, Principal principal) {
-        Optional<Travel> viaje = travelService.getTravelById(id);
 
-        if (viaje.isPresent()) {
-            model.addAttribute("viaje", viaje.get());
-            model.addAttribute("reviews", reviewRepository.findByViajeId(id));
-            model.addAttribute("tieneImagen", viaje.get().getImagen() != null);
 
-            if (principal != null) {
-                Optional<User> userOpt = userService.findByEmail(principal.getName());
-                List<Review> reviews = reviewRepository.findByViajeId(id);
-
-                if (userOpt.isPresent()) {
-                    User user = userOpt.get();
-
-                    model.addAttribute("logged", true);
-                    model.addAttribute("userName", user.getNombre());
-                    for (Review r : reviews) {
-                        if (r.getAutor().getId().equals(user.getId())) {
-                            r.setIsOwner(true);
-                        }
-                    }
-
-                    Optional<CreditCard> creditCardOpt = creditCardService.findByUser(user);
-
-                    if (creditCardOpt.isPresent()) {
-                        CreditCard savedCard = creditCardOpt.get();
-                        model.addAttribute("hasSavedCard", true);
-                        model.addAttribute("savedCard", savedCard);
-                        model.addAttribute("ultimos4", savedCard.getUltimosCuatro());
-                    } else {
-                        model.addAttribute("hasSavedCard", false);
-                    }
-                } else {
-                    model.addAttribute("hasSavedCard", false);
-                }
-                model.addAttribute("reviews", reviews);
-            } else {
-                model.addAttribute("hasSavedCard", false);
-            }
-            
-
-            return "travel_page_ext";
-        }
-
-        return "redirect:/";
-    }
-*/
     @PostMapping("/borrarviaje/{id}")
     public String removeTravel(Model model, @PathVariable("id") Long id) {
         Optional<Travel> viaje = travelService.getTravelById(id);
@@ -154,13 +113,10 @@ public class TravelWebController {
             Model model) throws IOException {
 
         if (imagenOculta == null || imagenOculta.isEmpty()) {
-           
             model.addAttribute("error", "Es obligatorio subir una imagen para crear el viaje.");
-            
             return "addJourney"; 
         }
 
-    
         String base64Data = imagenOculta.split(",")[1];
         byte[] decodedBytes = Base64.getDecoder().decode(base64Data);
         InputStream inputStream = new ByteArrayInputStream(decodedBytes);
@@ -218,15 +174,23 @@ public class TravelWebController {
         return "redirect:/journeyManagement";
     }
     
+    
     @GetMapping("/journeyManagement")
-    public String showManagementTable(Model model, Pageable pageable) {
+    public String showManagementTable(Model model, @PageableDefault(size = 5) Pageable pageable) {
         Page<Travel> travelsPage = travelService.getAllTravels(pageable);
         
-        model.addAttribute("viajes", travelsPage);
+        // 1. AHORA PASAMOS LA LISTA (getContent()) Y NO LA PÁGINA ENTERA
+        model.addAttribute("viajes", travelsPage.getContent());
+        
+        // 2. Lógica para los botones calculada
         model.addAttribute("hasPrev", travelsPage.hasPrevious());
         model.addAttribute("hasNext", travelsPage.hasNext());
         model.addAttribute("nextPage", travelsPage.getNumber() + 1);
         model.addAttribute("prevPage", travelsPage.getNumber() - 1);
+        
+        // 3. Info extra (útil si pones texto en el HTML)
+        model.addAttribute("currentPage", travelsPage.getNumber() + 1);
+        model.addAttribute("totalPages", travelsPage.getTotalPages());
         
         return "journeyManagement";
     } 

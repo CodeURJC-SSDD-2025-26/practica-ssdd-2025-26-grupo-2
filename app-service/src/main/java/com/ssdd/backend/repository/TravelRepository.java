@@ -1,19 +1,14 @@
 package com.ssdd.backend.repository;
 
-import com.ssdd.backend.model.Travel;
-
-import java.time.LocalDate;
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import com.ssdd.backend.model.Travel;
 
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Long> {
-    @Query("SELECT t FROM Travel t WHERE t.pais = :country " +
-            "AND t.maxPlazas >= :travelers " +
-            "AND t.fechaInicio <= :end " +
-            "AND t.fechaFin >= :start")
-    List<Travel> findCustomTrips(String country, int travelers, LocalDate start, LocalDate end);
+    Page<Travel> findByNombreContainingIgnoreCase(String nombre, Pageable pageable);
+    
+    Page<Travel> findAll(Pageable pageable);
 }

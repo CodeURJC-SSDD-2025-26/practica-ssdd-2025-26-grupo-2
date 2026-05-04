@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable; 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +22,10 @@ public class IndexController {
     @Autowired
     private TravelService travelService; 
 
-    
     @GetMapping({"/", "/index.html"})
     public String showIndex(Model model) {
         
-        
-        List<Travel> todosLosViajes = travelService.getAllTravels();
+        List<Travel> todosLosViajes = travelService.getAllTravels(Pageable.unpaged()).getContent();
 
         List<Travel> primeros6 = todosLosViajes.stream()
                 .limit(6)
