@@ -7,7 +7,7 @@
     {
       "name": "Registrar Usuario - Éxito",
       "request": {
-        "method": "PUT",
+        "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
@@ -73,7 +73,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin@byebye.com\",\n }",
+          "raw": "{\n    \"username\": \"admin@byebye.com\",\n    \"password\": \"admin123\"\n }",
           "options": {
             "raw": {
               "language": "json"
@@ -90,8 +90,8 @@
           "path": [
             "api",
             "v1",
-            "users",
-            ""
+            "auth",
+            "login"
           ]
         }
       },
@@ -121,8 +121,8 @@
           "path": [
             "api",
             "v1",
-            "users",
-            ""
+            "auth",
+            "logout"
           ]
         }
       },
@@ -152,8 +152,8 @@
           "path": [
             "api",
             "v1",
-            "users",
-            ""
+            "auth",
+            "refresh"
           ]
         }
       },
@@ -240,7 +240,7 @@
             "api",
             "v1",
             "users",
-            "1"
+            "2"
           ]
         }
       },
