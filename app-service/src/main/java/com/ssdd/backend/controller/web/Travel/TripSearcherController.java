@@ -28,11 +28,6 @@ public class TripSearcherController {
         
         Page<Travel> resultsPage = travelService.searchTrips(country, daterange, travelers, pageable);
         
-        if(resultsPage.isEmpty()){
-            model.addAttribute("mensaje", "No se han encontrado resultados");
-            return "index";
-        }
-
         model.addAttribute("viajes", resultsPage.getContent());
         
         model.addAttribute("travelPage", resultsPage); 
