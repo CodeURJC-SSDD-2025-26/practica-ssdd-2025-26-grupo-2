@@ -50,15 +50,29 @@ public class TravelRestController {
     @Autowired
     private ImageMapper imageMapper;
 
-    // Get all travels (Paginated)
+    
     @GetMapping({ "", "/" })
-    public List<TravelDTO> getTravels(Pageable pageable) { 
-        return travelService.getAllTravels(pageable)
-                .map(travelMapper::toDTO)
-                .getContent(); 
-    }
+    public ResponseEntity<Page<TravelDTO>> getTravels(
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String daterange,
+            @RequestParam(required = false) Integer travelers,
+            @PageableDefault(size = 5) Pageable pageable) {
+        
+        
+        Page<Travel> results;
+        if (country != null || daterange != null || travelers != null) {
+            results = travelService.searchTrips(country, daterange, travelers, pageable);
+        } else {
+            results = travelService.getAllTravels(pageable);
+        }
 
-    // Get a single travel by ID
+        if (results.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(results.map(travelMapper::toDTO));
+    }
+    
     @GetMapping("/{id}")
     public TravelDTO getTravel(@PathVariable long id) {
         Travel travel = travelService.getTravelById(id)
@@ -66,25 +80,7 @@ public class TravelRestController {
         return travelMapper.toDTO(travel);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<Page<TravelDTO>> searchTripsAPI(
-            @RequestParam(required = false) String country,
-            @RequestParam(required = false) String daterange,
-            @RequestParam(required = false) Integer travelers,
-            @PageableDefault(size = 5) Pageable pageable) {
-
-        // Llamamos al service que ahora devuelve Page
-        Page<Travel> results = travelService.searchTrips(country, daterange, travelers, pageable);
-
-        if (results.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-
-        // Convertimos Page de entidad a Page de DTO
-        return ResponseEntity.ok(results.map(travelMapper::toDTO));
-    }
-
-    // Create a new travel
+    
     @PostMapping({ "", "/" })
     public ResponseEntity<TravelDTO> createTravel(@RequestBody TravelDTO travelDTO) {
 
@@ -128,7 +124,7 @@ public class TravelRestController {
         return travelMapper.toDTO(updatedTravel);
     }
 
-    // Delete a travel
+    
     @DeleteMapping("/{id}")
     public TravelDTO deleteTravel(@PathVariable long id) {
         Travel travel = travelService.getTravelById(id)
@@ -138,7 +134,7 @@ public class TravelRestController {
         return travelMapper.toDTO(travel);
     }
 
-    // --- IMAGE MANAGEMENT ---
+    
 
     @PostMapping("/{id}/images/")
     public ResponseEntity<ImageDTO> createTravelImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
