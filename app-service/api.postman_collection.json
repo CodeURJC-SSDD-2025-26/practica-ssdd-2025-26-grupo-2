@@ -973,7 +973,7 @@
                 },
                 {
                   "key": "daterange",
-                  "value": "05/01/2026 - 05/30/2026"
+                  "value": "2026-05-04/2026-05-12"
                 },
                 {
                   "key": "travelers",
@@ -1006,7 +1006,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Aventura en los Alpes\",\n    \"pais\": \"Francia\",\n    \"precio\": 1200,\n    \"viajeros\": 4\n}"
+"raw": "{\n    \"nombre\": \"Aventura en los Alpes\",\n    \"descripcion\": \"Un viaje increíble por las montañas nevadas.\",\n    \"pais\": \"Francia\",\n    \"precio\": 1200.50,\n    \"transporte\": \"Avión y autobús\",\n    \"alojamiento\": \"Hotel de montaña 4 estrellas\",\n    \"fechaInicio\": \"2026-12-05\",\n    \"fechaFin\": \"2026-12-12\",\n    \"maxPlazas\": 4,\n    \"numNoches\": 9\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/v1/travels",
@@ -1025,7 +1025,7 @@
           "response": []
         },
         {
-          "name": "Actualizar viaje (Admin)",
+          "name": "Actualizar datos viaje (Admin)",
           "request": {
             "auth": {
               "type": "bearer",
@@ -1046,7 +1046,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Aventura en los Alpes - Editado\",\n    \"pais\": \"Francia\",\n    \"precio\": 999,\n    \"viajeros\": 2\n}"
+              "raw": "{\n    \"nombre\": \"Aventura en los Alpes editado\",\n    \"descripcion\": \"Un viaje increíble por las montañas nevadas.\",\n    \"pais\": \"Francia\",\n    \"precio\": 1500.50,\n    \"transporte\": \"Avión y autobús\",\n    \"alojamiento\": \"Hotel de montaña 4 estrellas\",\n    \"fechaInicio\": \"2026-12-05\",\n    \"fechaFin\": \"2026-12-12\",\n    \"maxPlazas\": 4,\n    \"numNoches\": 9\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/v1/travels/1",
@@ -1097,7 +1097,7 @@
           "response": []
         },
         {
-          "name": "Subir imagen a viaje (Admin)",
+          "name": "Actualizar imagen  viaje (Admin)",
           "request": {
             "auth": {
               "type": "bearer",

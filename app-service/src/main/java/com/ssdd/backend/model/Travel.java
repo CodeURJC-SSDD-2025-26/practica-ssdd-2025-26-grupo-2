@@ -34,7 +34,7 @@ public class Travel {
     private int numNoches;
 
     
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private Image imagen;
 
 
