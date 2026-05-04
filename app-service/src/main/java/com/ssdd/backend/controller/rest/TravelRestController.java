@@ -52,8 +52,10 @@ public class TravelRestController {
 
     // Get all travels (Paginated)
     @GetMapping({ "", "/" })
-    public Page<TravelDTO> getTravels(Pageable pageable) {
-        return travelService.getAllTravels(pageable).map(travelMapper::toDTO);
+    public List<TravelDTO> getTravels(Pageable pageable) { 
+        return travelService.getAllTravels(pageable)
+                .map(travelMapper::toDTO)
+                .getContent(); 
     }
 
     // Get a single travel by ID
@@ -64,7 +66,7 @@ public class TravelRestController {
         return travelMapper.toDTO(travel);
     }
 
-   @GetMapping("/search")
+    @GetMapping("/search")
     public ResponseEntity<Page<TravelDTO>> searchTripsAPI(
             @RequestParam(required = false) String country,
             @RequestParam(required = false) String daterange,
@@ -103,11 +105,9 @@ public class TravelRestController {
         return ResponseEntity.created(location).body(savedTravelDTO);
     }
 
-    // Update an existing travel
     @PutMapping("/{id}")
     public TravelDTO replaceTravel(@PathVariable long id, @RequestBody TravelDTO updatedTravelDTO) {
 
-        // --- MANUAL VALIDATION (Classmate Style) ---
         if (updatedTravelDTO.precio() <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Price must be greater than 0");
         }

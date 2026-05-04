@@ -25,7 +25,7 @@ public class TripSearcherController {
                               @RequestParam Integer travelers,
                               @PageableDefault(size = 5) Pageable pageable) {
         
-        // Llamada al servicio con el parámetro pageable
+        
         Page<Travel> resultsPage = travelService.searchTrips(country, daterange, travelers, pageable);
         
         if(resultsPage.isEmpty()){
@@ -33,10 +33,8 @@ public class TripSearcherController {
             return "index";
         }
 
-        // 'viajes' es la lista de elementos que usa tu th:each en el HTML
         model.addAttribute("viajes", resultsPage.getContent());
         
-        // 'travelPage' contiene la información de paginación (total de páginas, actual, etc.)
         model.addAttribute("travelPage", resultsPage); 
         
         return "travel_page"; 
