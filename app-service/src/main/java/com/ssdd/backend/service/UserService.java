@@ -70,15 +70,26 @@ public class UserService {
 
     @Transactional
     public User updateProfileImage(Long id, MultipartFile file) throws IOException {
+        // 1. Validar que no esté vacío
+        if (file.isEmpty()) {
+            throw new IllegalArgumentException("El archivo no puede estar vacío");
+        }
+
+        // 2. Validar que el contenido sea una imagen (jpg, png, etc.)
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            throw new RuntimeException("El archivo debe ser una imagen válida (JPG, PNG, etc.)");
+        }
+
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         if (user.getImagenPerfil() == null) {
-            // Si no tiene imagen, creamos una nueva entidad Image
+            // Al crearla, podrías pasar el nombre original o la extensión si tu servicio lo
+            // requiere
             Image newImage = imageService.createImage(file.getInputStream());
             user.setImagenPerfil(newImage);
         } else {
-            // Si ya tiene, usamos el método replace de tu ImageService
             imageService.replaceImageFile(user.getImagenPerfil().getId(), file.getInputStream());
         }
 

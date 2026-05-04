@@ -23,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ssdd.backend.model.Image;
 import com.ssdd.backend.model.User;
-import com.ssdd.backend.service.ImageService;
 import com.ssdd.backend.service.UserService;
 
 @Controller
@@ -32,60 +31,50 @@ public class UserImageController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private ImageService imageService;
-
-    private final List<String> ALLOWED_EXTENSIONS = Arrays.asList("image/jpeg", "image/png", "image/jpg");
-
     @GetMapping("/usuario/{id}/imagen")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
-        
+
         Optional<User> user = userService.findById(id);
 
         if (user.isPresent() && user.get().getImagenPerfil() != null) {
             Image imagen = user.get().getImagenPerfil();
-            
+
             Resource file = new InputStreamResource(imagen.getImageFile().getBinaryStream());
 
             return ResponseEntity.ok()
                     .cacheControl(CacheControl.noCache().mustRevalidate())
-                    .contentType(MediaType.IMAGE_JPEG) 
+                    .contentType(MediaType.IMAGE_JPEG)
                     .contentLength(imagen.getImageFile().length())
                     .body(file);
         }
-        
+
         return ResponseEntity.notFound().build();
     }
 
     @PostMapping("/update_image")
     public String updateImage(
-            @RequestParam String email,
             @RequestParam String password,
             @RequestParam MultipartFile image,
             Principal principal,
-            Model model) throws IOException, SQLException {
+            Model model) {
 
-        String currentEmail = principal.getName();
-        User user = userService.findByEmail(currentEmail).orElseThrow();
+        try {
+            String currentEmail = principal.getName();
+            User user = userService.findByEmail(currentEmail)
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        if (!userService.checkPassword(user, password)) {
-            model.addAttribute("error", "La contraseña actual no es correcta.");
+            if (!userService.checkPassword(user, password)) {
+                model.addAttribute("error", "La contraseña actual no es correcta.");
+                return "userProfile"; 
+            }
+
+            userService.updateProfileImage(user.getId(), image);
+
+            return "redirect:/userProfile.html";
+
+        } catch (IOException | RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
             return "userProfile";
         }
-
-        if (!image.isEmpty()) {
-            String contentType = image.getContentType();
-            if (contentType == null || !ALLOWED_EXTENSIONS.contains(contentType.toLowerCase())) {
-                model.addAttribute("error", "Solo se permiten imágenes JPG o PNG.");
-                return "userProfile";
-            }
-            
-            Image nuevaImagen = imageService.createImage(image.getInputStream());
-            user.setImagenPerfil(nuevaImagen);
-        }
-
-        userService.save(user);
-
-        return "redirect:/userProfile.html"; 
     }
 }
