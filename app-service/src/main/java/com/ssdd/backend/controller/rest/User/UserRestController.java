@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssdd.backend.dto.UserDTO;
+import com.ssdd.backend.dto.UserCreateDTO;
+
 import com.ssdd.backend.dto.UserMapper;
 import com.ssdd.backend.model.User;
 import com.ssdd.backend.service.UserService;
@@ -32,7 +33,7 @@ public class UserRestController {
     private UserMapper userMapper;
 
     @PostMapping("/")
-    public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> registerUser(@RequestBody UserCreateDTO userDTO) {
 
         User user = userMapper.toEntity(userDTO);
         if (user.getAcceptTerms() == null || !user.getAcceptTerms()) {
@@ -57,7 +58,7 @@ public class UserRestController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{id}/password")
+    @PatchMapping("/{id}/passwords")
     public ResponseEntity<Void> updatePassword(
             @PathVariable Long id,
             @RequestBody Map<String, String> passwords,
@@ -75,7 +76,7 @@ public class UserRestController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}/profile-image")
+    @PutMapping("/{id}/profile-images")
     public ResponseEntity<UserDTO> updateProfileImage(
             @PathVariable Long id,
             java.security.Principal principal,
@@ -91,7 +92,7 @@ public class UserRestController {
 
         return ResponseEntity.ok(userMapper.toDTO(updatedUser));
     }
-    @PatchMapping("{id}/image")
+    @PatchMapping("{id}/images")
     public ResponseEntity<UserDTO> resetImage(@PathVariable Long id){
         User toReset = userService.findById(id).orElseThrow();
         toReset.setImagenPerfil(null);

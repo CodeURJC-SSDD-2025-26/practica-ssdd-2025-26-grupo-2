@@ -7,6 +7,5 @@ public record UserDTO(
     String nombre,
     String email,
     List<String> roles,
-    Long imagenPerfilId,
-    Boolean acceptTerms
+    Long imagenPerfilId
 ) {}

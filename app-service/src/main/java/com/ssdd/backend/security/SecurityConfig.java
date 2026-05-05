@@ -134,6 +134,11 @@ public class SecurityConfig {
                                 "/admin_user_reviews.html", "/editReservationPage.html")
                         .hasRole("ADMIN")
 
+                        // OpenAPI
+			.requestMatchers("/v3/api-docs*/**").permitAll()
+			.requestMatchers("/swagger-ui.html").permitAll()
+			.requestMatchers("/swagger-ui/**").permitAll()
+
                         // Logged users
                         .requestMatchers("/userProfile.html", "/profile/**", "/profile").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/reservations/**").hasAnyRole("USER", "ADMIN")

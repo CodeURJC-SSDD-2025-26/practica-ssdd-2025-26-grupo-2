@@ -391,7 +391,7 @@ Por otro lado, participé en la implementación de algunas páginas de error y e
 ### **Documentación de la API REST**
 
 #### **Especificación OpenAPI**
-📄 **[Especificación OpenAPI (YAML)](/api-docs/api-docs.yaml)**
+📄 **[Especificación OpenAPI (YAML)](/api-docs/apidocs.yaml)**
 
 #### **Documentación HTML**
 📖 **[Documentación API REST (HTML)](https://raw.githack.com/[usuario]/[repositorio]/main/api-docs/api-docs.html)**
