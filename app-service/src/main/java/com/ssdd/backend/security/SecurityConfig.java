@@ -80,6 +80,13 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/v1/travels/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/travels/**").hasRole("ADMIN")
 
+                        // reviews
+                        .requestMatchers(HttpMethod.GET, "/api/v1/reviews", "/api/v1/reviews/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/reviews", "/api/v1/reviews/**")
+                        .hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/reviews", "/api/v1/reviews/**")
+                        .hasAnyRole("USER", "ADMIN")
+
 
                         //admin
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
