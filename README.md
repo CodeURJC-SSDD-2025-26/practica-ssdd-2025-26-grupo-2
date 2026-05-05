@@ -485,18 +485,20 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
 
 ---
 
-#### **Alumno 2 - [Nombre Completo]**
+#### **Alumno 2 - Alejandro Hernández de Dios**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+En esta tercera fase, mi responsabilidad principal ha sido evolucionar el sistema de reseñas hacia una arquitectura profesional, integrando una API REST y optimizando la visualización mediante paginación.
+
+He desarrollado la capa técnica de la API mediante el ReviewRestController, empleando ReviewDTOs y Mappers para garantizar un intercambio de datos eficiente y seguro. Validé toda esta funcionalidad mediante una colección exhaustiva en Postman, cubriendo los métodos de consulta, creación y borrado.
+
+En la parte web, implementé la lógica de paginación para mejorar el rendimiento, destacando la página de detalle de viajes donde las reseñas ahora se organizan en grupos de 3 por página. Además, habilité la posibilidad de que los usuarios eliminen sus propias reseñas directamente desde la vista del viaje, cerrando así un ciclo de gestión completo, fluido y sincronizado entre la interfaz y la API.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
-
+|1| [ReviewDTO,Mapper, ReviewRestController](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/5ad29f37d4c0caf97f1f9b6161f3696dd97eeec8)  | [ReviewDTO](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/5ad29f37d4c0caf97f1f9b6161f3696dd97eeec8#diff-713efd42b4ae42a40cc4fdd8842ceba109b8d88995651cab114d807cd512b7eb)[Mapper](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/5ad29f37d4c0caf97f1f9b6161f3696dd97eeec8#diff-b639c1235eca78fed0d5c71f9b56d1960cf7f50f66f4ccca634f675eb07390d2)[ReviewRestController](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/5ad29f37d4c0caf97f1f9b6161f3696dd97eeec8#diff-89c81f40996e52f9ce4ada9eb3b1bbafd944c77db7df7659d1382a96881620e1)   |
+|2| [Postman de reviews, ReviewRestController actualizado, ReviewService (Paginación)](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/d36182b80d074261929ec738dfbb20155b849b65)  | [Postman de reviews](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/d36182b80d074261929ec738dfbb20155b849b65#diff-b23dd90fa112e4f14f226ed639514bfdb0c25000dc9ce5889755e285126536be)[ReviewRestController actualizado](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/d36182b80d074261929ec738dfbb20155b849b65#diff-89c81f40996e52f9ce4ada9eb3b1bbafd944c77db7df7659d1382a96881620e1)[ReviewService (Paginación)](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/d36182b80d074261929ec738dfbb20155b849b65#diff-811784f83f06b3ff291021cdd580bce7db27825987e989362979648b982fcc5e)   |
+|3| [actualizacion paginas reseñas en viajes](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c9d6f1e910c5c503d784b7d394ce411340287390)  | [ReviewController](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c9d6f1e910c5c503d784b7d394ce411340287390#diff-b01ac9e53e40375fe3b5e93722c41011e0e5b75402390c03330aa73ffcc381e2)[TravelWebController](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/c9d6f1e910c5c503d784b7d394ce411340287390#diff-d49b7f504611ef3ddae9605f4ba56fcfb6450053ab082854d4bf3a0bc7a3ea12)   |
+|4| [Actualización Diagrama de Clases y Templates](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/665377c891fbd804b16051973a6229cd2156c740)  | [ReadMe](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/665377c891fbd804b16051973a6229cd2156c740#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5)   |
 ---
 
 #### **Alumno 3 - [Nombre Completo]**
