@@ -416,13 +416,32 @@ Diagrama de Servicios:
 #### **Pasos para ejecutar con docker-compose:**
 
 1. **Clonar el repositorio** (si no lo has hecho ya):
+  
    ```bash
-   git clone https://github.com/[usuario]/[repositorio].git
-   cd [repositorio]
+   git clone [https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2.git]
+   cd practica-ssdd-2025-26-grupo-2
    ```
 
-2. **AQUÍ LOS SIGUIENTES PASOS**:
+2. **Navegar al directorio de configuración de Docker:**
+  ```bash
+    docker 
+    ```
 
+3. **Levantar los servicios:**
+- Ejecuta el siguiente comando para arrancar la base de datos y la aplicación web:
+   ```bash
+  docker compose up
+  ```
+
+4. **Acceder a la aplicación:**
+Una vez iniciada, abre tu navegador web. Acepta la advertencia de seguridad (el certificado es autofirmado para desarrollo local) y visita:
+  - Ruta de la API: https://localhost:8443/api/v1/travels
+  - Documentación Swagger: https://localhost:8443/swagger-ui.html
+
+5. **Detener la aplicación:**
+  ```bash
+  docker compose down
+  ```
 ### **Construcción de la Imagen Docker**
 
 #### **Requisitos:**
@@ -435,8 +454,27 @@ Diagrama de Servicios:
    cd docker
    ```
 
-2. **AQUÍ LOS SIGUIENTES PASOS**
+2. **Habilitar permisos de ejecución (Solo Windows/PowerShell):**
+Por defecto, Windows bloquea la ejecución de scripts. Para dar permiso a la terminal actual, ejecuta:
+    ```bash
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    ```
+(Escribe la letra S y pulsa Enter si el sistema te pide confirmación).
 
+3. **Construir y publicar las imágenes:**
+Ejecuta el siguiente script para compilar el código y subir las imágenes a tu repositorio. Sustituye [tu_usuario] por tu nombre real de Docker Hub:
+   ```bash
+    .\publish_image.ps1 -DockerHubUser [tu_usuario]
+   ```
+Nota: La terminal te pedirá tu contraseña de Docker Hub. Escríbela con normalidad y pulsa Enter (por seguridad, no verás los caracteres mientras escribes).
+
+4. **Publicar el archivo Compose:**
+Por último, ejecuta el script para subir el archivo de orquestación docker-compose.yml a la nube:
+    ```bash
+    .\publish_docker-compose.ps1 -DockerHubUser [tu_usuario]
+    ```
+
+    
 ### **Despliegue en Máquina Virtual**
 
 #### **Requisitos:**
@@ -504,17 +542,21 @@ En la parte web, implementé la lógica de paginación para mejorar el rendimien
 |4| [Actualización Diagrama de Clases y Templates](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/665377c891fbd804b16051973a6229cd2156c740)  | [ReadMe](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/665377c891fbd804b16051973a6229cd2156c740#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5)   |
 ---
 
-#### **Alumno 3 - [Nombre Completo]**
+#### **Alumno 3 - Vanessa Fernandes Franco**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Durante el desarrollo de esta práctica, mis responsabilidades principales se basaron tanto el desarrollo de la lógica de negocio en el backend como la configuración del entorno de despliegue mediante contenedores. 
+
+Me encargué de implementar el servicio REST relacionado con la entidad principal de los viajes, esto incluye la programación de la capa de acceso (TravelRestController) para definir la API REST. Además, fui la responsable de configurar y documentar la colección de pruebas en Postman relacionadas con la entidad Travel, garantizando que todos los endpoints funcionaran correctamente y gestionaran bien las peticiones.
+
+Por último, asumí la tarea de dockerizar la aplicación para cumplir con los requisitos de despliegue. Para ello, creé los archivos de construcción de imágenes (app-service.dockerfile y utility-service.dockerfile). Finalmente, diseñé y configuré el archivo de orquestación principal, docker-compose.yml, conectando correctamente la base de datos, la aplicación y los servicios auxiliares para que el proyecto pueda levantarse en cualquier equipo con un solo comando.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [TravelDTO y TravelMapper hechos](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/7b5bb37307ee02c90fad2182a63249e9cc07c68c)  | [TravelDTO.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/7b5bb37307ee02c90fad2182a63249e9cc07c68c#diff-80b7c85c8b9a7ddf6021b791b89c2f8ff3f2aae68d06fc1ce9b5c42633addc27)   |
+|2| [TravelRestController hecho](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b6f9cfb0d161aa7e6e7fa5db6f3db2f1c425b29d)  | [TravelRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b6f9cfb0d161aa7e6e7fa5db6f3db2f1c425b29d#diff-9eff8086c4c25b6cfe5d3c94c20d17f4ef6553ce5831ab8e9c5a97e830d1955a)   |
+|3| [Postman travel y pageable](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/78b7b1cc5a5ef6b89fed5f79014c19befc0aa84e)  | [api.postman_collection.json](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/78b7b1cc5a5ef6b89fed5f79014c19befc0aa84e#diff-b23dd90fa112e4f14f226ed639514bfdb0c25000dc9ce5889755e285126536be)   |
+|4| [Creacion app-service.dockerfile y utility-service.dockerfile](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/cbeb80dee6de11ba4cd69c4988d73233b732f3e5)  | [app-service.dockerfile](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/cbeb80dee6de11ba4cd69c4988d73233b732f3e5#diff-af1f88af7ec42504160c7334733a7bbe09f6fa8ff78bfef1b7a38cfbb011ad23)   |
+|5| [docker-compose hecho](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a123a2db4bca3bb2600f7b0a20b93a35d808c232)  | [docker-compose.yml](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a123a2db4bca3bb2600f7b0a20b93a35d808c232#diff-423deb13b7c401b1a7f41ee91c77f722e11d2f317d6a66b546524e8a04cc8b03)   |
 
 ---
 
