@@ -391,7 +391,7 @@ Por otro lado, participé en la implementación de algunas páginas de error y e
 ### **Documentación de la API REST**
 
 #### **Especificación OpenAPI**
-📄 **[Especificación OpenAPI (YAML)](/api-docs/apidocs.yaml)**
+📄 **[Especificación OpenAPI (YAML)](app-service/api-docs/api-docs.yaml)**
 
 #### **Documentación HTML**
 📖 **[Documentación API REST (HTML)](https://raw.githack.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/main/app-service/api-docs/api-docs.html)**
@@ -404,7 +404,8 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
 
 ![Diagrama de Clases Actualizado](images/DiagramaPractica3.png)
 
-Diagrama de Servicios:
+### **Diagrama de Servicios**
+
 ![Diagrama de Servicios](images/Diagrama%20de%20Servicios.png)
 
 ### **Instrucciones de Ejecución con Docker**
@@ -474,17 +475,19 @@ Diagrama de Servicios:
 
 ### **Participación de Miembros en la Práctica 3**
 
-#### **Alumno 1 - [Nombre Completo]**
+#### **Alumno 1 - María Abdallah**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+En este proyecto, he sido responsable de diseñar e implementar la arquitectura de seguridad mediante JWT, gestionando todo el ciclo de vida de las sesiones (inicio, cierre y refresco) y la configuración técnica en SecurityConfig.java. Asimismo, desarrollé las funcionalidades principales de gestión de usuarios, incluyendo el cambio de credenciales, la administración de imágenes de perfil y la optimización de la visualización de datos mediante paginación.
+
+Más allá de la implementación de nuevas características, mi labor incluyó una fase intensiva de revisión de código y corrección de errores. Me encargué de identificar fallos lógicos en el flujo de autenticación y asegurar la integridad de los recursos multimedia. Finalmente, consolidé toda la estructura del sistema en la documentación de la API (OpenAPI), garantizando que el contrato entre el backend y el frontend fuera sólido y libre de inconsistencias.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [seguridad jwt realizada](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/f144b90f80ada1154684e3bf9644e1283bff45db#diff-9af8d13afad4c1e2860ca5b1ee1ae56926cad6edac474dc9d85bf113af165ae6)  | [SecurityConfig.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/f144b90f80ada1154684e3bf9644e1283bff45db#diff-9af8d13afad4c1e2860ca5b1ee1ae56926cad6edac474dc9d85bf113af165ae6)   |
+|2| [Inicio, cierre y refrescar sesión realizados y domentados](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b9876b2705b14c2a46c8f9428481b6cf157e7a48)  | [AuthRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b9876b2705b14c2a46c8f9428481)   |
+|3| [Eliminar usuario, cambiar contraseña e imagen realizados](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fabc2269dfe190aa410b51ee7dd9b5bb20597f88)  | [UserRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fabc2269dfe190aa410b51ee7dd9b5bb20597f88#diff-e80c1b9551e4d2cdaa231aca1f044a02f81f69dba99451a7d8e20e1a71e101e0)   |
+|4| [Mostrar users con paginación y reseteo de imagenes](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/3df0aa0898c1ce2a25346a90d461bc7dd8740bba)  | [UserRegisterController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/3df0aa0898c1ce2a25346a90d461bc7dd8740bba#diff-278d03f5f0652c9fdad515093d45782186326bb0c8bcafad2c29fe03829a48cc)   |
+|5| [Documentacion api](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/42551bffb1113192b4512f057e90ce76b0858ac5#diff-902fbf3658858ed111095aca89f0916aca093e48a626900dfc03f8b24a3e94a0)  | [api-docs.yaml](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/42551bffb1113192b4512f057e90ce76b0858ac5#diff-902fbf3658858ed111095aca89f0916aca093e48a626900dfc03f8b24a3e94a0)   |
 
 ---
 
