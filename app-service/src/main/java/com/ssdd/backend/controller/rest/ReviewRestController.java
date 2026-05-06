@@ -47,7 +47,7 @@ public class ReviewRestController {
     @Autowired
     private TravelService travelService;
 
-    @GetMapping({ "", "/" })
+    @GetMapping({  "/" })
     public ResponseEntity<Page<ReviewDTO>> getReviews(
             @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
 
@@ -55,7 +55,7 @@ public class ReviewRestController {
         return ResponseEntity.ok(reviewPage.map(mapper::toDTO));
     }
 
-    @PostMapping({ "", "/" })
+    @PostMapping({ "/" })
     public ResponseEntity<ReviewDTO> createReview(@RequestBody ReviewDTO reviewDTO, Principal principal) {
 
         User user = getAuthenticatedUser(principal);
