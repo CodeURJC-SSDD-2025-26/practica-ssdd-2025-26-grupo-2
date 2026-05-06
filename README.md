@@ -424,7 +424,7 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
    ```
 
 2. **Navegar al directorio de configuración de Docker:**
-  ```bash
+    ```bash
     cd docker 
     ```
 
