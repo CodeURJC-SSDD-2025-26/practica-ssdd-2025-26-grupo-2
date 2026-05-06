@@ -31,7 +31,7 @@ public class ContactRestController {
     @Value("${contact.email.to}")
     private String contactEmailTo;
 
-    @GetMapping({ "", "/" })
+    @GetMapping({ "/" })
     public ResponseEntity<Map<String, Object>> getContact() {
 
         Map<String, Object> response = new LinkedHashMap<>();
@@ -43,7 +43,7 @@ public class ContactRestController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping({ "", "/" })
+    @PostMapping({"/"})
     public ResponseEntity<Map<String, Object>> sendContact(@RequestBody Map<String, String> contactRequest) {
 
         String nombre = getRequiredField(contactRequest, "nombre");
