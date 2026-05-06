@@ -391,10 +391,10 @@ Por otro lado, participé en la implementación de algunas páginas de error y e
 ### **Documentación de la API REST**
 
 #### **Especificación OpenAPI**
-📄 **[Especificación OpenAPI (YAML)](/api-docs/apidocs.yaml)**
+📄 **[Especificación OpenAPI (YAML)](app-service/api-docs/api-docs.yaml)**
 
 #### **Documentación HTML**
-📖 **[Documentación API REST (HTML)](https://raw.githack.com/practica-ssdd-2025-26-grupo-2/main/api-docs/api-docs.html)**
+📖 **[Documentación API REST (HTML)](https://raw.githack.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/main/app-service/api-docs/api-docs.html)**
 
 > La documentación de la API REST se encuentra en la carpeta `/api-docs` del repositorio. Se ha generado automáticamente con SpringDoc a partir de las anotaciones en el código Java.
 
@@ -404,7 +404,8 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
 
 ![Diagrama de Clases Actualizado](images/DiagramaPractica3.png)
 
-Diagrama de Servicios:
+### **Diagrama de Servicios**
+
 ![Diagrama de Servicios](images/Diagrama%20de%20Servicios.png)
 
 ### **Instrucciones de Ejecución con Docker**
@@ -512,17 +513,19 @@ Por último, ejecuta el script para subir el archivo de orquestación docker-com
 
 ### **Participación de Miembros en la Práctica 3**
 
-#### **Alumno 1 - [Nombre Completo]**
+#### **Alumno 1 - María Abdallah**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+En este proyecto, he sido responsable de diseñar e implementar la arquitectura de seguridad mediante JWT, gestionando todo el ciclo de vida de las sesiones (inicio, cierre y refresco) y la configuración técnica en SecurityConfig.java. Asimismo, desarrollé las funcionalidades principales de gestión de usuarios, incluyendo el cambio de credenciales, la administración de imágenes de perfil y la optimización de la visualización de datos mediante paginación.
+
+Más allá de la implementación de nuevas características, mi labor incluyó una fase intensiva de revisión de código y corrección de errores. Me encargué de identificar fallos lógicos en el flujo de autenticación y asegurar la integridad de los recursos multimedia. Finalmente, consolidé toda la estructura del sistema en la documentación de la API (OpenAPI), garantizando que el contrato entre el backend y el frontend fuera sólido y libre de inconsistencias.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [seguridad jwt realizada](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/f144b90f80ada1154684e3bf9644e1283bff45db#diff-9af8d13afad4c1e2860ca5b1ee1ae56926cad6edac474dc9d85bf113af165ae6)  | [SecurityConfig.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/f144b90f80ada1154684e3bf9644e1283bff45db#diff-9af8d13afad4c1e2860ca5b1ee1ae56926cad6edac474dc9d85bf113af165ae6)   |
+|2| [Inicio, cierre y refrescar sesión realizados y domentados](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b9876b2705b14c2a46c8f9428481b6cf157e7a48)  | [AuthRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/b9876b2705b14c2a46c8f9428481)   |
+|3| [Eliminar usuario, cambiar contraseña e imagen realizados](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fabc2269dfe190aa410b51ee7dd9b5bb20597f88)  | [UserRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/fabc2269dfe190aa410b51ee7dd9b5bb20597f88#diff-e80c1b9551e4d2cdaa231aca1f044a02f81f69dba99451a7d8e20e1a71e101e0)   |
+|4| [Mostrar users con paginación y reseteo de imagenes](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/3df0aa0898c1ce2a25346a90d461bc7dd8740bba)  | [UserRegisterController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/3df0aa0898c1ce2a25346a90d461bc7dd8740bba#diff-278d03f5f0652c9fdad515093d45782186326bb0c8bcafad2c29fe03829a48cc)   |
+|5| [Documentacion api](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/42551bffb1113192b4512f057e90ce76b0858ac5#diff-902fbf3658858ed111095aca89f0916aca093e48a626900dfc03f8b24a3e94a0)  | [api-docs.yaml](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/42551bffb1113192b4512f057e90ce76b0858ac5#diff-902fbf3658858ed111095aca89f0916aca093e48a626900dfc03f8b24a3e94a0)   |
 
 ---
 
@@ -560,16 +563,22 @@ Por último, asumí la tarea de dockerizar la aplicación para cumplir con los r
 
 ---
 
-#### **Alumno 4 - [Nombre Completo]**
+#### **Alumno 4 - Yadira Reimúndez Queimadelos**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Durante el desarrollo del proyecto, me encargué principalmente de la implementación de distintos servicios REST. En concreto, desarrollé el REST relacionado con la gestión de reservas, así como otros servicios REST externos a las reservas, exceptuando los correspondientes a imágenes, usuarios, viajes y reseñas.
+
+Además, participé en la reorganización de la arquitectura lógica del proyecto, separando la aplicación en dos servicios principales: app-service, encargado de englobar la lógica general de la aplicación, y utility-service, destinado a funcionalidades auxiliares, especialmente la lógica relacionada con el envío de correos electrónicos.
+
+También llevé a cabo tareas de revisión y corrección de funcionalidades desarrolladas por mi compañero,en la parte relacionada con las reseñas, solucionando errores y mejorando su integración con el resto del sistema.
+
+Por último, trabajé en la parte de automatización y despliegue del proyecto dentro de la carpeta Docker, creando los scripts, orientados a facilitar la creación, publicación y gestión de los servicios del proyecto.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [lógica del correo separada](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2bc690b1cb2e2d94ae8ff594d4f6177ba44219e5)  | [EmailService.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2bc690b1cb2e2d94ae8ff594d4f6177ba44219e5#diff-b3a3577348e68d421c5266273157b38c7fdaf950f422a4a987ce01cf756f1bfd)   |
+|2| [ReservationRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/34f5f53cc077a8e4ffeb51cab48c79225c6b740e)  | [ResertavionRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/34f5f53cc077a8e4ffeb51cab48c79225c6b740e#diff-30c6bb99443ff048dc9fffac0d38451ee4328c5b622523375a5e161041a267cc)   |
+|3| [ContactRestController, CreditCardRestController y GlobalRestCntroller hechos](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15)  | [ContactRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15#diff-e6e4406f0d169b4f3ec217376afce726cf10139bbbda8287e32c99a6d87f81cd) [CreditCardRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15#diff-1c2fd92016bdbadc2c2f79b65547c9f5eff01e253a21a0dd7f38b3ecf2364a09) [GlobalRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15#diff-986fb87d95237706415ae1eb4e4dda69503145135a6d37715caebf97e5f6a1ba)  |
+|4| [arreglo reviews](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a7189a1fb701b72a6c033bbe610ceea3473b748d)  | [ReviewRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a7189a1fb701b72a6c033bbe610ceea3473b748d#diff-e90eb0b60472d9d9b889dd81a28ca7584ee4e2847f7f681b697b7332e7716841)   |
+|5| [crear y publicar imagen](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/4b392d6e1b8351ec294573fd1fc5dd4d3e855062)  | [create_image.ps1](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/4b392d6e1b8351ec294573fd1fc5dd4d3e855062#diff-a40c98217a5ff2469f0b07a3c9c6a50a14442340a9d285240831003b874f50bf) [publish_image.ps1](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/4b392d6e1b8351ec294573fd1fc5dd4d3e855062#diff-8270a2afc83040ff29534a32dbc96e528581a713312dd971382788641de5d70d)  |
 
 ---
