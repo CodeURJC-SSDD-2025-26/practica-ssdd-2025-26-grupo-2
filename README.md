@@ -518,16 +518,22 @@ En la parte web, implementé la lógica de paginación para mejorar el rendimien
 
 ---
 
-#### **Alumno 4 - [Nombre Completo]**
+#### **Alumno 4 - Yadira Reimúndez Queimadelos**
 
-[Descripción de las tareas y responsabilidades principales del alumno en el proyecto]
+Durante el desarrollo del proyecto, me encargué principalmente de la implementación de distintos servicios REST. En concreto, desarrollé el REST relacionado con la gestión de reservas, así como otros servicios REST externos a las reservas, exceptuando los correspondientes a imágenes, usuarios, viajes y reseñas.
+
+Además, participé en la reorganización de la arquitectura lógica del proyecto, separando la aplicación en dos servicios principales: app-service, encargado de englobar la lógica general de la aplicación, y utility-service, destinado a funcionalidades auxiliares, especialmente la lógica relacionada con el envío de correos electrónicos.
+
+También llevé a cabo tareas de revisión y corrección de funcionalidades desarrolladas por mi compañero,en la parte relacionada con las reseñas, solucionando errores y mejorando su integración con el resto del sistema.
+
+Por último, trabajé en la parte de automatización y despliegue del proyecto dentro de la carpeta Docker, creando los scripts, orientados a facilitar la creación, publicación y gestión de los servicios del proyecto.
 
 | Nº    | Commits      | Files      |
 |:------------: |:------------:| :------------:|
-|1| [Descripción commit 1](URL_commit_1)  | [Archivo1](URL_archivo_1)   |
-|2| [Descripción commit 2](URL_commit_2)  | [Archivo2](URL_archivo_2)   |
-|3| [Descripción commit 3](URL_commit_3)  | [Archivo3](URL_archivo_3)   |
-|4| [Descripción commit 4](URL_commit_4)  | [Archivo4](URL_archivo_4)   |
-|5| [Descripción commit 5](URL_commit_5)  | [Archivo5](URL_archivo_5)   |
+|1| [lógica del correo separada](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2bc690b1cb2e2d94ae8ff594d4f6177ba44219e5)  | [EmailService.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/2bc690b1cb2e2d94ae8ff594d4f6177ba44219e5#diff-b3a3577348e68d421c5266273157b38c7fdaf950f422a4a987ce01cf756f1bfd)   |
+|2| [ReservationRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/34f5f53cc077a8e4ffeb51cab48c79225c6b740e)  | [ResertavionRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/34f5f53cc077a8e4ffeb51cab48c79225c6b740e#diff-30c6bb99443ff048dc9fffac0d38451ee4328c5b622523375a5e161041a267cc)   |
+|3| [ContactRestController, CreditCardRestController y GlobalRestCntroller hechos](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15)  | [ContactRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15#diff-e6e4406f0d169b4f3ec217376afce726cf10139bbbda8287e32c99a6d87f81cd) [CreditCardRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15#diff-1c2fd92016bdbadc2c2f79b65547c9f5eff01e253a21a0dd7f38b3ecf2364a09) [GlobalRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/476f437d5f853cdf62e43601bd74c4e999ab4c15#diff-986fb87d95237706415ae1eb4e4dda69503145135a6d37715caebf97e5f6a1ba)  |
+|4| [arreglo reviews](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a7189a1fb701b72a6c033bbe610ceea3473b748d)  | [ReviewRestController.java](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/a7189a1fb701b72a6c033bbe610ceea3473b748d#diff-e90eb0b60472d9d9b889dd81a28ca7584ee4e2847f7f681b697b7332e7716841)   |
+|5| [crear y publicar imagen](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/4b392d6e1b8351ec294573fd1fc5dd4d3e855062)  | [create_image.ps1](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/4b392d6e1b8351ec294573fd1fc5dd4d3e855062#diff-a40c98217a5ff2469f0b07a3c9c6a50a14442340a9d285240831003b874f50bf) [publish_image.ps1](https://github.com/CodeURJC-SSDD-2025-26/practica-ssdd-2025-26-grupo-2/commit/4b392d6e1b8351ec294573fd1fc5dd4d3e855062#diff-8270a2afc83040ff29534a32dbc96e528581a713312dd971382788641de5d70d)  |
 
 ---
