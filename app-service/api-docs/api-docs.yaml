@@ -1,7 +1,8 @@
 openapi: 3.1.0
 info:
-  title: OpenAPI definition
-  version: v0
+  title: API del Servicio ByeBye
+  description: Documentación de los endpoints para el servicio ByeBye del Grupo 2.
+  version: "1.0"
 servers:
 - url: https://localhost:8443
   description: Generated server url
@@ -654,6 +655,25 @@ paths:
             '*/*':
               schema:
                 type: string
+  /api/images/{id}/media:
+    get:
+      tags:
+      - image-rest-controller
+      operationId: getImageFile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
   /api/graphs/user:
     get:
       tags:
@@ -917,10 +937,10 @@ components:
         numberOfElements:
           type: integer
           format: int32
-        pageable:
-          $ref: "#/components/schemas/PageableObject"
         sort:
           $ref: "#/components/schemas/SortObject"
+        pageable:
+          $ref: "#/components/schemas/PageableObject"
         empty:
           type: boolean
     PageableObject:
@@ -929,26 +949,26 @@ components:
         offset:
           type: integer
           format: int64
-        pageNumber:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        unpaged:
-          type: boolean
         paged:
           type: boolean
         sort:
           $ref: "#/components/schemas/SortObject"
+        pageNumber:
+          type: integer
+          format: int32
+        unpaged:
+          type: boolean
+        pageSize:
+          type: integer
+          format: int32
     SortObject:
       type: object
       properties:
         empty:
           type: boolean
-        unsorted:
-          type: boolean
         sorted:
+          type: boolean
+        unsorted:
           type: boolean
     Pageable:
       type: object
@@ -991,10 +1011,10 @@ components:
         numberOfElements:
           type: integer
           format: int32
-        pageable:
-          $ref: "#/components/schemas/PageableObject"
         sort:
           $ref: "#/components/schemas/SortObject"
+        pageable:
+          $ref: "#/components/schemas/PageableObject"
         empty:
           type: boolean
     PageReviewDTO:
@@ -1023,10 +1043,10 @@ components:
         numberOfElements:
           type: integer
           format: int32
-        pageable:
-          $ref: "#/components/schemas/PageableObject"
         sort:
           $ref: "#/components/schemas/SortObject"
+        pageable:
+          $ref: "#/components/schemas/PageableObject"
         empty:
           type: boolean
     PageReservationDTO:
@@ -1055,9 +1075,9 @@ components:
         numberOfElements:
           type: integer
           format: int32
-        pageable:
-          $ref: "#/components/schemas/PageableObject"
         sort:
           $ref: "#/components/schemas/SortObject"
+        pageable:
+          $ref: "#/components/schemas/PageableObject"
         empty:
           type: boolean
