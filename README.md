@@ -425,7 +425,7 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
 
 2. **Navegar al directorio de configuración de Docker:**
   ```bash
-    docker 
+    cd docker 
     ```
 
 3. **Levantar los servicios:**
@@ -435,7 +435,7 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
   ```
 
 4. **Acceder a la aplicación:**
-Una vez iniciada, abre tu navegador web. Acepta la advertencia de seguridad (el certificado es autofirmado para desarrollo local) y visita:
+  Una vez iniciada, abre tu navegador web. Acepta la advertencia de seguridad (el certificado es autofirmado para desarrollo local) y visita:
   - Ruta de la API: https://localhost:8443/api/v1/travels
   - Documentación Swagger: https://localhost:8443/swagger-ui.html
 
@@ -443,6 +443,21 @@ Una vez iniciada, abre tu navegador web. Acepta la advertencia de seguridad (el 
   ```bash
   docker compose down
   ```
+
+### **Ejecución rápida desde la nube (Artefacto OCI)**
+El archivo `docker-compose.yml` ha sido empaquetado y publicado en Docker Hub como un artefacto OCI. 
+Esto permite descargar y ejecutar toda la aplicación con un **único comando**, sin necesidad de clonar este repositorio ni tener el código fuente en el equipo local:
+En terminales Linux, macOS o Git Bash:
+  ```bash
+  docker compose -f oci://docker.io/vanessa19/byebye-compose:latest up
+  ```
+En Windows:
+  ```bash
+  docker compose --project-directory . -f "oci://docker.io/vanessa19/byebye-compose:latest" up
+  ```
+
+
+
 ### **Construcción de la Imagen Docker**
 
 #### **Requisitos:**
@@ -460,14 +475,14 @@ Por defecto, Windows bloquea la ejecución de scripts. Para dar permiso a la ter
     ```bash
    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
     ```
-(Escribe la letra S y pulsa Enter si el sistema te pide confirmación).
+  (Escribe la letra S y pulsa Enter si el sistema te pide confirmación).
 
 3. **Construir y publicar las imágenes:**
 Ejecuta el siguiente script para compilar el código y subir las imágenes a tu repositorio. Sustituye [tu_usuario] por tu nombre real de Docker Hub:
    ```bash
     .\publish_image.ps1 -DockerHubUser [tu_usuario]
    ```
-Nota: La terminal te pedirá tu contraseña de Docker Hub. Escríbela con normalidad y pulsa Enter (por seguridad, no verás los caracteres mientras escribes).
+  Nota: La terminal te pedirá tu contraseña de Docker Hub. Escríbela con normalidad y pulsa Enter (por seguridad, no verás los caracteres mientras escribes).
 
 4. **Publicar el archivo Compose:**
 Por último, ejecuta el script para subir el archivo de orquestación docker-compose.yml a la nube:
