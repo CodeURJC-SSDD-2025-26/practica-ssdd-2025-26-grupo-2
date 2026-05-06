@@ -954,7 +954,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/travels/search?country=Francia&daterange=05/01/2026 - 05/30/2026&travelers=2",
+              "raw": "{{baseUrl}}/api/v1/travels/?country=Francia&daterange=2026-05-04/2026-05-12&travelers=2",
               "protocol": "https",
               "host": [
                 "localhost"
