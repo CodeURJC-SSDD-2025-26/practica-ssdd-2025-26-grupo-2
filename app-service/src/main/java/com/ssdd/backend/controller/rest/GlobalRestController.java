@@ -29,7 +29,7 @@ public class GlobalRestController {
     @Autowired
     private TravelService travelService;
 
-    @GetMapping({ "", "/" })
+    @GetMapping({"/"})
     public ResponseEntity<Map<String, Object>> getGlobalAttributes(HttpServletRequest request) {
 
         Principal principal = request.getUserPrincipal();

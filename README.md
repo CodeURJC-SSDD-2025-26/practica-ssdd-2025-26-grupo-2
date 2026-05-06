@@ -404,6 +404,9 @@ Diagrama actualizado incluyendo los @RestController y su relación con los @Serv
 
 ![Diagrama de Clases Actualizado](images/DiagramaPractica3.png)
 
+Diagrama de Servicios:
+![Diagrama de Servicios](images/Diagrama%20de%20Servicios.png)
+
 ### **Instrucciones de Ejecución con Docker**
 
 #### **Requisitos previos:**

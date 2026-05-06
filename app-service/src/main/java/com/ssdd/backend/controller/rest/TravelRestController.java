@@ -51,7 +51,7 @@ public class TravelRestController {
     private ImageMapper imageMapper;
 
     
-    @GetMapping({ "", "/" })
+    @GetMapping({  "/" })
     public ResponseEntity<Page<TravelDTO>> getTravels(
             @RequestParam(required = false) String country,
             @RequestParam(required = false) String daterange,

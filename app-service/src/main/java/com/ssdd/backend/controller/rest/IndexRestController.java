@@ -27,7 +27,7 @@ public class IndexRestController {
     @Autowired
     private TravelService travelService;
 
-    @GetMapping({ "", "/", "/index" })
+    @GetMapping({ "/", "/index" })
     public ResponseEntity<Map<String, Object>> showIndex() {
 
         // CAMBIO AQUÍ: Pasamos Pageable.unpaged() y sacamos el contenido con .getContent()

@@ -164,7 +164,13 @@ public class DatabaseInitializer {
             viaje8.setFechaInicio(LocalDate.now().plusDays(15));
             viaje8.setFechaFin(LocalDate.now().plusDays(20));
 
-            
+            travelRepository.save(viaje1);
+            travelRepository.save(viaje2);
+            travelRepository.save(viaje4);
+            travelRepository.save(viaje5);
+            travelRepository.save(viaje6);
+            travelRepository.save(viaje7);
+            travelRepository.save(viaje8);
            
             try {
                 
@@ -181,13 +187,7 @@ public class DatabaseInitializer {
             }
 
             
-            travelRepository.save(viaje1);
-            travelRepository.save(viaje2);
-            travelRepository.save(viaje4);
-            travelRepository.save(viaje5);
-            travelRepository.save(viaje6);
-            travelRepository.save(viaje7);
-            travelRepository.save(viaje8);
+        
             
             
             Reservation reserva1 = new Reservation(user1, viaje1, 2, LocalDate.now(), 900.0,

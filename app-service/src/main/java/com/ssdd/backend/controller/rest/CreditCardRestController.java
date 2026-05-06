@@ -35,7 +35,7 @@ public class CreditCardRestController {
     @Autowired
     private CreditCardService creditCardService;
 
-    @GetMapping({ "", "/" })
+    @GetMapping({"/"})
     public CreditCardDTO getCreditCard(Principal principal) {
 
         User user = getAuthenticatedUser(principal);
@@ -46,7 +46,7 @@ public class CreditCardRestController {
         return toDTO(card, user);
     }
 
-    @PostMapping({ "", "/" })
+    @PostMapping({"/" })
     public ResponseEntity<CreditCardDTO> addCreditCard(
             @RequestBody CreditCardDTO creditCardDTO,
             Principal principal) {
@@ -54,7 +54,7 @@ public class CreditCardRestController {
         return saveCreditCard(creditCardDTO, principal);
     }
 
-    @PutMapping({ "", "/" })
+    @PutMapping({"/" })
     public ResponseEntity<CreditCardDTO> updateCreditCard(
             @RequestBody CreditCardDTO creditCardDTO,
             Principal principal) {
@@ -62,7 +62,7 @@ public class CreditCardRestController {
         return saveCreditCard(creditCardDTO, principal);
     }
 
-    @DeleteMapping({ "", "/" })
+    @DeleteMapping({"/"})
     public CreditCardDTO deleteCreditCard(Principal principal) {
 
         User user = getAuthenticatedUser(principal);
