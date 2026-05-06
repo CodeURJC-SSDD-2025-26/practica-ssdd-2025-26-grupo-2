@@ -456,8 +456,6 @@ En Windows:
   docker compose --project-directory . -f "oci://docker.io/vanessa19/byebye-compose:latest" up
   ```
 
-
-
 ### **Construcción de la Imagen Docker**
 
 #### **Requisitos:**
@@ -489,32 +487,6 @@ Por último, ejecuta el script para subir el archivo de orquestación docker-com
     ```bash
     .\publish_docker-compose.ps1 -DockerHubUser [tu_usuario]
     ```
-
-    
-### **Despliegue en Máquina Virtual**
-
-#### **Requisitos:**
-- Acceso a la máquina virtual (SSH)
-- Clave privada para autenticación
-- Conexión a la red correspondiente o VPN configurada
-
-#### **Pasos para desplegar:**
-
-1. **Conectar a la máquina virtual**:
-   ```bash
-   ssh -i [ruta/a/clave.key] [usuario]@[IP-o-dominio-VM]
-   ```
-   
-   Ejemplo:
-   ```bash
-   ssh -i ssh-keys/app.key vmuser@10.100.139.XXX
-   ```
-
-2. **AQUÍ LOS SIGUIENTES PASOS**:
-
-### **URL de la Aplicación Desplegada**
-
-🌐 **URL de acceso**: `https://[nombre-app].etsii.urjc.es:8443`
 
 #### **Credenciales de Usuarios de Ejemplo**
 
