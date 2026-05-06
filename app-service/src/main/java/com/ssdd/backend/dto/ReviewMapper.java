@@ -16,11 +16,8 @@ public interface ReviewMapper {
     @Mapping(source = "viaje.id", target = "viajeId")
     ReviewDTO toDTO(Review review);
 
-    // Método para convertir listas completas (muy útil para el Controller)
     List<ReviewDTO> toDTOs(Collection<Review> reviews);
 
-    // Convertimos de DTO a Entidad
-    // Ignoramos los objetos completos porque los buscaremos en el Service por su ID
     @Mapping(target = "autor", ignore = true)
     @Mapping(target = "viaje", ignore = true)
     Review toEntity(ReviewDTO reviewDTO);

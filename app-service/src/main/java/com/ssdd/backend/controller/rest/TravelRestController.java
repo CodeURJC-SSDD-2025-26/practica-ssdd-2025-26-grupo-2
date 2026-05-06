@@ -81,10 +81,9 @@ public class TravelRestController {
     }
 
     
-    @PostMapping({ "", "/" })
+    @PostMapping({  "/" })
     public ResponseEntity<TravelDTO> createTravel(@RequestBody TravelDTO travelDTO) {
 
-        // --- MANUAL VALIDATION ---
         if (travelDTO.precio() <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Price must be greater than 0");
         }

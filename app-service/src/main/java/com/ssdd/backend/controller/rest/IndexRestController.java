@@ -30,7 +30,6 @@ public class IndexRestController {
     @GetMapping({ "/", "/index" })
     public ResponseEntity<Map<String, Object>> showIndex() {
 
-        // CAMBIO AQUÍ: Pasamos Pageable.unpaged() y sacamos el contenido con .getContent()
         List<Travel> todosLosViajes = travelService.getAllTravels(Pageable.unpaged()).getContent();
 
         List<Map<String, Object>> primeros6 = todosLosViajes.stream()
